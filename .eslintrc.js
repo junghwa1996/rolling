@@ -24,6 +24,7 @@ module.exports = {
     "react", // React 관련 플러그인 추가
     "import", // import 관련 플러그인 추가
     "styled-components-a11y", // styled-components 관련 플러그인 추가
+    "react-hooks", // React Hooks 관련 플러그인 추가
   ],
 
   // 코드 규칙 정의
@@ -104,5 +105,7 @@ module.exports = {
         ],
       },
     ],
+    "react-hooks/rules-of-hooks": "error", // Hooks는 컴포넌트의 최상단에서 호출해야 함
+    "react-hooks/exhaustive-deps": "warn", // effect 의존성 배열 검사
   },
 };
