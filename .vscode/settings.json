@@ -1,0 +1,7 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // Prettier를 기본 포맷터로 지정
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true // 파일 저장 시 ESLint 규칙을 자동으로 적용
+  },
+  "editor.formatOnSave": true // 저장할 때 자동으로 포맷팅
+}
