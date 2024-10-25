@@ -55,7 +55,7 @@
 - [양정화](https://github.com/junghwa1996)
 - 신휘철
 - 홍현빈
-- 신휘철
+- [신휘철](https://github.com/hwiiron)
 
 # 기술 스택
 
