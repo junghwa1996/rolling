@@ -4,6 +4,8 @@
     "source.fixAll": true // 저장 시 가능한 모든 자동 수정을 시도
   },
   "editor.formatOnSave": true,
+  "editor.tabSize": 2, // 들여쓰기 크기
+  "editor.insertSpaces": true,
   "eslint.validate": [
     "javascript",
     "javascriptreact",
