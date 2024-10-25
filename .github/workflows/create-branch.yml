@@ -18,10 +18,12 @@ jobs:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           ISSUE_TITLE: ${{ github.event.issue.title }}
         run: |
-          # 브랜치 이름 생성 (특수문자 및 공백 처리)
-          BRANCH_NAME="feature/issue-${ISSUE_NUMBER}-${ISSUE_TITLE// /-}"
-          BRANCH_NAME="${BRANCH_NAME//[^a-zA-Z0-9\-]/}"
+          # 브랜치 이름 생성 (이슈 번호와 제목 포함, 특수문자 처리)
+          ISSUE_TITLE_CLEAN="${ISSUE_TITLE// /-}"               # 공백을 '-'로 대체
+          ISSUE_TITLE_CLEAN="${ISSUE_TITLE_CLEAN//[^a-zA-Z0-9가-힣_-]/}" # 영문, 한글, 숫자, '_'만 남김
+
+          BRANCH_NAME="feature/#${ISSUE_NUMBER}_${ISSUE_TITLE_CLEAN}"
 
           # 브랜치 생성 및 푸시
-          git checkout -b $BRANCH_NAME
-          git push origin $BRANCH_NAME
+          git checkout -b "$BRANCH_NAME"
+          git push origin "$BRANCH_NAME"
