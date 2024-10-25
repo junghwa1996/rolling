@@ -10,23 +10,18 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
 
       - name: Create feature branch
         env:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           ISSUE_TITLE: ${{ github.event.issue.title }}
         run: |
-          # 브랜치 이름 생성 (특수문자 공백 처리)
+          # 브랜치 이름 생성 (특수문자 및 공백 처리)
           BRANCH_NAME="feature/issue-${ISSUE_NUMBER}-${ISSUE_TITLE// /-}"
           BRANCH_NAME="${BRANCH_NAME//[^a-zA-Z0-9\-]/}"
-          
+
           # 브랜치 생성 및 푸시
           git checkout -b $BRANCH_NAME
           git push origin $BRANCH_NAME
-
-      - name: Add comment to issue
-        env:
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
-          BRANCH_NAME: ${{ steps.create-branch.outputs.BRANCH_NAME }}
-        run: |
-          gh issue comment $ISSUE_NUMBER --body "A new branch '$BRANCH_NAME' has been created for this issue."
