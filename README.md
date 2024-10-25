@@ -39,9 +39,9 @@
 
 # 명령어
 
-`npm run start` : 서버 실행
-`npm run build` : 빌드 실행
-`npm test` : 로컬 테스트 실행
+- `npm run start` : 서버 실행
+- `npm run build` : 빌드 실행
+- `npm test` : 로컬 테스트 실행
 
 # 담당자
 
