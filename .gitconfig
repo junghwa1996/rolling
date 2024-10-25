@@ -1,0 +1,3 @@
+# 삭제된 원격브랜치를 로컬에서도 삭제해주는 명령어 alias 설정
+[alias]
+    cleanup = "!git fetch -p && git branch --merged | egrep -v '(^\\*|main|develop)' | xargs git branch -d"
