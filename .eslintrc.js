@@ -22,6 +22,8 @@ module.exports = {
   plugins: [
     "prettier", // Prettier 플러그인 추가
     "react", // React 관련 플러그인 추가
+    "import", // import 관련 플러그인 추가
+    "styled-components-a11y", // styled-components 관련 플러그인 추가
   ],
 
   // 코드 규칙 정의
@@ -71,6 +73,35 @@ module.exports = {
         ],
         "newlines-between": "always",
         alphabetize: { order: "asc", caseInsensitive: true }, // 알파벳 순으로 정렬
+      },
+    ],
+    "styled-components-a11y/rule-name": [
+      "error",
+      // css 속성 순서 정렬
+      {
+        propertiesOrder: [
+          "display",
+          "position",
+          "top",
+          "right",
+          "bottom",
+          "left",
+          "z-index",
+          "flex",
+          "grid",
+          "align-items",
+          "justify-content",
+          "width",
+          "height",
+          "margin",
+          "padding",
+          "border",
+          "background",
+          "color",
+          "font",
+          "animation",
+          "transition",
+        ],
       },
     ],
   },
