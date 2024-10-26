@@ -88,3 +88,4 @@
 - https://team2-rolling-live.netlify.app/
 
 # 프로젝트 화면 구성
+- 화면을 캡쳐해서 추가 합니다.
