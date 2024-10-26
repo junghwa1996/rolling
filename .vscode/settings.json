@@ -12,6 +12,5 @@
     "css",
     "scss"
   ],
-  "prettier.requireConfig": false, // Prettier 설정 파일 없이도 기본 설정 사용
-  "prettier.disableLanguages": [] // Prettier가 모든 파일에서 동작하도록 설정
+  "prettier.requireConfig": false // Prettier 설정 파일 없이도 기본 설정 사용
 }
