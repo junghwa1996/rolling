@@ -1,7 +1,7 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": {
-    "source.fixAll": true // 저장 시 가능한 모든 자동 수정을 시도
+    "source.fixAll": "explicit"
   },
   "editor.formatOnSave": true,
   "editor.tabSize": 2, // 들여쓰기 크기
