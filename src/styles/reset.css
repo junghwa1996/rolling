@@ -146,28 +146,15 @@ dl {
   list-style: none;
 }
 
-button {
-  margin: 0;
-  padding: 0;
-  border: none;
-  outline: none;
-  background: none;
-  cursor: pointer;
-}
-
-input,
-select,
-textarea {
-  margin: 0;
-  padding: 0;
-  border: none;
-  outline: none;
-}
 
 input[type="radio"],
 input[type="checkbox"],
 select {
   cursor: pointer;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 a{
   display: inline-block;
