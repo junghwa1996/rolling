@@ -18,10 +18,10 @@ html {
 hr {
   display: block;
   height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
   margin: 1em 0;
   padding: 0;
+  border: 0;
+  border-top: 1px solid #ccc;
 }
 
 audio,
@@ -34,9 +34,9 @@ video {
 }
 
 fieldset {
-  border: 0;
   margin: 0;
   padding: 0;
+  border: 0;
 }
 
 textarea {
@@ -49,20 +49,19 @@ textarea {
 }
 
 .sr-only {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
+  position: absolute;
+  width: 1px;
   height: 1px;
   margin: -1px;
-  overflow: hidden;
   padding: 0;
-  position: absolute;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
-  width: 1px;
 }
 
 html {
   font-size: 10px;
-  -webkit-text-size-adjust: none;
   text-size-adjust: none;
 }
 
@@ -146,41 +145,64 @@ dl {
   list-style: none;
 }
 
-
-input[type="radio"],
-input[type="checkbox"],
+input[type='radio'],
+input[type='checkbox'],
 select {
   cursor: pointer;
 }
+
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-a{
-  display: inline-block;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
+a {
+  display: inline-block;
+}
 body {
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 400;
 }
 
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
 
-body, p, span, h1, h2, h3, h4, h5, h6 {
-  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+body,
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family:
+    'Pretendard Variable',
+    Pretendard,
+    -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    Roboto,
+    'Helvetica Neue',
+    'Segoe UI',
+    'Apple SD Gothic Neo',
+    'Noto Sans KR',
+    'Malgun Gothic',
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    sans-serif;
 }
 
 /* 태블릿 */
 @media screen and (min-width: 768px) and (max-width: 1248px) {
-  html{
+  html {
     font-size: 0.8013rem;
   }
 }
 
 /* 모바일 */
 @media screen and (max-width: 768px) {
-  html{
+  html {
     font-size: 1.3038rem;
   }
 }
