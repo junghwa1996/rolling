@@ -3,13 +3,13 @@ import { BrowserRouter } from 'react-router-dom';
 import './styles/normalize.css';
 import './styles/reset.css';
 
-import Main from './router/Main';
+import Content from './router/Content';
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Main />
+        <Content />
       </BrowserRouter>
     </>
   );

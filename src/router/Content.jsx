@@ -8,7 +8,7 @@ import NotFoundPage from '../pages/NotFound/NotFoundPage';
 import RecipientsAddPage from '../pages/RecipientsAdd/RecipientsAddPage';
 import RecipientsList from '../pages/RecipientsList/RecipientsListPage';
 
-function Main() {
+function Content() {
   return (
     // <Routes>
     //   <Route path="/" element={<App />}>
@@ -41,4 +41,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Content;
