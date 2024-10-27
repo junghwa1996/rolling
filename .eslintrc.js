@@ -29,7 +29,7 @@ module.exports = {
     'no-console': 'off',
     eqeqeq: 'error',
     indent: ['error', 2],
-    //'arrow-body-style': ['error', 'as-needed'],
+    'arrow-body-style': ['error', 'as-needed'],
     'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
     'react/react-in-jsx-scope': 'off',
     'react/function-component-definition': [
