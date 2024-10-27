@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledTextarea = styled.textarea`
@@ -35,18 +36,12 @@ const StyledTextarea = styled.textarea`
   }
 `;
 
-function Textarea() {
-  return (
-    <StyledTextarea>
-      코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 하세요!
-      코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또
-      하세요!코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또
-      하세요!코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또
-      하세요!코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또
-      하세요!코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또
-      하세요!
-    </StyledTextarea>
-  );
+function Textarea({ text }) {
+  return <StyledTextarea>{text}</StyledTextarea>;
 }
+
+Textarea.propTypes = {
+  text: PropTypes.string.isRequired,
+};
 
 export default Textarea;
