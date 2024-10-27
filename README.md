@@ -1,6 +1,6 @@
 # 프로젝트 소개
 
-### rolling
+### ![rolling](https://www.hwiiron.com/rolling-logo.png)
 
 [롤링]은 전통적인 롤링페이퍼 문화를 웹으로 구현한 커뮤니티형 플랫폼입니다.
 
@@ -47,14 +47,14 @@
 
 ### 공통 컴포넌트 담당자
 
-- 정소망
+- [정소망](https://github.com/mangmang1004)
 - [박성우](https://github.com/swp91)
 
 ### 기능 컴포넌트 담당자
 
 - [양정화](https://github.com/junghwa1996)
-- 신휘철
-- 홍현빈
+- [김용철](https://github.com/yongcheol-1)
+- [홍현빈](https://github.com/Hogn-hyeonbin)
 - [신휘철](https://github.com/hwiiron)
 
 # 기술 스택
