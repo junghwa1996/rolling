@@ -1,0 +1,58 @@
+# 롤링 리스트 GET request
+GET https://rolling-api.vercel.app/11-2/recipients/ HTTP/1.1
+
+###
+
+# 롤링 리스트 POST request
+POST https://rolling-api.vercel.app/11-2/recipients/ HTTP/1.1
+Content-Type: application/json;
+
+{
+  "team": "11-2",
+  "name": "테스트 롤링 등록",
+  "backgroundColor": "blue"
+}
+
+###
+# 롤링 메세지 GET request
+GET https://rolling-api.vercel.app/11-2/recipients/9075/messages/ HTTP/1.1
+
+###
+# 롤링 메세지 POST request
+POST https://rolling-api.vercel.app/11-2/recipients/9075/messages/ HTTP/1.1
+Content-Type: application/json;
+
+{
+  "team": "11-2",
+  "recipientId" : "9075",
+  "sender": "테스트 메세지 등록",
+  "profileImageURL" : "http://via.placeholder.com/100x100",
+  "relationship" : "친구",
+  "content" : "메세지 테스트 중 입니다",
+  "font" : "Pretendard"
+}
+
+###
+# 롤링 이모지 GET request
+GET https://rolling-api.vercel.app/11-2/recipients/9075/reactions/ HTTP/1.1
+
+###
+# 롤링 이모지 POST request(증가)
+POST https://rolling-api.vercel.app/11-2/recipients/9075/reactions/ HTTP/1.1
+Content-Type: application/json;
+
+{
+"emoji" : "🧪",
+"type" : "increase"
+}
+
+###
+# 롤링 이모지 POST request(감소)
+POST https://rolling-api.vercel.app/11-2/recipients/9075/reactions/ HTTP/1.1
+Content-Type: application/json;
+
+{
+"emoji" : "🧪",
+"type" : "decrease"
+}
+
