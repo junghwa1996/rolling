@@ -149,7 +149,16 @@ const colorTheme = {
     800: '#2B2B2B',
     900: '#181818',
   },
+
+  white: '#FFFFFF',
+  black: '#000000',
+  error: '#DC3A3A',
+  surface: '#F6F8FF',
 };
+
+//NOTE theme 사용방법
+// ex) ${({ theme }) => theme.fontTheme['20Bold']};
+// ex) color: ${({ theme }) => theme.colorTheme.purple[500]};
 
 const theme = {
   fontTheme,
