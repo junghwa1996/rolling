@@ -24,6 +24,7 @@ function InputTest() {
         value={value}
         onChange={handleInputChange}
         error={error}
+        errMessage={'내용을 입력해주세요'}
       />
     </>
   );

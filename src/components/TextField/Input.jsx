@@ -8,13 +8,14 @@ const InputWrapper = styled.div`
 `;
 
 const StyledInput = styled.input`
-  width: 100%;
+  width: 100%; // 각 페이지별 레이아웃에 따라 다르게 설정할 예정
   padding: 12px 16px;
 
   border-radius: 8px;
   border: 1px solid ${({ error }) => (error ? '#DC3A3A' : '#CCCCCC')};
 
-  ${({ theme }) => theme.fontTheme['16Regular']};
+  //font 설정
+  ${({ theme }) => theme.fontTheme['16Regular']}
 
   color: ${({ theme }) => theme.colorTheme.grayscale['500']};
   background-color: ${({ theme }) => theme.colorTheme.white};
@@ -30,6 +31,7 @@ const StyledInput = styled.input`
     color: ${({ theme }) => theme.colorTheme.grayscale['900']};
   }
 
+  //focus, disabled 상태일 때는 hover하지 않기
   &:not(:focus, :disabled):hover {
     border: 1px solid ${({ theme }) => theme.colorTheme.grayscale['500']};
   }
@@ -46,7 +48,7 @@ const ErrMessage = styled.p`
   ${({ theme }) => theme.fontTheme['12Regular']};
 `;
 
-function Input({ error, disabled, name, value, onChange }) {
+function Input({ error, errMessage, disabled, name, value, onChange }) {
   return (
     <InputWrapper>
       <StyledInput
@@ -56,7 +58,7 @@ function Input({ error, disabled, name, value, onChange }) {
         value={value}
         onChange={onChange}
       />
-      {error && <ErrMessage>Error Massage</ErrMessage>}
+      {error && <ErrMessage>{errMessage}</ErrMessage>}
     </InputWrapper>
   );
 }
@@ -65,12 +67,13 @@ function Input({ error, disabled, name, value, onChange }) {
 Input.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string,
-  onChange: PropTypes.func,
-  error: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired,
+  error: PropTypes.bool,
   disabled: PropTypes.bool,
+  errMessage: PropTypes.string,
 };
 
-// 기본값 설정 (옵션)
+// 기본값 설정
 Input.defaultProps = {
   error: false,
 };
