@@ -2,9 +2,11 @@ import styled from 'styled-components';
 
 const StyledTextarea = styled.textarea`
   width: 520px;
-  height: 100px;
+  height: 240px;
+  padding-right: 12px;
 
   border: none;
+  outline: none;
 
   resize: none;
 
