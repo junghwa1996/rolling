@@ -14,39 +14,24 @@ module.exports = {
       jsx: true, // JSX를 사용할 수 있도록 설정
     },
     requireConfigFile: false, // 별도의 Babel 설정 파일을 요구하지 않도록 설정
-    babelOptions: {
-      plugins: ['@babel/plugin-syntax-jsx'], // JSX 구문을 인식하도록 플러그인 추가
-    },
   },
 
-  extends: ['eslint:recommended', 'plugin:prettier/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended', // React 권장 규칙 추가
+    'plugin:prettier/recommended', // Prettier 권장 규칙 적용
+  ],
 
-  plugins: ['prettier', 'react', 'import', 'react-hooks'],
+  plugins: ['react', 'import', 'react-hooks'],
 
   rules: {
     'no-unused-vars': 'warn',
     'no-console': 'off',
     eqeqeq: 'error',
     indent: ['error', 2],
-    quotes: ['error', 'single'],
-    semi: ['error', 'always'],
-    curly: ['error', 'all'],
     'arrow-body-style': ['error', 'as-needed'],
-    'prettier/prettier': [
-      'error',
-      {
-        singleQuote: true,
-        semi: true,
-        useTabs: false,
-        tabWidth: 2,
-        trailingComma: 'all',
-        printWidth: 80,
-        bracketSpacing: true,
-        arrowParens: 'always',
-        endOfLine: 'lf',
-      },
-    ],
     'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
+    'react/react-in-jsx-scope': 'off',
     'react/function-component-definition': [
       'error',
       {
@@ -69,5 +54,11 @@ module.exports = {
     ],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+  },
+
+  settings: {
+    react: {
+      version: 'detect', // React 버전 자동 감지
+    },
   },
 };

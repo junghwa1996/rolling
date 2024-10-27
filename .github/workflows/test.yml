@@ -2,9 +2,14 @@ name: PR Test Workflow
 
 # Pull Request 이벤트 시 워크플로우 실행
 on:
+  push:
+    branches:
+      - main
+      - develop
   pull_request:
     branches:
-      - develop # develop 브랜치로의 PR 시에만 실행
+      - main
+      - develop
 
 jobs:
   test:
@@ -19,7 +24,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "16"
+          node-version: '16'
 
       # 의존성 설치
       - name: Install dependencies
