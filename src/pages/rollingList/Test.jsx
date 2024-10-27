@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 // import useFetchData from '../../hooks/useFetchData';
-import { getRollingList } from '../../service/api';
+import { deleteRolling, getRollingList } from '../../service/api';
 
 function Test() {
   // get hook 테스트
@@ -33,6 +33,15 @@ function Test() {
     handleRollingListLode();
   }, []);
 
+  const handleTest = async (id) => {
+    try {
+      await deleteRolling(id);
+      setRollingList((prevList) => prevList.filter((item) => item.id !== id));
+    } catch (error) {
+      console.error('롤링 리스트 삭제에 실패했습니다.:', error);
+    }
+  };
+
   return (
     <>
       <ul>
@@ -62,6 +71,9 @@ function Test() {
                 </li>
               ))}
             </ol>
+            <button type="button" onClick={() => handleTest(rollingItem.id)}>
+              삭제
+            </button>
           </li>
         ))}
       </ul>
