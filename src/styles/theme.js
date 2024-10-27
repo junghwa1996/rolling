@@ -3,98 +3,99 @@ const fontTheme = {
 
   '28Bold': {
     fontWeight: '700',
-    fontSize: '28px',
-    lineHeight: '42px',
+    fontSize: '2.8rem',
+    lineHeight: '4.2rem',
     letterSpacing: '-1%',
   },
 
   '24Bold': {
     fontWeight: '700',
-    fontSize: '24px',
-    lineHeight: '36px',
+    fontSize: '2.4rem',
+    lineHeight: '3.6rem',
     letterSpacing: '-1%',
   },
 
   '24Regular': {
     fontWeight: '400',
-    fontSize: '24px',
-    lineHeight: '36px',
+    fontSize: '2.4rem',
+    lineHeight: '3.6rem',
+    letterSpacing: '-1%',
   },
 
   '20Bold': {
     fontWeight: '700',
-    fontSize: '20px',
-    lineHeight: '30px',
+    fontSize: '2rem',
+    lineHeight: '3rem',
     letterSpacing: '-1%',
   },
 
   '20Regular': {
     fontWeight: '400',
-    fontSize: '20px',
-    lineHeight: '30px',
+    fontSize: '2rem',
+    lineHeight: '3rem',
     letterSpacing: '-1%',
   },
 
   '18Bold': {
     fontWeight: '700',
-    fontSize: '18px',
-    lineHeight: '28px',
+    fontSize: '1.8rem',
+    lineHeight: '2.8rem',
     letterSpacing: '-1%',
   },
 
   '18Regular': {
     fontWeight: '400',
-    fontSize: '18px',
-    lineHeight: '28px',
+    fontSize: '1.8rem',
+    lineHeight: '2.8rem',
     letterSpacing: '-1%',
   },
 
   '16Bold': {
     fontWeight: '700',
-    fontSize: '16px',
-    lineHeight: '26px',
+    fontSize: '1.6rem',
+    lineHeight: '2.6rem',
     letterSpacing: '-1%',
   },
 
   '16Regular': {
     fontWeight: '400',
-    fontSize: '16px',
-    lineHeight: '26px',
+    fontSize: '1.6rem',
+    lineHeight: '2.6rem',
     letterSpacing: '-1%',
   },
 
   '15Bold': {
     fontWeight: '700',
-    fontSize: '15px',
-    lineHeight: '22px',
+    fontSize: '1.5rem',
+    lineHeight: '2.2rem',
     letterSpacing: '-1%',
   },
 
   '15Regular': {
     fontWeight: '400',
-    fontSize: '15px',
-    lineHeight: '22px',
+    fontSize: '1.5rem',
+    lineHeight: '2.2rem',
     letterSpacing: '-1%',
   },
 
   '14Bold': {
     fontWeight: '700',
-    fontSize: '14px',
-    lineHeight: '20px',
+    fontSize: '1.4rem',
+    lineHeight: '20rem',
     letterSpacing: '-0.5%',
   },
 
   '14Regular': {
     fontWeight: '400',
-    fontSize: '14px',
-    lineHeight: '20px',
+    fontSize: '1.4rem',
+    lineHeight: '2rem',
     letterSpacing: '-0.5%',
   },
 
   '12Regular': {
     fontWeight: '400',
-    fontSize: '12px',
-    lineHeight: '18px',
+    fontSize: '1.2rem',
+    lineHeight: '1.8rem',
     letterSpacing: '-0.5%',
   },
 };
