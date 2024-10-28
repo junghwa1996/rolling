@@ -1,10 +1,18 @@
+import { BrowserRouter } from 'react-router-dom';
+
 import './styles/normalize.css';
 import './styles/reset.css';
 
-import InputTest from './components/TextField/InputTest';
+import Content from './router/Content';
 
 function App() {
-  return <InputTest />;
+  return (
+    <>
+      <BrowserRouter>
+        <Content />
+      </BrowserRouter>
+    </>
+  );
 }
 
 export default App;

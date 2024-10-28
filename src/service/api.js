@@ -64,7 +64,7 @@ export const postRolling = async (newData) =>
   postRequest('/recipients/', newData);
 
 // DELETE
-export const deleteRolling = async (id) => deleteRequest(`/recipients/${id}`);
+export const deleteRolling = async (id) => deleteRequest(`/recipients/${id}/`);
 
 /***********************************************
  *                  롤링 메세지
@@ -82,7 +82,7 @@ export const getMessages = async (id) => getRequest(`/messages/${id}/`);
 
 // PATCH
 export const patchMessages = async (id, updateData) =>
-  patchRequest(`/messages/${id}`, updateData);
+  patchRequest(`/messages/${id}/`, updateData);
 
 // DELETE
 export const deleteMessages = async (id) => deleteRequest(`/messages/${id}/`);
@@ -96,4 +96,4 @@ export const getRollingEmoji = async (id, params) =>
 
 // DELETE
 export const deleteRollingEmoji = async (id) =>
-  deleteRequest(`/recipients/${id}/reactions/${id}`);
+  deleteRequest(`/recipients/${id}/reactions/`);
