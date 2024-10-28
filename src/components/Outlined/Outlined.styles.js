@@ -6,9 +6,9 @@ const OutlinedStyles = css`
   gap: 8px;
   width: auto;
   border-radius: 6px;
-  background-color: #ffffff;
+  background-color: ${({ theme }) => theme.colorTheme.white};
   border: 1px solid ${({ theme }) => theme.colorTheme.grayscale[300]};
-  font-size: 1.6rem;
+  font-size: ${({ theme }) => theme.fontTheme[`16Regular`]};
   cursor: pointer;
   text-decoration: none;
   color: ${({ theme }) => theme.colorTheme.grayscale[900]};
@@ -24,16 +24,16 @@ const OutlinedStyles = css`
   }
   &:focus {
     border-color: ${({ theme }) => theme.colorTheme.grayscale[500]};
-    background-color: #ffffff;
+    background-color: ${({ theme }) => theme.colorTheme.white};
     outline: none;
   }
   &:disabled {
     background-color: ${({ theme }) => theme.colorTheme.grayscale[300]};
-    color: #ffffff;
+    color: ${({ theme }) => theme.colorTheme.white};
     cursor: not-allowed;
 
     svg {
-      fill: #ffffff;
+      fill: ${({ theme }) => theme.colorTheme.white};
     }
   }
 `;
@@ -62,8 +62,8 @@ export const IconArea = styled.span`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 24px;
-  min-height: 24px;
+  min-width: 2.4rem;
+  min-height: 2.4rem;
 
   svg {
     width: 100%;
@@ -73,5 +73,5 @@ export const IconArea = styled.span`
 `;
 
 export const Text = styled.span`
-  font-size: 1.6rem;
+  font-size: ${({ theme }) => theme.fontTheme[`16Regular`]};
 `;
