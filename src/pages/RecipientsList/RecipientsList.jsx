@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Controller, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -7,18 +7,41 @@ import 'swiper/css/navigation';
 
 import RecipientCard from './RecipientsCard';
 import ArrowButton from '../../components/ArrowButton/ArrowButton';
-import useFetchData from '../../hooks/useFetchData';
 import { getRollingList } from '../../service/api';
 
-function RecipientsList() {
-  const { data: rollingListData } = useFetchData(getRollingList, []);
-  const rollingList = rollingListData.results;
+RecipientsList.propTypes = {
+  favorite: PropTypes.bool,
+};
 
-  const swiperRef = useRef(null);
+function RecipientsList({ favorite = false }) {
+  const [rollingList, setRollingList] = useState([]);
+
   const [isPrev, setIsPrev] = useState(true);
   const [isNext, setIsNext] = useState(false);
-
   const [controlledSwiper, setControlledSwiper] = useState(null);
+  const swiperRef = useRef(null);
+
+  useEffect(() => {
+    // 롤링 리스트 불러오는 함수
+    const handleRollingListLode = async () => {
+      try {
+        const res = await getRollingList();
+        const { results } = res;
+        if (favorite) {
+          const sortedData = results.sort(
+            (a, b) => b.messageCount - a.messageCount,
+          );
+          setRollingList(sortedData);
+        } else {
+          setRollingList(results);
+        }
+      } catch (error) {
+        console.error('롤링 리스트를 불러오는데 오류가 발생 했습니다.:', error);
+      }
+    };
+
+    handleRollingListLode();
+  }, []);
 
   const handleSlideChange = (swiper) => {
     setIsPrev(swiper.isBeginning);
