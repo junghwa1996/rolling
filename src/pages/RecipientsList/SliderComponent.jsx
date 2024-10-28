@@ -15,14 +15,14 @@ const Container = styled.div`
   margin: 0 auto;
 `;
 
-function Slider({ listData }) {
+function SliderComponent({ listData, controlledSwiper, setControlledSwiper }) {
   // const { data: rollingListData } = useFetchData(getRollingList, []);
   // const rollingList = rollingListData.results;
 
   const swiperRef = useRef(null);
   const [isPrev, setIsPrev] = useState(true);
   const [isNext, setIsNext] = useState(false);
-  const [controlledSwiper, setControlledSwiper] = useState(null);
+  // const [controlledSwiper, setControlledSwiper] = useState(null);
 
   const handleSlideChange = (swiper) => {
     setIsPrev(swiper.isBeginning);
@@ -44,7 +44,7 @@ function Slider({ listData }) {
         slidesPerView={4}
         onSlideChange={handleSlideChange}
         controller={{ control: controlledSwiper }}
-        onSwiper={null}
+        onSwiper={setControlledSwiper}
       >
         {!isPrev && (
           <ArrowButton
@@ -78,54 +78,8 @@ function Slider({ listData }) {
           />
         )}
       </Swiper>
-
-      <Swiper
-        modules={[Navigation, Controller]}
-        navigation={{
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        }}
-        onInit={(swiper) => {
-          swiperRef.current = swiper;
-        }}
-        spaceBetween={20}
-        slidesPerView={4}
-        onSlideChange={handleSlideChange}
-        controller={{ control: controlledSwiper }}
-        onSwiper={setControlledSwiper}
-      >
-        {!isPrev && (
-          <ArrowButton
-            className="swiper-button-next"
-            direction="left"
-            onClick={() => swiperRef.current?.slidePrev()}
-          />
-        )}
-        {rollingList.map((item) => (
-          <SwiperSlide key={item.id}>
-            <RecipientCard
-              id={item.id}
-              name={item.name}
-              bgColor={item.backgroundColor}
-              bgImage={item.backgroundImageURL}
-              totalMessage={{
-                recentMessages: item.recentMessages,
-                messageCount: item.messageCount,
-                direction: 'column',
-              }}
-              emojiList={item.topReactions}
-            />
-          </SwiperSlide>
-        ))}
-        {!isNext && (
-          <ArrowButton
-            className="swiper-button-prev"
-            onClick={() => swiperRef.current?.slideNext()}
-          />
-        )}
-      </Swiper>
     </Container>
   );
 }
 
-export default Slider;
+export default SliderComponent;
