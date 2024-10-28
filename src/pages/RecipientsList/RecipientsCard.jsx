@@ -1,33 +1,34 @@
 import PropTypes from 'prop-types';
 
 import { Card, CardArea, EmojiArea } from './RecipientsCard.styles';
+import TotalMessage from '../../components/TotalMessage/TotalMessage';
 
 RecipientCard.propTypes = {
   sender: PropTypes.string,
   bgColor: PropTypes.string,
-  // totalMessage: PropTypes.shape({
-  //   recentMessages: PropTypes.object,
-  //   messageCount: PropTypes.number,
-  //   direction: PropTypes.string,
-  // }),
+  totalMessage: PropTypes.shape({
+    recentMessages: PropTypes.object,
+    messageCount: PropTypes.number,
+    direction: PropTypes.string,
+  }),
   emojiList: PropTypes.object,
 };
 
 function RecipientCard({
   sender = '받는이',
   bgColor = 'beige',
-  // totalMessage = { recentMessages: [], messageCount: 0, direction: 'row' },
+  totalMessage = { recentMessages: [], messageCount: 0, direction: 'row' },
   emojiList = [],
 }) {
   return (
     <Card color={bgColor}>
       <CardArea>
         <h3>To. {sender}</h3>
-        {/* <TotalMessage
+        <TotalMessage
           recentMessages={totalMessage.recentMessages}
           messageCount={totalMessage.messageCount}
           direction={totalMessage.direction}
-        /> */}
+        />
       </CardArea>
       <EmojiArea>
         <ul>

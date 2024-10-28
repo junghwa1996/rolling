@@ -3,7 +3,7 @@ import RecipientCard from './RecipientsCard';
 function RecipientsList() {
   return (
     <>
-      <RecipientCard />
+      <RecipientCard bgColor="blue" />
     </>
   );
 }
