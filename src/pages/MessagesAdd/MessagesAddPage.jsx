@@ -2,13 +2,14 @@ import Input from '../../components/TextField/Input';
 import useInputValidation from '../../hooks/useInputValidation';
 
 function MessagesAddPage() {
-  const { value, error, onChange, onBlur } = useInputValidation();
+  const { value, error, errMessage, onChange, onBlur } = useInputValidation();
 
   return (
     <>
       <Input
         // NOTE 콘솔에러 : 조건부로 전달하여 false일 때 DOM에 전달되지 않도록
         error={error || undefined}
+        errMessage={errMessage}
         name="username"
         value={value}
         onChange={onChange}
