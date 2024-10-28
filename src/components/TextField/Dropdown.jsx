@@ -130,5 +130,4 @@ Dropdown.propTypes = {
   isIcon: PropTypes.bool,
 };
 
-
 export default Dropdown;

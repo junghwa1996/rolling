@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import ReactQuill from 'react-quill';
 
 const toolbarOptions = [
@@ -8,7 +9,7 @@ const toolbarOptions = [
   [{ color: [] }, { background: [] }],
 ];
 
-function TextField() {
+function TextField({ onChange }) {
   const modules = {
     toolbar: toolbarOptions,
   };
@@ -18,9 +19,14 @@ function TextField() {
       <ReactQuill
         style={{ width: '72rem', height: '26rem' }}
         modules={modules}
+        onChange={onChange}
       />
     </>
   );
 }
+
+TextField.propTypes = {
+  onChange: PropTypes.func,
+};
 
 export default TextField;
