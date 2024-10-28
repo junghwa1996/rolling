@@ -2,10 +2,11 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import { Controller, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
-
 import RecipientCard from './RecipientsCard';
+import { SwiperContain, ArrowPosition } from './RecipientsList.styles';
 import ArrowButton from '../../components/ArrowButton/ArrowButton';
 import { getRollingList } from '../../service/api';
 
@@ -49,55 +50,59 @@ function RecipientsList({ favorite = false }) {
   };
 
   return (
-    <Swiper
-      spaceBetween={20}
-      slidesPerView={4}
-      modules={[Navigation, Controller]}
-      onSlideChange={handleSlideChange}
-      controller={{ control: controlledSwiper }}
-      onInit={(swiper) => (swiperRef.current = swiper)}
-      onSwiper={(swiper) => {
-        swiperRef.current = swiper;
-        setControlledSwiper(swiper);
-      }}
-      navigation={{
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      }}
-    >
+    <SwiperContain>
       {!isPrev && (
-        <ArrowButton
-          direction="left"
-          className="swiper-button-next"
-          onClick={() => swiperRef.current?.slidePrev()}
-        />
-      )}
-
-      {rollingList.map((item) => (
-        <SwiperSlide key={item.id}>
-          <RecipientCard
-            key={item.id}
-            id={item.id}
-            name={item.name}
-            bgColor={item.backgroundColor}
-            bgImage={item.backgroundImageURL}
-            totalMessage={{
-              recentMessages: item.recentMessages,
-              messageCount: item.messageCount,
-              direction: 'column',
-            }}
-            emojiList={item.topReactions}
+        <ArrowPosition $position="left">
+          <ArrowButton
+            direction="left"
+            className="swiper-button-next"
+            onClick={() => swiperRef.current?.slidePrev()}
           />
-        </SwiperSlide>
-      ))}
-
-      {!isNext && (
-        <ArrowButton
-          className="swiper-button-prev"
-          onClick={() => swiperRef.current?.slideNext()}
-        />
+        </ArrowPosition>
       )}
-    </Swiper>
+      <Swiper
+        spaceBetween={20}
+        slidesPerView="auto"
+        modules={[Navigation, Controller]}
+        onSlideChange={handleSlideChange}
+        controller={{ control: controlledSwiper }}
+        onInit={(swiper) => (swiperRef.current = swiper)}
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+          setControlledSwiper(swiper);
+        }}
+        navigation={{
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        }}
+      >
+        {rollingList.map((item) => (
+          <SwiperSlide key={item.id}>
+            <RecipientCard
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              bgColor={item.backgroundColor}
+              bgImage={item.backgroundImageURL}
+              totalMessage={{
+                recentMessages: item.recentMessages,
+                messageCount: item.messageCount,
+                direction: 'column',
+              }}
+              emojiList={item.topReactions}
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      {!isNext && (
+        <ArrowPosition $position="right">
+          <ArrowButton
+            className="swiper-button-prev"
+            onClick={() => swiperRef.current?.slideNext()}
+          />
+        </ArrowPosition>
+      )}
+    </SwiperContain>
   );
 }
 
