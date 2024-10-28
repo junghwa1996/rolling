@@ -1,17 +1,23 @@
 import Avatar from '@mui/joy/Avatar';
+import AvatarGroup from '@mui/joy/AvatarGroup';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
 import {
   AvatarGroupStyle,
   avatarStyle,
-  StyledAvatarGroup,
   StyledMessageCount,
+  StyledTotalMessage,
 } from './TotalMessage.styles';
 import { getMessagesList } from '../../service/api';
 
-function TotalMessage({ rollingItemId }) {
+// <TotalMessage rollingItemId={rollingItem.id} direction={'row'} />
+// TotalMessage 컴포넌트에 해당하는 롤링페이퍼의 id와 방향 설정만 prop으로 전달해주시면 됩니다.
+function TotalMessage({ rollingItemId, direction }) {
   const [messageList, setMessageList] = useState([]);
+
+  const maxAvatars = 3; // 표시할 최대 아바타 수
+  const surplus = messageList.length - maxAvatars; // 초과 아바타 수
 
   useEffect(() => {
     const handleMessageListLoad = async () => {
@@ -30,33 +36,32 @@ function TotalMessage({ rollingItemId }) {
     handleMessageListLoad();
   }, []);
 
-  const maxAvatars = 3; // 표시할 최대 아바타 수
-  const surplus = messageList.length - maxAvatars; // 초과 아바타 수
-
   return (
-    <StyledAvatarGroup sx={AvatarGroupStyle}>
-      {messageList.slice(0, maxAvatars).map((avatar, index) => (
-        <Avatar
-          key={index}
-          src={avatar.profileImageURL}
-          alt={`Avatar ${index + 1}`}
-        />
-      ))}
+    <StyledTotalMessage direction={direction}>
+      <AvatarGroup sx={AvatarGroupStyle}>
+        {messageList.slice(0, maxAvatars).map((avatar, index) => (
+          <Avatar
+            key={index}
+            src={avatar.profileImageURL}
+            alt={`Avatar ${index + 1}`}
+          />
+        ))}
 
-      {/* 초과 아바타 수 표시 */}
-      {surplus > 0 && <Avatar sx={avatarStyle}>+{surplus}</Avatar>}
+        {/* 초과 아바타 수 표시 */}
+        {surplus > 0 && <Avatar sx={avatarStyle(direction)}>+{surplus}</Avatar>}
+      </AvatarGroup>
 
-      <StyledMessageCount>
+      <StyledMessageCount direction={direction}>
         <span>{messageList.length}</span>명이 작성했어요!
       </StyledMessageCount>
-    </StyledAvatarGroup>
+    </StyledTotalMessage>
   );
 }
 
 // PropTypes로 rollingItemId의 타입을 string 또는 number로 지정 (예시)
 TotalMessage.propTypes = {
-  rollingItemId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-    .isRequired,
+  rollingItemId: PropTypes.number,
+  direction: PropTypes.oneOf(['row', 'column']),
 };
 
 export default TotalMessage;

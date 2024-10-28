@@ -1,4 +1,3 @@
-import AvatarGroup from '@mui/joy/AvatarGroup';
 import styled from 'styled-components';
 
 const AvatarGroupStyle = {
@@ -6,28 +5,37 @@ const AvatarGroupStyle = {
   '--Avatar-ringSize': '1px',
 };
 
-const avatarStyle = {
-  border: '1px solid #E3E3E3',
+const avatarStyle = (direction) => ({
+  border: direction === 'row' ? '1px solid #E3E3E3' : 'none',
   boxShadow: 'none',
   background: '#fff',
   fontSize: '12px',
   fontWeight: '500',
   color: '#484848',
-};
+});
 
-const StyledAvatarGroup = styled(AvatarGroup)`
-  display: flex;
-  align-items: center;
+const StyledTotalMessage = styled.div`
+  display: inline-flex;
+  align-items: ${({ direction }) =>
+    direction === 'row' ? 'center' : 'flex-start'};
+  flex-direction: ${({ direction }) =>
+    direction === 'row' ? 'row' : 'column'};
 `;
 
 const StyledMessageCount = styled.p`
-  margin-left: 11px;
-  ${({ theme }) => theme.fontTheme['18Regular']}
+  margin: ${({ direction }) =>
+    direction === 'row' ? '0 0 0 11px' : '12px 0 0 0'};
+  ${({ theme }) => theme.fontTheme['18Regular']};
   color: ${({ theme }) => theme.colorTheme.grayscale[700]};
 
   span {
-    ${({ theme }) => theme.fontTheme['18Bold']}
+    ${({ theme }) => theme.fontTheme['18Bold']};
   }
 `;
 
-export { AvatarGroupStyle, avatarStyle, StyledAvatarGroup, StyledMessageCount };
+export {
+  StyledTotalMessage,
+  AvatarGroupStyle,
+  avatarStyle,
+  StyledMessageCount,
+};
