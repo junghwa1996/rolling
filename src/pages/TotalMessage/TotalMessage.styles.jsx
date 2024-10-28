@@ -1,12 +1,27 @@
 import styled from 'styled-components';
 
+const directionStyles = {
+  row: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    margin: '0 0 0 11px',
+    border: '1px solid #E3E3E3',
+  },
+  column: {
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+    margin: '12px 0 0 0',
+    border: 'none',
+  },
+};
+
 const AvatarGroupStyle = {
   '--Avatar-size': '28px',
   '--Avatar-ringSize': '1px',
 };
 
 const avatarStyle = (direction) => ({
-  border: direction === 'row' ? '1px solid #E3E3E3' : 'none',
+  border: directionStyles[direction].border,
   boxShadow: 'none',
   background: '#fff',
   fontSize: '12px',
@@ -16,15 +31,13 @@ const avatarStyle = (direction) => ({
 
 const StyledTotalMessage = styled.div`
   display: inline-flex;
-  align-items: ${({ direction }) =>
-    direction === 'row' ? 'center' : 'flex-start'};
+  align-items: ${({ direction }) => directionStyles[direction].alignItems};
   flex-direction: ${({ direction }) =>
-    direction === 'row' ? 'row' : 'column'};
+    directionStyles[direction].flexDirection};
 `;
 
 const StyledMessageCount = styled.p`
-  margin: ${({ direction }) =>
-    direction === 'row' ? '0 0 0 11px' : '12px 0 0 0'};
+  margin: ${({ direction }) => directionStyles[direction].margin};
   ${({ theme }) => theme.fontTheme['18Regular']};
   color: ${({ theme }) => theme.colorTheme.grayscale[700]};
 
