@@ -10,13 +10,36 @@ const DropDownBtn = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  //width: 320px;
-  //padding: 12px 16px;
+  max-width: 320px; //임의의 width
+  padding: 12px 16px;
 
   border: 1px solid ${({ theme }) => theme.colorTheme.grayscale['300']};
   border-radius: 8px;
 
+  color: ${({ theme }) => theme.colorTheme.grayscale['500']}; //#555555
+
   ${({ theme }) => theme.fontTheme['16Regular']}
+
+  &:focus {
+    outline: none;
+    border: 2px solid ${({ theme }) => theme.colorTheme.grayscale['500']};
+    color: ${({ theme }) => theme.colorTheme.grayscale['900']};
+  }
+
+  &:active {
+    border: 2px solid ${({ theme }) => theme.colorTheme.grayscale['700']};
+    color: ${({ theme }) => theme.colorTheme.grayscale['900']};
+  }
+
+  //focus, disabled 상태일 때는 hover하지 않기
+  &:not(:focus, :disabled):hover {
+    border: 1px solid ${({ theme }) => theme.colorTheme.grayscale['500']};
+  }
+
+  &:disabled {
+    border: 1px solid ${({ theme }) => theme.colorTheme.grayscale['300']};
+    background-color: ${({ theme }) => theme.colorTheme.grayscale['100']};
+  }
 `;
 
 const ArrowImg = styled.img`
