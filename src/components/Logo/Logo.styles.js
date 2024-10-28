@@ -6,13 +6,7 @@ export const LogoArea = styled.div`
   cursor: pointer;
 
   svg {
-    width: 2.8rem;
-    height: 2.8rem;
-    margin-right: 9px;
+    width: 10.7rem;
+    height: 3rem;
   }
-`;
-
-export const LogoText = styled.span`
-  ${({ theme }) => theme.fontTheme[`20Bold`]};
-  color: #4a494f;
 `;

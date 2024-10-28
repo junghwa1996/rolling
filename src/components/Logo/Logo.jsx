@@ -1,20 +1,15 @@
-import React, { useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { LogoArea, LogoText } from './Logo.styles';
-import { ReactComponent as LogoImg } from '../../assets/Logo.svg';
+import { LogoArea } from './Logo.styles';
+import LogoImg from '../../assets/RollingLogo.svg';
 
 function Logo() {
-  const navigate = useNavigate();
-
-  const handleGoHome = useCallback(() => {
-    navigate('/');
-  }, [navigate]);
-
   return (
-    <LogoArea onClick={handleGoHome}>
-      <LogoImg />
-      <LogoText>Rolling</LogoText>
+    <LogoArea>
+      <Link to="/">
+        <img src={LogoImg} alt="롤링 로고" />
+      </Link>
     </LogoArea>
   );
 }
