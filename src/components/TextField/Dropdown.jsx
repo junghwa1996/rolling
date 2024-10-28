@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { InputStyles, ErrMessage } from './Input.styles';
+import { InputStyles, ErrMessageStyles } from './Input.styles';
 import ArrowDown from '../../styles/assets/icons/arrow_down.svg';
 import ArrowTop from '../../styles/assets/icons/arrow_top.svg';
 
@@ -45,7 +45,7 @@ const DropdownItem = styled.li`
 
 const DropdownErrMessage = styled.p`
   margin-bottom: 4px;
-  ${ErrMessage};
+  ${ErrMessageStyles};
 `;
 
 function Dropdown({ options, selectedOption, onSelect, error, errMessage }) {
@@ -59,10 +59,13 @@ function Dropdown({ options, selectedOption, onSelect, error, errMessage }) {
   return (
     <>
       <DropdownBtn onClick={() => setIsOpen(!isOpen)} error={error}>
+        {/* Item 중 가장 처음 값 세팅 */}
         {selectedOption ? selectedOption.value : options[0].value}
         <ArrowImg src={!isOpen ? ArrowDown : ArrowTop} alt="arrow" />
       </DropdownBtn>
+
       <DropdownErrMessage error={error}>{errMessage}</DropdownErrMessage>
+
       {isOpen && (
         <DropdownList>
           {options.map((option, index) => (

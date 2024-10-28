@@ -34,7 +34,7 @@ export const InputStyles = css`
   }
 `;
 
-export const ErrMessage = css`
+export const ErrMessageStyles = css`
   color: ${({ theme }) => theme.colorTheme.error};
   opacity: ${({ error }) => (error ? 1 : 0)};
   transition: opacity 0.3s ease;

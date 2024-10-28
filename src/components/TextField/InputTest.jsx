@@ -38,7 +38,7 @@ function InputTest() {
 
   return (
     <>
-      <Input name="id" value={value} onChange={handleInputChange} />
+      {/* <Input name="id" value={value} onChange={handleInputChange} />
       <Input
         name="id"
         value={value}
@@ -52,12 +52,19 @@ function InputTest() {
         error={error}
         errMessage={'내용을 입력해주세요'}
       />
-      <Textarea text={DUMMY || ''} />
+      <Textarea text={DUMMY || ''} /> */}
       <Dropdown
         options={dummyData}
         selectedOption={selectedOption}
         onSelect={(option) => setSelectedOption(option)}
-        error={true} // Set to true for testing
+        error={true}
+        errMessage="옵션을 선택해주세요"
+      />
+      <Dropdown
+        options={dummyData}
+        selectedOption={selectedOption}
+        onSelect={(option) => setSelectedOption(option)}
+        error={false}
         errMessage="옵션을 선택해주세요"
       />
     </>

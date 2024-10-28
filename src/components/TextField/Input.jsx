@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { InputStyles, ErrMessage } from './Input.styles';
+import { InputStyles, ErrMessageStyles } from './Input.styles';
 
 const InputWrapper = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ const StyledInput = styled.input`
 `;
 
 const InputErrMessage = styled.p`
-  ${ErrMessage}
+  ${ErrMessageStyles}
 `;
 
 function Input({ error, errMessage, disabled, name, value, onChange }) {
@@ -43,9 +43,10 @@ Input.propTypes = {
   errMessage: PropTypes.string,
 };
 
-// // 기본값 설정
-// Input.defaultProps = {
-//   error: false,
-// };
+// 기본값 설정
+Input.defaultProps = {
+  error: false,
+  errMessage: '내용을 입력해주세요',
+};
 
 export default Input;
