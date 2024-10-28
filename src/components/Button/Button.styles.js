@@ -4,26 +4,26 @@ const sizes = {
   s: css`
     padding: 13px 20px;
     border-radius: 6px;
-    font-size: 16px;
+    font-size: 1rem;
   `,
   m: css`
     width: 120px;
     height: 40px;
     border-radius: 6px;
-    font-size: 16px;
+    font-size: 1rem;
   `,
   l: css`
     width: 280px;
     height: 56px;
     border-radius: 12px;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: bold;
   `,
   xl: css`
     width: 100%;
     height: 56px;
     border-radius: 12px;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: bold;
   `,
 };
@@ -82,6 +82,10 @@ const colors = {
 };
 
 export const StButton = styled.button`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
   transition: all 0.3s ease;
 
   ${({ size }) => sizes[size]}
