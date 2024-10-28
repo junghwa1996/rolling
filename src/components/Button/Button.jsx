@@ -4,7 +4,25 @@ import { Link } from 'react-router-dom';
 
 import { StButton } from './Button.styles';
 
-function Button({ size, color, onClick, children, disabled, type, to }) {
+Button.propTypes = {
+  size: PropTypes.oneOf(['s', 'm', 'l', 'xl']),
+  color: PropTypes.oneOf(['primary', 'secondary']),
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+  children: PropTypes.node.isRequired,
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  to: PropTypes.string,
+};
+
+function Button({
+  size = 's',
+  color = 'primary',
+  onClick = () => {},
+  children,
+  disabled = false,
+  type = 'button',
+  to,
+}) {
   const TAG = to ? Link : 'button';
   return (
     <StButton
@@ -20,23 +38,5 @@ function Button({ size, color, onClick, children, disabled, type, to }) {
     </StButton>
   );
 }
-
-Button.propTypes = {
-  size: PropTypes.oneOf(['s', 'm', 'l', 'xl']),
-  color: PropTypes.oneOf(['primary', 'secondary']),
-  onClick: PropTypes.func,
-  disabled: PropTypes.bool,
-  children: PropTypes.node.isRequired,
-  type: PropTypes.oneOf(['button', 'submit', 'reset']),
-  to: PropTypes.string,
-};
-
-Button.defaultProps = {
-  size: 's',
-  color: 'primary',
-  onClick: () => {},
-  disabled: false,
-  type: 'button',
-};
 
 export default Button;
