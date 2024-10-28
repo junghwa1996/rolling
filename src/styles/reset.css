@@ -1,6 +1,6 @@
 html {
   color: #181818;
-  font-size: 1em;
+  font-size: 10px;
   line-height: 1.5;
   letter-spacing: -1%;
 }
@@ -196,13 +196,13 @@ h6 {
 /* 태블릿 */
 @media screen and (min-width: 768px) and (max-width: 1248px) {
   html {
-    font-size: 0.8013rem;
+    font-size: 10px;
   }
 }
 
 /* 모바일 */
 @media screen and (max-width: 768px) {
   html {
-    font-size: 1.3038rem;
+    font-size: 10px;
   }
 }
