@@ -30,38 +30,72 @@ const colorStyles = {
     top: 45%;
     right: -40%;
     background: url(${POLYGON_TRIANGLE}) no-repeat center/contain;
+    background-color: transparent;
   `,
 };
 
-const colorShape = (color) => colorStyles[color];
+const colorShape = ($bgColor) => colorStyles[$bgColor] ?? '';
 
 export const Card = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   padding: 3rem 2.4rem 2rem;
   width: 27.5rem;
   height: 26rem;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 1.6rem;
-  box-shadow: 0, 0.2, 1.2rem, 0, rgba(0, 0, 0, 0.08);
-  background-color: ${({ theme, color }) => theme.colorTheme[color]?.[200]};
-  &::before {
-    position: absolute;
-    top: 45%;
-    right: -40%;
-    content: '';
-    background-color: ${({ theme, color }) => theme.colorTheme[color]?.[300]};
-    ${({ color }) => colorShape(color)}
-  }
+  box-shadow: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.08);
+  ${({ theme, $bgColor, $bgImage }) => {
+    const isImage = $bgImage !== null;
+    if (isImage) {
+      return css`
+        background: url(${$bgImage}) no-repeat center/cover;
+      `;
+    } else {
+      return css`
+        background-color: ${theme.colorTheme[$bgColor]?.[200] ?? 'none'};
+        &::before {
+          position: absolute;
+          content: '';
+          z-index: 1;
+          ${({ theme, $bgColor }) => css`
+            background-color: ${theme.colorTheme[$bgColor]?.[300] ?? 'none'};
+          `}
+          ${({ $bgColor }) => colorShape($bgColor)};
+        }
+      `;
+    }
+  }}
 `;
 export const CardArea = styled.div`
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  position: relative;
+  flex: 1;
+  z-index: 2;
   h3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+    margin-bottom: 1.2rem;
+    text-overflow: ellipsis;
     ${({ theme }) => theme.fontTheme['24Bold']}
   }
 `;
 
 export const EmojiArea = styled.div`
-  display: flex;
-  gap: 0.8rem;
+  position: relative;
+  padding-top: 1.6rem;
+  width: 100%;
+  height: 5.3rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  z-index: 2;
+  ul {
+    display: flex;
+    gap: 0.8rem;
+    li {
+      display: flex;
+    }
+  }
 `;
