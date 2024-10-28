@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { ProfileArea, ProfileImg } from './Profile.styles';
+import { ProfileArea } from './Profile.styles';
 import DEFAULT_IMAGE from '../../assets/default_profile.svg';
 
 Profile.propTypes = {
@@ -14,7 +14,7 @@ function Profile({ imageURL, size = 's' }) {
 
   return (
     <ProfileArea size={size}>
-      <ProfileImg src={IMG_URL} alt="프로필" />
+      <img src={IMG_URL} alt="프로필" />
     </ProfileArea>
   );
 }
