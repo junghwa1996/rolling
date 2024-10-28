@@ -3,8 +3,8 @@ import { useState } from 'react';
 import styled from 'styled-components';
 
 import { InputStyles, ErrMessageStyles } from './Input.styles';
-import ArrowDown from '../../styles/assets/icons/arrow_down.svg';
-import ArrowTop from '../../styles/assets/icons/arrow_top.svg';
+import ArrowDown from '../../assets/icon-arrow_down.svg';
+import ArrowTop from '../../assets/icon-arrow_top.svg';
 
 const DropdownBtn = styled.button`
   display: flex;
@@ -14,6 +14,10 @@ const DropdownBtn = styled.button`
   width: 320px;
   margin-bottom: 4px;
   ${InputStyles};
+`;
+
+const IconBtn = styled.img`
+  padding: 6px 16px;
 `;
 
 const ArrowImg = styled.img`
@@ -49,12 +53,13 @@ const DropdownErrMessage = styled.p`
 `;
 
 function Dropdown({
-  options,
-  selectedOption,
-  onSelect,
+  options, //option 종류
+  selectedOption, //선택된 option
+  onSelect, //option을 선택하기 위한 event 함수
   disabled,
   error,
   errMessage,
+  isIcon,
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -65,15 +70,19 @@ function Dropdown({
 
   return (
     <>
-      <DropdownBtn
-        onClick={() => setIsOpen(!isOpen)}
-        error={error}
-        disabled={disabled}
-      >
-        {/* Item 중 가장 처음 값 세팅 */}
-        {selectedOption ? selectedOption.value : options[0].value}
-        <ArrowImg src={!isOpen ? ArrowDown : ArrowTop} alt="arrow" />
-      </DropdownBtn>
+      {isIcon ? (
+        <IconBtn />
+      ) : (
+        <DropdownBtn
+          onClick={() => setIsOpen(!isOpen)}
+          error={error}
+          disabled={disabled}
+        >
+          {/* Item 중 가장 처음 값 세팅 */}
+          {selectedOption ? selectedOption.value : options[0].value}
+          <ArrowImg src={!isOpen ? ArrowDown : ArrowTop} alt="arrow" />
+        </DropdownBtn>
+      )}
 
       <DropdownErrMessage error={error}>{errMessage}</DropdownErrMessage>
 
@@ -105,12 +114,14 @@ Dropdown.propTypes = {
   disabled: PropTypes.bool,
   error: PropTypes.bool,
   errMessage: PropTypes.string,
+  isIcon: PropTypes.bool,
 };
 
 Dropdown.defaultProps = {
   disabled: false,
   error: false,
   errMessage: '옵션을 선택해주세요.',
+  isIcon: false,
 };
 
 export default Dropdown;
