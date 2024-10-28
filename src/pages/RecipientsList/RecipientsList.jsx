@@ -42,7 +42,7 @@ function RecipientsList({ favorite = false }) {
     };
 
     handleRollingListLode();
-  }, []);
+  }, [favorite]);
 
   const handleSlideChange = (swiper) => {
     setIsPrev(swiper.isBeginning);
