@@ -6,12 +6,14 @@ const directionStyles = {
     flexDirection: 'row',
     margin: '0 0 0 1.1rem',
     border: '0.1rem solid #E3E3E3',
+    color: '#555555',
   },
   column: {
     alignItems: 'flex-start',
     flexDirection: 'column',
     margin: '1.2rem 0 0 0',
     border: 'none',
+    color: '#484848',
   },
 };
 
@@ -26,7 +28,7 @@ const avatarStyle = (direction) => ({
   background: '#fff',
   fontSize: '1.2rem',
   fontWeight: '500',
-  color: '#484848',
+  color: directionStyles[direction].color,
 });
 
 const StyledTotalMessage = styled.div`
