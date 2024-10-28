@@ -206,14 +206,14 @@ h6 {
 /* 태블릿 */
 @media screen and (min-width: 768px) and (max-width: 1248px) {
   html {
-    font-size: 0.8013rem;
+    font-size: 0.8013vw;
   }
 }
 
 /* 모바일 */
 @media screen and (max-width: 768px) {
   html {
-    font-size: 1.3038rem;
+    font-size: 1.3038vw;
   }
 }
 
