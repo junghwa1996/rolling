@@ -2,44 +2,18 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import styled from 'styled-components';
 
+import { InputStyles, ErrMessage } from './Input.styles';
 import ArrowDown from '../../styles/assets/icons/arrow_down.svg';
 import ArrowTop from '../../styles/assets/icons/arrow_top.svg';
 
-const DropDownBtn = styled.div`
+const DropdownBtn = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  max-width: 320px; //임의의 width
-  padding: 12px 16px;
-
-  border: 1px solid ${({ theme }) => theme.colorTheme.grayscale['300']};
-  border-radius: 8px;
-
-  color: ${({ theme }) => theme.colorTheme.grayscale['500']}; //#555555
-
-  ${({ theme }) => theme.fontTheme['16Regular']}
-
-  &:focus {
-    outline: none;
-    border: 2px solid ${({ theme }) => theme.colorTheme.grayscale['500']};
-    color: ${({ theme }) => theme.colorTheme.grayscale['900']};
-  }
-
-  &:active {
-    border: 2px solid ${({ theme }) => theme.colorTheme.grayscale['700']};
-    color: ${({ theme }) => theme.colorTheme.grayscale['900']};
-  }
-
-  //focus, disabled 상태일 때는 hover하지 않기
-  &:not(:focus, :disabled):hover {
-    border: 1px solid ${({ theme }) => theme.colorTheme.grayscale['500']};
-  }
-
-  &:disabled {
-    border: 1px solid ${({ theme }) => theme.colorTheme.grayscale['300']};
-    background-color: ${({ theme }) => theme.colorTheme.grayscale['100']};
-  }
+  width: 320px;
+  margin-bottom: 4px;
+  ${InputStyles};
 `;
 
 const ArrowImg = styled.img`
@@ -47,7 +21,34 @@ const ArrowImg = styled.img`
   max-height: 16px;
 `;
 
-function Dropdown({ options, selectedOption, onSelect }) {
+const DropdownList = styled.ul`
+  padding: 10px 1px;
+
+  max-width: 320px;
+
+  border: 1px solid #ccc;
+  border-radius: 8px;
+
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.08);
+`;
+
+const DropdownItem = styled.li`
+  padding: 12px 16px;
+  max-width: 320px;
+
+  ${({ theme }) => theme.fontTheme['16Regular']}
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colorTheme.grayscale['100']};
+  }
+`;
+
+const DropdownErrMessage = styled.p`
+  margin-bottom: 4px;
+  ${ErrMessage};
+`;
+
+function Dropdown({ options, selectedOption, onSelect, error, errMessage }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSelect = (option) => {
@@ -57,18 +58,19 @@ function Dropdown({ options, selectedOption, onSelect }) {
 
   return (
     <>
-      <DropDownBtn onClick={() => setIsOpen(!isOpen)}>
+      <DropdownBtn onClick={() => setIsOpen(!isOpen)} error={error}>
         {selectedOption ? selectedOption.value : options[0].value}
         <ArrowImg src={!isOpen ? ArrowDown : ArrowTop} alt="arrow" />
-      </DropDownBtn>
+      </DropdownBtn>
+      <DropdownErrMessage error={error}>{errMessage}</DropdownErrMessage>
       {isOpen && (
-        <ul>
+        <DropdownList>
           {options.map((option, index) => (
-            <li key={index} onClick={() => handleSelect(option)}>
+            <DropdownItem key={index} onClick={() => handleSelect(option)}>
               {option.value}
-            </li>
+            </DropdownItem>
           ))}
-        </ul>
+        </DropdownList>
       )}
     </>
   );
@@ -86,6 +88,14 @@ Dropdown.propTypes = {
     label: PropTypes.string,
   }),
   onSelect: PropTypes.func,
+  error: PropTypes.bool,
+  errMessage: PropTypes.string,
+};
+
+// 기본값 설정
+Dropdown.defaultProps = {
+  error: false,
+  errMessage: '옵션을 선택해주세요.',
 };
 
 export default Dropdown;

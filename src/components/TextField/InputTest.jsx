@@ -57,6 +57,8 @@ function InputTest() {
         options={dummyData}
         selectedOption={selectedOption}
         onSelect={(option) => setSelectedOption(option)}
+        error={true} // Set to true for testing
+        errMessage="옵션을 선택해주세요"
       />
     </>
   );

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const InputStyles = css`
+export const InputStyles = css`
   padding: 12px 16px;
   border-radius: 8px;
   border: 1px solid
@@ -34,4 +34,10 @@ const InputStyles = css`
   }
 `;
 
-export default InputStyles;
+export const ErrMessage = css`
+  color: ${({ theme }) => theme.colorTheme.error};
+  opacity: ${({ error }) => (error ? 1 : 0)};
+  transition: opacity 0.3s ease;
+
+  ${({ theme }) => theme.fontTheme['12Regular']};
+`;

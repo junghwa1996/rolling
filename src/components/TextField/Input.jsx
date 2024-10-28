@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import InputStyles from './Input.styles';
+import { InputStyles, ErrMessage } from './Input.styles';
 
 const InputWrapper = styled.div`
   display: flex;
@@ -14,9 +14,8 @@ const StyledInput = styled.input`
   ${InputStyles}
 `;
 
-const ErrMessage = styled.p`
-  color: ${({ theme }) => theme.colorTheme.error};
-  ${({ theme }) => theme.fontTheme['12Regular']};
+const InputErrMessage = styled.p`
+  ${ErrMessage}
 `;
 
 function Input({ error, errMessage, disabled, name, value, onChange }) {
@@ -29,7 +28,7 @@ function Input({ error, errMessage, disabled, name, value, onChange }) {
         value={value}
         onChange={onChange}
       />
-      {error && <ErrMessage>{errMessage}</ErrMessage>}
+      <InputErrMessage error={error}>{errMessage}</InputErrMessage>
     </InputWrapper>
   );
 }
