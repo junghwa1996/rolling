@@ -81,7 +81,7 @@ const fontTheme = {
   '14Bold': {
     fontWeight: '700',
     fontSize: '1.4rem',
-    lineHeight: '20rem',
+    lineHeight: '2rem',
     letterSpacing: '-0.5%',
   },
 

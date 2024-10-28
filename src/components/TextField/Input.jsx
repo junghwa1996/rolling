@@ -73,9 +73,9 @@ Input.propTypes = {
   errMessage: PropTypes.string,
 };
 
-// 기본값 설정
-Input.defaultProps = {
-  error: false,
-};
+// // 기본값 설정
+// Input.defaultProps = {
+//   error: false,
+// };
 
 export default Input;

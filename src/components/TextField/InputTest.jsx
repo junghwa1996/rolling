@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
+import Dropdown from './Dropdown';
 import Input from './Input';
 import Textarea from './Textarea';
-import Dropdown from './Dropdown';
 
 const DUMMY =
   '코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 하세요! 코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 하세요!코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 하세요!코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 하세요! 코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 하세요!코로나가 또 다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 하세요! 코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 하세요! 코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 하세요!코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 하세요!코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 하세요! 코로나가 또다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 하세요!코로나가 또 다시 기승을 부리는 요즘이네요. 건강, 체력 모두 조심 또 하세요!';
@@ -15,20 +15,20 @@ function InputTest() {
 
   const dummyData = [
     {
-      key: 1,
-      value: '친구',
+      value: 'friend',
+      label: '친구',
     },
     {
-      key: 2,
-      value: '지인',
+      value: 'acquaintance',
+      label: '지인',
     },
     {
-      key: 3,
-      value: '동료',
+      value: 'colleague',
+      label: '동료',
     },
     {
-      key: 4,
-      value: '가족',
+      value: 'family',
+      label: '가족',
     },
   ];
 
@@ -52,11 +52,11 @@ function InputTest() {
         error={error}
         errMessage={'내용을 입력해주세요'}
       />
-      <Textarea text={DUMMY} />
+      <Textarea text={DUMMY || ''} />
       <Dropdown
         options={dummyData}
         selectedOption={selectedOption}
-        onChange={(option) => setSelectedOption(option)}
+        onSelect={(option) => setSelectedOption(option)}
       />
     </>
   );

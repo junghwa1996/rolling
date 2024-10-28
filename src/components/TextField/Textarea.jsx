@@ -37,7 +37,7 @@ const StyledTextarea = styled.textarea`
 `;
 
 function Textarea({ text }) {
-  return <StyledTextarea>{text}</StyledTextarea>;
+  return <StyledTextarea value={text} readOnly />;
 }
 
 Textarea.propTypes = {
