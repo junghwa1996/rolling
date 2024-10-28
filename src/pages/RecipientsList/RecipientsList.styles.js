@@ -15,4 +15,15 @@ export const SwiperContain = styled.div`
   .swiper-slide {
     width: 27.5rem;
   }
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: block;
+  }
+
+  @media (max-width: 1247px) {
+    .swiper-button-prev,
+    .swiper-button-next {
+      display: none;
+    }
+  }
 `;
