@@ -48,7 +48,14 @@ const DropdownErrMessage = styled.p`
   ${ErrMessageStyles};
 `;
 
-function Dropdown({ options, selectedOption, onSelect, error, errMessage }) {
+function Dropdown({
+  options,
+  selectedOption,
+  onSelect,
+  disabled,
+  error,
+  errMessage,
+}) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleSelect = (option) => {
@@ -58,7 +65,11 @@ function Dropdown({ options, selectedOption, onSelect, error, errMessage }) {
 
   return (
     <>
-      <DropdownBtn onClick={() => setIsOpen(!isOpen)} error={error}>
+      <DropdownBtn
+        onClick={() => setIsOpen(!isOpen)}
+        error={error}
+        disabled={disabled}
+      >
         {/* Item 중 가장 처음 값 세팅 */}
         {selectedOption ? selectedOption.value : options[0].value}
         <ArrowImg src={!isOpen ? ArrowDown : ArrowTop} alt="arrow" />
@@ -91,12 +102,13 @@ Dropdown.propTypes = {
     label: PropTypes.string,
   }),
   onSelect: PropTypes.func,
+  disabled: PropTypes.bool,
   error: PropTypes.bool,
   errMessage: PropTypes.string,
 };
 
-// 기본값 설정
 Dropdown.defaultProps = {
+  disabled: false,
   error: false,
   errMessage: '옵션을 선택해주세요.',
 };

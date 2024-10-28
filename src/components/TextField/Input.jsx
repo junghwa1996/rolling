@@ -45,8 +45,11 @@ Input.propTypes = {
 
 // 기본값 설정
 Input.defaultProps = {
+  name: '',
+  value: '',
+  disabled: false,
   error: false,
-  errMessage: '내용을 입력해주세요',
+  errMessage: '값을 입력해 주세요.',
 };
 
 export default Input;
