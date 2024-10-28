@@ -3,7 +3,7 @@ html {
   font-size: 10px;
   text-size-adjust: none;
   line-height: 1.5;
-  letter-spacing: -1%;
+  letter-spacing: -0.01rem;
 }
 
 ::-moz-selection {
