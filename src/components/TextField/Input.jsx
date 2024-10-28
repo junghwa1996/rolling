@@ -11,6 +11,7 @@ const InputWrapper = styled.div`
 
 const StyledInput = styled.input`
   width: 100%; // 각 페이지별 레이아웃에 따라 다르게 설정할 예정
+  padding: 12px 16px;
   ${InputStyles}
 `;
 
@@ -18,7 +19,14 @@ const InputErrMessage = styled.p`
   ${ErrMessageStyles}
 `;
 
-function Input({ error, errMessage, disabled, name, value, onChange }) {
+function Input({
+  error,
+  errMessage = '값을 입력해 주세요.',
+  disabled,
+  name,
+  value,
+  onChange,
+}) {
   return (
     <InputWrapper>
       <StyledInput
@@ -41,15 +49,6 @@ Input.propTypes = {
   error: PropTypes.bool,
   disabled: PropTypes.bool,
   errMessage: PropTypes.string,
-};
-
-// 기본값 설정
-Input.defaultProps = {
-  name: '',
-  value: '',
-  disabled: false,
-  error: false,
-  errMessage: '값을 입력해 주세요.',
 };
 
 export default Input;

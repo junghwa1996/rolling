@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { InputStyles, ErrMessageStyles } from './Input.styles';
 import ArrowDown from '../../assets/icon-arrow_down.svg';
 import ArrowTop from '../../assets/icon-arrow_top.svg';
+import Share from '../../assets/icon-share-24.svg';
 
 const DropdownBtn = styled.button`
   display: flex;
@@ -13,11 +14,17 @@ const DropdownBtn = styled.button`
 
   width: 320px;
   margin-bottom: 4px;
+  padding: 12px 16px;
   ${InputStyles};
 `;
 
 const IconBtn = styled.img`
+  display: block;
+  max-width: 5.6rem;
+  max-height: 3.6rem;
+
   padding: 6px 16px;
+  ${InputStyles};
 `;
 
 const ArrowImg = styled.img`
@@ -58,7 +65,7 @@ function Dropdown({
   onSelect, //option을 선택하기 위한 event 함수
   disabled,
   error,
-  errMessage,
+  errMessage = '옵션을 선택해주세요.',
   isIcon,
 }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -71,7 +78,13 @@ function Dropdown({
   return (
     <>
       {isIcon ? (
-        <IconBtn />
+        <IconBtn
+          src={Share}
+          alt="icon"
+          onClick={() => setIsOpen(!isOpen)}
+          error={error}
+          disabled={disabled}
+        />
       ) : (
         <DropdownBtn
           onClick={() => setIsOpen(!isOpen)}
@@ -117,11 +130,5 @@ Dropdown.propTypes = {
   isIcon: PropTypes.bool,
 };
 
-Dropdown.defaultProps = {
-  disabled: false,
-  error: false,
-  errMessage: '옵션을 선택해주세요.',
-  isIcon: false,
-};
 
 export default Dropdown;

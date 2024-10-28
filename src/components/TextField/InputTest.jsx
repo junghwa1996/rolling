@@ -39,7 +39,7 @@ function InputTest() {
 
   return (
     <>
-      {/* <Input name="id" value={value} onChange={handleInputChange} />
+      <Input name="id" value={value} onChange={handleInputChange} />
       <Input
         name="id"
         value={value}
@@ -54,18 +54,19 @@ function InputTest() {
         errMessage={'내용을 입력해주세요'}
       />
       <Textarea text={DUMMY || ''} />
-      <Dropdown
+      {/* <Dropdown
         options={dummyData}
         selectedOption={selectedOption}
         onSelect={(option) => setSelectedOption(option)}
         disabled
-      />
+      /> */}
       <Dropdown
         options={dummyData}
         selectedOption={selectedOption}
         onSelect={(option) => setSelectedOption(option)}
         error={false}
-      /> */}
+        isIcon={true}
+      />
       <TextField />
     </>
   );

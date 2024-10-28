@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 export const InputStyles = css`
-  padding: 12px 16px;
   border-radius: 8px;
   border: 1px solid
     ${({ error, theme }) => (error ? theme.colorTheme.error : '#CCCCCC')};
