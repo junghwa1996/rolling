@@ -6,7 +6,6 @@ html {
   letter-spacing: -1%;
 }
 
-
 ::-moz-selection {
   background: #b3d4fc;
   text-shadow: none;
@@ -61,7 +60,6 @@ textarea {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
 }
-
 
 html,
 body,
@@ -155,8 +153,18 @@ table {
 }
 
 a {
-  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  outline: none;
 }
+
+a:hover,
+a:active {
+  text-decoration: none;
+  color: #fff;
+  background-color: #f59000;
+}
+
 body {
   font-family: 'Noto Sans KR', sans-serif;
   font-weight: 400;
