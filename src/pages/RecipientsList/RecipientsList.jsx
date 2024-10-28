@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { useRef, useState } from 'react';
 import { Controller, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -9,7 +10,7 @@ import ArrowButton from '../../components/ArrowButton/ArrowButton';
 import useFetchData from '../../hooks/useFetchData';
 import { getRollingList } from '../../service/api';
 
-function SliderComponent() {
+function RecipientsList() {
   const { data: rollingListData } = useFetchData(getRollingList, []);
   const rollingList = rollingListData.results;
 
@@ -77,4 +78,4 @@ function SliderComponent() {
   );
 }
 
-export default SliderComponent;
+export default RecipientsList;
