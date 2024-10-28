@@ -5,7 +5,7 @@ export const TabToggleArea = styled.div`
   position: relative;
   width: ${({ tabLength }) => `${12 * tabLength}rem`};
   height: 4rem;
-  background-color: #f6f6f6;
+  background-color: ${({ theme }) => theme.colorTheme.grayscale[100]};
   border-radius: 6px;
   overflow: hidden;
 `;
