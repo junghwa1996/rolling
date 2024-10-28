@@ -29,7 +29,7 @@ function RecipientCard({
   name = '받는이',
   bgColor = 'beige',
   bgImage = null,
-  totalMessage = { recentMessages: [], messageCount: 0, direction: 'row' },
+  totalMessage = { recentMessages: [], messageCount: 0, direction: 'column' },
   emojiList = [],
 }) {
   return (
