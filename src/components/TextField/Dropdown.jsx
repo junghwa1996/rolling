@@ -19,6 +19,11 @@ const DropDownBtn = styled.div`
   ${({ theme }) => theme.fontTheme['16Regular']}
 `;
 
+const ArrowImg = styled.img`
+  max-width: 16px;
+  max-height: 16px;
+`;
+
 function Dropdown({ options, selectedOption, onSelect }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,7 +36,7 @@ function Dropdown({ options, selectedOption, onSelect }) {
     <>
       <DropDownBtn onClick={() => setIsOpen(!isOpen)}>
         {selectedOption ? selectedOption.value : options[0].value}
-        <img src={!isOpen ? ArrowDown : ArrowTop} alt="arrow" />
+        <ArrowImg src={!isOpen ? ArrowDown : ArrowTop} alt="arrow" />
       </DropDownBtn>
       {isOpen && (
         <ul>
