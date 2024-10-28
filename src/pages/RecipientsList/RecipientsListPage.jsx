@@ -1,5 +1,11 @@
+import RecipientCard from './RecipientsCard';
+
 function RecipientsList() {
-  return <>롤링 리스트 페이지</>;
+  return (
+    <>
+      <RecipientCard />
+    </>
+  );
 }
 
 export default RecipientsList;
