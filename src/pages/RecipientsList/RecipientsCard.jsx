@@ -15,7 +15,7 @@ RecipientCard.propTypes = {
 
 function RecipientCard({
   sender = '받는이',
-  bgColor = 'blue',
+  bgColor = 'beige',
   // totalMessage = { recentMessages: [], messageCount: 0, direction: 'row' },
   emojiList = [],
 }) {
