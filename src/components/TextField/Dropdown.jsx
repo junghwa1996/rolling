@@ -2,12 +2,21 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import styled from 'styled-components';
 
+import ArrowDown from '../../styles/assets/icons/arrow_down.svg';
+import ArrowTop from '../../styles/assets/icons/arrow_top.svg';
+
 const DropDownBtn = styled.div`
-  width: 320px; //임의의 width
-  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  //width: 320px;
+  //padding: 12px 16px;
 
   border: 1px solid ${({ theme }) => theme.colorTheme.grayscale['300']};
   border-radius: 8px;
+
+  ${({ theme }) => theme.fontTheme['16Regular']}
 `;
 
 function Dropdown({ options, selectedOption, onSelect }) {
@@ -22,6 +31,7 @@ function Dropdown({ options, selectedOption, onSelect }) {
     <>
       <DropDownBtn onClick={() => setIsOpen(!isOpen)}>
         {selectedOption ? selectedOption.value : options[0].value}
+        <img src={!isOpen ? ArrowDown : ArrowTop} alt="arrow" />
       </DropDownBtn>
       {isOpen && (
         <ul>
