@@ -4,26 +4,26 @@ const sizes = {
   s: css`
     padding: 13px 20px;
     border-radius: 6px;
-    font-size: 1rem;
+    font-size: 1.6rem;
   `,
   m: css`
     width: 120px;
     height: 40px;
     border-radius: 6px;
-    font-size: 1rem;
+    font-size: 1.6rem;
   `,
   l: css`
     width: 280px;
     height: 56px;
     border-radius: 12px;
-    font-size: 1.125rem;
+    font-size: 1.8rem;
     font-weight: bold;
   `,
   xl: css`
     width: 100%;
     height: 56px;
     border-radius: 12px;
-    font-size: 1.125rem;
+    font-size: 1.8rem;
     font-weight: bold;
   `,
 };
