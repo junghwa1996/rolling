@@ -7,17 +7,17 @@ import 'swiper/css/navigation';
 
 import RecipientCard from './RecipientsCard';
 import ArrowButton from '../../components/ArrowButton/ArrowButton';
-import useFetchData from '../../hooks/useFetchData';
-import { getRollingList } from '../../service/api';
+// import useFetchData from '../../hooks/useFetchData';
+// import { getRollingList } from '../../service/api';
 
 const Container = styled.div`
   max-width: 120rem;
   margin: 0 auto;
 `;
 
-function RecipientsList() {
-  const { data: rollingListData } = useFetchData(getRollingList, []);
-  const rollingList = rollingListData.results;
+function Slider({ listData }) {
+  // const { data: rollingListData } = useFetchData(getRollingList, []);
+  // const rollingList = rollingListData.results;
 
   const swiperRef = useRef(null);
   const [isPrev, setIsPrev] = useState(true);
@@ -33,7 +33,6 @@ function RecipientsList() {
     <Container>
       <Swiper
         modules={[Navigation, Controller]}
-        controller={{ control: controlledSwiper }}
         navigation={{
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
@@ -44,7 +43,8 @@ function RecipientsList() {
         spaceBetween={20}
         slidesPerView={4}
         onSlideChange={handleSlideChange}
-        onSwiper={(swiper) => console.log(swiper)}
+        controller={{ control: controlledSwiper }}
+        onSwiper={null}
       >
         {!isPrev && (
           <ArrowButton
@@ -53,7 +53,8 @@ function RecipientsList() {
             onClick={() => swiperRef.current?.slidePrev()}
           />
         )}
-        {rollingList.map((item) => (
+
+        {listData.map((item) => (
           <SwiperSlide key={item.id}>
             <RecipientCard
               id={item.id}
@@ -69,6 +70,7 @@ function RecipientsList() {
             />
           </SwiperSlide>
         ))}
+
         {!isNext && (
           <ArrowButton
             className="swiper-button-prev"
@@ -79,7 +81,6 @@ function RecipientsList() {
 
       <Swiper
         modules={[Navigation, Controller]}
-        controller={{ control: controlledSwiper }}
         navigation={{
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
@@ -90,6 +91,7 @@ function RecipientsList() {
         spaceBetween={20}
         slidesPerView={4}
         onSlideChange={handleSlideChange}
+        controller={{ control: controlledSwiper }}
         onSwiper={setControlledSwiper}
       >
         {!isPrev && (
@@ -126,4 +128,4 @@ function RecipientsList() {
   );
 }
 
-export default RecipientsList;
+export default Slider;
