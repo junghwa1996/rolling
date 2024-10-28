@@ -14,6 +14,9 @@ module.exports = {
       jsx: true, // JSX를 사용할 수 있도록 설정
     },
     requireConfigFile: false, // 별도의 Babel 설정 파일을 요구하지 않도록 설정
+    babelOptions: {
+      presets: ['@babel/preset-react'], // React 프리셋 사용
+    },
   },
 
   extends: [
