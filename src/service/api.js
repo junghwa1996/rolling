@@ -52,6 +52,16 @@ const deleteRequest = async (url) => {
   }
 };
 
+const getImgRequest = async (url) => {
+  try {
+    const res = await axios.get(url);
+    return res.data;
+  } catch (error) {
+    console.error('GET 요청 실패', error);
+    throw error;
+  }
+};
+
 /***********************************************
  *                  롤링 리스트
  ***********************************************/
@@ -102,30 +112,12 @@ export const deleteRollingEmoji = async (id) =>
  *              메시지 생성 프로필 이미지
  ***********************************************/
 // GET
-export const getProfileImg = async () => {
-  try {
-    const res = await axios.get(
-      'https://rolling-api.vercel.app/profile-images/',
-    );
-    return res.data;
-  } catch (error) {
-    console.error('GET 요청 실패', error);
-    throw error;
-  }
-};
+export const getProfileImg = async () =>
+  getImgRequest(`https://rolling-api.vercel.app/profile-images/`);
 
 /***********************************************
  *                리스트 배경 이미지
  ***********************************************/
 // GET
-export const getBackgroundImg = async () => {
-  try {
-    const res = await axios.get(
-      'https://rolling-api.vercel.app/background-images/',
-    );
-    return res.data;
-  } catch (error) {
-    console.error('GET 요청 실패', error);
-    throw error;
-  }
-};
+export const getBackgroundImg = async () =>
+  getImgRequest(`https://rolling-api.vercel.app/background-images/`);
