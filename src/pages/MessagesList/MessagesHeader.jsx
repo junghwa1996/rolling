@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { CreatedAt } from './CreatedAt.styles.js';
+import { CreatedAt as MSHeaderCA } from './CreatedAt.styles.js';
 import {
   MSHeaderContainer,
   MSHeaderPosition,
@@ -11,36 +11,26 @@ import Profile from '../../components/Profile/Profile';
 import dateConversion from '../../utils/dateConversion';
 
 MessagesHeader.propTypes = {
-  name: PropTypes.string.isRequired,
-  badgeValue: PropTypes.oneOf(['친구', '가족', '동료', '지인']),
-  profiler: PropTypes.shape({
-    imageUrl: PropTypes.string.isRequired,
-    size: PropTypes.string,
-  }),
-  createdAt: PropTypes.string,
-  isCreatedAt: PropTypes.bool,
+  type: PropTypes.string,
+  MessageData: PropTypes.object,
 };
 
-function MessagesHeader({
-  name = '보낸이',
-  badgeValue = '친구',
-  profiler = { imageUrl: '', size: '' },
-  createdAt = '',
-  isCreatedAt = false,
-}) {
+function MessagesHeader({ type, MessageData }) {
   return (
     <MSHeaderContainer>
       <MSHeaderPosition>
-        <Profile imageURL={profiler.imageUrl} size={profiler.size} />
+        <Profile imageURL={MessageData.imageUrl} />
         <MSHeaderArea>
           <h3>
             <span>From.</span>
-            {name}
+            {MessageData.name}
           </h3>
-          <Badge value={badgeValue} />
+          <Badge value={MessageData.badgeValue} />
         </MSHeaderArea>
       </MSHeaderPosition>
-      {isCreatedAt && <CreatedAt>{dateConversion(createdAt)}</CreatedAt>}
+      {type === 'modal' && (
+        <MSHeaderCA>{dateConversion(MessageData.createdAt)}</MSHeaderCA>
+      )}
     </MSHeaderContainer>
   );
 }

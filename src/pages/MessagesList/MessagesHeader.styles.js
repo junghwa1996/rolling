@@ -6,7 +6,7 @@ export const MSHeaderContainer = styled.div`
 `;
 export const MSHeaderPosition = styled.div`
   display: flex;
-  gap: 1.4rem;
+  gap: ${({ type }) => (type === 'modal' ? '1.6rem' : '1.4rem')};
   flex: 1;
 `;
 export const MSHeaderArea = styled.div`

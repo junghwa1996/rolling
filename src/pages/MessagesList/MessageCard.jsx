@@ -1,36 +1,37 @@
 import PropTypes from 'prop-types';
 
 import { CreatedAt } from './CreatedAt.styles';
-import { MessageContainer } from './MessageCard.styles';
+import {
+  MessageCardContainer,
+  MessageCardTextArea,
+} from './MessageCard.styles';
 import MessagesHeader from './MessagesHeader';
 import Textarea from '../../components/TextField/Textarea';
 import dateConversion from '../../utils/dateConversion';
 
 MessageCard.propTypes = {
-  name: PropTypes.string.isRequired,
-  badgeValue: PropTypes.oneOf(['친구', '가족', '동료', '지인']),
-  profiler: PropTypes.shape({
-    imageUrl: PropTypes.string.isRequired,
-    size: PropTypes.string,
+  type: PropTypes.oneOf(['card', 'modal', 'edit']).isRequired, // 타입
+
+  MessageData: PropTypes.shape({
+    name: PropTypes.string, // '보내는 이'
+    badgeValue: PropTypes.oneOf(['친구', '가족', '동료', '지인']), // 라벨
+    createdAt: PropTypes.string, // 헤더 생성일
+    imageUrl: PropTypes.string, // 유저 이미지
+    text: PropTypes.string,
   }),
-  createdAt: PropTypes.string,
-  text: PropTypes.string,
 };
 
-function MessageCard(props) {
-  const propsMessagesHeader = {
-    name: props.name,
-    badgeValue: props.badgeValue,
-    profiler: props.profiler,
-    createdAt: props.createdAt,
-  };
-
+function MessageCard({ MessageData = {}, type = 'card' }) {
   return (
-    <MessageContainer>
-      <MessagesHeader {...propsMessagesHeader} />
-      <Textarea text={props.text} />
-      <CreatedAt>{dateConversion(props.createdAt)}</CreatedAt>
-    </MessageContainer>
+    <MessageCardContainer type={type}>
+      <MessagesHeader MessageData={MessageData} type={type} />
+      <MessageCardTextArea>
+        <Textarea type={type} text={MessageData.text} />
+        {type !== 'modal' && (
+          <CreatedAt>{dateConversion(MessageData.createdAt)}</CreatedAt>
+        )}
+      </MessageCardTextArea>
+    </MessageCardContainer>
   );
 }
 
