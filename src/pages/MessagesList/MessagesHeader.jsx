@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 
+import { CreatedAt } from './CreatedAt.styles.js';
 import {
   HeaderContainer,
   HeaderArea,
@@ -37,7 +38,7 @@ function MessagesHeader({
           <Badge value={badgeValue} />
         </HeaderArea>
       </HeaderPosition>
-      {createdAt && <span>{dateConversion(createdAt)}</span>}
+      {createdAt && <CreatedAt>{dateConversion(createdAt)}</CreatedAt>}
     </HeaderContainer>
   );
 }
