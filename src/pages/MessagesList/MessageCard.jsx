@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 
-import { CreatedAt } from './CreatedAt.styles';
 import {
-  MessageCardContainer,
-  MessageCardTextArea,
+  SCmessageCardContainer,
+  SCMessageCardTextArea,
 } from './MessageCard.styles';
 import MessagesHeader from './MessagesHeader';
-import Textarea from '../../components/TextField/Textarea';
+import { StyledCreatedAt } from './StyledCreatedAt.styles';
+import { StyledTextarea } from './StyledTextarea.styles';
+import Button from '../../components/Button/Button';
+import { StyledLine } from '../../components/Line/Line.styles';
 import dateConversion from '../../utils/dateConversion';
 
 MessageCard.propTypes = {
@@ -19,19 +21,29 @@ MessageCard.propTypes = {
     imageUrl: PropTypes.string, // 유저 이미지
     text: PropTypes.string,
   }),
+
+  onEvent: PropTypes.shape({
+    Modal: PropTypes.func,
+    ButtonDelete: PropTypes.func,
+    ButtonBtnEdit: PropTypes.func,
+  }),
 };
 
-function MessageCard({ MessageData = {}, type = 'card' }) {
+function MessageCard({ MessageData = {}, type = 'card', onEvent = {} }) {
   return (
-    <MessageCardContainer type={type}>
-      <MessagesHeader MessageData={MessageData} type={type} />
-      <MessageCardTextArea>
-        <Textarea type={type} text={MessageData.text} />
+    <SCmessageCardContainer type={type} onClick={() => onEvent.Modal}>
+      <MessagesHeader MessageData={MessageData} type={type} onEvent={onEvent} />
+      <SCMessageCardTextArea>
+        <StyledLine />
+        <StyledTextarea>{MessageData.text}</StyledTextarea>
         {type !== 'modal' && (
-          <CreatedAt>{dateConversion(MessageData.createdAt)}</CreatedAt>
+          <StyledCreatedAt>
+            {dateConversion(MessageData.createdAt)}
+          </StyledCreatedAt>
         )}
-      </MessageCardTextArea>
-    </MessageCardContainer>
+        {type === 'modal' && <Button size="m">확인</Button>}
+      </SCMessageCardTextArea>
+    </SCmessageCardContainer>
   );
 }
 
