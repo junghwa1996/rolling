@@ -10,10 +10,10 @@ import Profile from '../../components/Profile/Profile';
 import dateConversion from '../../utils/dateConversion';
 
 MessagesHeader.propTypes = {
-  name: PropTypes.string,
+  name: PropTypes.string.isRequired,
   badgeValue: PropTypes.string,
   profiler: PropTypes.shape({
-    imageUrl: PropTypes.string,
+    imageUrl: PropTypes.string.isRequired,
     size: PropTypes.string,
   }),
   createdAt: PropTypes.string,
