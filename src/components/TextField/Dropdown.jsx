@@ -24,8 +24,7 @@ function Dropdown({
   isIcon,
 }) {
   const [isOpen, setIsOpen] = useState(false);
-  const deviceType = useDeviceType(); // Call the hook inside a component
-  console.log(deviceType);
+  const deviceType = useDeviceType(); //devicehook 사용
 
   const handleSelect = (option) => {
     onSelect(option);
