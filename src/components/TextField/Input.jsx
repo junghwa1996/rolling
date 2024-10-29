@@ -26,6 +26,8 @@ function Input({
   name,
   value,
   onChange,
+  placeholder,
+  onBlur,
 }) {
   return (
     <InputWrapper>
@@ -35,6 +37,8 @@ function Input({
         name={name}
         value={value}
         onChange={onChange}
+        placeholder={placeholder}
+        onBlur={onBlur}
       />
       <InputErrMessage error={error}>{errMessage}</InputErrMessage>
     </InputWrapper>
@@ -49,6 +53,8 @@ Input.propTypes = {
   error: PropTypes.bool,
   disabled: PropTypes.bool,
   errMessage: PropTypes.string,
+  placeholder: PropTypes.string,
+  onBlur: PropTypes.func,
 };
 
 export default Input;
