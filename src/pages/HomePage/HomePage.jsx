@@ -1,14 +1,5 @@
-// src/pages/Homepage/Homepage.jsx
-import React from 'react';
-import ToastComponent from '../../components/toast/ToastComponent';
+function HomePage() {
+  return <p>메인 페이지</p>;
+}
 
-const Homepage = () => {
-  return (
-    <div>
-      <h1>홈페이지</h1>
-      <ToastComponent /> {/* ToastComponent 추가 */}
-    </div>
-  );
-};
-
-export default Homepage;
+export default HomePage;
