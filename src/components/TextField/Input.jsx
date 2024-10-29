@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { InputStyles, ErrMessageStyles } from './Input.styles';
+import { StyledInput, StyledErrMessage } from './CommonInput.styles';
 
 const InputWrapper = styled.div`
   display: flex;
@@ -9,18 +9,17 @@ const InputWrapper = styled.div`
   gap: 4px;
 `;
 
-const StyledInput = styled.input`
+const InputBox = styled.input`
   width: 100%; // 각 페이지별 레이아웃에 따라 다르게 설정할 예정
-  padding: 12px 16px;
-  ${InputStyles}
+  ${StyledInput}
 `;
 
 const InputErrMessage = styled.p`
-  ${ErrMessageStyles}
+  ${StyledErrMessage}
 `;
 
 function Input({
-  error,
+  $error,
   errMessage = '값을 입력해 주세요.',
   disabled,
   name,
@@ -31,8 +30,8 @@ function Input({
 }) {
   return (
     <InputWrapper>
-      <StyledInput
-        error={error}
+      <InputBox
+        error={$error}
         disabled={disabled}
         name={name}
         value={value}
@@ -40,7 +39,7 @@ function Input({
         placeholder={placeholder}
         onBlur={onBlur}
       />
-      <InputErrMessage error={error}>{errMessage}</InputErrMessage>
+      <InputErrMessage error={$error}>{errMessage}</InputErrMessage>
     </InputWrapper>
   );
 }
@@ -50,7 +49,7 @@ Input.propTypes = {
   name: PropTypes.string.isRequired,
   value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
-  error: PropTypes.bool,
+  $error: PropTypes.bool,
   disabled: PropTypes.bool,
   errMessage: PropTypes.string,
   placeholder: PropTypes.string,
