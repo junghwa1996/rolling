@@ -7,19 +7,8 @@ import {
   StyledImgSelectorContainer,
   StyledImgArea,
 } from './InputFile.styles';
+import { getProfileImg } from '../../service/api';
 import Profile from '../Profile/Profile';
-
-const getProfileImg = async () => {
-  try {
-    const res = await axios.get(
-      'https://rolling-api.vercel.app/profile-images/',
-    );
-    return res.data;
-  } catch (error) {
-    console.error('GET 요청 실패', error);
-    throw error;
-  }
-};
 
 function InputFile({ img, onClick }) {
   const [profileImgList, setProfileImgList] = useState([]);
