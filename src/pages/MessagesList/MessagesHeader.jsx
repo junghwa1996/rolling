@@ -1,6 +1,12 @@
-import { Profiler } from 'react';
-import Badge from '../../components/Badge/Badge';
 import PropTypes from 'prop-types';
+import { styled } from 'styled-components';
+
+import Badge from '../../components/Badge/Badge';
+import Profile from '../../components/Profile/Profile';
+import dateConversion from '../../utils/dateConversion';
+
+const HeaderContainer = styled.div``;
+const HeaderArea = styled.div``;
 
 MessagesHeader.propTypes = {
   name: PropTypes.string,
@@ -15,12 +21,12 @@ MessagesHeader.propTypes = {
 function MessagesHeader({
   name,
   badgeValue,
-  profiler = { imageUrl, size },
+  profiler = { imageUrl: '', size: '' },
   createdAt,
 }) {
   return (
     <HeaderContainer>
-      <Profiler imageUrl={profiler.imageUrl} size={profiler.size} />
+      <Profile imageUrl={profiler.imageUrl} size={profiler.size} />
       <HeaderArea>
         <h3>
           <span>From.</span>
@@ -28,7 +34,7 @@ function MessagesHeader({
         </h3>
         <Badge value={badgeValue} />
       </HeaderArea>
-      {createdAt && <span>{createdAt}</span>}
+      {createdAt && <span>{dateConversion(createdAt)}</span>}
     </HeaderContainer>
   );
 }
