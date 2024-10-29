@@ -44,6 +44,7 @@ export const Card = styled.div`
   padding: 3rem 2.4rem 2rem;
   width: 27.5rem;
   height: 26rem;
+  color: ${({ theme }) => theme.colorTheme.grayscale[900]};
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 1.6rem;
   box-shadow: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.08);

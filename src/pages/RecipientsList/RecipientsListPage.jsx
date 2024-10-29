@@ -1,31 +1,21 @@
-import RecipientCard from './RecipientsCard';
-import useFetchData from '../../hooks/useFetchData';
-import { getRollingList } from '../../service/api';
+import { styled } from 'styled-components';
 
-function RecipientsList() {
-  const { data: rollingListData } = useFetchData(getRollingList, []);
-  const rollingList = rollingListData.results;
+import RecipientsList from './RecipientsList';
 
+const Container = styled.div`
+  max-width: 120rem;
+  margin: 0 auto;
+`;
+
+function RecipientsListPage() {
   return (
-    <ul>
-      {rollingList.map((item) => (
-        <li key={item.id}>
-          <RecipientCard
-            id={item.id}
-            name={item.name}
-            bgColor={item.backgroundColor}
-            bgImage={item.backgroundImageURL}
-            totalMessage={{
-              recentMessages: item.recentMessages,
-              messageCount: item.messageCount,
-              direction: 'column',
-            }}
-            emojiList={item.topReactions}
-          />
-        </li>
-      ))}
-    </ul>
+    <>
+      <Container>
+        <RecipientsList favorite={true} />
+        <RecipientsList />
+      </Container>
+    </>
   );
 }
 
-export default RecipientsList;
+export default RecipientsListPage;
