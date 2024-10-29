@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 export const InputStyles = css`
   border-radius: 8px;
   border: 1px solid
-    ${({ error, theme }) => (error ? theme.colorTheme.error : '#CCCCCC')};
+    ${({ $error, theme }) => ($error ? theme.colorTheme.error : '#CCCCCC')};
 
   //font 설정
   ${({ theme }) => theme.fontTheme['16Regular']}
@@ -35,7 +35,7 @@ export const InputStyles = css`
 
 export const ErrMessageStyles = css`
   color: ${({ theme }) => theme.colorTheme.error};
-  opacity: ${({ error }) => (error ? 1 : 0)};
+  opacity: ${({ $error }) => ($error ? 1 : 0)};
   transition: opacity 0.3s ease;
 
   ${({ theme }) => theme.fontTheme['12Regular']};
