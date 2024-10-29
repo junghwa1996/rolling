@@ -12,5 +12,6 @@
     "css",
     "scss"
   ],
-  "prettier.requireConfig": false // Prettier 설정 파일 없이도 기본 설정 사용
+  "prettier.requireConfig": false,
+  "prettier.endOfLine": "lf" // Prettier 설정 파일 없이도 기본 설정 사용
 }
