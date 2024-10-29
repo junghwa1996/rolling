@@ -2,17 +2,18 @@ import styled from 'styled-components';
 
 import { StyledInput, StyledErrMessage } from './CommonInput.styles';
 
-const InputWrapper = styled.div`
+export const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
 `;
 
-const InputBox = styled.input`
+export const InputBox = styled.input`
   width: 100%;
+  padding: 1.2rem 1.6rem;
   ${StyledInput}
 `;
 
-const InputErrMessage = styled.p`
+export const InputErrMessage = styled.p`
   ${StyledErrMessage}
 `;

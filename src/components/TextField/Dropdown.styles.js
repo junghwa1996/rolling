@@ -7,7 +7,7 @@ export const DropdownBtn = styled.button`
   justify-content: space-between;
   align-items: center;
 
-  width: 32rem;
+  width: ${({ deviceType }) => (deviceType === 'mobile' ? '100%' : '32rem')};
   margin-bottom: 0.4rem;
   padding: 1.2rem 1.6rem;
   ${StyledInput};
@@ -42,6 +42,7 @@ export const DropdownList = styled.ul`
 
 export const DropdownItem = styled.li`
   padding: 1.2rem 1.6rem;
+
   width: ${({ isIcon }) => (isIcon ? '14rem' : '32rem')};
 
   ${({ theme }) => theme.fontTheme['16Regular']}

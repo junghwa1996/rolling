@@ -12,6 +12,7 @@ import {
 import ArrowDown from '../../assets/icon-arrow_down.svg';
 import ArrowTop from '../../assets/icon-arrow_top.svg';
 import Share from '../../assets/icon-share-24.svg';
+import useDeviceType from '../../hooks/useDeviceType';
 
 function Dropdown({
   options, //option 종류
@@ -23,6 +24,8 @@ function Dropdown({
   isIcon,
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const deviceType = useDeviceType(); // Call the hook inside a component
+  console.log(deviceType);
 
   const handleSelect = (option) => {
     onSelect(option);
@@ -44,6 +47,7 @@ function Dropdown({
           onClick={() => setIsOpen(!isOpen)}
           error={$error}
           disabled={disabled}
+          deviceType={deviceType}
         >
           {/* Item 중 가장 처음 값 세팅 */}
           {selectedOption ? selectedOption.value : options[0].value}

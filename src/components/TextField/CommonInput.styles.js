@@ -4,8 +4,6 @@
 import { css } from 'styled-components';
 
 export const StyledInput = css`
-  padding: 1.2rem 1.6rem;
-
   //border
   border-radius: 0.8rem;
   border: 1px solid

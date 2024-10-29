@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 
+import { InputWrapper, InputBox, InputErrMessage } from './Input.styles';
+
 function Input({
   $error,
   errMessage = '값을 입력해 주세요.',
