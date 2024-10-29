@@ -8,14 +8,12 @@ import StyledModal from './StyledModal';
 function ModalTest() {
   const [isOpen, setIsOpen] = useState(false);
 
-  function openModal() {
-    setIsOpen(true);
-  }
+  const openModal = () => setIsOpen(true);
 
-  function closeModal() {
+  const closeModal = () => {
     setIsOpen(false);
     console.log('모달이 닫혔습니다.');
-  }
+  };
 
   return (
     <>
