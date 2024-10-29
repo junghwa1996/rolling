@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 
-export const HeaderContainer = styled.div`
+export const MSHeaderContainer = styled.div`
   display: flex;
   align-items: center;
 `;
-export const HeaderPosition = styled.div`
+export const MSHeaderPosition = styled.div`
   display: flex;
   gap: 1.4rem;
   flex: 1;
 `;
-export const HeaderArea = styled.div`
+export const MSHeaderArea = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

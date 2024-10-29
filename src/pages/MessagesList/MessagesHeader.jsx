@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 
 import { CreatedAt } from './CreatedAt.styles.js';
 import {
-  HeaderContainer,
-  HeaderArea,
-  HeaderPosition,
+  MSHeaderContainer,
+  MSHeaderPosition,
+  MSHeaderArea,
 } from './MessagesHeader.styles.js';
 import Badge from '../../components/Badge/Badge';
 import Profile from '../../components/Profile/Profile';
@@ -29,19 +29,19 @@ function MessagesHeader({
   isCreatedAt = false,
 }) {
   return (
-    <HeaderContainer>
-      <HeaderPosition>
+    <MSHeaderContainer>
+      <MSHeaderPosition>
         <Profile imageURL={profiler.imageUrl} size={profiler.size} />
-        <HeaderArea>
+        <MSHeaderArea>
           <h3>
             <span>From.</span>
             {name}
           </h3>
           <Badge value={badgeValue} />
-        </HeaderArea>
-      </HeaderPosition>
+        </MSHeaderArea>
+      </MSHeaderPosition>
       {isCreatedAt && <CreatedAt>{dateConversion(createdAt)}</CreatedAt>}
-    </HeaderContainer>
+    </MSHeaderContainer>
   );
 }
 
