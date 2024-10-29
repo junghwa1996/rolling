@@ -5,98 +5,98 @@ const fontTheme = {
     fontWeight: '700',
     fontSize: '2.8rem',
     lineHeight: '4.2rem',
-    letterSpacing: '-1%',
+    letterSpacing: '-0.01rem',
   },
 
   '24Bold': {
     fontWeight: '700',
     fontSize: '2.4rem',
     lineHeight: '3.6rem',
-    letterSpacing: '-1%',
+    letterSpacing: '-0.01rem',
   },
 
   '24Regular': {
     fontWeight: '400',
     fontSize: '2.4rem',
     lineHeight: '3.6rem',
-    letterSpacing: '-1%',
+    letterSpacing: '-0.01rem',
   },
 
   '20Bold': {
     fontWeight: '700',
     fontSize: '2rem',
     lineHeight: '3rem',
-    letterSpacing: '-1%',
+    letterSpacing: '-0.01rem',
   },
 
   '20Regular': {
     fontWeight: '400',
     fontSize: '2rem',
     lineHeight: '3rem',
-    letterSpacing: '-1%',
+    letterSpacing: '-0.01rem',
   },
 
   '18Bold': {
     fontWeight: '700',
     fontSize: '1.8rem',
     lineHeight: '2.8rem',
-    letterSpacing: '-1%',
+    letterSpacing: '-0.01rem',
   },
 
   '18Regular': {
     fontWeight: '400',
     fontSize: '1.8rem',
     lineHeight: '2.8rem',
-    letterSpacing: '-1%',
+    letterSpacing: '-0.01rem',
   },
 
   '16Bold': {
     fontWeight: '700',
     fontSize: '1.6rem',
     lineHeight: '2.6rem',
-    letterSpacing: '-1%',
+    letterSpacing: '-0.01rem',
   },
 
   '16Regular': {
     fontWeight: '400',
     fontSize: '1.6rem',
     lineHeight: '2.6rem',
-    letterSpacing: '-1%',
+    letterSpacing: '-0.01rem',
   },
 
   '15Bold': {
     fontWeight: '700',
     fontSize: '1.5rem',
     lineHeight: '2.2rem',
-    letterSpacing: '-1%',
+    letterSpacing: '-0.01rem',
   },
 
   '15Regular': {
     fontWeight: '400',
     fontSize: '1.5rem',
     lineHeight: '2.2rem',
-    letterSpacing: '-1%',
+    letterSpacing: '-0.01rem',
   },
 
   '14Bold': {
     fontWeight: '700',
     fontSize: '1.4rem',
-    lineHeight: '20rem',
-    letterSpacing: '-0.5%',
+    lineHeight: '2rem',
+    letterSpacing: '-0.005rem',
   },
 
   '14Regular': {
     fontWeight: '400',
     fontSize: '1.4rem',
     lineHeight: '2rem',
-    letterSpacing: '-0.5%',
+    letterSpacing: '-0.005rem',
   },
 
   '12Regular': {
     fontWeight: '400',
     fontSize: '1.2rem',
     lineHeight: '1.8rem',
-    letterSpacing: '-0.5%',
+    letterSpacing: '-0.005rem',
   },
 };
 
@@ -105,8 +105,8 @@ const colorTheme = {
   purple: {
     100: '#F8F0FF',
     200: '#ECD9FF',
-    300: '#ECD9FF',
-    400: '#ECD9FF',
+    300: '#DCB9FF',
+    400: '#C894FD',
     500: '#AB57FF',
     600: '#9935FF',
     700: '#861DEE',
@@ -149,7 +149,16 @@ const colorTheme = {
     800: '#2B2B2B',
     900: '#181818',
   },
+
+  white: '#FFFFFF',
+  black: '#000000',
+  error: '#DC3A3A',
+  surface: '#F6F8FF',
 };
+
+//NOTE theme 사용방법
+// ex) ${({ theme }) => theme.fontTheme['20Bold']};
+// ex) color: ${({ theme }) => theme.colorTheme.purple[500]};
 
 const theme = {
   fontTheme,

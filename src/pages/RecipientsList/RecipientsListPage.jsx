@@ -1,5 +1,21 @@
-function RecipientsList() {
-  return <>롤링 리스트 페이지</>;
+import { styled } from 'styled-components';
+
+import RecipientsList from './RecipientsList';
+
+const Container = styled.div`
+  max-width: 120rem;
+  margin: 0 auto;
+`;
+
+function RecipientsListPage() {
+  return (
+    <>
+      <Container>
+        <RecipientsList favorite={true} />
+        <RecipientsList />
+      </Container>
+    </>
+  );
 }
 
-export default RecipientsList;
+export default RecipientsListPage;
