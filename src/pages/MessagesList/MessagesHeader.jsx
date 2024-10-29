@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 
+import { CreatedAt } from './CreatedAt.styles.js';
 import {
   HeaderContainer,
   HeaderArea,

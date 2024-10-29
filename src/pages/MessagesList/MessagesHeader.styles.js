@@ -3,10 +3,6 @@ import styled from 'styled-components';
 export const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
-  > span {
-    ${({ theme }) => theme.fontTheme['14Regular']};
-    color: ${({ theme }) => theme.colorTheme.grayscale[500]};
-  }
 `;
 export const HeaderPosition = styled.div`
   display: flex;
