@@ -40,7 +40,7 @@ function MessagesHeader({
           <Badge value={badgeValue} />
         </HeaderArea>
       </HeaderPosition>
-      {isCreatedAt && <span>{dateConversion(createdAt)}</span>}
+      {isCreatedAt && <CreatedAt>{dateConversion(createdAt)}</CreatedAt>}
     </HeaderContainer>
   );
 }
