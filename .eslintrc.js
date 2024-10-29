@@ -28,6 +28,7 @@ module.exports = {
   plugins: ['react', 'import', 'react-hooks'],
 
   rules: {
+    'linebreak-style': ['error', 'unix'],
     'no-unused-vars': 'warn',
     'no-console': 'off',
     eqeqeq: 'error',
