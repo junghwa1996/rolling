@@ -17,6 +17,7 @@ MessagesHeader.propTypes = {
     size: PropTypes.string,
   }),
   createdAt: PropTypes.string,
+  isCreatedAt: PropTypes.bool,
 };
 
 function MessagesHeader({
@@ -24,6 +25,7 @@ function MessagesHeader({
   badgeValue = '친구',
   profiler = { imageUrl: '', size: '' },
   createdAt = '',
+  isCreatedAt = false,
 }) {
   return (
     <HeaderContainer>
@@ -37,7 +39,7 @@ function MessagesHeader({
           <Badge value={badgeValue} />
         </HeaderArea>
       </HeaderPosition>
-      {createdAt && <span>{dateConversion(createdAt)}</span>}
+      {isCreatedAt && <span>{dateConversion(createdAt)}</span>}
     </HeaderContainer>
   );
 }
