@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
-import { styled } from 'styled-components';
 
+import {
+  HeaderContainer,
+  HeaderArea,
+  HeaderPosition,
+} from './MessagesHeader.styles.js';
 import Badge from '../../components/Badge/Badge';
 import Profile from '../../components/Profile/Profile';
 import dateConversion from '../../utils/dateConversion';
-
-const HeaderContainer = styled.div``;
-const HeaderArea = styled.div``;
 
 MessagesHeader.propTypes = {
   name: PropTypes.string,
@@ -19,21 +20,23 @@ MessagesHeader.propTypes = {
 };
 
 function MessagesHeader({
-  name,
-  badgeValue,
+  name = '보낸이',
+  badgeValue = '친구',
   profiler = { imageUrl: '', size: '' },
-  createdAt,
+  createdAt = '',
 }) {
   return (
     <HeaderContainer>
-      <Profile imageUrl={profiler.imageUrl} size={profiler.size} />
-      <HeaderArea>
-        <h3>
-          <span>From.</span>
-          {name}
-        </h3>
-        <Badge value={badgeValue} />
-      </HeaderArea>
+      <HeaderPosition>
+        <Profile imageURL={profiler.imageUrl} size={profiler.size} />
+        <HeaderArea>
+          <h3>
+            <span>From.</span>
+            {name}
+          </h3>
+          <Badge value={badgeValue} />
+        </HeaderArea>
+      </HeaderPosition>
       {createdAt && <span>{dateConversion(createdAt)}</span>}
     </HeaderContainer>
   );
