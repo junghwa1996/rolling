@@ -11,7 +11,7 @@ import dateConversion from '../../utils/dateConversion';
 
 MessagesHeader.propTypes = {
   name: PropTypes.string.isRequired,
-  badgeValue: PropTypes.string,
+  badgeValue: PropTypes.oneOf(['친구', '가족', '동료', '지인']),
   profiler: PropTypes.shape({
     imageUrl: PropTypes.string.isRequired,
     size: PropTypes.string,
