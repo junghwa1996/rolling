@@ -8,7 +8,7 @@ const StyledInputFile = styled.div`
 const StyledImgSelectorContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 26px;
+  margin-left: 2.6rem;
 
   > p {
     ${({ theme }) => theme.fontTheme['16Regular']}
@@ -18,8 +18,8 @@ const StyledImgSelectorContainer = styled.div`
 
 const StyledImgArea = styled.div`
   display: flex;
-  gap: 4px;
-  margin-top: 12px;
+  gap: 0.4rem;
+  margin-top: 1.2rem;
 
   img {
     cursor: pointer;
