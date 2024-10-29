@@ -51,7 +51,6 @@ module.exports = {
           ['parent', 'sibling', 'index'],
         ],
         'newlines-between': 'always',
-        alphabetize: { order: 'asc', caseInsensitive: true },
       },
     ],
     'react-hooks/rules-of-hooks': 'error',
