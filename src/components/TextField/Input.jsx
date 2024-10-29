@@ -1,22 +1,4 @@
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-import { StyledInput, StyledErrMessage } from './CommonInput.styles';
-
-const InputWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-`;
-
-const InputBox = styled.input`
-  width: 100%; // 각 페이지별 레이아웃에 따라 다르게 설정할 예정
-  ${StyledInput}
-`;
-
-const InputErrMessage = styled.p`
-  ${StyledErrMessage}
-`;
 
 function Input({
   $error,

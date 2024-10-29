@@ -4,10 +4,10 @@
 import { css } from 'styled-components';
 
 export const StyledInput = css`
-  padding: 12px 16px;
-  
+  padding: 1.2rem 1.6rem;
+
   //border
-  border-radius: 8px;
+  border-radius: 0.8rem;
   border: 1px solid
     ${({ $error, theme }) => ($error ? theme.colorTheme.error : '#CCCCCC')};
 
@@ -20,22 +20,22 @@ export const StyledInput = css`
 
   &:focus {
     outline: none;
-    border: 2px solid ${({ theme }) => theme.colorTheme.grayscale['500']};
+    border: 0.2rem solid ${({ theme }) => theme.colorTheme.grayscale['500']};
     color: ${({ theme }) => theme.colorTheme.grayscale['900']};
   }
 
   &:active {
-    border: 2px solid ${({ theme }) => theme.colorTheme.grayscale['700']};
+    border: 0.2rem solid ${({ theme }) => theme.colorTheme.grayscale['700']};
     color: ${({ theme }) => theme.colorTheme.grayscale['900']};
   }
 
   //focus, disabled 상태일 때는 hover하지 않기
   &:not(:focus, :disabled):hover {
-    border: 1px solid ${({ theme }) => theme.colorTheme.grayscale['500']};
+    border: 0.1rem solid ${({ theme }) => theme.colorTheme.grayscale['500']};
   }
 
   &:disabled {
-    border: 1px solid ${({ theme }) => theme.colorTheme.grayscale['300']};
+    border: 0.1rem solid ${({ theme }) => theme.colorTheme.grayscale['300']};
     background-color: ${({ theme }) => theme.colorTheme.grayscale['100']};
   }
 `;
