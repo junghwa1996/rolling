@@ -96,7 +96,6 @@ function InputTest() {
         options={dummyData}
         selectedOption={selectedOption}
         onSelect={(option) => setSelectedOption(option)}
-        disabled
       />
       <Dropdown
         options={dummyData}

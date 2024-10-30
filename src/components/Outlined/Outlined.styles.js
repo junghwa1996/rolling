@@ -48,12 +48,12 @@ const sizeStyles = {
 };
 
 export const StOutlined = styled.button`
-  ${({ size }) => sizeStyles[size]}
+  ${({ $size }) => sizeStyles[$size]}
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex-direction: ${({ iconPosition }) =>
-    iconPosition === 'right' ? 'row-reverse' : 'row'};
+  flex-direction: ${({ $iconPosition }) =>
+    $iconPosition === 'right' ? 'row-reverse' : 'row'};
 
   ${OutlinedStyles}
 `;

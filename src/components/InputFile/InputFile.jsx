@@ -1,4 +1,3 @@
-import axios from 'axios';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 
@@ -40,8 +39,7 @@ function InputFile({ img, onClick }) {
               onClick={onClick}
               key={index}
               size="s"
-              imageURL={imgItem}
-            ></Profile>
+              imageURL={imgItem}></Profile>
           ))}
         </StyledImgArea>
       </StyledImgSelectorContainer>
