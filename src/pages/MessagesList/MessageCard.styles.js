@@ -126,6 +126,7 @@ const optionType = {
 };
 
 export const SCmessageCardContainer = styled.div`
+  ${cardLayout}
   ${({ type }) => optionType[type]}
   ${({ type }) => type === 'card' && 'cursor: pointer;'}
   background-color: ${tm_color('white')};
