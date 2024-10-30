@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { MSHeaderContainer, MSHeaderPosition } from './MessagesHeader.styles';
 import { StyledTextarea } from './StyledTextarea.styles';
-import { tm_font, tm_color, tm_shadow } from '../../utils/themeUtils';
+import { tm_color } from '../../utils/themeUtils';
 
 // 말줄임 스타일 정의
 const ellipsisStyle = css`

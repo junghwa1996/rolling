@@ -39,9 +39,11 @@ export const StyledInner = styled.div`
   padding: 6.3rem 0;
 
   @media screen and (min-width: 768px) and (max-width: 1248px) {
-    padding: 9.3rem 2.4rem;
+    max-width: 72rem;
+    padding: 9.3rem 0;
   }
   @media screen and (max-width: 767px) {
-    padding: 3.2rem 2rem;
+    max-width: 32rem;
+    padding: 3.2rem 0;
   }
 `;
