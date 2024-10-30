@@ -6,21 +6,25 @@ import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 
 import { styledModal } from './Modal.styles';
+import MessageCard from '../../pages/MessagesList/MessageCard';
 
 //모달이 열렸을 때 페이지의 나머지 요소들을 스크린 리더가 무시하도록 지정 -> 보통 최상위 요소에 지정
 Modal.setAppElement('#root');
 
-function StyledModal({ isOpen, onRequestClose }) {
+function StyledModal({ isOpen, onRequestClose, messageData, onEvent }) {
   return (
     <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       style={styledModal}
       ariaHideApp={false}
+      className="ReactModal__Content"
       contentLabel="Pop up Message"
+      bodyOpenClassName="no-scroll"
+      htmlOpenClassName="no-scroll"
       shouldCloseOnOverlayClick={true} //바깥 부분을 눌렀을 때 팝업창 off
     >
-      추후에 Modal 내부 레이아웃과 관련한 정보들이 들어가게 될 것
+      <MessageCard type="modal" messageData={messageData} onEvent={onEvent} />
     </Modal>
   );
 }
@@ -28,6 +32,11 @@ function StyledModal({ isOpen, onRequestClose }) {
 StyledModal.propTypes = {
   isOpen: PropTypes.bool,
   onRequestClose: PropTypes.func,
+
+  messageData: PropTypes.object,
+  onEvent: PropTypes.shape({
+    close: PropTypes.func,
+  }),
 };
 
 export default StyledModal;

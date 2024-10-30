@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types'; // ANCHOR: 모달 테스트 용
 
 import { getMessagesList } from '../../service/api';
 import MessageCardList from './MessageCardList';
-import MessageCard from './MessageCard';
+import StyledModal from '../../components/Modal/StyledModal';
 
 function MessagesListPage() {
   const [messageData, setMessageData] = useState([]);
-  const [hasModalOpen, setHasModalOpen] = useState(false);
 
-  /* ANCHOR: 모달 테스트 용 */
+  const [hasModalOpen, setHasModalOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
 
   const handleMessageClick = (id) => {
@@ -46,29 +44,15 @@ function MessagesListPage() {
         messageData={messageData}
         onEvent={{ modal: handleMessageClick }}
       />
-      {/* ANCHOR: 모달 테스트 용 */}
       {hasModalOpen && (
-        <ModalDemo
+        <StyledModal
+          isOpen={hasModalOpen}
+          onRequestClose={handleCloseModal}
           messageData={selectedCard}
           onEvent={{ close: handleCloseModal }}
         />
       )}
     </>
-  );
-}
-
-// ANCHOR: 모달 테스트 용
-
-ModalDemo.propTypes = {
-  messageData: PropTypes.object,
-  onEvent: PropTypes.shape({
-    close: PropTypes.func,
-  }),
-};
-
-function ModalDemo({ messageData, onEvent }) {
-  return (
-    <MessageCard type="modal" messageData={messageData} onEvent={onEvent} />
   );
 }
 
