@@ -1,3 +1,4 @@
+// 버튼 컴포넌트
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
