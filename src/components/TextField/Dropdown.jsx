@@ -6,6 +6,7 @@ import { InputStyles, ErrMessageStyles } from './Input.styles';
 import ArrowDown from '../../assets/icon-arrow_down.svg';
 import ArrowTop from '../../assets/icon-arrow_top.svg';
 import Share from '../../assets/icon-share-24.svg';
+import { tm_shadow } from '../../utils/themeUtils';
 
 const DropdownBtn = styled.button`
   display: flex;
@@ -40,7 +41,7 @@ const DropdownList = styled.ul`
   border: 1px solid #ccc;
   border-radius: 8px;
 
-  box-shadow: ${({ theme }) => theme.shadowTheme.shadow0_2_008};
+  box-shadow: ${tm_shadow('shadow0_2_008')};
 `;
 
 const DropdownItem = styled.li`
