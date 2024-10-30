@@ -42,6 +42,7 @@ MessageCardList.propTypes = {
   type: PropTypes.string.isRequired,
   messageData: PropTypes.array.isRequired,
   onEvent: PropTypes.object,
+  children: PropTypes.any,
 };
 
 // STUB - delete 버튼을 클릭했을 때 이벤트 함수 입니다.
@@ -59,7 +60,7 @@ const handleEditClick = (id, event) => {
 };
 
 // NOTE - 해당 컴포넌트의 messageData는 배열로 받아옵니다.
-function MessageCardList({ type, messageData = [], onEvent }) {
+function MessageCardList({ type, messageData = [], onEvent, children }) {
   const [messageDataList, setMessageDataList] = useState([]);
 
   useEffect(() => {
@@ -69,8 +70,8 @@ function MessageCardList({ type, messageData = [], onEvent }) {
     handleLoad();
   }, [messageData]);
 
-  const location = useLocation();
-  const presentPath = location.pathname.split('/');
+  const currentURL = useLocation();
+  const presentPath = currentURL.pathname.split('/');
   const isEdit = presentPath[presentPath.length - 1] === 'message';
 
   const deviceType = useDeviceType();
@@ -85,6 +86,7 @@ function MessageCardList({ type, messageData = [], onEvent }) {
         </StyledButtonArea>
       )}
       <StyledMessageItemArea>
+        {children}
         {messageDataList.map((item) => (
           <StyledMessageCard
             key={item.id}
