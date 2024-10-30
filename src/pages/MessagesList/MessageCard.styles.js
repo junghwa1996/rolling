@@ -76,6 +76,7 @@ const optionType = {
     width: 60rem;
     height: 47.6rem;
     padding-bottom: 4rem;
+    outline: none;
 
     ${MSHeaderContainer} {
       padding: 4rem 4rem 2rem;

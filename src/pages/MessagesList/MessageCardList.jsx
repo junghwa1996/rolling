@@ -25,9 +25,18 @@
  */
 
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import MessageCard from './MessageCard';
+import {
+  StyledCardListContainer,
+  StyledMessageItemArea,
+  StyledMessageCard,
+  StyledButtonArea,
+  StyledButton,
+} from './MessageCardList.styles';
+// import Button from '../../components/Button/Button';
+import useDeviceType from '../../hooks/useDeviceType';
 
 MessageCardList.propTypes = {
   type: PropTypes.string.isRequired,
@@ -60,11 +69,25 @@ function MessageCardList({ type, messageData = [], onEvent }) {
     handleLoad();
   }, [messageData]);
 
+  const location = useLocation();
+  const presentPath = location.pathname.split('/');
+  const isEdit = presentPath[presentPath.length - 1] === 'message';
+
+  const deviceType = useDeviceType();
+
   return (
-    <ul>
-      {messageDataList.map((item) => (
-        <li key={item.id}>
-          <MessageCard
+    <StyledCardListContainer>
+      {isEdit === 'edit' && (
+        <StyledButtonArea>
+          <StyledButton size={deviceType === 'pc' ? 's' : 'xl'} color="primary">
+            삭제하기
+          </StyledButton>
+        </StyledButtonArea>
+      )}
+      <StyledMessageItemArea>
+        {messageDataList.map((item) => (
+          <StyledMessageCard
+            key={item.id}
             type={type}
             messageData={{ ...item }}
             onEvent={{
@@ -73,9 +96,9 @@ function MessageCardList({ type, messageData = [], onEvent }) {
               buttonEdit: (event) => handleEditClick(item.id, event),
             }}
           />
-        </li>
-      ))}
-    </ul>
+        ))}
+      </StyledMessageItemArea>
+    </StyledCardListContainer>
   );
 }
 

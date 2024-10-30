@@ -1,4 +1,4 @@
-import theme from '../styles/theme';
+// import theme from '../styles/theme';
 
 /**
  * 폰트 유틸 함수
@@ -111,7 +111,7 @@ export const tm_shadow =
     }
 
     console.error(
-      `Error: '${inputShadow}'는 유효한 그림자 값 형식이 아닙니다.`
+      `Error: '${inputShadow}'는 유효한 그림자 값 형식이 아닙니다.`,
     );
     return '';
   };
