@@ -82,7 +82,7 @@ export const tm_shadow =
       return '';
     }
     return `
-      ${shadowStyle};
+      box-shadow: ${shadowStyle};
     `;
   };
 
@@ -101,6 +101,6 @@ export const tm_blur =
       return '';
     }
     return `
-    ${blurStyle};
+    backdrop-filter: ${blurStyle};
   `;
   };
