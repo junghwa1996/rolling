@@ -6,18 +6,21 @@ export const StyledMain = styled.main`
   position: relative;
   width: 100%;
   height: 100vh;
+  overflow: auto;
   ${({ $bgColor, $bgImage }) => {
     if ($bgImage) {
       return css`
         background: url(${$bgImage}) no-repeat center center/cover;
         &::before {
-          position: absolute;
+          position: fixed;
           left: 0;
           right: 0;
           top: 0;
           bottom: 0;
           content: '';
           opacity: 0.5;
+          width: 100%;
+          height: 100vh;
           background-color: ${tm_color('black')};
         }
       `;
