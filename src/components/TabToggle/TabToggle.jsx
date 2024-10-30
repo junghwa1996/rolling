@@ -23,7 +23,7 @@ function TabToggle({ tabs = ['컬러', '이미지'], onClick = () => {} }) {
           key={tab}
           isSelected={currentTab === tab}
           onClick={() => handleTabClick(tab)}
-        >
+          type="button">
           {tab}
         </TabButton>
       ))}
