@@ -6,7 +6,6 @@ import { InputStyles, ErrMessageStyles } from './Input.styles';
 import ArrowDown from '../../assets/icon-arrow_down.svg';
 import ArrowTop from '../../assets/icon-arrow_top.svg';
 import Share from '../../assets/icon-share-24.svg';
-import { tm_shadow } from '../../utils/themeUtils';
 
 const DropdownBtn = styled.button`
   display: flex;
@@ -41,8 +40,7 @@ const DropdownList = styled.ul`
   border: 1px solid #ccc;
   border-radius: 8px;
 
-  //box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.08);
-  ${tm_shadow('0,2,12,0.08')}
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.08);
 `;
 
 const DropdownItem = styled.li`
@@ -91,7 +89,8 @@ function Dropdown({
         <DropdownBtn
           onClick={() => setIsOpen(!isOpen)}
           error={error}
-          disabled={disabled}>
+          disabled={disabled}
+        >
           {/* Item 중 가장 처음 값 세팅 */}
           {selectedOption ? selectedOption.value : options[0].value}
           <ArrowImg src={!isOpen ? ArrowDown : ArrowTop} alt="arrow" />
