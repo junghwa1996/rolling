@@ -1,12 +1,5 @@
-import InputTest from '../../components/TextField/InputTest';
-
 function HomePage() {
-  return (
-    <>
-      <p>메인 페이지</p>
-      <InputTest />
-    </>
-  );
+  return <p>메인 페이지</p>;
 }
 
 export default HomePage;
