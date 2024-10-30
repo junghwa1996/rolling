@@ -1,5 +1,3 @@
-// import theme from '../styles/theme';
-
 /**
  * 폰트 유틸 함수
  * @param {*} input 사용방법 ${tm_font('24')} , ${tm_font('24b')}
