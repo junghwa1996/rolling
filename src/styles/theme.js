@@ -161,8 +161,8 @@ const colorTheme = {
 //ex) shadow0_1_02: '0px 1px 3px rgba(0, 0, 0, 0.2)', // x-offset: 1px, y-offset: 3px, opacity: 0.2
 
 const shadowTheme = {
-  shadow0_2_008: '0px 2px 12px rgba(0, 0, 0, 0.08)',
-  shadow0_4_008: '0px 4px 8px rgba(0, 0, 0, 0.08)',
+  shadow0_2_008: '0rem 0.2rem 1.2rem rgba(0, 0, 0, 0.08)',
+  shadow0_4_008: '0rem 0.4rem 0.8rem rgba(0, 0, 0, 0.08)',
 };
 
 //NOTE - blurTheme 이름 명명

@@ -76,14 +76,43 @@ export const tm_color =
 export const tm_shadow =
   (inputShadow) =>
   ({ theme }) => {
+    // 테마에서 그림자 스타일 찾기
     const shadowStyle = theme.shadowTheme[inputShadow];
-    if (!shadowStyle) {
-      console.error(`Error: '${inputShadow}' 그림자 스타일이 테마에 없습니다.`);
-      return '';
+
+    // 그림자 스타일이 테마에 없고, 쉼표로 구분된 숫자 입력값일 경우
+    if (!shadowStyle && inputShadow.includes(',')) {
+      const [xOffset, yOffset, blur, opacity] = inputShadow
+        .split(',')
+        .map(Number);
+
+      if (isNaN(xOffset) || isNaN(yOffset) || isNaN(blur) || isNaN(opacity)) {
+        console.error(
+          `Error: '${inputShadow}'는 유효한 그림자 값 형식이 아닙니다.`,
+        );
+        return '';
+      }
+
+      // RGBA 스타일로 변환하여 기본 그림자 스타일로 반환
+      // 각 값을 0.1로 나누고 소수점 한 자리로 제한하여 box-shadow 스타일로 반환
+      return `
+      box-shadow: ${(xOffset * 0.1).toFixed(1)}rem 
+                  ${(yOffset * 0.1).toFixed(1)}rem 
+                  ${(blur * 0.1).toFixed(1)}rem 
+                  rgba(0, 0, 0, ${opacity.toFixed(1)});
+    `;
     }
-    return `
+
+    // 테마에 있는 경우, 해당 그림자 스타일을 반환
+    if (shadowStyle) {
+      return `
       box-shadow: ${shadowStyle};
     `;
+    }
+
+    console.error(
+      `Error: '${inputShadow}'는 유효한 그림자 값 형식이 아닙니다.`,
+    );
+    return '';
   };
 
 /**
