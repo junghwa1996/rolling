@@ -1,19 +1,25 @@
 /**
- * 메시지 카드 단일 컴포넌트
+ * MessageCard 컴포넌트
  *
- * @param {Object} props - 컴포넌트에 전달되는 props
- * @param {string} props.type - 메시지 카드의 타입 (예: 'card', 'modal', 'edit')(필수)
- * @param {Object} props.MessageData - 메시지 데이터 객체(필수)
- * @param {string} props.MessageData.name - 보낸 사람의 이름
- * @param {string} props.MessageData.badgeValue - 라벨 값 (친구, 가족, 동료, 지인 중 하나)
- * @param {string} props.MessageData.createdAt - 메시지 생성일 (날짜 문자열)
- * @param {string} props.MessageData.imageUrl - 보낸 사람의 프로필 이미지 URL
- * @param {string} props.MessageData.text - 메시지 내용
- * @param {Object} props.onEvent - 이벤트 핸들러 객체
- * @param {Function} props.onEvent.Modal - 모달을 여는 이벤트 핸들러
- * @param {Function} props.onEvent.ButtonDelete - 삭제 버튼 클릭 핸들러
- * @param {Function} props.onEvent.ButtonBtnEdit - 수정 버튼 클릭 핸들러
- * @returns {JSX.Element} 메시지 카드 컴포넌트
+ * 이 컴포넌트는 메시지 카드를 렌더링하는 컴포넌트로,
+ * 'card', 'modal', 'edit' 타입에 따라 각각 다른 UI와 이벤트 동작을 제공합니다.
+ *
+ * @component
+ * @param {string} type - 메시지 카드의 타입 (예: 'card', 'modal', 'edit') *필수값
+ * @param {Object} messageData - 메시지 데이터 객체 *필수값
+ * @param {string} messageData.content - 메시지 내용 (HTML 형식으로 삽입 가능)
+ * @param {string} messageData.createdAt - 메시지 생성일
+ * @param {Object} onEvent - 이벤트 핸들러 객체
+ * @param {Function} onEvent.modal - 모달을 여는 이벤트 핸들러 (카드 타입일 때 동작)
+ * @param {Function} onEvent.close - 모달을 닫는 이벤트 핸들러 (모달 타입일 때 동작)
+ *
+ * @example
+ * <MessageCard
+ *    type="modal"
+ *    messageData={{ content: "<p>Hello World</p>", createdAt: "2024-10-30T01:51:19.832098Z" }}
+ *    onEvent={{ modal: handleModalOpen, close: handleClose }}
+ * />
+ *
  */
 
 import PropTypes from 'prop-types';
@@ -30,36 +36,49 @@ import { StyledLine } from '../../components/Line/Line.styles';
 import dateConversion from '../../utils/dateConversion';
 
 MessageCard.propTypes = {
-  type: PropTypes.oneOf(['card', 'modal', 'edit']).isRequired, // 타입
-
-  MessageData: PropTypes.shape({
-    name: PropTypes.string, // '보내는 이'
-    badgeValue: PropTypes.oneOf(['친구', '가족', '동료', '지인']), // 라벨
-    createdAt: PropTypes.string, // 헤더 생성일
-    imageUrl: PropTypes.string, // 유저 이미지
-    text: PropTypes.string,
-  }).isRequired,
-
+  type: PropTypes.oneOf(['card', 'modal', 'edit']).isRequired,
+  messageData: PropTypes.object.isRequired,
   onEvent: PropTypes.shape({
-    Modal: PropTypes.func,
-    ButtonDelete: PropTypes.func,
-    ButtonBtnEdit: PropTypes.func,
+    modal: PropTypes.func,
   }),
 };
 
-function MessageCard({ MessageData = {}, type = 'card', onEvent = {} }) {
+// NOTE - 해당 컴포넌트의 messageData는 객체로 받아옵니다.
+function MessageCard({
+  type = 'card',
+  messageData = {},
+  onEvent = {
+    modal: () => {},
+    close: () => {},
+  },
+}) {
   return (
-    <SCmessageCardContainer type={type} onClick={() => onEvent.Modal}>
-      <MessagesHeader MessageData={MessageData} type={type} onEvent={onEvent} />
+    <SCmessageCardContainer
+      type={type}
+      // STUB - 타입이 'card' 인 경우에만 모달 이벤트를 실행합니다.
+      onClick={type === 'card' ? onEvent.modal : undefined}>
+      <MessagesHeader
+        messageData={{ ...messageData }}
+        type={type}
+        onEvent={onEvent}
+      />
       <SCMessageCardTextArea>
         <StyledLine />
-        <StyledTextarea>{MessageData.text}</StyledTextarea>
+        <StyledTextarea
+          dangerouslySetInnerHTML={{ __html: messageData.content }}
+        />
+        {/* STUB - 타입이 'modal'이 아닌 경우에 본문 createdAt를 표기 합니다. */}
         {type !== 'modal' && (
           <StyledCreatedAt>
-            {dateConversion(MessageData.createdAt)}
+            {dateConversion(messageData.createdAt)}
           </StyledCreatedAt>
         )}
-        {type === 'modal' && <Button size="m">확인</Button>}
+        {/* STUB - 타입이 'modal'인 경우 닫기 이벤트를 실행합니다. */}
+        {type === 'modal' && (
+          <Button size="m" onClick={onEvent.close}>
+            확인
+          </Button>
+        )}
       </SCMessageCardTextArea>
     </SCmessageCardContainer>
   );
