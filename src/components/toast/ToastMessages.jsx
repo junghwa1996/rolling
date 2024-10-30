@@ -1,5 +1,5 @@
 import React from 'react';
-import { ToastMessage, CustomCloseButton } from './ToastStyles';
+import { ToastMessage, CustomCloseButton } from './Toast.Styles';
 
 const ToastMessages = ({ closeToast }) => {
   return (
