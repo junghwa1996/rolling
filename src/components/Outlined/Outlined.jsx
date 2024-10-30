@@ -35,7 +35,8 @@ function Outlined({
       disabled={disabled}
       onClick={onClick}
       {...(TAG === Link && { to })}
-      type={TAG === 'button' ? type : undefined}>
+      type={TAG === 'button' ? type : undefined}
+    >
       {icon && <IconArea>{icon}</IconArea>}
       {children && <Text>{children}</Text>}
     </StOutlined>
