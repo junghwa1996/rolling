@@ -9,16 +9,68 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { getMessagesList } from '../../service/api';
-import MessageCardList from './MessageCardList';
+import { getMessagesList, getRollingItem } from '../../service/api';
+import { StyledMain, StyledInner } from './MessagesListPage.styles';
 import StyledModal from '../../components/Modal/StyledModal';
 import MessageCardAddItem from './MessageCardAddItem';
+import MessageCardList from './MessageCardList';
 
 function MessagesListPage() {
   const [messageData, setMessageData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const [bgColor, setBgColor] = useState(null);
+  const [bgImage, setBgImage] = useState(null);
 
   const [hasModalOpen, setHasModalOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
+
+  const currentURL = useLocation();
+  const presentPath = currentURL.pathname.split('/');
+  const currentId = presentPath[presentPath.length - 1];
+
+  useEffect(() => {
+    // STUB - 데이터를 요청하는 함수 입니다,
+    const getMessagesListLode = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const res = await getMessagesList(currentId);
+        const { results } = res;
+
+        setMessageData(results);
+      } catch (error) {
+        console.error(
+          '롤링 메세지 리스트를 불러오는데 오류가 발생 했습니다.:',
+          error,
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const getRecipientsList = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const res = await getRollingItem(currentId);
+        const { backgroundColor, backgroundImageURL } = res;
+
+        setBgColor(backgroundColor);
+        setBgImage(backgroundImageURL);
+      } catch (error) {
+        console.error('롤링 리스트를 불러오는데 오류가 발생 했습니다.:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getRecipientsList();
+    getMessagesListLode();
+  }, [currentId]);
+
+  console.log(bgColor, bgImage);
 
   // STUB - 메세지 클릭 시 클릭한 데이터를 모달을 띄어 보여줍니다.
   const handleMessageClick = (id) => {
@@ -34,34 +86,21 @@ function MessagesListPage() {
     setSelectedCard(null);
   };
 
-  useEffect(() => {
-    // STUB - 데이터를 요청하는 함수 입니다,
-    const handleLode = async () => {
-      try {
-        const res = await getMessagesList('9117'); // TODO - 해당 부분은 추후 URL 가져오는 함수를 이용해 변수로 넣어주세요
-        const { results } = res;
-
-        setMessageData(results);
-      } catch (error) {
-        console.error('롤링 리스트를 불러오는데 오류가 발생 했습니다.:', error);
-      }
-    };
-
-    handleLode();
-  }, []);
-
-  const currentURL = useLocation();
-  const presentPath = currentURL.pathname.split('/');
-  const listPageId = presentPath[presentPath.length - 1];
+  if (loading) return <p>로딩 중 입니다</p>;
+  if (error) return <p>에러가 발생했어요!</p>;
 
   return (
     <>
-      <MessageCardList
-        type="card"
-        messageData={messageData}
-        onEvent={{ modal: handleMessageClick }}>
-        <MessageCardAddItem id={listPageId} />
-      </MessageCardList>
+      <StyledMain $bgColor={bgColor} $bgImage={bgImage}>
+        <StyledInner>
+          <MessageCardList
+            type="card"
+            messageData={messageData}
+            onEvent={{ modal: handleMessageClick }}>
+            <MessageCardAddItem id={currentId} />
+          </MessageCardList>
+        </StyledInner>
+      </StyledMain>
       {hasModalOpen && (
         <StyledModal
           isOpen={hasModalOpen}
