@@ -1,3 +1,5 @@
+import theme from '../styles/theme';
+
 /**
  * 폰트 유틸 함수
  * @param {*} input 사용방법 ${tm_font('24')} , ${tm_font('24b')}
@@ -63,4 +65,72 @@ export const tm_color =
 
     // 테마에 일치하는 색상 코드가 있으면 반환, 없으면 그대로 반환
     return flattenColors[inputColor.toLowerCase()] || inputColor;
+  };
+
+/**
+ * 그림자 유틸 함수
+ * ${tm_shadow('shadow0_2_008')}
+ * 사용자가 임의의 수치값(px)을 입력했을 때 thmem에 미리 정해진 값이 아니면 rem 값으로 변환되어 적용
+ * @returns shadowTheme에서 이름을 기반으로 그림자 스타일을 반환합니다.
+ */
+
+export const tm_shadow =
+  (inputShadow) =>
+  ({ theme }) => {
+    // 테마에서 그림자 스타일 찾기
+    const shadowStyle = theme.shadowTheme[inputShadow];
+
+    // 그림자 스타일이 테마에 없고, 쉼표로 구분된 숫자 입력값일 경우
+    if (!shadowStyle && inputShadow.includes(',')) {
+      const [xOffset, yOffset, blur, opacity] = inputShadow
+        .split(',')
+        .map(Number);
+
+      if (isNaN(xOffset) || isNaN(yOffset) || isNaN(blur) || isNaN(opacity)) {
+        console.error(
+          `Error: '${inputShadow}'는 유효한 그림자 값 형식이 아닙니다.`,
+        );
+        return '';
+      }
+
+      // RGBA 스타일로 변환하여 기본 그림자 스타일로 반환
+      // 각 값을 0.1로 나누고 소수점 한 자리로 제한하여 box-shadow 스타일로 반환
+      return `
+      box-shadow: ${(xOffset * 0.1).toFixed(1)}rem 
+                  ${(yOffset * 0.1).toFixed(1)}rem 
+                  ${(blur * 0.1).toFixed(1)}rem 
+                  rgba(0, 0, 0, ${opacity.toFixed(1)});
+    `;
+    }
+
+    // 테마에 있는 경우, 해당 그림자 스타일을 반환
+    if (shadowStyle) {
+      return `
+      box-shadow: ${shadowStyle};
+    `;
+    }
+
+    console.error(
+      `Error: '${inputShadow}'는 유효한 그림자 값 형식이 아닙니다.`
+    );
+    return '';
+  };
+
+/**
+ * 블러 유틸 함수
+ * ${tm_blur('blur04')}
+ * blurTheme에서 이름을 기반으로 블러 스타일을 반환합니다.
+ */
+
+export const tm_blur =
+  (inputBlur) =>
+  ({ theme }) => {
+    const blurStyle = theme.blurTheme[inputBlur];
+    if (!blurStyle) {
+      console.error(`Error: '${inputBlur} 블러 스타일이 테마에 없습니다. `);
+      return '';
+    }
+    return `
+    backdrop-filter: ${blurStyle};
+  `;
   };

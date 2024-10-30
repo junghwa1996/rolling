@@ -156,6 +156,23 @@ const colorTheme = {
   surface: '#F6F8FF',
 };
 
+//NOTE - shadowTheme 이름 명명
+//shadow(x-offset)_(y-offset)_(opacity)
+//ex) shadow0_1_02: '0px 1px 3px rgba(0, 0, 0, 0.2)', // x-offset: 1px, y-offset: 3px, opacity: 0.2
+
+const shadowTheme = {
+  shadow0_2_008: '0rem 0.2rem 1.2rem rgba(0, 0, 0, 0.08)',
+  shadow0_4_008: '0rem 0.4rem 0.8rem rgba(0, 0, 0, 0.08)',
+};
+
+//NOTE - blurTheme 이름 명명
+//blur(rem)
+//ex) blur04: 'blur(0.4rem)'
+
+const blurTheme = {
+  blur04: 'blur(0.4rem)',
+};
+
 //NOTE theme 사용방법
 // ex) ${({ theme }) => theme.fontTheme['20Bold']};
 // ex) color: ${({ theme }) => theme.colorTheme.purple[500]};
@@ -163,6 +180,8 @@ const colorTheme = {
 const theme = {
   fontTheme,
   colorTheme,
+  shadowTheme,
+  blurTheme,
 };
 
 export default theme;
