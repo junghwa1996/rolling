@@ -39,8 +39,7 @@ function InputFile({ img, onClick }) {
               onClick={onClick}
               key={index}
               size="s"
-              imageURL={imgItem}
-            ></Profile>
+              imageURL={imgItem}></Profile>
           ))}
         </StyledImgArea>
       </StyledImgSelectorContainer>
