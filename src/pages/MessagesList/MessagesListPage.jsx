@@ -7,10 +7,12 @@
  */
 
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { getMessagesList } from '../../service/api';
 import MessageCardList from './MessageCardList';
 import StyledModal from '../../components/Modal/StyledModal';
+import MessageCardAddItem from './MessageCardAddItem';
 
 function MessagesListPage() {
   const [messageData, setMessageData] = useState([]);
@@ -48,13 +50,18 @@ function MessagesListPage() {
     handleLode();
   }, []);
 
+  const currentURL = useLocation();
+  const presentPath = currentURL.pathname.split('/');
+  const listPageId = presentPath[presentPath.length - 1];
+
   return (
     <>
       <MessageCardList
         type="card"
         messageData={messageData}
-        onEvent={{ modal: handleMessageClick }}
-      />
+        onEvent={{ modal: handleMessageClick }}>
+        <MessageCardAddItem id={listPageId} />
+      </MessageCardList>
       {hasModalOpen && (
         <StyledModal
           isOpen={hasModalOpen}
