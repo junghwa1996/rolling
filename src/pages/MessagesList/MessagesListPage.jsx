@@ -1,46 +1,29 @@
-import MessageCard from './MessageCard';
+import { useEffect, useState } from 'react';
 
-/* ANCHOR : props 테스트 ------------------ */
-const propsTest = {
-  type: 'card',
-  MessageData: {
-    name: '카드',
-    badgeValue: '친구',
-    createdAt: '2024-10-29T04:59:29.035113Z',
-    imageUrl: '',
-    text: '테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 ',
-  },
-};
-
-const propsTest2 = {
-  type: 'modal',
-  MessageData: {
-    name: '모달',
-    badgeValue: '가족',
-    createdAt: '2024-10-29T04:59:29.035113Z',
-    imageUrl: '',
-    text: '테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 ',
-  },
-};
-
-const propsTest3 = {
-  type: 'edit',
-  MessageData: {
-    name: '수정',
-    badgeValue: '지인',
-    createdAt: '2024-10-29T04:59:29.035113Z',
-    imageUrl: '',
-    text: '테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 테스트 ',
-  },
-};
-/* ---------------------------------------- */
+import { getMessagesList } from '../../service/api';
+import MessageCardList from './MessageCardList';
 
 function MessagesListPage() {
+  const [messageData, setMessageData] = useState([]);
+
+  useEffect(() => {
+    const handleLode = async () => {
+      try {
+        const res = await getMessagesList('9117');
+        const { results } = res;
+
+        setMessageData(results);
+      } catch (error) {
+        console.error('롤링 리스트를 불러오는데 오류가 발생 했습니다.:', error);
+      }
+    };
+
+    handleLode();
+  }, []);
   return (
     <>
-      <MessageCard {...propsTest} />
-      <MessageCard {...propsTest2} />
-      <MessageCard {...propsTest3} />
+      <MessageCardList type="card" messageData={messageData} />
+      <MessageCardList type="modal" messageData={messageData} />
     </>
   );
 }

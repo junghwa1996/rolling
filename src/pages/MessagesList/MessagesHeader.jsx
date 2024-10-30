@@ -16,38 +16,42 @@ import dateConversion from '../../utils/dateConversion';
 
 MessagesHeader.propTypes = {
   type: PropTypes.string,
-  MessageData: PropTypes.object,
-  onEvent: PropTypes.object,
+  messageData: PropTypes.object,
+  onEvent: PropTypes.shape({
+    buttonDelete: PropTypes.func,
+    buttonEdit: PropTypes.func,
+  }),
 };
 
-function MessagesHeader({ type, MessageData, onEvent }) {
+function MessagesHeader({
+  type,
+  messageData = {},
+  onEvent = {
+    buttonDelete: () => {},
+    buttonEdit: () => {},
+  },
+}) {
   return (
     <MSHeaderContainer>
       <MSHeaderPosition>
-        <Profile imageURL={MessageData.imageUrl} />
+        <Profile imageURL={messageData.profileImageURL} />
         <MSHeaderArea>
           <h3>
             <span>From.</span>
-            {MessageData.name}
+            {messageData.sender}
           </h3>
-          <Badge value={MessageData.badgeValue} />
+          <Badge value={messageData.relationship} />
         </MSHeaderArea>
       </MSHeaderPosition>
       {type === 'edit' && (
         <ButtonContainer>
-          <Outlined
-            icon={<UpdateIcon />}
-            onClick={() => onEvent.ButtonBtnEdit}
-          />
-          <Outlined
-            icon={<DeleteIcon />}
-            onClick={() => onEvent.ButtonDelete}
-          />
+          <Outlined icon={<UpdateIcon />} onClick={onEvent.buttonEdit} />
+          <Outlined icon={<DeleteIcon />} onClick={onEvent.buttonDelete} />
         </ButtonContainer>
       )}
       {type === 'modal' && (
         <StyledCreatedAt>
-          {dateConversion(MessageData.createdAt)}
+          {dateConversion(messageData.createdAt)}
         </StyledCreatedAt>
       )}
     </MSHeaderContainer>
