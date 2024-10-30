@@ -70,7 +70,8 @@ export const tm_color =
 /**
  * 그림자 유틸 함수
  * ${tm_shadow('shadow0_2_008')}
- * shadowTheme에서 이름을 기반으로 그림자 스타일을 반환합니다.
+ * 사용자가 임의의 수치값(px)을 입력했을 때 thmem에 미리 정해진 값이 아니면 rem 값으로 변환되어 적용
+ * @returns shadowTheme에서 이름을 기반으로 그림자 스타일을 반환합니다.
  */
 
 export const tm_shadow =
