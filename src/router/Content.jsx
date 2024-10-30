@@ -10,19 +10,6 @@ import RecipientsList from '../pages/RecipientsList/RecipientsListPage';
 
 function Content() {
   return (
-    // <Routes>
-    //   <Route path="/" element={<App />}>
-    //     <Route index element={<HomePage />} />
-    //     <Route path="list">
-    //       <Route index element={<RecipientsList />} />
-    //       <Route path=":id" element={<MessagesListPage />} />
-    //       <Route path=":id/message" element={<MessagesAddPage />} />
-    //       <Route path=":id/edit" element={<MessagesEditPage />} />
-    //     </Route>
-    //     <Route path="post" element={<RecipientsAddPage />} />
-    //     <Route path="*" element={<NotFoundPage />} />
-    //   </Route>
-    // </Routes>
     <Routes>
       <Route path="/">
         <Route index element={<HomePage />} />
