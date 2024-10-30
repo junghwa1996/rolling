@@ -40,7 +40,7 @@ const DropdownList = styled.ul`
   border: 1px solid #ccc;
   border-radius: 8px;
 
-  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.08);
+  box-shadow: ${({ theme }) => theme.shadowTheme.shadow0_2_008};
 `;
 
 const DropdownItem = styled.li`
@@ -89,8 +89,7 @@ function Dropdown({
         <DropdownBtn
           onClick={() => setIsOpen(!isOpen)}
           error={error}
-          disabled={disabled}
-        >
+          disabled={disabled}>
           {/* Item 중 가장 처음 값 세팅 */}
           {selectedOption ? selectedOption.value : options[0].value}
           <ArrowImg src={!isOpen ? ArrowDown : ArrowTop} alt="arrow" />

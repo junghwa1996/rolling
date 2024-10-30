@@ -162,7 +162,7 @@ const colorTheme = {
 
 const shadowTheme = {
   shadow0_2_008: '0px 2px 12px rgba(0, 0, 0, 0.08)',
-  shadow0_4_008: '0px 2px 12px rgba(0, 0, 0, 0.08)',
+  shadow0_4_008: '0px 4px 8px rgba(0, 0, 0, 0.08)',
 };
 
 //NOTE - blurTheme 이름 명명
