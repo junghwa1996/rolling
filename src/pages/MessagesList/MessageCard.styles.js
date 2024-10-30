@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { MSHeaderContainer, MSHeaderPosition } from './MessagesHeader.styles';
 import { StyledTextarea } from './StyledTextarea.styles';
+import { tm_font, tm_color, tm_shadow } from '../../utils/themeUtils';
 
 // 말줄임 스타일 정의
 const ellipsisStyle = css`
@@ -22,7 +23,7 @@ export const SCMessageCardTextArea = styled.div`
   flex-direction: column;
 `;
 
-const cardLayout = css`
+export const cardLayout = css`
   width: 38.4rem;
   height: 28rem;
   padding-bottom: 2.4rem;
@@ -126,7 +127,13 @@ const optionType = {
 
 export const SCmessageCardContainer = styled.div`
   ${({ type }) => optionType[type]}
-  background-color: ${({ theme }) => theme.colorTheme.white};
+  ${({ type }) => type === 'card' && 'cursor: pointer;'}
+  background-color: ${tm_color('white')};
   border-radius: 1.6rem;
   box-shadow: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.08);
+  &:hover {
+    box-shadow: 0 0rem 1rem 0.5rem rgba(0, 0, 0, 0.1);
+    background-color: ${tm_color('white')};
+    transition: all 0.5s;
+  }
 `;
