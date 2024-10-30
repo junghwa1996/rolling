@@ -43,6 +43,7 @@ MessageCard.propTypes = {
   }),
 };
 
+// NOTE - 해당 컴포넌트의 messageData는 객체로 받아옵니다.
 function MessageCard({
   type = 'card',
   messageData = {},
@@ -54,6 +55,7 @@ function MessageCard({
   return (
     <SCmessageCardContainer
       type={type}
+      // STUB - 타입이 'card' 인 경우에만 모달 이벤트를 실행합니다.
       onClick={type === 'card' ? onEvent.modal : undefined}>
       <MessagesHeader
         messageData={{ ...messageData }}
@@ -65,11 +67,13 @@ function MessageCard({
         <StyledTextarea
           dangerouslySetInnerHTML={{ __html: messageData.content }}
         />
+        {/* STUB - 타입이 'modal'이 아닌 경우에 본문 createdAt를 표기 합니다. */}
         {type !== 'modal' && (
           <StyledCreatedAt>
             {dateConversion(messageData.createdAt)}
           </StyledCreatedAt>
         )}
+        {/* STUB - 타입이 'modal'인 경우 닫기 이벤트를 실행합니다. */}
         {type === 'modal' && (
           <Button size="m" onClick={onEvent.close}>
             확인

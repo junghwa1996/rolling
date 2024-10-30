@@ -1,4 +1,4 @@
-//NOTE - Modal 컴포넌트입니다. (react-modal에서 Modal 자체로 이미 사용하기에 StyledModal로 명명)
+//STUB - Modal 컴포넌트입니다. (react-modal에서 Modal 자체로 이미 사용하기에 StyledModal로 명명)
 //isOpen : 모달 창이 표시되어야 하는지 여부를 설명하는 boolean 값
 //onRequestClose : 모달이 닫힐 때 실행될 함수를 의미 -> 사용자가 모달을 닫을 때 실행하고 싶은 함수
 
@@ -24,6 +24,7 @@ function StyledModal({ isOpen, onRequestClose, messageData, onEvent }) {
       htmlOpenClassName="no-scroll"
       shouldCloseOnOverlayClick={true} //바깥 부분을 눌렀을 때 팝업창 off
     >
+      {/* TODO - 기능 확장을 위해 ModelContent 로 추가 개발 예정 */}
       <MessageCard type="modal" messageData={messageData} onEvent={onEvent} />
     </Modal>
   );
