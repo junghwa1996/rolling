@@ -89,8 +89,7 @@ function Dropdown({
         <DropdownBtn
           onClick={() => setIsOpen(!isOpen)}
           error={error}
-          disabled={disabled}
-        >
+          disabled={disabled}>
           {/* Item 중 가장 처음 값 세팅 */}
           {selectedOption ? selectedOption.value : options[0].value}
           <ArrowImg src={!isOpen ? ArrowDown : ArrowTop} alt="arrow" />
