@@ -24,6 +24,7 @@ function MessageCard({
   messageData = {},
   onEvent = {
     modal: () => {},
+    close: () => {},
   },
 }) {
   return (
@@ -45,7 +46,11 @@ function MessageCard({
             {dateConversion(messageData.createdAt)}
           </StyledCreatedAt>
         )}
-        {type === 'modal' && <Button size="m">확인</Button>}
+        {type === 'modal' && (
+          <Button size="m" onClick={onEvent.close}>
+            확인
+          </Button>
+        )}
       </SCMessageCardTextArea>
     </SCmessageCardContainer>
   );

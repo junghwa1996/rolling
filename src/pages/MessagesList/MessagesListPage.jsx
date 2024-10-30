@@ -1,10 +1,28 @@
 import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types'; // ANCHOR: 모달 테스트 용
 
 import { getMessagesList } from '../../service/api';
 import MessageCardList from './MessageCardList';
+import MessageCard from './MessageCard';
 
 function MessagesListPage() {
   const [messageData, setMessageData] = useState([]);
+  const [hasModalOpen, setHasModalOpen] = useState(false);
+
+  /* ANCHOR: 모달 테스트 용 */
+  const [selectedCard, setSelectedCard] = useState(null);
+
+  const handleMessageClick = (id) => {
+    const cardData = messageData.find((card) => card.id === id);
+    setSelectedCard(cardData);
+    setHasModalOpen(true);
+    return console.log(`클릭 카드 ID : ${id}, [모달을 엽니다]`);
+  };
+
+  const handleCloseModal = () => {
+    setHasModalOpen(false);
+    setSelectedCard(null);
+  };
 
   useEffect(() => {
     const handleLode = async () => {
@@ -20,11 +38,37 @@ function MessagesListPage() {
 
     handleLode();
   }, []);
+
   return (
     <>
-      <MessageCardList type="card" messageData={messageData} />
-      <MessageCardList type="modal" messageData={messageData} />
+      <MessageCardList
+        type="card"
+        messageData={messageData}
+        onEvent={{ modal: handleMessageClick }}
+      />
+      {/* ANCHOR: 모달 테스트 용 */}
+      {hasModalOpen && (
+        <ModalDemo
+          messageData={selectedCard}
+          onEvent={{ close: handleCloseModal }}
+        />
+      )}
     </>
+  );
+}
+
+// ANCHOR: 모달 테스트 용
+
+ModalDemo.propTypes = {
+  messageData: PropTypes.object,
+  onEvent: PropTypes.shape({
+    close: PropTypes.func,
+  }),
+};
+
+function ModalDemo({ messageData, onEvent }) {
+  return (
+    <MessageCard type="modal" messageData={messageData} onEvent={onEvent} />
   );
 }
 

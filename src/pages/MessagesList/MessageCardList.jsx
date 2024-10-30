@@ -6,10 +6,8 @@ import MessageCard from './MessageCard';
 MessageCardList.propTypes = {
   type: PropTypes.string.isRequired,
   messageData: PropTypes.array.isRequired,
+  onEvent: PropTypes.object,
 };
-
-const handleMessageClick = (id) =>
-  console.log(`클릭 카드 ID : ${id}, [모달을 엽니다]`);
 
 const handleDeleteClick = (id, event) => {
   event.stopPropagation();
@@ -21,7 +19,7 @@ const handleEditClick = (id, event) => {
   console.log(`클릭 카드 ID : ${id}, [수정 페이지로 이동 합니다]`);
 };
 
-function MessageCardList({ type, messageData = [] }) {
+function MessageCardList({ type, messageData = [], onEvent }) {
   const [messageDataList, setMessageDataList] = useState([]);
 
   useEffect(() => {
@@ -39,7 +37,7 @@ function MessageCardList({ type, messageData = [] }) {
             type={type}
             messageData={{ ...item }}
             onEvent={{
-              modal: () => handleMessageClick(item.id),
+              modal: () => onEvent.modal(item.id),
               buttonDelete: (event) => handleDeleteClick(item.id, event),
               buttonEdit: (event) => handleEditClick(item.id, event),
             }}
