@@ -5,6 +5,7 @@
   "useTabs": false,
   "trailingComma": "all",
   "printWidth": 80,
+  "jsxBracketSameLine": true,
   "bracketSpacing": true,
   "arrowParens": "always",
   "endOfLine": "lf"

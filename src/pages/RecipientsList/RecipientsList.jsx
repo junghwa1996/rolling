@@ -107,8 +107,7 @@ function RecipientsList({ favorite = false }) {
           prevEl: isPC ? '.swiper-button-prev' : undefined,
         }}
         // 디바이스 조건에 따른 터치 스와이프 가능 여부
-        allowTouchMove={isTablet || isMobile}
-      >
+        allowTouchMove={isTablet || isMobile}>
         {rollingList.map((item) => (
           <SwiperSlide key={item.id}>
             <RecipientCard

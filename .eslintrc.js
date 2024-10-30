@@ -28,11 +28,9 @@ module.exports = {
   plugins: ['react', 'import', 'react-hooks'],
 
   rules: {
-    'linebreak-style': ['error', 'unix'],
     'no-unused-vars': 'warn',
     'no-console': 'off',
     eqeqeq: 'error',
-    indent: ['error', 2],
     'arrow-body-style': ['error', 'as-needed'],
     'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
     'react/react-in-jsx-scope': 'off',
@@ -53,7 +51,6 @@ module.exports = {
           ['parent', 'sibling', 'index'],
         ],
         'newlines-between': 'always',
-        alphabetize: { order: 'asc', caseInsensitive: true },
       },
     ],
     'react-hooks/rules-of-hooks': 'error',
