@@ -34,6 +34,7 @@ export const cardLayout = css`
       gap: 1.4rem;
     }
   }
+
   ${SCMessageCardTextArea} {
     padding: 0 2.4rem;
     ${StyledTextarea} {
@@ -126,7 +127,7 @@ const optionType = {
 };
 
 export const SCmessageCardContainer = styled.div`
-  ${cardLayout}
+  ${({ type }) => type !== 'modal' && cardLayout}
   ${({ type }) => optionType[type]}
   ${({ type }) => type === 'card' && 'cursor: pointer;'}
   background-color: ${tm_color('white')};

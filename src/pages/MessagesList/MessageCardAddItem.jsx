@@ -13,6 +13,7 @@ const StyledCardContainer = styled(SCmessageCardContainer)`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0;
 `;
 
 function MessageCardAddItem({ id }) {
