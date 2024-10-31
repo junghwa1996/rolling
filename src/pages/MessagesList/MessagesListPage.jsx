@@ -44,8 +44,10 @@ function MessagesListPage() {
     }),
   );
 
+  // STUB - 모달을 여는 이벤트 입니다. 해당 함수는 MessageCard.jsx 에서 이벤트 발생 시 실행 됩니다.
   const handleMessageClick = (id) => {
-    const cardData = messageData.find((card) => card.id === id);
+    const cardData =
+      messageData?.results?.find((card) => card.id === id) || null;
     setSelectedCard(cardData);
     setHasModalOpen(true);
   };
