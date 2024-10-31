@@ -5,7 +5,7 @@ export const TabToggleArea = styled.div`
   position: relative;
   width: ${({ $tabLength }) => `${12 * $tabLength}rem`};
   height: 4rem;
-  background-color: ${({ theme }) => theme.colorTheme.grayscale[100]};
+  background-color: ${({ theme }) => theme.surface};
   border-radius: 6px;
   overflow: hidden;
 `;
@@ -30,7 +30,7 @@ export const SelectedTab = styled.div`
   left: ${({ $selectedIndex }) => `${12 * $selectedIndex}rem`};
   width: 12rem;
   height: 100%;
-  border: 2px solid ${({ theme }) => theme.colorTheme.purple[600]};
+  border: 2px solid ${color.purple[600]};
   border-radius: 6px;
   background: #fff;
   transition: left 0.3s ease;

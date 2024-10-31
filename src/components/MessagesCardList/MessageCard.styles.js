@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { fontStyles } from '../../styles/fontStyle';
+import { fontStyles } from '../../styles/fontStyles';
 import { MSHeaderContainer, MSHeaderPosition } from './MessagesHeader.styles';
 import { StyledTextarea } from './StyledTextarea.styles';
 

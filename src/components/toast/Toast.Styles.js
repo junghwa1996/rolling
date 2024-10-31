@@ -47,7 +47,7 @@ export const ToastMessage = styled.div`
   font-weight: ${({ theme }) => theme.fontTheme['16Regular'].fontWeight};
   line-height: ${({ theme }) => theme.fontTheme['16Regular'].lineHeight};
   letter-spacing: ${({ theme }) => theme.fontTheme['16Regular'].letterSpacing};
-  color: ${({ theme }) => theme.colorTheme.white};
+  color: ${({ theme }) => theme.whiteText};
   overflow-wrap: break-word;
   white-space: normal;
   flex-grow: 1;

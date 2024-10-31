@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { fontStyles } from '../../styles/fontStyle';
+import { fontStyles } from '../../styles/fontStyles';
 
 const ellipsisStyle = css`
   overflow: hidden;

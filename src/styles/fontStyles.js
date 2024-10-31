@@ -84,14 +84,14 @@ export const fontStyles = {
     letterSpacing: 'var(--ls-default)',
   },
 
-  '24B': {
+  '24b': {
     fontWeight: 'var(--fw-700)',
     fontSize: 'var(--fs-24)',
     lineHeight: 'var(--lh-24)',
     letterSpacing: 'var(--ls-default)',
   },
 
-  '28B': {
+  '28b': {
     fontWeight: 'var(--fw-700)',
     fontSize: 'var(--fs-28)',
     lineHeight: 'var(--lh-28)',

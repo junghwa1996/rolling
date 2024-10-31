@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { fontStyles } from '../../styles/fontStyle';
+import { fontStyles } from '../../styles/fontStyles';
 
 const StyledInputFile = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ const StyledImgSelectorContainer = styled.div`
 
   p {
     ${fontStyles[16]};
-    color: ${({ theme }) => theme.colorTheme.grayscale[500]};
+    color: ${({ theme }) => theme.secondary};
   }
 `;
 

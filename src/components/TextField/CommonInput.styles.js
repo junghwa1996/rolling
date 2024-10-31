@@ -3,7 +3,7 @@
 
 import { css } from 'styled-components';
 
-import { fontStyles } from '../../styles/fontStyle';
+import { fontStyles } from '../../styles/fontStyles';
 
 export const StyledInput = css`
   //border
@@ -16,7 +16,7 @@ export const StyledInput = css`
 
   //color
   color: ${({ theme }) => theme.colorTheme.grayscale['500']};
-  background-color: ${({ theme }) => theme.colorTheme.white};
+  background-color: ${({ theme }) => theme.background};
 
   &:focus {
     outline: none;

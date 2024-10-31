@@ -1,4 +1,4 @@
-export const color = {
+export const colorStyles = {
   purple: {
     100: 'var(--purple-100)',
     200: 'var(--purple-200)',

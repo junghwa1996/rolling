@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { fontStyles } from '../../styles/fontStyle';
+import { fontStyles } from '../../styles/fontStyles';
 
 const directionStyles = {
   row: {
@@ -43,7 +43,7 @@ const StyledTotalMessage = styled.div`
 const StyledMessageCount = styled.p`
   margin: ${({ direction }) => directionStyles[direction].margin};
   ${fontStyles[20]};
-  color: ${({ theme }) => theme.colorTheme.grayscale[700]};
+  color: ${({ theme }) => theme.line};
 
   span {
     ${fontStyles['20b']};
