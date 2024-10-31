@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import ReactQuill from 'react-quill';
+
 import { TextFieldContainer } from './TextField.styles';
 
 const toolbarOptions = [

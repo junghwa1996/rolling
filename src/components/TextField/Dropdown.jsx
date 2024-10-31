@@ -90,6 +90,7 @@ function Dropdown({
 
   return (
     <>
+      {/* icon 버튼인지 보통의 Dropdown인지 구분 */}
       {isIcon ? (
         <IconBtn
           src={Share}
