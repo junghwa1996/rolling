@@ -1,7 +1,9 @@
+import Badge from '../../components/Badge/Badge';
+
 function Homepage() {
   return (
     <div>
-      <h1>홈페이지</h1>
+      <Badge value="친구" />
     </div>
   );
 }

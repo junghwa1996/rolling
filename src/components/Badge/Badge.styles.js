@@ -23,6 +23,7 @@ const BADGE_LIST = (value, theme) => {
 };
 
 export const StBadge = styled.div`
+  border-radius: 2px;
   ${({ value, theme }) => {
     const { background, color } = BADGE_LIST(value, theme);
 
@@ -34,8 +35,7 @@ export const StBadge = styled.div`
       height: 2rem;
       background-color: ${background};
       color: ${color};
-      ${theme.fontTheme['14Regular']}
-      border-radius: 4px;
+      ${theme.fontTheme['14Regular']}      
       text-align: center;
     `;
   }}

@@ -6,8 +6,8 @@ const size = {
 };
 
 export const ProfileArea = styled.div`
-  width: ${(props) => size[props.size]};
-  height: ${(props) => size[props.size]};
+  min-width: ${(props) => size[props.size]};
+  min-height: ${(props) => size[props.size]};
   border-radius: 50%;
   overflow: hidden;
   display: flex;
