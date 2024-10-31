@@ -2,6 +2,10 @@ import styled, { css } from 'styled-components';
 
 import { font } from '../../styles/fontStyles';
 import POLYGON_TRIANGLE from '../../assets/RecipientsList/RecipientsCard/bg-polygon-triangle.svg';
+import TotalMessage from '../../components/TotalMessage/TotalMessage';
+import { StyledMessageCount } from '../../components/TotalMessage/TotalMessage.styles';
+
+export const StyledTotalMessage = styled(TotalMessage)``;
 
 const colorStyle = {
   green: css`
@@ -54,6 +58,28 @@ export const Card = styled.div`
     if (isImage) {
       return css`
         background: url(${$bgImage}) no-repeat center/cover;
+        &::before {
+          position: absolute;
+          content: '';
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.54);
+        }
+        ${CardArea} {
+          h3 {
+            color: var(--white);
+          }
+          ${StyledMessageCount} {
+            color: var(--white);
+            span {
+              color: var(--white);
+            }
+          }
+        }
       `;
     } else {
       return css`
