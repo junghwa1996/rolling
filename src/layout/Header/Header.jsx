@@ -6,24 +6,25 @@ import { HeaderArea, InfoHeader, LogoHeader } from './Header.styles';
 import useDeviceType from '../../hooks/useDeviceType';
 
 Header.propTypes = {
-  hide: PropTypes.bool,
-  two: PropTypes.bool,
+  type: PropTypes.oneOf(['default', 'mobileHidden', 'doubleLine']),
 };
 
-function Header({ hide = false, two = false }) {
-  const VIEW = useDeviceType();
+function Header({ type = 'default' }) {
+  const isDeviceType = useDeviceType();
+  const headerProps = { $isDeviceType: isDeviceType, $type: type };
+
   return (
-    <HeaderArea $VIEW={VIEW} $two={two}>
+    <HeaderArea {...headerProps}>
       <div>
-        <LogoHeader $VIEW={VIEW} $hide={hide} $two={two}>
+        <LogoHeader {...headerProps}>
           <Logo />
         </LogoHeader>
-        <InfoHeader $VIEW={VIEW} $two={two}>
+        <InfoHeader {...headerProps}>
           <div>
             <div>사용자이름컴포넌트</div>
           </div>
           <div>
-            {VIEW === 'pc' && <div>아바타그룹컴포넌트</div>}
+            {isDeviceType === 'pc' && <div>아바타그룹컴포넌트</div>}
             <div>이모지드롭다운컴포넌트</div>
             <div>공유버튼컴포넌트</div>
           </div>

@@ -7,9 +7,9 @@ export const HeaderArea = styled.header`
   border-bottom: 1px solid ${tm_color('#EDEDED')};
   background-color: ${tm_color('white')};
   position: relative;
-  ${({ $two, $VIEW }) =>
-    $two &&
-    $VIEW !== 'mobile' &&
+  ${({ $type, $isDeviceType }) =>
+    $type === 'doubleLine' &&
+    $isDeviceType !== 'mobile' &&
     `
     &::before {
       content: '';
@@ -35,33 +35,42 @@ export const LogoHeader = styled.div`
   width: 100%;
   height: 6.5rem;
   display: flex;
-  padding: ${({ $VIEW }) =>
-    $VIEW === 'tablet' ? '0 24px' : $VIEW === 'mobile' ? '0 15px' : '0'};
-  ${({ $VIEW, $two }) =>
-    $VIEW === 'mobile' &&
-    $two &&
+  padding: ${({ $isDeviceType }) =>
+    $isDeviceType === 'tablet'
+      ? '0 24px'
+      : $isDeviceType === 'mobile'
+        ? '0 15px'
+        : '0'};
+  ${({ $isDeviceType, $type }) =>
+    $isDeviceType === 'mobile' &&
+    $type === 'doubleLine' &&
     `
     display: none;
   `}
-  ${({ $VIEW, $hide }) =>
-    $VIEW === 'mobile' &&
-    $hide &&
+  ${({ $isDeviceType, $type }) =>
+    $isDeviceType === 'mobile' &&
+    $type === 'mobileHidden' &&
     `
     display: none;
   `}
 `;
 
 export const InfoHeader = styled.div`
-  display: ${({ $two }) => ($two ? 'flex' : 'none')};
+  display: ${({ $type }) => ($type === 'doubleLine' ? 'flex' : 'none')};
   justify-content: space-between;
   align-items: center;
   width: 100%;
   position: relative;
-  height: ${({ $VIEW }) => ($VIEW === 'mobile' ? '10.4rem' : '6.8rem')};
-  padding: ${({ $VIEW }) =>
-    $VIEW === 'tablet' ? '0 24px' : $VIEW === 'mobile' ? '0 15px' : '0'};
-  ${({ $VIEW }) =>
-    $VIEW === 'mobile' &&
+  height: ${({ $isDeviceType }) =>
+    $isDeviceType === 'mobile' ? '10.4rem' : '6.8rem'};
+  padding: ${({ $isDeviceType }) =>
+    $isDeviceType === 'tablet'
+      ? '0 24px'
+      : $isDeviceType === 'mobile'
+        ? '0 15px'
+        : '0'};
+  ${({ $isDeviceType }) =>
+    $isDeviceType === 'mobile' &&
     `
     flex-direction: column;
     &::before {
@@ -77,8 +86,8 @@ export const InfoHeader = styled.div`
   `}
 
   > div:first-child {
-    ${({ $VIEW }) =>
-      $VIEW === 'mobile' &&
+    ${({ $isDeviceType }) =>
+      $isDeviceType === 'mobile' &&
       `
     width:100%;
     display:flex;
@@ -91,8 +100,8 @@ export const InfoHeader = styled.div`
     display: flex;
     gap: 30px;
     align-items: center;
-    ${({ $VIEW }) =>
-      $VIEW === 'mobile' &&
+    ${({ $isDeviceType }) =>
+      $isDeviceType === 'mobile' &&
       `
     width:100%;
     flex:1; 

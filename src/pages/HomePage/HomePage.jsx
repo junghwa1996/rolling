@@ -1,5 +1,9 @@
-function HomePage() {
-  return <p>메인 페이지</p>;
+function Homepage() {
+  return (
+    <div>
+      <h1>홈페이지</h1>
+    </div>
+  );
 }
 
-export default HomePage;
+export default Homepage;
