@@ -1,30 +1,33 @@
 import styled from 'styled-components';
 
-const BADGE_LIST = (value, theme) => {
+import { color } from '../../styles/colorStyles';
+import { font } from '../../styles/fontStyles';
+
+const BADGE_LIST = (value) => {
   const colors = {
     친구: {
-      background: theme.colorTheme.blue[100],
-      color: theme.colorTheme.blue[500],
+      background: color.blue[100],
+      color: color.blue[500],
     },
     가족: {
-      background: theme.colorTheme.green[100],
-      color: theme.colorTheme.green[500],
+      background: color.green[100],
+      color: color.green[500],
     },
     동료: {
-      background: '#f7f0ff',
-      color: theme.colorTheme.purple[600],
+      background: color.purple[100],
+      color: color.purple[600],
     },
     지인: {
-      background: theme.colorTheme.beige[100],
-      color: theme.colorTheme.beige[500],
+      background: color.beige[100],
+      color: color.beige[500],
     },
   };
   return colors[value];
 };
 
 export const StBadge = styled.div`
-  ${({ value, theme }) => {
-    const { background, color } = BADGE_LIST(value, theme);
+  ${({ value }) => {
+    const { background, color } = BADGE_LIST(value);
 
     return `
       display: inline-flex;
@@ -34,7 +37,7 @@ export const StBadge = styled.div`
       height: 2rem;
       background-color: ${background};
       color: ${color};
-      ${theme.fontTheme['14Regular']}
+      ${font[14]}
       border-radius: 4px;
       text-align: center;
     `;

@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import { styled } from 'styled-components';
+
+import { font } from '../../styles/fontStyles';
 
 const directionStyles = {
   row: {
@@ -6,7 +8,7 @@ const directionStyles = {
     flexDirection: 'row',
     margin: '0 0 0 1.1rem',
     border: '0.1rem solid #E3E3E3',
-    color: '#555555',
+    color: `#484848`,
   },
   column: {
     alignItems: 'flex-start',
@@ -40,11 +42,12 @@ const StyledTotalMessage = styled.div`
 
 const StyledMessageCount = styled.p`
   margin: ${({ direction }) => directionStyles[direction].margin};
-  ${({ theme }) => theme.fontTheme['18Regular']};
-  color: ${({ theme }) => theme.colorTheme.grayscale[700]};
+  ${font[20]};
+  color: var(--gray-700);
 
   span {
-    ${({ theme }) => theme.fontTheme['18Bold']};
+    ${font['20b']};
+    color: var(--gray-900);
   }
 `;
 
