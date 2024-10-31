@@ -24,5 +24,11 @@ const StyledImgArea = styled.div`
   img {
     cursor: pointer;
   }
+
+  /* 모바일 */
+  @media screen and (max-width: 767px) {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
 `;
 export { StyledInputFile, StyledImgSelectorContainer, StyledImgArea };

@@ -35,8 +35,10 @@ function Input({
   return (
     <InputWrapper>
       <InputBox
+        name={onEvent.name} // onEvent의 name 전달
+        value={onEvent.value} // onEvent의 value 전달
+        onChange={onEvent.onChange} // onEvent의 onChange 전달
         $error={hasError.$error}
-        onEvent={onEvent}
         disabled={disabled}
         placeholder={placeholder}
         onBlur={onBlur}

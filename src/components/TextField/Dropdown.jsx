@@ -81,9 +81,7 @@ function Dropdown({
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const $deviceType = useDeviceType(); //devicehook 사용
-
-  console.log(hasOptions.selectedOption);
+  const deviceType = useDeviceType(); //devicehook 사용
 
   const handleSelect = (option) => {
     hasOptions.onSelect(option); // 선택한 option을 부모로 전달
@@ -121,7 +119,7 @@ function Dropdown({
           onClick={() => setIsOpen(!isOpen)}
           $error={hasError.$error}
           disabled={disabled}
-          deviceType={$deviceType}>
+          $deviceType={deviceType}>
           {/* Item 중 가장 처음 값 세팅 */}
           {hasOptions.selectedOption.label
             ? hasOptions.selectedOption.label

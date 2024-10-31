@@ -19,7 +19,7 @@ function TextField({ onChange }) {
   return (
     <TextFieldContainer>
       <ReactQuill
-        style={{ width: '72rem', height: '22rem' }}
+        style={{ width: '100%', height: '22rem' }}
         modules={modules}
         onChange={onChange}
       />

@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 const size = {
-  s: '5.6rem',
-  m: '8rem',
+  s: '4rem',
+  m: '5.6rem',
+  l: '8rem',
 };
 
 export const ProfileArea = styled.div`
