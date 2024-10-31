@@ -7,6 +7,7 @@ import MessagesListPage from '../pages/MessagesList/MessagesListPage';
 import NotFoundPage from '../pages/NotFound/NotFoundPage';
 import RecipientsAddPage from '../pages/RecipientsAdd/RecipientsAddPage';
 import RecipientsList from '../pages/RecipientsList/RecipientsListPage';
+import Test_MessagesEditPage from '../pages/MessagesEdit/Test_MessagesEditPage';
 
 function Content() {
   return (
@@ -20,7 +21,9 @@ function Content() {
           <Route index element={<RecipientsAddPage />} />
           <Route path=":id" element={<MessagesListPage />} />
           <Route path=":id/message" element={<MessagesAddPage />} />
-          <Route path=":id/edit" element={<MessagesEditPage />} />
+          {/* ANCHOR: 테스트 페이지 확인 후 네이밍 변경해주세요 */}
+          {/* <Route path=":id/edit" element={<MessagesEditPage />} /> */}
+          <Route path=":id/edit" element={<Test_MessagesEditPage />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Route>

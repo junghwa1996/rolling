@@ -1,4 +1,12 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+const ellipsisStyle = css`
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+`;
 
 export const MSHeaderContainer = styled.div`
   display: flex;
@@ -13,7 +21,9 @@ export const MSHeaderArea = styled.div`
   flex-direction: column;
   justify-content: center;
   h3 {
+    ${ellipsisStyle}
     margin-bottom: 0.6rem;
+    width: 90%;
     ${({ theme }) => theme.fontTheme['20Bold']}
     span {
       margin-right: 0.6rem;
