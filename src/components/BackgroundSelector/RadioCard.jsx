@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import { getBackgroundImg } from '../../service/api';
 import { StyleButton, StyledRadioCard } from './RadioCard.styles';
-import CheckedIcon from '../../assets/icon-checked.svg';
 
 const colorData = [
   { value: 'beige', color: '#FFE2AD' },
@@ -16,10 +15,20 @@ function RadioCard({ activeTab, onBackgroundChange }) {
   const [selectedValue, setSelectValue] = useState('beige');
   const [backgroundImgList, setBackgroundImgList] = useState([]);
 
+  // NOTE 이미지 Tab 클릭 시 이미지를 불러오는 속도가 너무 느려서 추가
+  const preloadImage = (imgUrls) => {
+    // imgUrls 배열을 순회하여 각각의 이미지 URL을 처리
+    imgUrls.forEach((url) => {
+      const img = new Image(); // 새로운 Image 객체를 사용하여 이미지를 미리 로드 준비
+      img.src = url; // Image 객체의 src 속성에 URL을 할당하여 이미지를 미리 로드
+    });
+  };
+
   useEffect(() => {
     const handleBackgroundImgLoad = async () => {
       const res = await getBackgroundImg();
       const { imageUrls } = res;
+      preloadImage(imageUrls); // 불러온 이미지는 preloadImage 함수에 전달
       setBackgroundImgList(imageUrls);
     };
 
