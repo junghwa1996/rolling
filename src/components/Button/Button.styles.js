@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { color } from '../../styles/colors';
+import { color } from '../../styles/colorStyles';
 import { font } from '../../styles/fontStyles';
 
 const sizes = {

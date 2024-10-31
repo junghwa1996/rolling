@@ -4,7 +4,7 @@
 import { css } from 'styled-components';
 
 import { font } from '../../styles/fontStyles';
-import { color } from '../../styles/colors';
+import { color } from '../../styles/colorStyles';
 
 export const StyledInput = css`
   //border
