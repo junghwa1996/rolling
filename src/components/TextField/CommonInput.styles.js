@@ -4,13 +4,13 @@
 import { css } from 'styled-components';
 
 import { fontStyles } from '../../styles/fontStyles';
-import { colorStyles } from '../../styles/colorStyles';
+import { color } from '../../styles/colors';
 
 export const StyledInput = css`
   //border
   border-radius: 0.8rem;
   border: 1px solid
-    ${({ $error, theme }) => ($error ? colorStyles.error : theme.border)};
+    ${({ $error, theme }) => ($error ? color.error : theme.border)};
 
   //font
   ${fontStyles[16]}
@@ -42,7 +42,7 @@ export const StyledInput = css`
 `;
 
 export const StyledErrMessage = css`
-  color: ${colorStyles.error};
+  color: ${color.error};
 
   ${fontStyles[12]};
 `;

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { colorStyles } from '../../styles/colorStyles';
+import { color } from '../../styles/colors';
 import { fontStyles } from '../../styles/fontStyles';
 
 const sizes = {
@@ -32,18 +32,18 @@ const sizes = {
 const colors = {
   primary: css`
     border: none;
-    background-color: ${colorStyles.purple[600]};
+    background-color: ${color.purple[600]};
     color: ${({ theme }) => theme.whiteText};
 
     &:hover {
-      background-color: ${colorStyles.purple[700]};
+      background-color: ${color.purple[700]};
     }
     &:active,
     &:focus:active {
-      background-color: ${colorStyles.purple[800]};
+      background-color: ${color.purple[800]};
     }
     &:focus {
-      background-color: ${colorStyles.purple[800]};
+      background-color: ${color.purple[800]};
       outline: none;
     }
     &:disabled {
@@ -52,23 +52,23 @@ const colors = {
     }
   `,
   secondary: css`
-    border: 1px solid ${colorStyles.purple[600]};
+    border: 1px solid ${color.purple[600]};
     background-color: ${({ theme }) => theme.background};
-    color: ${colorStyles.purple[700]};
+    color: ${color.purple[700]};
 
     &:hover {
-      border-color: ${colorStyles.purple[700]};
+      border-color: ${color.purple[700]};
       background-color: #f7f0ff;
-      color: ${colorStyles.purple[600]};
+      color: ${color.purple[600]};
     }
     &:active,
     &:focus:active {
-      border-color: ${colorStyles.purple[800]};
+      border-color: ${color.purple[800]};
       background-color: #f7f0ff;
-      color: ${colorStyles.purple[600]};
+      color: ${color.purple[600]};
     }
     &:focus {
-      border-color: ${colorStyles.purple[800]};
+      border-color: ${color.purple[800]};
       background-color: ${({ theme }) => theme.background};
       color: #9747ff;
       outline: none;

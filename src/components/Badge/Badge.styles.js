@@ -1,25 +1,25 @@
 import styled from 'styled-components';
 
-import { colorStyles } from '../../styles/colorStyles';
+import { color } from '../../styles/colors';
 import { fontStyles } from '../../styles/fontStyles';
 
 const BADGE_LIST = (value) => {
   const colors = {
     친구: {
-      background: colorStyles.blue[100],
-      color: colorStyles.blue[500],
+      background: color.blue[100],
+      color: color.blue[500],
     },
     가족: {
-      background: colorStyles.green[100],
-      color: colorStyles.green[500],
+      background: color.green[100],
+      color: color.green[500],
     },
     동료: {
-      background: colorStyles.purple[100],
-      color: colorStyles.purple[600],
+      background: color.purple[100],
+      color: color.purple[600],
     },
     지인: {
-      background: colorStyles.beige[100],
-      color: colorStyles.beige[500],
+      background: color.beige[100],
+      color: color.beige[500],
     },
   };
   return colors[value];
