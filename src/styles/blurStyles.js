@@ -1,1 +1,1 @@
-export const blurStyles = 'blur(0.4rem)';
+export const blur = 'blur(0.4rem)';
