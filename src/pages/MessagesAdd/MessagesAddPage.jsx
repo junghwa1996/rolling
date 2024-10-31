@@ -133,16 +133,18 @@ function MessagesAddPage() {
       <form onSubmit={handlePostSubmit}>
         <StyledLabel>Form.</StyledLabel>
         <Input
-          // NOTE 콘솔에러 : 조건부로 전달하여 false일 때 DOM에 전달되지 않도록
-          error={error || undefined}
-          errMessage={errMessage}
-          name="sender"
-          value={value}
-          onChange={onChange}
+          hasError={{
+            $error: error || false,
+            errMessage: errMessage || '값을 입력해주세요.',
+          }}
+          onEvent={{
+            name: 'sender',
+            value: value,
+            onChange: onChange,
+          }}
           placeholder="이름을 입력해 주세요."
           onBlur={onBlur}
         />
-
         <StyledLabel>프로필 이미지</StyledLabel>
         <InputFile
           name="profileImageURL"
@@ -152,16 +154,17 @@ function MessagesAddPage() {
 
         <StyledLabel>상대와의 관계</StyledLabel>
         <Dropdown
-          options={relationshipData}
-          selectedOption={{
-            value: values.relationship,
+          hasOptions={{
+            options: relationshipData,
+            selectedOption: {
+              value: values.relationship,
+            },
+            onSelect: (option) =>
+              setValues((prevValues) => ({
+                ...prevValues,
+                relationship: option.value,
+              })),
           }}
-          onSelect={(option) =>
-            setValues((prevValues) => ({
-              ...prevValues,
-              relationship: option.value,
-            }))
-          }
         />
 
         <StyledLabel>내용을 입력해 주세요.</StyledLabel>
@@ -169,16 +172,17 @@ function MessagesAddPage() {
 
         <StyledLabel>폰트 선택</StyledLabel>
         <Dropdown
-          options={fontData}
-          selectedOption={{
-            value: values.font,
+          hasOptions={{
+            options: fontData,
+            selectedOption: {
+              value: values.font,
+            },
+            onSelect: (option) =>
+              setValues((prevValues) => ({
+                ...prevValues,
+                font: option.value,
+              })),
           }}
-          onSelect={(option) =>
-            setValues((prevValues) => ({
-              ...prevValues,
-              font: option.value,
-            }))
-          }
         />
 
         {/* 이름, 내용을 입력하지 않으면 disabled */}

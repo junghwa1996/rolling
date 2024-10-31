@@ -10,7 +10,7 @@ const StyledImgSelectorContainer = styled.div`
   flex-direction: column;
   margin-left: 2.6rem;
 
-  > p {
+  p {
     ${({ theme }) => theme.fontTheme['16Regular']}
     color: ${({ theme }) => theme.colorTheme.grayscale[500]}
   }
@@ -23,6 +23,12 @@ const StyledImgArea = styled.div`
 
   img {
     cursor: pointer;
+  }
+
+  /* 모바일 */
+  @media screen and (max-width: 767px) {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
   }
 `;
 export { StyledInputFile, StyledImgSelectorContainer, StyledImgArea };
