@@ -25,14 +25,23 @@
  */
 
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import MessageCard from './MessageCard';
+import {
+  StyledCardListContainer,
+  StyledMessageItemArea,
+  StyledMessageCard,
+  StyledButtonArea,
+  StyledButton,
+} from './MessageCardList.styles';
+import useDeviceType from '../../hooks/useDeviceType';
 
 MessageCardList.propTypes = {
   type: PropTypes.string.isRequired,
   messageData: PropTypes.array.isRequired,
   onEvent: PropTypes.object,
+  children: PropTypes.any,
 };
 
 // STUB - delete 버튼을 클릭했을 때 이벤트 함수 입니다.
@@ -49,8 +58,8 @@ const handleEditClick = (id, event) => {
   console.log(`클릭 카드 ID : ${id}, [수정 페이지로 이동 합니다]`);
 };
 
-// NOTE - 해당 컴포넌트의 messageData는 배열로 받아옵니다.
-function MessageCardList({ type, messageData = [], onEvent }) {
+// STUB - 해당 컴포넌트의 messageData는 배열로 받아옵니다.
+function MessageCardList({ type, messageData = [], onEvent, children }) {
   const [messageDataList, setMessageDataList] = useState([]);
 
   useEffect(() => {
@@ -60,11 +69,26 @@ function MessageCardList({ type, messageData = [], onEvent }) {
     handleLoad();
   }, [messageData]);
 
+  const currentURL = useLocation();
+  const presentPath = currentURL.pathname.split('/');
+  const isEdit = presentPath[presentPath.length - 1] === 'message';
+
+  const deviceType = useDeviceType();
+
   return (
-    <ul>
-      {messageDataList.map((item) => (
-        <li key={item.id}>
-          <MessageCard
+    <StyledCardListContainer>
+      {isEdit === 'edit' && (
+        <StyledButtonArea>
+          <StyledButton size={deviceType === 'pc' ? 's' : 'xl'} color="primary">
+            삭제하기
+          </StyledButton>
+        </StyledButtonArea>
+      )}
+      <StyledMessageItemArea>
+        {children}
+        {messageDataList.map((item) => (
+          <StyledMessageCard
+            key={item.id}
             type={type}
             messageData={{ ...item }}
             onEvent={{
@@ -73,9 +97,9 @@ function MessageCardList({ type, messageData = [], onEvent }) {
               buttonEdit: (event) => handleEditClick(item.id, event),
             }}
           />
-        </li>
-      ))}
-    </ul>
+        ))}
+      </StyledMessageItemArea>
+    </StyledCardListContainer>
   );
 }
 
