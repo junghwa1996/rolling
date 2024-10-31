@@ -203,20 +203,6 @@ h6 {
     sans-serif;
 }
 
-/* 태블릿 */
-@media screen and (min-width: 768px) and (max-width: 1248px) {
-  html {
-    font-size: 1.3021vw;
-  }
-}
-
-/* 모바일 */
-@media screen and (max-width: 767px) {
-  html {
-    font-size: 2.7778vw;
-  }
-}
-
 
 //SECTION - normalize.css
 
@@ -430,6 +416,47 @@ button {
 
 img{
   width: 100%;
+}
+
+/* 모달 공통 스타일 */
+.ReactModal__Content {
+  width: 60rem;
+    height: 47.6rem;
+  border-radius: 1.6rem;
+}
+
+.ReactModal__Content:focus-visible{
+  outline: none !important;
+}
+
+@media screen and (max-width: 767px) {
+  .ReactModal__Content {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+  }
+}
+
+.ReactModal__Overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* 태블릿 */
+@media screen and (min-width: 768px) and (max-width: 1248px) {
+  html {
+    font-size: 1.3021vw;
+  }
+}
+
+/* 모바일 */
+@media screen and (max-width: 767px) {
+  html {
+    font-size: 2.7778vw;
+  }
+}
+
+.no-scroll {
+  overflow: hidden;
 }
 
 

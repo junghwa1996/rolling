@@ -1,3 +1,4 @@
+// 인풋 파일
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 

@@ -1,3 +1,4 @@
+// 버튼 컴포넌트
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -33,7 +34,7 @@ function Button({
       as={TAG}
       {...(TAG === Link && { to })}
       type={TAG === 'button' ? type : undefined}>
-      {children}
+      {children || '텍스트'}
     </StButton>
   );
 }
