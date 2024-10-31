@@ -1,6 +1,6 @@
 /**
  * 단일 Input 컴포넌트
- * 
+ *
  * 이 컴포넌트는 텍스트 입력을 위한 기본 `Input` UI를 렌더링하며, 사용자가 입력한 값을 실시간으로 업데이트하거나
  * 에러 메시지를 표시할 수 있습니다. 컴포넌트가 비활성화 상태일 때와 에러 상태일 때 UI와 이벤트 동작이 다르게 나타납니다.
  *
@@ -15,7 +15,7 @@
  * @param {boolean} disabled - Input 비활성화 여부
  * @param {string} placeholder - Input의 기본 placeholder 텍스트
  * @param {Function} onBlur - Input이 blur될 때 호출되는 이벤트 핸들러
- * 
+ *
  * @example
  * <Input
  *    onEvent={{
@@ -29,7 +29,6 @@
  *    onBlur={handleBlur}
  * />
  */
-
 
 import PropTypes from 'prop-types';
 

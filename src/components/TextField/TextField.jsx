@@ -1,7 +1,10 @@
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import ReactQuill from 'react-quill';
 
-import { TextFieldContainer } from './TextField.styles';
+const TextFieldContainer = styled.div`
+  height: 26rem;
+`;
 
 const toolbarOptions = [
   ['bold', 'italic', 'underline', 'strike'],
