@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components';
 
+import { font } from '../../styles/fontStyles';
 import POLYGON_TRIANGLE from '../../assets/RecipientsList/RecipientsCard/bg-polygon-triangle.svg';
 
-const colorStyles = {
+const colorStyle = {
   green: css`
     width: 33.6rem;
     height: 16.9rem;
@@ -34,7 +35,7 @@ const colorStyles = {
   `,
 };
 
-const colorShape = ($bgColor) => colorStyles[$bgColor] ?? '';
+const colorShape = ($bgColor) => colorStyle[$bgColor] ?? '';
 
 export const Card = styled.div`
   position: relative;
@@ -44,11 +45,11 @@ export const Card = styled.div`
   padding: 3rem 2.4rem 2rem;
   width: 27.5rem;
   height: 26rem;
-  color: ${({ theme }) => theme.colorTheme.grayscale[900]};
+  color: ${({ theme }) => theme.text};
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 1.6rem;
   box-shadow: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.08);
-  ${({ theme, $bgColor, $bgImage }) => {
+  ${({ $bgColor, $bgImage }) => {
     const isImage = $bgImage !== null;
     if (isImage) {
       return css`
@@ -56,13 +57,13 @@ export const Card = styled.div`
       `;
     } else {
       return css`
-        background-color: ${theme.colorTheme[$bgColor]?.[200] ?? 'none'};
+        background-color: var(--${$bgColor}-200, none);
         &::before {
           position: absolute;
           content: '';
           z-index: 1;
-          ${({ theme, $bgColor }) => css`
-            background-color: ${theme.colorTheme[$bgColor]?.[300] ?? 'none'};
+          ${({ $bgColor }) => css`
+            background-color: var(--${$bgColor}-300, none);
           `}
           ${({ $bgColor }) => colorShape($bgColor)};
         }
@@ -81,7 +82,8 @@ export const CardArea = styled.div`
     word-break: break-all;
     margin-bottom: 1.2rem;
     text-overflow: ellipsis;
-    ${({ theme }) => theme.fontTheme['24Bold']}
+    ${font['24b']};
+    color: var(--gray-900);
   }
 `;
 

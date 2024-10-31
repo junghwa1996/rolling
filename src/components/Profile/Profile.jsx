@@ -6,7 +6,7 @@ import DEFAULT_IMAGE from '../../assets/default_profile.svg';
 
 Profile.propTypes = {
   imageURL: PropTypes.string,
-  size: PropTypes.oneOf(['s', 'm']),
+  size: PropTypes.oneOf(['s', 'm', 'l']),
   onClick: PropTypes.func,
 };
 

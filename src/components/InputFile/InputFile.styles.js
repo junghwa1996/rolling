@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { font } from '../../styles/fontStyles';
+
 const StyledInputFile = styled.div`
   display: flex;
   align-items: center;
@@ -10,9 +12,9 @@ const StyledImgSelectorContainer = styled.div`
   flex-direction: column;
   margin-left: 2.6rem;
 
-  > p {
-    ${({ theme }) => theme.fontTheme['16Regular']}
-    color: ${({ theme }) => theme.colorTheme.grayscale[500]}
+  p {
+    ${font[16]};
+    color: ${({ theme }) => theme.secondary};
   }
 `;
 
@@ -23,6 +25,12 @@ const StyledImgArea = styled.div`
 
   img {
     cursor: pointer;
+  }
+
+  /* 모바일 */
+  @media screen and (max-width: 767px) {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
   }
 `;
 export { StyledInputFile, StyledImgSelectorContainer, StyledImgArea };

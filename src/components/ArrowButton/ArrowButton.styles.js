@@ -5,7 +5,7 @@ export const ArrowArea = styled.button`
   height: 4rem;
   border-radius: 50%;
   background-color: white;
-  border: 1px solid ${({ theme }) => theme.colorTheme.grayscale[200]};
+  border: 1px solid ${({ theme }) => theme.line};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,8 +22,8 @@ export const ArrowArea = styled.button`
 export const Arrow = styled.div`
   width: 1rem;
   height: 1rem;
-  border-right: 2px solid ${({ theme }) => theme.colorTheme.black};
-  border-bottom: 2px solid ${({ theme }) => theme.colorTheme.black};
+  border-right: 2px solid var(--gray-700);
+  border-bottom: 2px solid var(--gray-700);
 
   ${(props) =>
     props.direction === 'left'
