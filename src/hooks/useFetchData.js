@@ -11,6 +11,8 @@
  */
 import { useEffect, useState } from 'react';
 
+// STUB - GET 요청 커스텀 훅. res 받은 데이터 중 원하는 데이터만 뽑을 수 있음
+// FIXME - ESLint 의존성 배열 경고는 무시해주세요 추후 수정하겠습니다. (수정 할 경우 무한루프 발생)
 const useFetchData = (apiFunction, dependencies = [], processData) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
