@@ -13,7 +13,7 @@ import {
   StyledMain,
   StyledInner,
 } from '../MessagesList/MessagesListPage.styles';
-import MessageCardList from '../MessagesList/MessageCardList';
+import MessageCardList from '../../components/MessagesCardList/MessageCardList';
 import useFetchData from '../../hooks/useFetchData';
 
 function MessagesListPage() {

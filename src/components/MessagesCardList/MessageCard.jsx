@@ -31,8 +31,8 @@ import {
 import MessagesHeader from './MessagesHeader';
 import { StyledCreatedAt } from './StyledCreatedAt.styles';
 import { StyledTextarea } from './StyledTextarea.styles';
-import Button from '../../components/Button/Button';
-import { StyledLine } from '../../components/Line/Line.styles';
+import Button from '../Button/Button';
+import { StyledLine } from '../Line/Line.styles';
 import dateConversion from '../../utils/dateConversion';
 
 MessageCard.propTypes = {

@@ -12,8 +12,8 @@ import { useLocation } from 'react-router-dom';
 import { getMessagesList, getRollingItem } from '../../service/api';
 import { StyledMain, StyledInner } from './MessagesListPage.styles';
 import StyledModal from '../../components/Modal/StyledModal';
-import MessageCardAddItem from './MessageCardAddItem';
-import MessageCardList from './MessageCardList';
+import MessageCardAddItem from '../../components/MessagesCardList/MessageCardAddItem';
+import MessageCardList from '../../components/MessagesCardList/MessageCardList';
 import useFetchData from '../../hooks/useFetchData';
 
 function MessagesListPage() {
