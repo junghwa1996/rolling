@@ -26,6 +26,7 @@ const BADGE_LIST = (value) => {
 };
 
 export const StBadge = styled.div`
+  border-radius: 2px;
   ${({ value }) => {
     const { background, color } = BADGE_LIST(value);
 
@@ -38,7 +39,6 @@ export const StBadge = styled.div`
       background-color: ${background};
       color: ${color};
       ${font[14]}
-      border-radius: 4px;
       text-align: center;
     `;
   }}
