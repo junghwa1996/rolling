@@ -75,7 +75,10 @@ function MessagesAddPage() {
 
   // 보내는 사람 이름, 내용이 입력되지 않았을 경우, 생성하기 버튼 disabled
   const isValidation =
-    error || values.content === '' || values.content === '<p><br></p>';
+    !value ||
+    error ||
+    values.content === '' ||
+    values.content === '<p><br></p>';
   // 조건에 values.content === '<p><br></p>' 추가 이유
   // 텍스트 에디터에 내용을 입력 후, 내용을 지우면 텍스트 에디터 value가 빈 값이 아닌 <p><br></p>가 남게 되어 이 부분도 조건에 추가
 
