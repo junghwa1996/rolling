@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
+import { font } from '../../styles/fontStyles';
 import { StyledInput, StyledErrMessage } from './CommonInput.styles';
-import { tm_color, tm_font, tm_shadow } from '../../utils/themeUtils';
+import { shadowStyles } from '../../styles/shadowStyles';
 
 export const DropdownBtn = styled.button`
   display: flex;
@@ -41,8 +42,8 @@ export const DropdownList = styled.ul`
   border: 0.1rem solid #ccc;
   border-radius: 0.8rem;
 
-  background-color: ${tm_color('white')};
-  ${tm_shadow('shadow0_2_008')}
+  background-color: ${({ theme }) => theme.background};
+  ${shadowStyles['low']}
 
   cursor: pointer;
 `;
@@ -51,11 +52,11 @@ export const DropdownItem = styled.li`
   padding: 1.2rem 1.6rem;
   width: ${({ isIcon }) => (isIcon ? '13.8rem' : '31.6rem')};
 
-  ${tm_font('16')}
+  ${font[16]}
   cursor: pointer;
 
   &:hover {
-    background-color: ${tm_color('grayscale100')};
+    background-color: ${({ theme }) => theme.surface};
   }
 `;
 

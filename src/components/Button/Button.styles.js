@@ -1,79 +1,82 @@
 import styled, { css } from 'styled-components';
 
+import { color } from '../../styles/colors';
+import { font } from '../../styles/fontStyles';
+
 const sizes = {
   s: css`
     padding: 13px 20px;
     border-radius: 6px;
-    ${({ theme }) => theme.fontTheme[`16Regular`]};
+    ${font[16]}
   `,
   m: css`
     width: 12rem;
     height: 4rem;
     border-radius: 6px;
-    ${({ theme }) => theme.fontTheme[`16Regular`]};
+    ${font[16]}
   `,
   l: css`
     width: 28rem;
     height: 5.6rem;
     border-radius: 12px;
-    ${({ theme }) => theme.fontTheme[`18Bold`]};
+    ${font['18b']};
   `,
   xl: css`
     width: 100%;
     height: 5.6rem;
     border-radius: 12px;
-    ${({ theme }) => theme.fontTheme[`18Bold`]};
+    ${font['18b']};
   `,
 };
 
 const colors = {
   primary: css`
     border: none;
-    background-color: ${({ theme }) => theme.colorTheme.purple[600]};
-    color: ${({ theme }) => theme.colorTheme.white};
+    background-color: ${color.purple[600]};
+    color: ${({ theme }) => theme.whiteText};
 
     &:hover {
-      background-color: ${({ theme }) => theme.colorTheme.purple[700]};
+      background-color: ${color.purple[700]};
     }
     &:active,
     &:focus:active {
-      background-color: ${({ theme }) => theme.colorTheme.purple[800]};
+      background-color: ${color.purple[800]};
     }
     &:focus {
-      background-color: ${({ theme }) => theme.colorTheme.purple[800]};
+      background-color: ${color.purple[800]};
       outline: none;
     }
     &:disabled {
-      background-color: ${({ theme }) => theme.colorTheme.grayscale[300]};
+      background-color: ${({ theme }) => theme.border};
       cursor: not-allowed;
     }
   `,
   secondary: css`
-    border: 1px solid ${({ theme }) => theme.colorTheme.purple[600]};
-    background-color: ${({ theme }) => theme.colorTheme.white};
-    color: ${({ theme }) => theme.colorTheme.purple[700]};
+    border: 1px solid ${color.purple[600]};
+    background-color: ${({ theme }) => theme.background};
+    color: ${color.purple[700]};
 
     &:hover {
-      border-color: ${({ theme }) => theme.colorTheme.purple[700]};
+      border-color: ${color.purple[700]};
       background-color: #f7f0ff;
-      color: ${({ theme }) => theme.colorTheme.purple[600]};
+      color: ${color.purple[600]};
     }
     &:active,
     &:focus:active {
-      border-color: ${({ theme }) => theme.colorTheme.purple[800]};
+      border-color: ${color.purple[800]};
       background-color: #f7f0ff;
-      color: ${({ theme }) => theme.colorTheme.purple[600]};
+      color: ${color.purple[600]};
     }
     &:focus {
-      border-color: ${({ theme }) => theme.colorTheme.purple[800]};
-      background-color: ${({ theme }) => theme.colorTheme.white};
+      border-color: ${color.purple[800]};
+      background-color: ${({ theme }) => theme.background};
       color: #9747ff;
       outline: none;
     }
     &:disabled {
       border: none;
-      background-color: ${({ theme }) => theme.colorTheme.grayscale[300]};
-      color: ${({ theme }) => theme.colorTheme.white};
+      background-color: ${({ theme }) => theme.border};
+      color: ${({ theme }) => theme.whiteText};
       cursor: not-allowed;
     }
   `,

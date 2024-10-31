@@ -14,7 +14,7 @@ export const ProfileArea = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid ${({ theme }) => theme.colorTheme.grayscale[200]};
+  border: 1px solid ${({ theme }) => theme.line};
   img {
     width: 100%;
     height: 100%;
