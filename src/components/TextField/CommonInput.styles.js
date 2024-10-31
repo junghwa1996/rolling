@@ -3,6 +3,8 @@
 
 import { css } from 'styled-components';
 
+import { fontStyles } from '../../styles/fontStyle';
+
 export const StyledInput = css`
   //border
   border-radius: 0.8rem;
@@ -10,7 +12,7 @@ export const StyledInput = css`
     ${({ $error, theme }) => ($error ? theme.colorTheme.error : '#CCCCCC')};
 
   //font
-  ${({ theme }) => theme.fontTheme['16Regular']}
+  ${fontStyles[16]}
 
   //color
   color: ${({ theme }) => theme.colorTheme.grayscale['500']};
@@ -41,5 +43,5 @@ export const StyledInput = css`
 export const StyledErrMessage = css`
   color: ${({ theme }) => theme.colorTheme.error};
 
-  ${({ theme }) => theme.fontTheme['12Regular']};
+  ${fontStyles[12]};
 `;

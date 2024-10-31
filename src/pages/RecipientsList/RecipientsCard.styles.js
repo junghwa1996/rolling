@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 
+import { fontStyles } from '../../styles/fontStyle';
 import POLYGON_TRIANGLE from '../../assets/RecipientsList/RecipientsCard/bg-polygon-triangle.svg';
 
 const colorStyles = {
@@ -81,7 +82,7 @@ export const CardArea = styled.div`
     word-break: break-all;
     margin-bottom: 1.2rem;
     text-overflow: ellipsis;
-    ${({ theme }) => theme.fontTheme['24Bold']}
+    ${fontStyles['24b']};
   }
 `;
 

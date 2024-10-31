@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
+import { fontStyles } from '../../styles/fontStyle';
+
 export const StyledTextarea = styled.p`
   word-break: break-all;
   border: none;
   outline: none;
   resize: none;
 
-  ${({ theme }) => theme.fontTheme['18Regular']}
+  ${fontStyles[20]};
 
   /* 스크롤바 스타일 */
   &::-webkit-scrollbar {

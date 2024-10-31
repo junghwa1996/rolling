@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { fontStyles } from '../../styles/fontStyle';
 import { tm_color, tm_font } from '../../utils/themeUtils';
 
 const StyledMessagesAddPage = styled.div`
@@ -19,7 +20,7 @@ const StyledMessagesAddPage = styled.div`
 
 const StyledLabel = styled.label`
   display: inline-block;
-  ${({ theme }) => theme.fontTheme['24Bold']}
+  ${fontStyles['24b']};
   margin: 5rem 0 1.2rem;
 
   span {

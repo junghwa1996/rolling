@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { fontStyles } from '../../styles/fontStyle';
+
 const directionStyles = {
   row: {
     alignItems: 'center',
@@ -40,11 +42,11 @@ const StyledTotalMessage = styled.div`
 
 const StyledMessageCount = styled.p`
   margin: ${({ direction }) => directionStyles[direction].margin};
-  ${({ theme }) => theme.fontTheme['18Regular']};
+  ${fontStyles[20]};
   color: ${({ theme }) => theme.colorTheme.grayscale[700]};
 
   span {
-    ${({ theme }) => theme.fontTheme['18Bold']};
+    ${fontStyles['20b']};
   }
 `;
 
