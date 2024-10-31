@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
+import { color } from '../../styles/color';
 import { getBackgroundImg } from '../../service/api';
 import { StyleButton, StyledRadioCard } from './RadioCard.styles';
 import CheckedIcon from '../../assets/icon-checked.svg';
 
 const colorData = [
-  { value: 'beige', color: '#FFE2AD' },
-  { value: 'purple', color: '#ECD9FF' },
-  { value: 'blue', color: '#B1E4FF' },
-  { value: 'green', color: '#D0F5C3' },
+  { value: 'beige', color: color.beige[200] },
+  { value: 'purple', color: color.purple[200] },
+  { value: 'blue', color: color.blue[200] },
+  { value: 'green', color: color.green[200] },
 ];
 
 function RadioCard({ activeTab }) {

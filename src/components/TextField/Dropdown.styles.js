@@ -42,7 +42,7 @@ export const DropdownList = styled.ul`
   border: 0.1rem solid #ccc;
   border-radius: 0.8rem;
 
-  background-color: ${tm_color('white')};
+  background-color: ${({ theme }) => theme.background};
   ${tm_shadow('shadow0_2_008')}
 
   cursor: pointer;
