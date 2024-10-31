@@ -28,5 +28,5 @@ export const Count = styled.p`
   font-size: 1.6rem;
   line-height: 2rem;
   font-weight: 400;
-  color: ${({ theme }) => theme.whiteText};
+  color: var(--white);
 `;

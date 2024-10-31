@@ -1,10 +1,9 @@
 import styled, { css } from 'styled-components';
 
 import { fontStyles } from '../../styles/fontStyles';
-import { colorStyles } from '../../styles/colorStyles';
 import POLYGON_TRIANGLE from '../../assets/RecipientsList/RecipientsCard/bg-polygon-triangle.svg';
 
-const color = {
+const colorStyle = {
   green: css`
     width: 33.6rem;
     height: 16.9rem;
@@ -36,7 +35,7 @@ const color = {
   `,
 };
 
-const colorShape = ($bgColor) => colorStyles[$bgColor] ?? '';
+const colorShape = ($bgColor) => colorStyle[$bgColor] ?? '';
 
 export const Card = styled.div`
   position: relative;
@@ -58,13 +57,13 @@ export const Card = styled.div`
       `;
     } else {
       return css`
-        background-color: ${color[$bgColor]?.[200] ?? 'none'};
+        background-color: var(--${$bgColor}-200, none);
         &::before {
           position: absolute;
           content: '';
           z-index: 1;
           ${({ $bgColor }) => css`
-            background-color: ${color[$bgColor]?.[300] ?? 'none'};
+            background-color: var(--${$bgColor}-300, none);
           `}
           ${({ $bgColor }) => colorShape($bgColor)};
         }
@@ -84,6 +83,7 @@ export const CardArea = styled.div`
     margin-bottom: 1.2rem;
     text-overflow: ellipsis;
     ${fontStyles['24b']};
+    color: var(--gray-900);
   }
 `;
 

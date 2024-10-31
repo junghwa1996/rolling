@@ -43,7 +43,7 @@ const StyledTotalMessage = styled.div`
 const StyledMessageCount = styled.p`
   margin: ${({ direction }) => directionStyles[direction].margin};
   ${fontStyles[20]};
-  color: ${({ theme }) => theme.metaText};
+  color: var(--gray-700);
 
   span {
     ${fontStyles['20b']};
