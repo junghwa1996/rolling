@@ -60,12 +60,13 @@ function RecipientsAddPage() {
       ...values,
     };
 
-    const result = await postRolling(postData);
-    if (!result) {
-      return;
+    try {
+      const result = await postRolling(postData);
+      // post 요청의 응답 반환 값에서 id 값을 추출하여 요청이 완료된 후, 생성된 롤링페이퍼로 이동
+      nav(`/post/${result.id}`, { replace: true });
+    } catch (error) {
+      console.error('롤링 페이퍼를 생성하는데 오류가 발생 했습니다.:', error);
     }
-    // post 요청의 응답 반환 값에서 id 값을 추출하여 요청이 완료된 후, 생성된 롤링페이퍼로 이동
-    nav(`/post/${result.id}`, { replace: true });
   };
 
   return (

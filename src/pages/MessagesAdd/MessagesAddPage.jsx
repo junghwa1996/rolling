@@ -120,13 +120,12 @@ function MessagesAddPage() {
       // font: values.font,
     };
 
-    const result = await postMessages(params.id, messageData);
-    if (!result) {
-      return;
+    try {
+      await postMessages(params.id, messageData);
+      nav(`/post/${params.id}`, { replace: true }); // 메시지를 보낸 롤링페이퍼 페이지로 이동
+    } catch (error) {
+      console.error('메시지를 생성하는데 오류가 발생 했습니다.:', error);
     }
-
-    setValues(INITIAL_VALUES);
-    nav(`/post/${params.id}`, { replace: true });
   };
 
   return (
