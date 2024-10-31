@@ -47,7 +47,8 @@ function Dropdown({
           onClick={() => setIsOpen(!isOpen)}
           error={$error}
           disabled={disabled}
-          deviceType={deviceType}>
+          deviceType={deviceType}
+        >
           {/* Item 중 가장 처음 값 세팅 */}
           {selectedOption ? selectedOption.value : options[0].value}
           <ArrowImg src={!isOpen ? ArrowDown : ArrowTop} alt="arrow" />
@@ -62,7 +63,8 @@ function Dropdown({
             <DropdownItem
               key={index}
               onClick={() => handleSelect(option)}
-              isIcon={isIcon}>
+              isIcon={isIcon}
+            >
               {option.value}
             </DropdownItem>
           ))}
