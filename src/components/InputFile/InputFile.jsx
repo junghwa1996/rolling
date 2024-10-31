@@ -9,9 +9,12 @@ import {
 } from './InputFile.styles';
 import { getProfileImg } from '../../service/api';
 import Profile from '../Profile/Profile';
+import useDeviceType from '../../hooks/useDeviceType';
 
 function InputFile({ img, onClick }) {
   const [profileImgList, setProfileImgList] = useState([]);
+  const deviceType = useDeviceType(); //devicehook 사용
+  const isMobile = deviceType === 'mobile';
 
   useEffect(() => {
     const handleProfileImgLoad = async () => {
@@ -29,7 +32,7 @@ function InputFile({ img, onClick }) {
 
   return (
     <StyledInputFile>
-      <Profile size="m" imageURL={img} />
+      <Profile size="l" imageURL={img} />
 
       <StyledImgSelectorContainer>
         <p>프로필 이미지를 선택해주세요!</p>
@@ -39,7 +42,7 @@ function InputFile({ img, onClick }) {
             <Profile
               onClick={onClick}
               key={index}
-              size="s"
+              size={isMobile ? 's' : 'm'}
               imageURL={imgItem}></Profile>
           ))}
         </StyledImgArea>
