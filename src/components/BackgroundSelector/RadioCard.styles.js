@@ -17,8 +17,8 @@ const StyleButton = styled.button`
   overflow: hidden;
   position: relative;
   /* Tab 상태 값에 따라 background 컬러, 이미지 동적 적용 */
-  ${({ activeTab, color, item }) =>
-    activeTab === '컬러'
+  ${({ $activeTab, color, item }) =>
+    $activeTab === '컬러'
       ? css`
           background: ${color};
         `
@@ -28,8 +28,8 @@ const StyleButton = styled.button`
         `}
 
   /* 이미지 Tab에서만 이미지 선택 시 투명도 조절 추가 */
-  ${({ activeTab }) =>
-    activeTab === '컬러'
+  ${({ $activeTab }) =>
+    $activeTab === '컬러'
       ? css``
       : css`
           &.selected::after {

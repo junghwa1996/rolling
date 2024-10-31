@@ -52,7 +52,7 @@ function RadioCard({ activeTab, onBackgroundChange }) {
         ? colorData.map((item, index) => (
             <StyleButton
               // 현재 Tab 상태에 따라 background 동적으로 적용하기 위해 prop로 전달
-              activeTab={activeTab}
+              $activeTab={activeTab}
               type="button"
               key={index}
               onClick={() => handleChange(item.value)}
@@ -66,7 +66,7 @@ function RadioCard({ activeTab, onBackgroundChange }) {
           ))
         : backgroundImgList.map((item, index) => (
             <StyleButton
-              activeTab={activeTab}
+              $activeTab={activeTab}
               type="button"
               key={index}
               onClick={() => handleChange(item)}
