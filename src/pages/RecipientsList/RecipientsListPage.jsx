@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 import styles from './recipientsListPage.module.css';
@@ -44,7 +45,7 @@ function RecipientsListPage() {
           </div>
         </div>
         <div className={styles.buttonArea}>
-          <Button size={deviceType === 'pc' ? 'l' : 'xl'}>
+          <Button size={deviceType === 'pc' ? 'l' : 'xl'} to="/post">
             나도 만들어보기
           </Button>
         </div>
