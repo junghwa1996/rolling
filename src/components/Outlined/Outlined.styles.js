@@ -40,10 +40,10 @@ const OutlinedStyles = css`
 
 const sizeStyles = {
   s: css`
-    padding: 6px 6px;
+    padding: 0.6rem 0.6rem;
   `,
   m: css`
-    padding: 7px 16px;
+    padding: 0.7rem 1.6rem;
   `,
 };
 

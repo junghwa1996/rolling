@@ -30,8 +30,8 @@ function Outlined({
   return (
     <StOutlined
       as={TAG}
-      size={size}
-      iconPosition={iconPosition}
+      $size={size}
+      $iconPosition={iconPosition}
       disabled={disabled}
       onClick={onClick}
       {...(TAG === Link && { to })}
