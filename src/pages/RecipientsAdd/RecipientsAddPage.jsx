@@ -26,7 +26,12 @@ function RecipientsAddPage() {
   // post 요청 데이터
   const [values, setValues] = useState(INITIAL_VALUES);
 
+  // 생성 후, 해당 id(롤링페이퍼)로 이동
   const nav = useNavigate();
+
+  // 받는 사람 이름 입력되지 않았을 경우, 생성하기 버튼 disabled
+  // !value 추가 이유 : error만으로 체크하면 페이지 첫 접속 시 에러 메시지가 false이므로 disabled도 false
+  const isValidation = !value || error;
 
   // Input에 입력된 값 values.name에 저장
   useEffect(() => {
@@ -84,7 +89,7 @@ function RecipientsAddPage() {
         <BackgroundSelector onBackgroundChange={handleBackgroundChange} />
 
         {/* 이름을 입력하지 않으면 disabled */}
-        <Button size="xl" type="submit">
+        <Button size="xl" type="submit" disabled={isValidation}>
           생성하기
         </Button>
       </form>
