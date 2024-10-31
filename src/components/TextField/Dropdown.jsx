@@ -1,27 +1,36 @@
-// 드롭다운
 /**
- * 메시지 카드 단일 컴포넌트
- * MessageCard 컴포넌트
+ * 드롭다운 단일 컴포넌트
+ * Dropdown 컴포넌트
  *
- * 이 컴포넌트는 메시지 카드를 렌더링하는 컴포넌트로,
- * 'card', 'modal', 'edit' 타입에 따라 각각 다른 UI와 이벤트 동작을 제공합니다.
+ * 이 컴포넌트는 드롭다운 UI를 렌더링하며, 옵션 선택 및 선택한 옵션 표시, 에러 메시지 표시 등의 기능을 제공합니다.
+ * 기본 아이콘 표시 여부, 선택 옵션 및 에러 상태에 따라 UI와 이벤트 동작이 다르게 나타납니다.
  *
  * @component
- * @param {string} type - 메시지 카드의 타입 (예: 'card', 'modal', 'edit') *필수값
- * @param {Object} messageData - 메시지 데이터 객체 *필수값
- * @param {string} messageData.content - 메시지 내용 (HTML 형식으로 삽입 가능)
- * @param {string} messageData.createdAt - 메시지 생성일
- * @param {Object} onEvent - 이벤트 핸들러 객체
- * @param {Function} onEvent.modal - 모달을 여는 이벤트 핸들러 (카드 타입일 때 동작)
- * @param {Function} onEvent.close - 모달을 닫는 이벤트 핸들러 (모달 타입일 때 동작)
+ * @param {Object} hasOptions - 드롭다운 옵션 데이터 *필수값
+ * @param {Array} hasOptions.options - 드롭다운 옵션 배열. 각 옵션은 value와 label 속성을 가집니다.
+ * @param {Object} hasOptions.selectedOption - 현재 선택된 옵션 객체 (예: { value: '1', label: 'Option 1' })
+ * @param {Function} hasOptions.onSelect - 옵션 선택 시 호출되는 이벤트 핸들러
+ * @param {Object} hasError - 에러 상태 및 메시지
+ * @param {boolean} hasError.$error - 에러 여부를 나타내는 불리언 값
+ * @param {string} hasError.errMessage - 에러 메시지 (에러 상태일 때 표시됨)
+ * @param {boolean} disabled - 드롭다운 비활성화 여부
+ * @param {boolean} isIcon - 아이콘 모드 여부 (기본 버튼 대신 아이콘 버튼이 표시됨)
  *
  * @example
- * <MessageCard
- *    type="modal"
- *    messageData={{ content: "<p>Hello World</p>", createdAt: "2024-10-30T01:51:19.832098Z" }}
- *    onEvent={{ modal: handleModalOpen, close: handleClose }}
+ * <Dropdown
+ *    hasOptions={{
+ *       options: [
+ *         { value: '1', label: 'Option 1' },
+ *         { value: '2', label: 'Option 2' }
+ *       ],
+ *       selectedOption: { value: '1', label: 'Option 1' },
+ *       onSelect: handleSelect
+ *    }}
+ *    hasError={{ $error: true, errMessage: "옵션을 선택해주세요." }}
+ *    disabled={false}
+ *    isIcon={true}
  * />
- * */
+ */
 
 import PropTypes from 'prop-types';
 import { useState } from 'react';
@@ -52,7 +61,7 @@ Dropdown.propTypes = {
       label: PropTypes.string,
     }),
     onSelect: PropTypes.func,
-  }),
+  }).isRequired,
   hasError: PropTypes.shape({
     $error: PropTypes.bool,
     errMessage: PropTypes.string,

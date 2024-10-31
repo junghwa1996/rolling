@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import ReactQuill from 'react-quill';
+import { TextFieldContainer } from './TextField.styles';
 
 const toolbarOptions = [
   ['bold', 'italic', 'underline', 'strike'],
@@ -15,13 +16,13 @@ function TextField({ onChange }) {
   };
 
   return (
-    <>
+    <TextFieldContainer>
       <ReactQuill
-        style={{ width: '72rem', height: '26rem' }}
+        style={{ width: '72rem', height: '22rem' }}
         modules={modules}
         onChange={onChange}
       />
-    </>
+    </TextFieldContainer>
   );
 }
 
