@@ -7,8 +7,7 @@ export const DropdownBtn = styled.button`
   justify-content: space-between;
   align-items: center;
 
-  width: ${({ deviceType }) => (deviceType === 'mobile' ? '100%' : '32rem')};
-  margin-bottom: 0.4rem;
+  width: ${({ $deviceType }) => ($deviceType === 'mobile' ? '100%' : '32rem')};
   padding: 1.2rem 1.6rem;
   ${StyledInput};
 `;

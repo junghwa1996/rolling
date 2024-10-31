@@ -40,8 +40,6 @@ export const StyledInput = css`
 
 export const StyledErrMessage = css`
   color: ${({ theme }) => theme.colorTheme.error};
-  opacity: ${({ $error }) => ($error ? 1 : 0)};
-  transition: opacity 0.3s ease;
 
   ${({ theme }) => theme.fontTheme['12Regular']};
 `;
