@@ -1,47 +1,25 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
 
-import Dropdown from '../../components/TextField/Dropdown'; // 경로 확인 필요
 import ShareIcon from '../../assets/icon-share-24.svg';
-
-const SharingSelectorContainer = styled.div`
-  position: relative;
-`;
-
-const Button = styled.button`
-  width: 56px;
-  height: 36px;
-  padding: 6px 16px;
-  border-radius: 6px;
-  border: 1px solid #cccccc;
-  background: #ffffff;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Icon = styled.img`
-  width: 24px;
-  height: 24px;
-  margin-right: 4px;
-`;
+import {
+  SharingSelectorContainer,
+  Button,
+  Icon,
+  DropdownList,
+  DropdownItem,
+} from './SharingSelector.styles'; // 스타일 임포트
+import { showToast } from '../../components/toast/Toast'; // showToast 함수 임포트
 
 function SharingSelector() {
   const [isOpen, setIsOpen] = useState(false);
 
-  const options = [
-    { value: 'url-copy', label: 'URL 복사' }, // URL 복사 항목 추가
-  ];
-
-  const handleSelect = (option) => {
-    console.log(option.label); // 선택한 옵션에 대한 행동 정의
-    setIsOpen(false);
+  const toggleDropdown = () => {
+    setIsOpen((prev) => !prev); // 드롭다운 열기/닫기
   };
 
-  const toggleDropdown = () => {
-    setIsOpen((prev) => !prev);
+  const handleUrlShareClick = () => {
+    const urlToShare = 'https://example.com'; // 공유할 URL
+    showToast(urlToShare); // URL을 매개변수로 showToast 호출
   };
 
   return (
@@ -50,18 +28,15 @@ function SharingSelector() {
         <Icon src={ShareIcon} alt="Share icon" />
       </Button>
       {isOpen && (
-        <Dropdown
-          options={options}
-          onSelect={handleSelect}
-          isIcon={false} // 아이콘 버튼이 아닌 경우
-        />
+        <DropdownList>
+          <DropdownItem onClick={handleUrlShareClick}>URL 공유</DropdownItem>
+          <DropdownItem style={{ background: '#F6F6F6' }}>
+            카카오톡 공유
+          </DropdownItem>
+        </DropdownList>
       )}
     </SharingSelectorContainer>
   );
 }
-
-SharingSelector.propTypes = {
-  options: PropTypes.array,
-};
 
 export default SharingSelector;

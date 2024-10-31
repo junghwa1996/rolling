@@ -1,66 +1,58 @@
-import React, { useState } from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import Dropdown from '../../components/TextField/Dropdown'; // 경로 확인 필요
-import ShareIcon from '../../assets/icon-share-24.svg';
 
-const SharingSelectorContainer = styled.div`
-  position: relative;
-`;
+import { StyledInput, StyledErrMessage } from './CommonInput.styles';
 
-const Button = styled.button`
-  width: 56px;
-  height: 36px;
-  padding: 6px 16px;
-  border-radius: 6px;
-  border: 1px solid #cccccc;
-  background: #ffffff;
-  cursor: pointer;
+export const DropdownBtn = styled.button`
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+
+  width: ${({ deviceType }) => (deviceType === 'mobile' ? '100%' : '32rem')};
+  margin-bottom: 0.4rem;
+  padding: 1.2rem 1.6rem;
+  ${StyledInput};
 `;
 
-const Icon = styled.img`
-  width: 24px;
-  height: 24px;
-  margin-right: 4px;
+export const IconBtn = styled.img`
+  display: block;
+  max-width: 5.6rem;
+  max-height: 3.6rem;
+
+  padding: 0.6rem 1.6rem;
+  ${StyledInput};
 `;
 
-function SharingSelector() {
-  const [isOpen, setIsOpen] = useState(false);
-  const options = [
-    { value: '카카오톡 공유', label: '카카오톡 공유' },
-    { value: 'URL 공유', label: 'URL 공유' },
-  ];
+export const ArrowImg = styled.img`
+  max-width: 1.6rem;
+  max-height: 1.6rem;
+`;
 
-  const handleSelect = (option) => {
-    console.log(option.label); // 선택한 옵션에 대한 행동 정의
-    setIsOpen(false);
-  };
+//SECTION - Dropdown을 내렸을 때 나오는 요소들의 css
 
-  const toggleDropdown = () => {
-    setIsOpen((prev) => !prev);
-  };
+export const DropdownList = styled.ul`
+  padding: 1rem 0.1rem;
 
-  return (
-    <SharingSelectorContainer>
-      <Button onClick={toggleDropdown}>
-        <Icon src={ShareIcon} alt="Share icon" />
-      </Button>
-      {isOpen && (
-        <Dropdown
-          options={options}
-          onSelect={handleSelect}
-          isIcon={false} // 아이콘 버튼이 아닌 경우
-        />
-      )}
-    </SharingSelectorContainer>
-  );
-}
+  width: ${({ isIcon }) => (isIcon ? '14rem' : '32rem')};
 
-SharingSelector.propTypes = {
-  options: PropTypes.array,
-};
+  border: 0.1rem solid #ccc;
+  border-radius: 0.8rem;
 
-export default SharingSelector;
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.08);
+`;
+
+export const DropdownItem = styled.li`
+  padding: 1.2rem 1.6rem;
+
+  width: ${({ isIcon }) => (isIcon ? '14rem' : '32rem')};
+
+  ${({ theme }) => theme.fontTheme['16Regular']}
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colorTheme.grayscale['100']};
+  }
+`;
+
+export const DropdownErrMessage = styled.p`
+  margin-bottom: 0.4rem;
+  ${StyledErrMessage};
+`;
