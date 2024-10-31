@@ -13,7 +13,7 @@ Header.propTypes = {
 function Header({ hide = false, two = false }) {
   const VIEW = useDeviceType();
   return (
-    <HeaderArea>
+    <HeaderArea $VIEW={VIEW} $two={two}>
       <div>
         <LogoHeader $VIEW={VIEW} $hide={hide} $two={two}>
           <Logo />

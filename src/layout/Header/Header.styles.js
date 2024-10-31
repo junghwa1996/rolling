@@ -4,7 +4,24 @@ import { tm_color } from '../../utils/themeUtils';
 
 export const HeaderArea = styled.header`
   width: 100%;
+  border-bottom: 1px solid ${tm_color('#EDEDED')};
   background-color: ${tm_color('white')};
+  position: relative;
+  ${({ $two, $VIEW }) =>
+    $two &&
+    $VIEW !== 'mobile' &&
+    `
+    &::before {
+      content: '';
+      position: absolute;
+      top: 48.8%; 
+      left: 0;
+      right: 0;
+      height: 1px;
+      background-color: #EDEDED;
+      transform: translateY(-50%);
+    }  
+  `};
   > div {
     max-width: 120rem;
     max-height: 13.3rem;
@@ -39,6 +56,7 @@ export const InfoHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  position: relative;
   height: ${({ $VIEW }) => ($VIEW === 'mobile' ? '10.4rem' : '6.8rem')};
   padding: ${({ $VIEW }) =>
     $VIEW === 'tablet' ? '0 24px' : $VIEW === 'mobile' ? '0 15px' : '0'};
@@ -46,7 +64,16 @@ export const InfoHeader = styled.div`
     $VIEW === 'mobile' &&
     `
     flex-direction: column;
-    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%; 
+      left: 0;
+      right: 0;
+      height: 1px;
+      background-color: #EDEDED;
+      transform: translateY(-50%);
+    }    
   `}
 
   > div:first-child {
