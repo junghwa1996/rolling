@@ -2,13 +2,13 @@ import { styled } from 'styled-components';
 
 import { fontStyles } from '../../styles/fontStyles';
 
-const directionStyles = (theme) => ({
+const directionStyles = {
   row: {
     alignItems: 'center',
     flexDirection: 'row',
     margin: '0 0 0 1.1rem',
     border: '0.1rem solid #E3E3E3',
-    color: theme.secondary,
+    color: `#484848`,
   },
   column: {
     alignItems: 'flex-start',
@@ -17,34 +17,33 @@ const directionStyles = (theme) => ({
     border: 'none',
     color: '#484848',
   },
-});
+};
 
 const AvatarGroupStyle = {
   '--Avatar-size': '2.8rem',
   '--Avatar-ringSize': '0.1rem',
 };
 
-const avatarStyle = (direction, theme) => ({
-  border: directionStyles(theme)[direction].border,
+const avatarStyle = (direction) => ({
+  border: directionStyles[direction].border,
   boxShadow: 'none',
   background: '#fff',
   fontSize: '1.2rem',
   fontWeight: '500',
-  color: directionStyles(theme)[direction].color,
+  color: directionStyles[direction].color,
 });
 
 const StyledTotalMessage = styled.div`
   display: inline-flex;
-  align-items: ${({ direction, theme }) =>
-    directionStyles(theme)[direction].alignItems};
-  flex-direction: ${({ direction, theme }) =>
-    directionStyles(theme)[direction].flexDirection};
+  align-items: ${({ direction }) => directionStyles[direction].alignItems};
+  flex-direction: ${({ direction }) =>
+    directionStyles[direction].flexDirection};
 `;
 
 const StyledMessageCount = styled.p`
-  margin: ${({ direction, theme }) => directionStyles(theme)[direction].margin};
+  margin: ${({ direction }) => directionStyles[direction].margin};
   ${fontStyles[20]};
-  color: ${({ theme }) => theme.line};
+  color: ${({ theme }) => theme.metaText};
 
   span {
     ${fontStyles['20b']};

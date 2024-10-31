@@ -30,6 +30,7 @@ export const MSHeaderArea = styled.div`
     span {
       margin-right: 0.6rem;
       ${fontStyles[20]};
+      color: ${({ theme }) => theme.blackText};
     }
   }
 

@@ -6,6 +6,7 @@ export const light = {
   text: 'var(--gray-900)', // 기본 텍스트 색상
   headerName: 'var(--gray-800)', // 헤더 또는 주요 텍스트 색상
   textarea: 'var(--gray-600)', // 입력 필드 등 배경색
+  metaText: 'var(--gray-700)', // 보조 정보 텍스트
   secondary: 'var(--gray-500)', // 부가적인 설명 텍스트 색상
   dateText: 'var(--gray-400)', // 날짜 또는 메타 정보 텍스트
   border: 'var(--gray-300)', // 경계선 색상
@@ -20,6 +21,7 @@ export const dark = {
   text: 'var(--gray-100)', // 기본 텍스트 색상
   headerName: 'var(--gray-200)', // 헤더 또는 주요 텍스트 색상
   textarea: 'var(--gray-300)', // 입력 필드 등 배경색
+  metaText: 'var(--gray-400)', // 보조 정보 텍스트
   secondary: 'var(--gray-400)', // 부가적인 설명 텍스트 색상
   dateText: 'var(--gray-500)', // 날짜 또는 메타 정보 텍스트
   border: 'var(--gray-600)', // 경계선 색상
