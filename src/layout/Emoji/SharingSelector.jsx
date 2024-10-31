@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+
 import Dropdown from '../../components/TextField/Dropdown'; // 경로 확인 필요
 import ShareIcon from '../../assets/icon-share-24.svg';
 
@@ -29,9 +30,9 @@ const Icon = styled.img`
 
 function SharingSelector() {
   const [isOpen, setIsOpen] = useState(false);
+
   const options = [
-    { value: '카카오톡 공유', label: '카카오톡 공유' },
-    { value: 'URL 공유', label: 'URL 공유' },
+    { value: 'url-copy', label: 'URL 복사' }, // URL 복사 항목 추가
   ];
 
   const handleSelect = (option) => {
