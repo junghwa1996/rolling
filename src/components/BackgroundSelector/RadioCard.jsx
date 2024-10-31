@@ -12,7 +12,7 @@ const colorData = [
   { value: 'green', color: '#D0F5C3' },
 ];
 
-function RadioCard({ activeTab }) {
+function RadioCard({ activeTab, onBackgroundChange }) {
   const [selectedValue, setSelectValue] = useState('beige');
   const [backgroundImgList, setBackgroundImgList] = useState([]);
 
@@ -35,6 +35,13 @@ function RadioCard({ activeTab }) {
     }
   }, [activeTab, backgroundImgList]); // 에러로 backgroundImgList 추가
 
+  useEffect(() => {
+    // prop로 받은 onBackgroundChange 함수에 인자로 선택된 배경의 value, boolean 값을 전달
+    activeTab === '컬러'
+      ? onBackgroundChange(selectedValue, false) // Tab이 컬러이면 선택된 value와 false를 전달
+      : onBackgroundChange(selectedValue, true); // Tab이 이미지이면 선택된 value와 true를 전달
+  }, [activeTab, selectedValue, onBackgroundChange]);
+
   const handleChange = (item) => {
     setSelectValue(item);
   };
@@ -44,6 +51,8 @@ function RadioCard({ activeTab }) {
       {activeTab === '컬러'
         ? colorData.map((item, index) => (
             <StyleButton
+              // 현재 Tab 상태에 따라 background 동적으로 적용하기 위해 prop로 전달
+              activeTab={activeTab}
               type="button"
               key={index}
               onClick={() => handleChange(item.value)}
@@ -52,25 +61,18 @@ function RadioCard({ activeTab }) {
               // prop으로 스타일 컴포넌트에 background 색상 지정
               color={item.color}>
               {/* 클릭하여 상태에 저장된 값이 item.value가 같다면 체크   */}
-              {selectedValue === item.value && (
-                <div className="icon">
-                  <img src={CheckedIcon} alt="Checked" />
-                </div>
-              )}
+              {selectedValue === item.value && <span className="icon"></span>}
             </StyleButton>
           ))
         : backgroundImgList.map((item, index) => (
             <StyleButton
+              activeTab={activeTab}
               type="button"
               key={index}
               onClick={() => handleChange(item)}
-              className={selectedValue === item ? 'selected' : ''}>
-              {selectedValue === item && (
-                <div className="icon">
-                  <img src={CheckedIcon} alt="Checked" />
-                </div>
-              )}
-              <img src={item} alt={`bg${index}`} />
+              className={selectedValue === item ? 'selected' : ''}
+              item={item}>
+              {selectedValue === item && <div className="icon"></div>}
             </StyleButton>
           ))}
     </StyledRadioCard>
@@ -79,6 +81,7 @@ function RadioCard({ activeTab }) {
 
 RadioCard.propTypes = {
   activeTab: PropTypes.string,
+  onBackgroundChange: PropTypes.func,
 };
 
 export default RadioCard;
