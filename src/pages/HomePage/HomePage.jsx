@@ -1,7 +1,9 @@
+import Button from '../../components/Button/Button';
+
 function Homepage() {
   return (
     <div>
-      <h1>홈페이지</h1>
+      <Button disabled>123</Button>
     </div>
   );
 }
