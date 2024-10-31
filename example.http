@@ -2,6 +2,10 @@
 GET https://rolling-api.vercel.app/11-2/recipients/ HTTP/1.1
 
 ###
+# 롤링 개별 리스트 GET request
+GET https://rolling-api.vercel.app/11-2/recipients/9117/ HTTP/1.1
+
+###
 
 # 롤링 리스트 POST request
 POST https://rolling-api.vercel.app/11-2/recipients/ HTTP/1.1
@@ -10,7 +14,8 @@ Content-Type: application/json;
 {
   "team": "11-2",
   "name": "테스트 롤링 등록",
-  "backgroundColor": "blue"
+  "backgroundColor": "blue",
+  "backgroundImageURL": "https://ifh.cc/g/HOf12V.jpg"
 }
 
 ###

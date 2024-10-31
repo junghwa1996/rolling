@@ -425,6 +425,10 @@ img{
   border-radius: 1.6rem;
 }
 
+.ReactModal__Content:focus-visible{
+  outline: none !important;
+}
+
 @media screen and (max-width: 767px) {
   .ReactModal__Content {
     width: 100%;

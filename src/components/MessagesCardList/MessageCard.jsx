@@ -31,8 +31,8 @@ import {
 import MessagesHeader from './MessagesHeader';
 import { StyledCreatedAt } from './StyledCreatedAt.styles';
 import { StyledTextarea } from './StyledTextarea.styles';
-import Button from '../../components/Button/Button';
-import { StyledLine } from '../../components/Line/Line.styles';
+import Button from '../Button/Button';
+import { StyledLine } from '../Line/Line.styles';
 import dateConversion from '../../utils/dateConversion';
 
 MessageCard.propTypes = {
@@ -73,7 +73,7 @@ function MessageCard({
             {dateConversion(messageData.createdAt)}
           </StyledCreatedAt>
         )}
-        {/* STUB - 타입이 'modal'인 경우 닫기 이벤트를 실행합니다. */}
+        {/* STUB - 타입이 'modal'인 경우 닫기 버튼을 보여주고 닫기 이벤트를 실행합니다. */}
         {type === 'modal' && (
           <Button size="m" onClick={onEvent.close}>
             확인
