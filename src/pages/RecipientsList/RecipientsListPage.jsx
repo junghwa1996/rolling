@@ -4,8 +4,8 @@ import styles from './recipientsListPage.module.css';
 import useDeviceType from '../../hooks/useDeviceType';
 import RecipientsList from './RecipientsList';
 import Button from '../../components/Button/Button';
-import { tm_font } from '../../utils/themeUtils';
 import { SwiperContain } from './RecipientsList.styles';
+import { font } from '../../styles/fontStyles';
 
 const StyledSwiper = styled(SwiperContain)`
   @media screen and (max-width: 1248px) {
@@ -19,7 +19,7 @@ const StyledSwiper = styled(SwiperContain)`
 const Container = styled.div`
   h2 {
     ${({ $deviceType }) =>
-      $deviceType === 'mobile' ? tm_font('20b') : tm_font('24b')}
+      $deviceType === 'mobile' ? font['20b'] : font['24b']}
   }
 `;
 
