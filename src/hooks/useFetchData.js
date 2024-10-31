@@ -9,35 +9,32 @@
  *  - loading: 로딩 상태를 나타내는 불리언 값.
  *  - error: 에러 정보를 담고 있는 상태입니다. 없을 경우 null.
  */
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const useFetchData = (apiFunction, dependencies = []) => {
-  const [data, setData] = useState({ results: [] });
+const useFetchData = (apiFunction, dependencies = [], processData) => {
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const memoizedApiFunction = useCallback(apiFunction, [
-    apiFunction,
-    ...dependencies,
-  ]);
+  const fetchData = async (...args) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await apiFunction(...args);
+      const processedData = processData ? processData(response) : response;
+      setData(processedData);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const response = await memoizedApiFunction();
-        setData(response);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchData();
-  }, [memoizedApiFunction]);
+  }, dependencies);
 
-  return { data, loading, error };
+  return { data, loading, error, refetch: fetchData };
 };
 
 export default useFetchData;
