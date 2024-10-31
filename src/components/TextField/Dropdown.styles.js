@@ -11,6 +11,7 @@ export const DropdownBtn = styled.button`
   width: ${({ $deviceType }) => ($deviceType === 'mobile' ? '100%' : '32rem')};
   padding: 1.2rem 1.6rem;
   ${StyledInput};
+  cursor: pointer;
 `;
 
 export const IconBtn = styled.img`
@@ -20,6 +21,7 @@ export const IconBtn = styled.img`
 
   padding: 0.6rem 1.6rem;
   ${StyledInput};
+  cursor: pointer;
 `;
 
 export const ArrowImg = styled.img`
@@ -41,14 +43,16 @@ export const DropdownList = styled.ul`
 
   background-color: ${tm_color('white')};
   ${tm_shadow('shadow0_2_008')}
+
+  cursor: pointer;
 `;
 
 export const DropdownItem = styled.li`
   padding: 1.2rem 1.6rem;
-
   width: ${({ isIcon }) => (isIcon ? '13.8rem' : '31.6rem')};
 
   ${tm_font('16')}
+  cursor: pointer;
 
   &:hover {
     background-color: ${tm_color('grayscale100')};

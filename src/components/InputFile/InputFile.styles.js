@@ -10,7 +10,7 @@ const StyledImgSelectorContainer = styled.div`
   flex-direction: column;
   margin-left: 2.6rem;
 
-  > p {
+  p {
     ${({ theme }) => theme.fontTheme['16Regular']}
     color: ${({ theme }) => theme.colorTheme.grayscale[500]}
   }

@@ -32,11 +32,6 @@ function Input({
   placeholder,
   onBlur,
 }) {
-  console.log(
-    !hasError.errMessage || hasError.errMessage.length === 0
-      ? '에러 메세지가 없습니다.'
-      : hasError.errMessage,
-  );
   return (
     <InputWrapper>
       <InputBox

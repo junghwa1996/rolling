@@ -33,7 +33,7 @@
  */
 
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import {
   DropdownBtn,
@@ -80,16 +80,32 @@ function Dropdown({
   isIcon,
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
   const $deviceType = useDeviceType(); //devicehook 사용
+
   console.log(hasOptions.selectedOption);
 
   const handleSelect = (option) => {
-    hasOptions.onSelect(option);
+    hasOptions.onSelect(option); // 선택한 option을 부모로 전달
     setIsOpen(false);
   };
 
+  //dropdown 외에 외부를 클릭했을 때 닫히도록 하는 useEffect
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
-    <>
+    <div ref={dropdownRef}>
       {/* icon 버튼인지 보통의 Dropdown인지 구분 */}
       {isIcon ? (
         <IconBtn
@@ -132,7 +148,7 @@ function Dropdown({
           ))}
         </DropdownList>
       )}
-    </>
+    </div>
   );
 }
 
