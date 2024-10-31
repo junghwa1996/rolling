@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { font } from '../../styles/fontStyles';
 import { StyledInput, StyledErrMessage } from './CommonInput.styles';
-import { shadowStyles } from '../../styles/shadowStyles';
+import { shadow } from '../../styles/shadowStyles';
 
 export const DropdownBtn = styled.button`
   display: flex;
@@ -43,7 +43,7 @@ export const DropdownList = styled.ul`
   border-radius: 0.8rem;
 
   background-color: ${({ theme }) => theme.background};
-  ${shadowStyles['low']}
+  ${shadow['low']}
 
   cursor: pointer;
 `;

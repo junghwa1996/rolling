@@ -1,4 +1,4 @@
-export const shadowStyles = {
+export const shadow = {
   low: {
     boxShadow: 'var--shadow-low)',
   },
