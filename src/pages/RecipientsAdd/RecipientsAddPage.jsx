@@ -74,11 +74,15 @@ function RecipientsAddPage() {
       <form onSubmit={handlePostSubmit}>
         <StyledLabel>To.</StyledLabel>
         <Input
-          error={error || undefined}
-          errMessage={errMessage}
-          name="sender"
-          value={value}
-          onChange={onChange}
+          hasError={{
+            $error: error || false,
+            errMessage: errMessage || '값을 입력해주세요.',
+          }}
+          onEvent={{
+            name: 'sender',
+            value: value,
+            onChange: onChange,
+          }}
           placeholder="받는 사람 이름을 입력해 주세요"
           onBlur={onBlur}
         />
