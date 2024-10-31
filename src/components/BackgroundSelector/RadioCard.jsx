@@ -71,7 +71,7 @@ function RadioCard({ activeTab, onBackgroundChange }) {
               key={index}
               onClick={() => handleChange(item)}
               className={selectedValue === item ? 'selected' : ''}
-              item={item}>
+              $item={item}>
               {selectedValue === item && <div className="icon"></div>}
             </StyleButton>
           ))}

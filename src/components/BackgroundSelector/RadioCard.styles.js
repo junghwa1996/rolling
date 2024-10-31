@@ -17,13 +17,13 @@ const StyleButton = styled.button`
   overflow: hidden;
   position: relative;
   /* Tab 상태 값에 따라 background 컬러, 이미지 동적 적용 */
-  ${({ $activeTab, color, item }) =>
+  ${({ $activeTab, color, $item }) =>
     $activeTab === '컬러'
       ? css`
           background: ${color};
         `
       : css`
-          background: url(${item}) no-repeat center;
+          background: url(${$item}) no-repeat center;
           background-size: cover;
         `}
 
