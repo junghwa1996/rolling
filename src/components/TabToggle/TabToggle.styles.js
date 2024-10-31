@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { fontStyles } from '../../styles/fontStyles';
+import { font } from '../../styles/fontStyles';
 import { color } from '../../styles/colors';
 
 export const TabToggleArea = styled.div`
@@ -17,7 +17,7 @@ export const TabButton = styled.button`
   height: 100%;
   border: none;
   background: transparent;
-  ${({ $isSelected }) => ($isSelected ? fontStyles['16b'] : fontStyles[16])};
+  ${({ $isSelected }) => ($isSelected ? font['16b'] : font[16])};
   color: ${({ $isSelected, theme }) =>
     $isSelected ? color.purple[600] : theme.text};
   z-index: 1;

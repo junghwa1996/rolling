@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { fontStyles } from '../../styles/fontStyles';
+import { font } from '../../styles/fontStyles';
 
 export const StyledTextarea = styled.p`
   word-break: break-all;
@@ -8,7 +8,7 @@ export const StyledTextarea = styled.p`
   outline: none;
   resize: none;
 
-  ${fontStyles[20]};
+  ${font[20]};
 
   /* 스크롤바 스타일 */
   &::-webkit-scrollbar {

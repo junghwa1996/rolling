@@ -1,6 +1,6 @@
 import { ToastContainer } from 'react-toastify';
 import styled from 'styled-components';
-import { fontStyles } from '../../styles/fontStyles';
+import { font } from '../../styles/fontStyles';
 
 // Toast 스타일 컴포넌트
 export const StyledToastContainer = styled(ToastContainer)`
@@ -44,7 +44,7 @@ export const ToastWrapper = styled.div`
 
 export const ToastMessage = styled.div`
   font-family: 'Pretendard', sans-serif;
-  ${fontStyles[16]};
+  ${font[16]};
   color: ${({ theme }) => theme.whiteText};
   overflow-wrap: break-word;
   white-space: normal;

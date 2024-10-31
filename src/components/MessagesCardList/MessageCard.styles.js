@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { fontStyles } from '../../styles/fontStyles';
+import { font } from '../../styles/fontStyles';
 import { MSHeaderContainer, MSHeaderPosition } from './MessagesHeader.styles';
 import { StyledTextarea } from './StyledTextarea.styles';
 
@@ -64,7 +64,7 @@ export const cardLayout = css`
         width: 27.2rem;
         height: 4.5rem;
         margin: 1.6rem 0 2.7rem;
-        ${fontStyles[15]};
+        ${font[15]};
       }
     }
   }

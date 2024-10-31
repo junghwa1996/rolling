@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { fontStyles } from '../../styles/fontStyles';
+import { font } from '../../styles/fontStyles';
 
 const ellipsisStyle = css`
   overflow: hidden;
@@ -26,20 +26,20 @@ export const MSHeaderArea = styled.div`
     ${ellipsisStyle}
     margin-bottom: 0.6rem;
     width: 90%;
-    ${fontStyles['20b']}
+    ${font['20b']}
     span {
       margin-right: 0.6rem;
-      ${fontStyles[20]};
+      ${font[20]};
       color: ${({ theme }) => theme.blackText};
     }
   }
 
   @media screen and (max-width: 767px) {
     h3 {
-      ${fontStyles['20b']};
+      ${font['20b']};
       span {
         margin-right: 0.6rem;
-        ${fontStyles[20]};
+        ${font[20]};
       }
     }
   }

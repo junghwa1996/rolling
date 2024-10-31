@@ -1,31 +1,31 @@
 import styled, { css } from 'styled-components';
 
 import { color } from '../../styles/colors';
-import { fontStyles } from '../../styles/fontStyles';
+import { font } from '../../styles/fontStyles';
 
 const sizes = {
   s: css`
     padding: 13px 20px;
     border-radius: 6px;
-    ${fontStyles[16]}
+    ${font[16]}
   `,
   m: css`
     width: 12rem;
     height: 4rem;
     border-radius: 6px;
-    ${fontStyles[16]}
+    ${font[16]}
   `,
   l: css`
     width: 28rem;
     height: 5.6rem;
     border-radius: 12px;
-    ${fontStyles['18b']};
+    ${font['18b']};
   `,
   xl: css`
     width: 100%;
     height: 5.6rem;
     border-radius: 12px;
-    ${fontStyles['18b']};
+    ${font['18b']};
   `,
 };
 

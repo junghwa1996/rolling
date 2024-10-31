@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { fontStyles } from '../../styles/fontStyles';
+import { font } from '../../styles/fontStyles';
 
 const OutlinedStyles = css`
   display: inline-flex;
@@ -10,7 +10,7 @@ const OutlinedStyles = css`
   border-radius: 6px;
   background-color: ${({ theme }) => theme.background};
   border: 1px solid ${({ theme }) => theme.border};
-  ${fontStyles[16]};
+  ${font[16]};
   cursor: pointer;
   text-decoration: none;
   color: ${({ theme }) => theme.text};
@@ -75,5 +75,5 @@ export const IconArea = styled.span`
 `;
 
 export const Text = styled.span`
-  ${fontStyles[16]};
+  ${font[16]};
 `;

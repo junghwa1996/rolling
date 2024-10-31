@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { fontStyles } from '../../styles/fontStyles';
+import { font } from '../../styles/fontStyles';
 import { StyledInput, StyledErrMessage } from './CommonInput.styles';
 import { shadowStyles } from '../../styles/shadowStyles';
 
@@ -52,7 +52,7 @@ export const DropdownItem = styled.li`
   padding: 1.2rem 1.6rem;
   width: ${({ isIcon }) => (isIcon ? '13.8rem' : '31.6rem')};
 
-  ${fontStyles[16]}
+  ${font[16]}
   cursor: pointer;
 
   &:hover {

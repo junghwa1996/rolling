@@ -1,5 +1,5 @@
 // fontStyles.js
-export const fontStyles = {
+export const font = {
   12: {
     fontWeight: 'var(--fw-400)',
     fontSize: 'var(--fs-12)',

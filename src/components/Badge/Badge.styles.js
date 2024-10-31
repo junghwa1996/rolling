@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { color } from '../../styles/colors';
-import { fontStyles } from '../../styles/fontStyles';
+import { font } from '../../styles/fontStyles';
 
 const BADGE_LIST = (value) => {
   const colors = {
@@ -37,7 +37,7 @@ export const StBadge = styled.div`
       height: 2rem;
       background-color: ${background};
       color: ${color};
-      ${fontStyles[14]}
+      ${font[14]}
       border-radius: 4px;
       text-align: center;
     `;

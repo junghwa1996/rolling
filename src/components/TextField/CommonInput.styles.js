@@ -3,7 +3,7 @@
 
 import { css } from 'styled-components';
 
-import { fontStyles } from '../../styles/fontStyles';
+import { font } from '../../styles/fontStyles';
 import { color } from '../../styles/colors';
 
 export const StyledInput = css`
@@ -13,7 +13,7 @@ export const StyledInput = css`
     ${({ $error, theme }) => ($error ? color.error : theme.border)};
 
   //font
-  ${fontStyles[16]}
+  ${font[16]}
 
   //color
   color: ${({ theme }) => theme.secondary};
@@ -44,5 +44,5 @@ export const StyledInput = css`
 export const StyledErrMessage = css`
   color: ${color.error};
 
-  ${fontStyles[12]};
+  ${font[12]};
 `;
