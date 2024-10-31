@@ -19,16 +19,16 @@ export const StyledTextarea = styled.p`
   &::-webkit-scrollbar-track {
     //배경
     border-radius: 0.8rem;
-    background: #fff;
+    background: ${({ theme }) => theme.background};
   }
 
   &::-webkit-scrollbar-thumb {
     //색상
-    background: #ccc;
+    background: ${({ theme }) => theme.border};
     border-radius: 0.8rem;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: ${({ theme }) => theme.secondary};
   }
 `;

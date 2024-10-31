@@ -14,7 +14,7 @@ const BADGE_LIST = (value) => {
       color: colorStyles.green[500],
     },
     동료: {
-      background: '#f7f0ff',
+      background: colorStyles.purple[100],
       color: colorStyles.purple[600],
     },
     지인: {
