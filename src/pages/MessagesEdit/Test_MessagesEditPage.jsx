@@ -1,8 +1,8 @@
 /**
- * MessagesListPage 컴포넌트
+ * MessagesEditPage 컴포넌트
  *
- * 메시지 카드 목록을 불러와 리스트로 렌더링하고, 각 메시지 카드를 클릭하면 해당 카드의 데이터를 모달로 표시하는 컴포넌트입니다.
- * 서버에서 메시지 리스트를 가져와 `MessageCardList`에 전달하고, 선택된 메시지 카드의 데이터를 모달(`StyledModal`)로 표시합니다.
+ * 메시지 카드 목록을 불러와 리스트로 렌더링하고, 수정, 삭제가 가능합니다.
+ * 서버에서 메시지 리스트를 가져와 `MessageCardList`에 전달 합니다.
  * 재사용 불가한 페이지 컴포넌트 입니다.
  */
 
@@ -21,13 +21,14 @@ function MessagesListPage() {
   const presentPath = currentURL.pathname.split('/');
   const currentId = presentPath[presentPath.length - 2];
 
+  // STUB - 메시지 리스트 요청
   const {
     data: messageData,
     loading: messageLoading,
     error: messageError,
   } = useFetchData(() => getMessagesList(currentId), [currentId]);
 
-  // 배경 데이터 로드
+  // STUB - 배경 정보 요청
   const {
     data: backgroundData,
     loading: backgroundLoading,

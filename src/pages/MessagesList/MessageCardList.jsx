@@ -35,7 +35,6 @@ import {
   StyledButtonArea,
   StyledButton,
 } from './MessageCardList.styles';
-// import Button from '../../components/Button/Button';
 import useDeviceType from '../../hooks/useDeviceType';
 
 MessageCardList.propTypes = {
@@ -59,7 +58,7 @@ const handleEditClick = (id, event) => {
   console.log(`클릭 카드 ID : ${id}, [수정 페이지로 이동 합니다]`);
 };
 
-// NOTE - 해당 컴포넌트의 messageData는 배열로 받아옵니다.
+// STUB - 해당 컴포넌트의 messageData는 배열로 받아옵니다.
 function MessageCardList({ type, messageData = [], onEvent, children }) {
   const [messageDataList, setMessageDataList] = useState([]);
 

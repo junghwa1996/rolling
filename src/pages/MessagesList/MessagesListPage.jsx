@@ -24,13 +24,14 @@ function MessagesListPage() {
   const presentPath = currentURL.pathname.split('/');
   const currentId = presentPath[presentPath.length - 1];
 
+  // STUB - 메시지 리스트 요청
   const {
     data: messageData,
     loading: messageLoading,
     error: messageError,
   } = useFetchData(() => getMessagesList(currentId), [currentId]);
 
-  // 배경 데이터 로드
+  // STUB - 배경 정보 요청
   const {
     data: backgroundData,
     loading: backgroundLoading,
@@ -44,7 +45,7 @@ function MessagesListPage() {
     }),
   );
 
-  // STUB - 모달을 여는 이벤트 입니다. 해당 함수는 MessageCard.jsx 에서 이벤트 발생 시 실행 됩니다.
+  // STUB - 모달을 여는 이벤트 입니다.
   const handleMessageClick = (id) => {
     const cardData =
       messageData?.results?.find((card) => card.id === id) || null;
@@ -52,7 +53,7 @@ function MessagesListPage() {
     setHasModalOpen(true);
   };
 
-  // STUB - 모달을 닫는 이벤트 입니다. 해당 함수는 MessageCard.jsx 에서 이벤트 발생 시 실행 됩니다.
+  // STUB - 모달을 닫는 이벤트 입니다.
   const handleCloseModal = () => {
     setHasModalOpen(false);
     setSelectedCard(null);
