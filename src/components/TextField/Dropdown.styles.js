@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
+import { fontStyles } from '../../styles/fontStyle';
 import { StyledInput, StyledErrMessage } from './CommonInput.styles';
-import { tm_color, tm_font, tm_shadow } from '../../utils/themeUtils';
+import { tm_color, tm_shadow } from '../../utils/themeUtils';
 
 export const DropdownBtn = styled.button`
   display: flex;
@@ -51,7 +52,7 @@ export const DropdownItem = styled.li`
   padding: 1.2rem 1.6rem;
   width: ${({ isIcon }) => (isIcon ? '13.8rem' : '31.6rem')};
 
-  ${tm_font('16')}
+  ${fontStyles[16]}
   cursor: pointer;
 
   &:hover {
