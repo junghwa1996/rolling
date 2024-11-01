@@ -1,41 +1,39 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import styles from './TabToggle.module.css';
-import { TabToggleArea, TabButton } from './TabToggle.styles';
+import { SelectedTab } from './TabToggle.styles';
 
-//props 타입 정의 //
+//컴포넌트 정의
 TabToggle.propTypes = {
-  tabs: PropTypes.arrayOf(PropTypes.string), //탭 이름 배열 //
-  onClick: PropTypes.func, // 탭 클릭 시 호출되는 함수 //
+  tabs: PropTypes.arrayOf(PropTypes.string), //탭 이름 배열
+  onClick: PropTypes.func, //탭 클릭 시 호출되는 함수
 };
 
+//현재 선택된 탭 상태 관리
 function TabToggle({ tabs = ['컬러', '이미지'], onClick = () => {} }) {
-  const [currentTab, setCurrentTab] = useState(tabs[0]); //현재 선택된 탭 상태 //
+  const [currentTab, setCurrentTab] = useState(tabs[0]);
 
   //탭 클릭 핸들러
   const handleTabClick = (tab) => {
-    setCurrentTab(tab); // 선택된 탭 업데이트 //
-    onClick(tab); //클릭된 탭의 이름을 부모 컴포넌트에 전달//
+    setCurrentTab(tab); //선택된 탭 업데이트
+    onClick(tab); //클릭 이벤트 발생
   };
 
-  const selectedIndex = tabs.inesxof(currentTab); //현재 선택된 탭의 인덱스 //
-
   return (
-    <TabToggleArea $tabLength={tabs.length}>
-      <div
-        className={styles.selectedTab}
-        style={{ left: `${12 * selectedIndex}rem` }} // CSS 모듈을 사용하여 동적으로 위치 설정
-      />
+    <div
+      className={styles.tabToggleArea}
+      style={{ width: `${12 * tabs.length}rem` }}>
+      <SelectedTab selectedIndex={tabs.indexOf(currentTab)} />
       {tabs.map((tab) => (
-        <TabButton
+        <button
           key={tab}
-          $isSelected={currentTab === tab} //선택된 탭인지 여부 //
-          onClick={() => handleTabClick(tab)} //클릭 시 핸들러 호출 //
+          className={`${styles.tabButton} ${currentTab === tab ? styles.tabButtonSelected : ''}`}
+          onClick={() => handleTabClick(tab)}
           type="button">
           {tab}
-        </TabButton>
+        </button>
       ))}
-    </TabToggleArea>
+    </div>
   );
 }
 

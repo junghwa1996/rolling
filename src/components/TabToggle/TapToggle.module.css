@@ -1,10 +1,25 @@
-.selectedTab {
-  position: absolute;
-  top: 0;
+/* 탭 토글 전체 영역 스타일 */
+.tabToggleArea {
+  display: flex;
+  position: relative;
+  height: 4rem;
+  background-color: var(--surface);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+/* 각 탭 버튼 스타일 */
+.tabButton {
   width: 12rem;
   height: 100%;
-  border: 2px solid #6a5bff; /* color.purple[600]의 HEX 값 */
-  border-radius: 6px;
-  background: #fff;
-  transition: left 0.3s ease;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  z-index: 1;
+}
+
+/*선택된 탭 버튼 스타일 */
+.tabButtonSelected {
+  font-weight: bold;
+  color: var(--purple-600);
 }
