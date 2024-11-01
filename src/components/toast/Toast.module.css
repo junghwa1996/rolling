@@ -1,0 +1,55 @@
+.ToastContainer {
+  padding: 0;
+  text-align: left;
+}
+
+.Toastify__toast {
+  background-color: var(--black);
+  border-radius: 0.5rem;
+  box-shadow: var(--shadow-low);
+  padding: 1rem;
+}
+
+.Toastify__toast-theme {
+  background: var(--black);
+  color: var(--white);
+}
+
+.Toastify__close-button {
+  display: none;
+}
+
+.ToastWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+.ToastMessage {
+  font-family: 'Pretendard', sans-serif;
+  font-size: 16px; /* 예시로 16px로 설정 */
+  color: var(--white);
+  overflow-wrap: break-word;
+  white-space: normal;
+  flex-grow: 1;
+  margin: 0 1rem;
+  border-radius: 0.5rem;
+}
+
+.IconToastImage {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.625rem;
+}
+
+.CustomCloseButton {
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+}
