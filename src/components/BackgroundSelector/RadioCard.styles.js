@@ -2,12 +2,6 @@ import styled, { css } from 'styled-components';
 
 import CheckedIcon from '../../assets/icon-checked.svg';
 
-const StyledRadioCard = styled.div`
-  display: flex;
-  gap: 1.6rem;
-  margin-top: 4.5rem;
-`;
-
 const StyleButton = styled.button`
   width: 16.8rem;
   height: 16.8rem;
@@ -69,4 +63,4 @@ const StyleButton = styled.button`
   }
 `;
 
-export { StyledRadioCard, StyleButton };
+export { StyleButton };
