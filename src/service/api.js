@@ -78,6 +78,10 @@ export const getRollingItem = async (id, params) =>
 export const postRolling = async (newData) =>
   postRequest('/recipients/', newData);
 
+// 특정 롤링 POST
+export const postRollingItem = async (id, newData) =>
+  postRequest('/recipients/', newData);
+
 // DELETE
 export const deleteRolling = async (id) => deleteRequest(`/recipients/${id}/`);
 
@@ -108,6 +112,10 @@ export const deleteMessages = async (id) => deleteRequest(`/messages/${id}/`);
 // GET
 export const getRollingEmoji = async (id, params) =>
   getRequest(`/recipients/${id}/reactions/`, params);
+
+// POST
+export const postRollingEmoji = async (id, updateData) =>
+  postRequest(`/recipients/${id}/reactions/`, updateData);
 
 // DELETE
 export const deleteRollingEmoji = async (id) =>
