@@ -13,17 +13,18 @@ function TabToggle({ tabs = ['컬러', '이미지'], onClick = () => {} }) {
 
   const handleTabClick = (tab) => {
     setCurrentTab(tab);
+    onClick(tab);
   };
 
   return (
-    <TabToggleArea tabLength={tabs.length}>
-      <SelectedTab selectedIndex={tabs.indexOf(currentTab)} />
+    <TabToggleArea $tabLength={tabs.length}>
+      <SelectedTab $selectedIndex={tabs.indexOf(currentTab)} />
       {tabs.map((tab) => (
         <TabButton
           key={tab}
-          isSelected={currentTab === tab}
+          $isSelected={currentTab === tab}
           onClick={() => handleTabClick(tab)}
-        >
+          type="button">
           {tab}
         </TabButton>
       ))}

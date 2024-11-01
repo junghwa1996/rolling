@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  width: 100%;
+  max-width: 120rem;
+  margin: 0 auto;
+  padding-top: 5rem;
+}
+
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.listContainer h2 {
+  margin-bottom: 1.6rem;
+  padding-left: 2rem;
+}
+
+.buttonArea {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2.4rem;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1248px) {
+  .container {
+    gap: 13.2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    gap: 4.2rem;
+  }
+
+  .buttonArea {
+    padding: 2.4rem;
+  }
+}

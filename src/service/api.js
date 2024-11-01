@@ -69,6 +69,11 @@ const getImgRequest = async (url) => {
 // GET
 export const getRollingList = async (params) =>
   getRequest('/recipients/', params);
+
+// 특정 롤링 GET
+export const getRollingItem = async (id, params) =>
+  getRequest(`/recipients/${id}/`, params);
+
 // POST
 export const postRolling = async (newData) =>
   postRequest('/recipients/', newData);

@@ -14,6 +14,9 @@ export const SwiperContain = styled.div`
   margin: 0 auto;
   .swiper-slide {
     width: 27.5rem;
+    @media (max-width: 767px) {
+      width: 20.8rem;
+    }
   }
   .swiper-button-prev,
   .swiper-button-next {
@@ -25,5 +28,6 @@ export const SwiperContain = styled.div`
     .swiper-button-next {
       display: none;
     }
+    width: auto;
   }
 `;

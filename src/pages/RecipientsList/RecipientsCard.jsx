@@ -5,8 +5,13 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import { Card, CardArea, EmojiArea } from './RecipientsCard.styles';
-import TotalMessage from '../../components/TotalMessage/TotalMessage';
+import {
+  Card,
+  CardArea,
+  EmojiArea,
+  StyledTotalMessage,
+} from './RecipientsCard.styles';
+import EmojiBadge from '../../components/Badge/EmojiBadge';
 
 RecipientCard.propTypes = {
   id: PropTypes.number.isRequired,
@@ -37,7 +42,7 @@ function RecipientCard({
       <Card $bgColor={bgColor} $bgImage={bgImage}>
         <CardArea>
           <h3>To. {name}</h3>
-          <TotalMessage
+          <StyledTotalMessage
             recentMessages={totalMessage.recentMessages}
             messageCount={totalMessage.messageCount}
             direction={totalMessage.direction}
@@ -47,9 +52,7 @@ function RecipientCard({
           <ul>
             {emojiList.map((item) => (
               <li key={item.id}>
-                {/* TODO : 이모지 라벨 컴포넌트 생성 시 변경 */}
-                <p>{item.emoji}</p>
-                <p>{item.count}</p>
+                <EmojiBadge emoji={item.emoji} count={item.count} />
               </li>
             ))}
           </ul>

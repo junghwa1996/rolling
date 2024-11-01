@@ -1,17 +1,19 @@
 import styled, { css } from 'styled-components';
 
+import { font } from '../../styles/fontStyles';
+
 const OutlinedStyles = css`
   display: inline-flex;
   align-items: center;
   gap: 8px;
   width: auto;
   border-radius: 6px;
-  background-color: ${({ theme }) => theme.colorTheme.white};
-  border: 1px solid ${({ theme }) => theme.colorTheme.grayscale[300]};
-  font-size: ${({ theme }) => theme.fontTheme[`16Regular`]};
+  background-color: ${({ theme }) => theme.background};
+  border: 1px solid ${({ theme }) => theme.border};
+  ${font[16]};
   cursor: pointer;
   text-decoration: none;
-  color: ${({ theme }) => theme.colorTheme.grayscale[900]};
+  color: ${({ theme }) => theme.text};
   transition: all 0.3s;
 
   &:hover {
@@ -31,22 +33,22 @@ const OutlinedStyles = css`
     outline: none;
   }
   &:disabled {
-    background-color: ${({ theme }) => theme.colorTheme.grayscale[300]};
-    color: ${({ theme }) => theme.colorTheme.white};
+    background-color: ${({ theme }) => theme.border};
+    color: ${({ theme }) => theme.whiteText};
     cursor: not-allowed;
 
     svg {
-      fill: ${({ theme }) => theme.colorTheme.white};
+      fill: ${({ theme }) => theme.background};
     }
   }
 `;
 
 const sizeStyles = {
   s: css`
-    padding: 6px 6px;
+    padding: 0.6rem 0.6rem;
   `,
   m: css`
-    padding: 7px 16px;
+    padding: 0.7rem 1.6rem;
   `,
 };
 
@@ -78,5 +80,5 @@ export const IconArea = styled.span`
 `;
 
 export const Text = styled.span`
-  font-size: ${({ theme }) => theme.fontTheme[`16Regular`]};
+  ${font[16]};
 `;

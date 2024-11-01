@@ -6,432 +6,85 @@ const GlobalStyles = createGlobalStyle`
 //SECTION - reset.css
 
 html {
-  color: #181818;
-  font-size: 10px;
-  text-size-adjust: none;
-  line-height: 1.5;
-  letter-spacing: -0.01rem;
-}
-
-::-moz-selection {
-  background: #b3d4fc;
-  text-shadow: none;
-}
-
-::selection {
-  background: #b3d4fc;
-  text-shadow: none;
-}
-
-hr {
-  display: block;
-  height: 1px;
-  margin: 1em 0;
-  padding: 0;
-  border: 0;
-  border-top: 1px solid #ccc;
-}
-
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-  vertical-align: middle;
-}
-
-fieldset {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-textarea {
-  resize: vertical;
-}
-
-.hidden,
-[hidden] {
-  display: none !important;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
+  color: ${({ theme }) => theme.text};
+  background-color: ${({ theme }) => theme.background};
 }
 
 html,
-body,
-div,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-form,
-fieldset,
-legend,
-address,
-figure,
-hr,
-object,
-iframe,
-img,
-button,
-input,
-select,
-textarea,
-label,
-a,
-span,
-em,
-strong,
-small,
-sub,
-sup,
-table,
-caption,
-thead,
-tbody,
-tfoot,
-tr,
-th,
-td,
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-main,
-menu,
-nav,
-section,
-summary {
-  box-sizing: border-box;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
-  padding: 0;
-}
-
-ul,
-ol,
-dl {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-input[type='radio'],
-input[type='checkbox'],
-select {
-  cursor: pointer;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-a {
-  color: #fff;
-  text-decoration: none;
-  outline: none;
-}
-
-a:hover,
-a:active {
-  text-decoration: none;
-  color: #fff;
-  background-color: #f59000;
-}
-
-body {
-  font-family: Pretendard, sans-serif;
-  font-weight: 400;
-}
-
-body,
-p,
-span,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family:
-    Pretendard,
-    'Pretendard Variable',
-    -apple-system,
-    BlinkMacSystemFont,
-    system-ui,
-    Roboto,
-    'Helvetica Neue',
-    'Segoe UI',
-    'Apple SD Gothic Neo',
-    'Malgun Gothic',
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol',
-    sans-serif;
-}
-
-/* 태블릿 */
-@media screen and (min-width: 768px) and (max-width: 1248px) {
-  html {
-    font-size: 1.3021vw;
+  body,
+  div,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  dl,
+  dt,
+  dd,
+  ol,
+  ul,
+  li,
+  form,
+  fieldset,
+  legend,
+  address,
+  figure,
+  hr,
+  object,
+  iframe,
+  img,
+  button,
+  input,
+  select,
+  textarea,
+  label,
+  a,
+  span,
+  em,
+  strong,
+  small,
+  sub,
+  sup,
+  table,
+  caption,
+  thead,
+  tbody,
+  tfoot,
+  tr,
+  th,
+  td,
+  article,
+  aside,
+  details,
+  figcaption,
+  figure,
+  footer,
+  header,
+  hgroup,
+  main,
+  menu,
+  nav,
+  section,
+  label,
+  summary {
+    color: ${({ theme }) => theme.text}; // 기본 텍스트 색상 적용
   }
-}
 
-/* 모바일 */
-@media screen and (max-width: 767px) {
-  html {
-    font-size: 2.7778vw;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
+    color: ${({ theme }) => theme.text};
   }
+
+  hr {
+  border-top: 1px solid ${({ theme }) => theme.border};
 }
-
-
-//SECTION - normalize.css
-
-/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-
-
-body {
-  margin: 0;
-}
-
-main {
-  display: block;
-}
-
-h1 {
-  margin: 0.67em 0;
-  font-size: 2em;
-}
-
-
-hr {
-  height: 0; /* 1 */
-  box-sizing: content-box; /* 1 */
-  overflow: visible; /* 2 */
-}
-
-
-pre {
-  font-family: monospace, monospace; /* 1 */
-  font-size: 1em; /* 2 */
-}
-
-
-a {
-  background-color: transparent;
-}
-
-abbr[title] {
-  border-bottom: none; /* 1 */ /* 2 */
-  text-decoration: underline dotted; /* 2 */
-}
-
-
-b,
-strong {
-  font-weight: bolder;
-}
-
-
-code,
-kbd,
-samp {
-  font-family: monospace, monospace; /* 1 */
-  font-size: 1em; /* 2 */
-}
-
-small {
-  font-size: 80%;
-}
-
-
-sub,
-sup {
-  position: relative;
-  font-size: 75%;
-  line-height: 0;
-  vertical-align: baseline;
-}
-
-sub {
-  bottom: -0.25em;
-}
-
-sup {
-  top: -0.5em;
-}
-
-
-
-img {
-  border-style: none;
-}
-
-
-button,
-input,
-optgroup,
-select,
-textarea {
-  margin: 0; /* 2 */
-  font-family: inherit; /* 1 */
-  font-size: 100%; /* 1 */
-  line-height: 1.15; /* 1 */
-}
-
-
-
-button,
-input {
-  /* 1 */
-  overflow: visible;
-}
-
-
-button,
-select {
-  /* 1 */
-  text-transform: none;
-}
-
-
-button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
-  appearance: button;
-}
-
-button::-moz-focus-inner,
-[type='button']::-moz-focus-inner,
-[type='reset']::-moz-focus-inner,
-[type='submit']::-moz-focus-inner {
-  padding: 0;
-  border-style: none;
-}
-
-
-button:-moz-focusring,
-[type='button']:-moz-focusring,
-[type='reset']:-moz-focusring,
-[type='submit']:-moz-focusring {
-  outline: 1px dotted ButtonText;
-}
-
-
-fieldset {
-  padding: 0.35em 0.75em 0.625em;
-}
-
-
-legend {
-  display: table; /* 1 */
-  padding: 0; /* 3 */
-  box-sizing: border-box; /* 1 */
-  color: inherit; /* 2 */
-  max-width: 100%; /* 1 */
-  white-space: normal; /* 1 */
-}
-
-
-
-progress {
-  vertical-align: baseline;
-}
-
-
-textarea {
-  overflow: auto;
-}
-
-
-[type='checkbox'],
-[type='radio'] {
-  padding: 0; /* 2 */
-  box-sizing: border-box; /* 1 */
-}
-
-[type='number']::-webkit-inner-spin-button,
-[type='number']::-webkit-outer-spin-button {
-  height: auto;
-}
-
-
-[type='search'] {
-  appearance: textfield; /* 1 */
-  outline-offset: -2px; /* 2 */
-}
-
-[type='search']::-webkit-search-decoration {
-  appearance: none;
-}
-
-
-::-webkit-file-upload-button {
-  font: inherit; /* 2 */
-  appearance: button; /* 1 */
-}
-
-
-details {
-  display: block;
-}
-
-summary {
-  display: list-item;
-}
-
-
-template {
-  display: none;
-}
-
-
-[hidden] {
-  display: none;
-}
-
-button {
-  cursor: pointer;
-}
-
-img{
-  width: 100%;
-}
-
 
 `;
 

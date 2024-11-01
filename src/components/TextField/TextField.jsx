@@ -1,32 +1,37 @@
-import PropTypes from 'prop-types';
-import ReactQuill from 'react-quill';
+// import styled from 'styled-components';
+// import PropTypes from 'prop-types';
+// import ReactQuill from 'react-quill';
 
-const toolbarOptions = [
-  ['bold', 'italic', 'underline', 'strike'],
+// const TextFieldContainer = styled.div`
+//   height: 26rem;
+// `;
 
-  [{ align: [] }],
-  [{ list: 'ordered' }, { list: 'bullet' }, { list: 'check' }],
-  [{ color: [] }, { background: [] }],
-];
+// const toolbarOptions = [
+//   ['bold', 'italic', 'underline', 'strike'],
 
-function TextField({ onChange }) {
-  const modules = {
-    toolbar: toolbarOptions,
-  };
+//   [{ align: [] }],
+//   [{ list: 'ordered' }, { list: 'bullet' }, { list: 'check' }],
+//   [{ color: [] }, { background: [] }],
+// ];
 
-  return (
-    <>
-      <ReactQuill
-        style={{ width: '72rem', height: '26rem' }}
-        modules={modules}
-        onChange={onChange}
-      />
-    </>
-  );
-}
+// function TextField({ onChange }) {
+//   const modules = {
+//     toolbar: toolbarOptions,
+//   };
 
-TextField.propTypes = {
-  onChange: PropTypes.func,
-};
+//   return (
+//     <TextFieldContainer>
+//       <ReactQuill
+//         style={{ width: '100%', height: '22rem' }}
+//         modules={modules}
+//         onChange={onChange}
+//       />
+//     </TextFieldContainer>
+//   );
+// }
 
-export default TextField;
+// TextField.propTypes = {
+//   onChange: PropTypes.func,
+// };
+
+// export default TextField;
