@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 
 import { getRollingEmoji } from '../../service/api';
+import { shadow } from '../../styles/shadowStyles';
+import { blur } from '../../styles/blurStyles';
 import useDeviceType from '../../hooks/useDeviceType';
 import EmojiBadge from '../../components/Badge/EmojiBadge';
 import ArrowDown from '../../assets/icon-arrow_down.svg';
@@ -30,6 +32,8 @@ const DropDownContainer = styled.div`
   border: 1px solid #b6b6b6;
   border-radius: 24px;
   background-color: var(--white);
+  ${shadow['mid']};
+  ${blur};
 `;
 
 //TODO - 이모지가 POST가 될 때마다 EmojiDropDown의 데이타도 변경될 것이기 때문에,
