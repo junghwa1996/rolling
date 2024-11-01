@@ -9,6 +9,7 @@ import Input from '../../components/TextField/Input';
 import TextField from '../../components/TextField/TextField';
 import useInputValidation from '../../hooks/useInputValidation';
 import { postMessages } from '../../service/api';
+import TextEditor from '../../components/TextField/TextEditor';
 
 const INITIAL_VALUES = {
   team: '11-2',
@@ -171,7 +172,8 @@ function MessagesAddPage() {
         />
 
         <StyledLabel>내용을 입력해 주세요.</StyledLabel>
-        <TextField onChange={handleEditorChange} />
+        {/* <TextField onChange={handleEditorChange} /> */}
+        <TextEditor onChange={handleEditorChange} />
 
         <StyledLabel>폰트 선택</StyledLabel>
         <Dropdown
