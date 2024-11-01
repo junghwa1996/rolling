@@ -11,6 +11,7 @@ import { useLocation } from 'react-router-dom';
 
 import { getMessagesList, getRollingItem } from '../../service/api';
 import { StyledMain, StyledInner } from './MessagesListPage.styles';
+import styles from './MessagesListPage.module.css';
 import StyledModal from '../../components/Modal/StyledModal';
 import MessageCardAddItem from '../../components/MessagesCardList/MessageCardAddItem';
 import MessageCardList from '../../components/MessagesCardList/MessageCardList';
@@ -65,18 +66,20 @@ function MessagesListPage() {
 
   return (
     <>
-      <StyledMain
-        $bgColor={backgroundData?.backgroundColor}
-        $bgImage={backgroundData?.backgroundImageURL}>
-        <StyledInner>
-          <MessageCardList
-            type="card"
-            messageData={messageData?.results || []}
-            onEvent={{ modal: handleMessageClick }}>
-            <MessageCardAddItem id={currentId} />
-          </MessageCardList>
-        </StyledInner>
-      </StyledMain>
+      <div className={styles.pageWrap}>
+        <StyledMain
+          $bgColor={backgroundData?.backgroundColor}
+          $bgImage={backgroundData?.backgroundImageURL}>
+          <StyledInner>
+            <MessageCardList
+              type="card"
+              messageData={messageData?.results || []}
+              onEvent={{ modal: handleMessageClick }}>
+              <MessageCardAddItem id={currentId} />
+            </MessageCardList>
+          </StyledInner>
+        </StyledMain>
+      </div>
       {hasModalOpen && (
         <StyledModal
           isOpen={hasModalOpen}

@@ -1,7 +1,10 @@
 import styled, { css } from 'styled-components';
 
 export const StyledMain = styled.main`
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: auto;
   width: 100%;
   height: 100vh;
   ${({ $bgColor, $bgImage }) => {
@@ -30,6 +33,7 @@ export const StyledMain = styled.main`
 `;
 
 export const StyledInner = styled.div`
+  flex: 1;
   width: 100%;
   max-width: 120rem;
   margin: 0 auto;
