@@ -35,7 +35,6 @@
 @media screen and (max-width: 768px) {
   .container {
     gap: 4.2rem;
-    padding: 4rem;
   }
 
   .buttonArea {
