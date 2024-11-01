@@ -91,7 +91,7 @@ function RecipientsList({ favorite = false }) {
       )}
       <Swiper
         key={swiperKey}
-        spaceBetween={20}
+        spaceBetween={isMobile ? 12 : 20}
         slidesPerView="auto"
         modules={[Navigation, Controller]}
         onSlideChange={handleSlideChange}

@@ -53,6 +53,10 @@ export const Card = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 1.6rem;
   box-shadow: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.08);
+  @media (max-width: 767px) {
+    width: 20.8rem;
+    height: 23.2rem;
+  }
   ${({ $bgColor, $bgImage }) => {
     const isImage = $bgImage !== null;
     if (isImage) {
@@ -110,6 +114,9 @@ export const CardArea = styled.div`
     text-overflow: ellipsis;
     ${font['24b']};
     color: var(--gray-900);
+    @media (max-width: 767px) {
+      ${font['18b']};
+    }
   }
 `;
 
