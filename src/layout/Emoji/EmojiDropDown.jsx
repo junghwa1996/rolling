@@ -70,8 +70,6 @@ function EmojiDropDown({ id }) {
     setIsOpen(!isOpen);
   };
 
-  console.log(emojiList.slice(0, 3));
-
   return (
     <div className={styles.Container}>
       <section className={styles.emojiListContainer}>
