@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { color } from '../../styles/colorStyles';
+import { color as colors } from '../../styles/colorStyles';
 import { getBackgroundImg } from '../../service/api';
 import { StyleButton, StyledRadioCard } from './RadioCard.styles';
 
 const colorData = [
-  { value: 'beige', color: color.beige[200] },
-  { value: 'purple', color: color.purple[200] },
-  { value: 'blue', color: color.blue[200] },
-  { value: 'green', color: color.green[200] },
+  { value: 'beige', color: colors.beige[200] },
+  { value: 'purple', color: colors.purple[200] },
+  { value: 'blue', color: colors.blue[200] },
+  { value: 'green', color: colors.green[200] },
 ];
 
 function RadioCard({ activeTab, onBackgroundChange }) {

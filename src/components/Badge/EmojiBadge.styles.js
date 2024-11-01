@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { font } from '../../styles/fontStyles';
+
 export const EmojiBadgeArea = styled.div`
   display: inline-flex;
   align-items: center;
@@ -7,6 +9,9 @@ export const EmojiBadgeArea = styled.div`
   padding: 0.8rem 1.2rem;
   border-radius: 3.2rem;
   background-color: rgba(0, 0, 0, 0.54);
+  @media (max-width: 767px) {
+    padding: 0.6rem 0.8rem;
+  }
 `;
 
 export const EmojiContainer = styled.div`
@@ -29,4 +34,7 @@ export const Count = styled.p`
   line-height: 2rem;
   font-weight: 400;
   color: var(--white);
+  @media (max-width: 767px) {
+    ${font['14']};
+  }
 `;
