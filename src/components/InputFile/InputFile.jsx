@@ -1,12 +1,17 @@
-// 인풋 파일
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 import styles from './InputFile.module.css';
-import { StyledProfileInfo } from './InputFile.styles';
+import { font } from '../../styles/fontStyles';
 import { getProfileImg } from '../../service/api';
 import Profile from '../Profile/Profile';
 import useDeviceType from '../../hooks/useDeviceType';
+
+const StyledProfileInfo = styled.p`
+  ${font[16]};
+  color: ${({ theme }) => theme.secondary};
+`;
 
 function InputFile({ img, onClick }) {
   const [profileImgList, setProfileImgList] = useState([]);
