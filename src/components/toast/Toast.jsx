@@ -1,14 +1,14 @@
 import React from 'react';
 import { toast } from 'react-toastify';
-
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastWrapper } from './Toast.Styles';
-import CopyUrl from './CopyUrl'; // URL 복사를 위한 함수
+
+import { StyledToastContainer, ToastWrapper } from './Toast.Styles';
+import CopyUrl from './CopyUrl';
 import ToastMessages from './ToastMessages';
 
-// 다양한 내용을 복사하고 토스트 알림을 표시하는 함수
+// showToast 함수는 이제 기본적으로 export
 export const showToast = (content) => {
-  CopyUrl(content) // content를 매개변수로 사용
+  CopyUrl(content)
     .then(() => {
       toast(
         ({ closeToast }) => (
@@ -26,10 +26,13 @@ export const showToast = (content) => {
       );
     })
     .catch((error) => {
-      console.error('Toast error:', error); // 오류 발생 시 로깅
+      console.error('Toast error:', error);
     });
 };
 
-export default function Toast() {
-  return null; // ToastContainer는 App.jsx에서 처리
+// Toast 컴포넌트에서 handleShowToast 제거
+function Toast() {
+  return <StyledToastContainer />; // StyledToastContainer를 반환
 }
+
+export default Toast;

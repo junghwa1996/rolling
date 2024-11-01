@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import ShareIcon from '../../assets/icon-share-24.svg';
 import {
   SharingSelectorContainer,
@@ -9,6 +8,7 @@ import {
   DropdownItem,
 } from './SharingSelector.styles'; // 스타일 임포트
 import { showToast } from '../../components/toast/Toast'; // showToast 함수 임포트
+import { light } from '../../styles/theme'; // 새로운 테마 import
 
 function SharingSelector() {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +30,7 @@ function SharingSelector() {
       {isOpen && (
         <DropdownList>
           <DropdownItem onClick={handleUrlShareClick}>URL 공유</DropdownItem>
-          <DropdownItem style={{ background: '#F6F6F6' }}>
+          <DropdownItem style={{ background: light.secondary }}> {/* 새로운 테마에서 배경색 사용 */}
             카카오톡 공유
           </DropdownItem>
         </DropdownList>
