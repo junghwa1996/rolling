@@ -1,0 +1,14 @@
+/* REVIEW : 나중에 header에 붙히고 테스트 해봐야할것같음 */
+.outLinedArea {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0.8rem;
+  z-index: 1;
+}
+
+.pickerArea {
+  margin-right: 1.5rem;
+}
