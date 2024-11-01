@@ -44,8 +44,8 @@ function InfiniteScroll({ fetchData, hasMore, children }) {
 }
 
 InfiniteScroll.propTypes = {
-  fetchData: PropTypes.array,
-  hasMore: PropTypes.func,
+  fetchData: PropTypes.func.isRequired,
+  hasMore: PropTypes.bool.isRequired,
   children: PropTypes.node,
 };
 
