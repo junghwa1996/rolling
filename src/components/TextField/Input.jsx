@@ -76,7 +76,7 @@ function Input({
         onBlur={onBlur}
       />
       {hasError.$error && (
-        <InputErrMessage error={hasError.$error}>
+        <InputErrMessage $error={hasError.$error}>
           {hasError.errMessage}
         </InputErrMessage>
       )}

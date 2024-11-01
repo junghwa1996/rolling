@@ -26,6 +26,7 @@
 
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import {
@@ -36,19 +37,13 @@ import {
   StyledButton,
 } from './MessageCardList.styles';
 import useDeviceType from '../../hooks/useDeviceType';
+import { deleteMessages } from '../../service/api';
 
 MessageCardList.propTypes = {
   type: PropTypes.string.isRequired,
   messageData: PropTypes.array.isRequired,
   onEvent: PropTypes.object,
   children: PropTypes.any,
-};
-
-// STUB - delete 버튼을 클릭했을 때 이벤트 함수 입니다.
-const handleDeleteClick = (id, event) => {
-  event.stopPropagation();
-  // TODO - 원활한 테스팅을 위해 추가했습니다. 기능 작업이 완료되면 삭제해주세요
-  console.log(`클릭 카드 ID : ${id}, [삭제 합니다]`);
 };
 
 // STUB - Edit 버튼을 클릭했을 때 이벤트 함수 입니다.
@@ -61,6 +56,9 @@ const handleEditClick = (id, event) => {
 // STUB - 해당 컴포넌트의 messageData는 배열로 받아옵니다.
 function MessageCardList({ type, messageData = [], onEvent, children }) {
   const [messageDataList, setMessageDataList] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleLoad = () => {
@@ -72,8 +70,31 @@ function MessageCardList({ type, messageData = [], onEvent, children }) {
   const currentURL = useLocation();
   const presentPath = currentURL.pathname.split('/');
   const isEdit = presentPath[presentPath.length - 1] === 'message';
+  const presentId = presentPath[presentPath.length - 2];
 
   const deviceType = useDeviceType();
+
+  // STUB - delete 버튼을 클릭했을 때 이벤트 함수 입니다.
+  const handleDeleteClick = async (id, event) => {
+    event.stopPropagation();
+    setLoading(true);
+    setError(null);
+    try {
+      await deleteMessages(id);
+      setMessageDataList((prevData) =>
+        prevData.filter((item) => item.id !== id),
+      );
+      navigate(`/post/${presentId}`);
+    } catch (error) {
+      setError(error);
+      console.error(`삭제 실패: ${error.message}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (loading) return <p>로딩 중 입니다...</p>;
+  if (error) return <p>데이터 삭제에 실패했습니다 🫠</p>;
 
   return (
     <StyledCardListContainer>

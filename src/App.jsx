@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { ThemeProvider } from 'styled-components';
 import { ToastContainer } from 'react-toastify';
+import { ThemeProvider } from 'styled-components';
 
 import './styles/reset.css';
 import './styles/common.css';
 import GlobalStyles from './styles/GlobalStyles';
 import { light, dark } from './styles/theme';
 import Content from './router/Content';
+import SharingSelector from './layout/Emoji/SharingSelector'; // 추가
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -23,6 +24,7 @@ function App() {
         Switch to {isDarkMode ? 'Light' : 'Dark'} Mode
       </button>
       <ToastContainer />
+      <SharingSelector isDarkMode={isDarkMode} /> {/* SharingSelector 추가 */}
       <Content /> {/* 라우터는 여기서 사용하지 않음 */}
     </ThemeProvider>
   );

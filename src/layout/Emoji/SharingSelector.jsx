@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import ShareIcon from '../../assets/icon-share-24.svg';
+
+import ShareIcon from '../../assets/icon-share-24.svg'; // 공유 아이콘 이미지
 import {
   SharingSelectorContainer,
   Button,
@@ -25,12 +26,12 @@ function SharingSelector() {
   return (
     <SharingSelectorContainer>
       <Button onClick={toggleDropdown}>
-        <Icon src={ShareIcon} alt="Share icon" />
+        <Icon src={ShareIcon} alt="Share icon" /> {/* 버튼 안에 이미지 */}
       </Button>
       {isOpen && (
         <DropdownList>
           <DropdownItem onClick={handleUrlShareClick}>URL 공유</DropdownItem>
-          <DropdownItem style={{ background: light.secondary }}> {/* 새로운 테마에서 배경색 사용 */}
+          <DropdownItem style={{ background: light.secondary }}>
             카카오톡 공유
           </DropdownItem>
         </DropdownList>

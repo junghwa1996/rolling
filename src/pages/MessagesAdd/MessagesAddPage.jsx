@@ -9,6 +9,7 @@ import Input from '../../components/TextField/Input';
 import TextField from '../../components/TextField/TextField';
 import useInputValidation from '../../hooks/useInputValidation';
 import { postMessages } from '../../service/api';
+import TextEditor from '../../components/TextField/TextEditor';
 
 const INITIAL_VALUES = {
   team: '11-2',
@@ -73,8 +74,14 @@ function MessagesAddPage() {
   // 보내는 사람 이름
   const { value, error, errMessage, onChange, onBlur } = useInputValidation();
 
-  // 보내는 사람 이름, 내용이 입력되지 않았을 경우, 생성하기 버튼 disabled 상태 관리
-  const [validation, setValidation] = useState(true);
+  // 보내는 사람 이름, 내용이 입력되지 않았을 경우, 생성하기 버튼 disabled
+  const isValidation =
+    !value ||
+    error ||
+    values.content === '' ||
+    values.content === '<p><br></p>';
+  // 조건에 values.content === '<p><br></p>' 추가 이유
+  // 텍스트 에디터에 내용을 입력 후, 내용을 지우면 텍스트 에디터 value가 빈 값이 아닌 <p><br></p>가 남게 되어 이 부분도 조건에 추가
 
   useEffect(() => {
     setValues((prevValues) => ({
@@ -83,14 +90,6 @@ function MessagesAddPage() {
       sender: value,
     }));
   }, [params.id, value]);
-
-  useEffect(() => {
-    setValidation(
-      error || values.content === '' || values.content === '<p><br></p>',
-      // 조건에 values.content === '<p><br></p>' 추가 이유
-      // 텍스트 에디터에 내용을 입력 후, 내용을 지우면 텍스트 에디터 value가 빈 값이 아닌 <p><br></p>가 남게 되어 이 부분도 조건에 추가
-    );
-  }, [error, values.content]);
 
   // 프로필 이미지 상태 업데이트
   const handleImgClick = (value) => {
@@ -125,13 +124,12 @@ function MessagesAddPage() {
       // font: values.font,
     };
 
-    const result = await postMessages(params.id, messageData);
-    if (!result) {
-      return;
+    try {
+      await postMessages(params.id, messageData);
+      nav(`/post/${params.id}`, { replace: true }); // 메시지를 보낸 롤링페이퍼 페이지로 이동
+    } catch (error) {
+      console.error('메시지를 생성하는데 오류가 발생 했습니다.:', error);
     }
-
-    setValues(INITIAL_VALUES);
-    nav(`/post/${params.id}`, { replace: true });
   };
 
   return (
@@ -174,7 +172,8 @@ function MessagesAddPage() {
         />
 
         <StyledLabel>내용을 입력해 주세요.</StyledLabel>
-        <TextField onChange={handleEditorChange} />
+        {/* <TextField onChange={handleEditorChange} /> */}
+        <TextEditor onChange={handleEditorChange} />
 
         <StyledLabel>폰트 선택</StyledLabel>
         <Dropdown
@@ -192,7 +191,7 @@ function MessagesAddPage() {
         />
 
         {/* 이름, 내용을 입력하지 않으면 disabled */}
-        <Button size="xl" type="submit" disabled={validation}>
+        <Button size="xl" type="submit" disabled={isValidation}>
           생성하기
         </Button>
       </form>
