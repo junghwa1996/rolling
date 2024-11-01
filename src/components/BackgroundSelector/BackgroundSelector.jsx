@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import TabToggle from '../TabToggle/TabToggle';
 import RadioCard from './RadioCard';
 
-function BackgroundSelector() {
+function BackgroundSelector({ onBackgroundChange }) {
   const [activeTab, setActiveTab] = useState('컬러');
 
   const handleTabChange = (tab) => {
@@ -13,9 +14,15 @@ function BackgroundSelector() {
   return (
     <>
       <TabToggle onClick={handleTabChange} />
-      <RadioCard activeTab={activeTab}></RadioCard>
+      <RadioCard
+        activeTab={activeTab}
+        onBackgroundChange={onBackgroundChange}></RadioCard>
     </>
   );
 }
+
+BackgroundSelector.propTypes = {
+  onBackgroundChange: PropTypes.func,
+};
 
 export default BackgroundSelector;
