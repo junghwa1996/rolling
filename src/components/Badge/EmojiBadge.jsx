@@ -11,9 +11,9 @@ import {
   Count,
 } from './EmojiBadge.styles';
 
-function EmojiBadge({ emoji, count }) {
+function EmojiBadge({ emoji, count, onClick }) {
   return (
-    <EmojiBadgeArea>
+    <EmojiBadgeArea onClick={onClick}>
       <EmojiContainer>
         <Emoji>{emoji}</Emoji>
       </EmojiContainer>
@@ -25,6 +25,7 @@ function EmojiBadge({ emoji, count }) {
 EmojiBadge.propTypes = {
   emoji: PropTypes.string.isRequired,
   count: PropTypes.number.isRequired,
+  onClick: PropTypes.func,
 };
 
 export default EmojiBadge;

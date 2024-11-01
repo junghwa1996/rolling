@@ -33,6 +33,9 @@ export const Count = styled.p`
   font-size: 1.6rem;
   line-height: 2rem;
   font-weight: 400;
+  min-width: 2rem;
+  min-height: 2rem;
+  text-align: center;
   color: var(--white);
   @media (max-width: 767px) {
     ${font['14']};
