@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import CheckedIcon from '../../assets/icon-checked.svg';
+import ICON_CHECKED from '../../assets/icon-checked.svg';
 
 const StyleButton = styled.button`
   width: 16.8rem;
@@ -44,7 +44,7 @@ const StyleButton = styled.button`
     display: inline-block;
     width: 4.4rem;
     height: 4.4rem;
-    background: url(${CheckedIcon});
+    background: url(${ICON_CHECKED});
     background-size: 100%;
     position: absolute;
     top: 50%;
