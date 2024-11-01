@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { colorStyles } from '../../styles/colorStyles';
+import { color } from '../../styles/colorStyles';
 import { getBackgroundImg } from '../../service/api';
 import { StyleButton, StyledRadioCard } from './RadioCard.styles';
 
