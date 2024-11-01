@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Logo from '../../components/Logo/Logo';
-import { HeaderArea, InfoHeader, LogoHeader } from './Header.styles';
+import { HeaderArea, InfoHeader, LogoHeader } from './MainHeader.styles';
 import useDeviceType from '../../hooks/useDeviceType';
 import Outlined from '../../components/Outlined/Outlined';
 
-Header.propTypes = {
+MainHeader.propTypes = {
   type: PropTypes.oneOf(['default', 'mobileHidden', 'doubleLine']),
 };
 
-function Header({ type = 'default' }) {
+function MainHeader({ type = 'default' }) {
   const isDeviceType = useDeviceType();
 
   return (
@@ -39,4 +39,4 @@ function Header({ type = 'default' }) {
   );
 }
 
-export default Header;
+export default MainHeader;

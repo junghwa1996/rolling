@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-import { tm_color } from '../../utils/themeUtils';
+import { color } from '../../styles/colorStyles';
 
 export const HeaderArea = styled.header`
   width: 100%;
-  border-bottom: 1px solid ${tm_color('#EDEDED')};
-  background-color: ${tm_color('white')};
+  border-bottom: 1px solid #ededed;
+  background-color: ${color.white};
   position: relative;
 
   > div {
@@ -48,6 +48,7 @@ export const LogoHeader = styled.div`
 
   @media (max-width: 768px) {
     padding: 0 15px;
+    height: 6.4rem;
   }
 
   ${({ $type }) =>

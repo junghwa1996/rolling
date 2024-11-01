@@ -17,19 +17,19 @@ const OutlinedStyles = css`
   transition: all 0.3s;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colorTheme.grayscale[100]};
-    color: ${({ theme }) => theme.colorTheme.grayscale[900]};
+    background-color: ${({ theme }) => theme.buttongray};
+    color: ${({ theme }) => theme.text};
   }
   &:active,
   &:focus:active {
-    background-color: ${({ theme }) => theme.colorTheme.grayscale[100]};
-    border-color: ${({ theme }) => theme.colorTheme.grayscale[300]};
-    color: ${({ theme }) => theme.colorTheme.grayscale[900]};
+    background-color: ${({ theme }) => theme.buttongray};
+    border-color: ${({ theme }) => theme.border};
+    color: ${({ theme }) => theme.text};
   }
   &:focus {
-    border-color: ${({ theme }) => theme.colorTheme.grayscale[500]};
-    background-color: ${({ theme }) => theme.colorTheme.white};
-    color: ${({ theme }) => theme.colorTheme.grayscale[900]};
+    border-color: ${({ theme }) => theme.secondary};
+    background-color: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.text};
     outline: none;
   }
   &:disabled {
