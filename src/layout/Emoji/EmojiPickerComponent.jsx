@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import Picker from 'emoji-picker-react';
 
-import { PickerButton, Icon, Text } from './EmojiPicker.styles';
 import EmojiBadge from '../../components/Badge/EmojiBadge';
-import IconStoke from '../../assets/icon-stoke.svg'; 
+import { ReactComponent as IconStoke } from '../../assets/icon-stoke.svg';
+import Outlined from '../../components/Outlined/Outlined';
+import styles from './EmojiPickerComponent.module.css';
+import useDeviceType from '../../hooks/useDeviceType';
 
 function EmojiPickerComponent() {
   const [selectedEmojis, setSelectedEmojis] = useState([]);
   const [showPicker, setShowPicker] = useState(false);
+  const isDevice = useDeviceType();
+  const isMo = isDevice === 'mobile';
 
   const onEmojiClick = (emojiObject) => {
     const existingEmoji = selectedEmojis.find(
@@ -39,16 +43,23 @@ function EmojiPickerComponent() {
     .slice(0, 8);
 
   return (
-    <div>
-      <PickerButton
-        size="s"
-        color="secondary" 
-        onClick={() => setShowPicker((prev) => !prev)}>
-        <Icon src={IconStoke} alt="아이콘" /> {/* import한 IconStoke 사용 */}
-        <Text>추가</Text>
-      </PickerButton>
+    <div className={styles.outLinedArea}>
+      <Outlined
+        size="m"
+        color="secondary"
+        onClick={() => setShowPicker((prev) => !prev)}
+        icon={<IconStoke />}>
+        {!isMo && '추가'}
+      </Outlined>
 
-      {showPicker && <Picker onEmojiClick={onEmojiClick} />}
+      {showPicker && (
+        <Picker
+          onEmojiClick={onEmojiClick}
+          width="30.6rem"
+          height="39.2rem"
+          className={styles.pickerArea}
+        />
+      )}
       {sortedEmojis.map(({ emoji, count }, index) => (
         <EmojiBadge key={index} emoji={emoji} count={count} />
       ))}
