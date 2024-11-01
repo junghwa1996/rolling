@@ -19,7 +19,7 @@ function Header({ type = 'default' }) {
         <LogoHeader $type={type}>
           <Logo />
           {type === 'default' && (
-            <Outlined size="s" to="/">
+            <Outlined size="s" to="/post">
               롤링 페이퍼 만들기
             </Outlined>
           )}
