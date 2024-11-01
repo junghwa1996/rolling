@@ -16,15 +16,18 @@ const OutlinedStyles = css`
 
   &:hover {
     background-color: ${({ theme }) => theme.colorTheme.grayscale[100]};
+    color: ${({ theme }) => theme.colorTheme.grayscale[900]};
   }
   &:active,
   &:focus:active {
     background-color: ${({ theme }) => theme.colorTheme.grayscale[100]};
     border-color: ${({ theme }) => theme.colorTheme.grayscale[300]};
+    color: ${({ theme }) => theme.colorTheme.grayscale[900]};
   }
   &:focus {
     border-color: ${({ theme }) => theme.colorTheme.grayscale[500]};
     background-color: ${({ theme }) => theme.colorTheme.white};
+    color: ${({ theme }) => theme.colorTheme.grayscale[900]};
     outline: none;
   }
   &:disabled {
@@ -47,13 +50,15 @@ const sizeStyles = {
   `,
 };
 
-export const StOutlined = styled.button`
-  ${({ size }) => sizeStyles[size]}
+export const StOutlined = styled.button.attrs(({ as }) => ({
+  as: as || 'button',
+}))`
+  ${({ $size }) => sizeStyles[$size]}
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex-direction: ${({ iconPosition }) =>
-    iconPosition === 'right' ? 'row-reverse' : 'row'};
+  flex-direction: ${({ $iconPosition }) =>
+    $iconPosition === 'right' ? 'row-reverse' : 'row'};
 
   ${OutlinedStyles}
 `;

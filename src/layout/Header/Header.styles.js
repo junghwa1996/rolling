@@ -7,22 +7,6 @@ export const HeaderArea = styled.header`
   border-bottom: 1px solid ${tm_color('#EDEDED')};
   background-color: ${tm_color('white')};
   position: relative;
-  ${({ $type }) =>
-    $type === 'doubleLine' &&
-    `
-    @media (min-width: 769px) 
-      &::before {
-        content: '';
-        position: absolute;
-        top: 48.8%;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background-color: #EDEDED;
-        transform: translateY(-50%);
-      }
-    }
-  `}
 
   > div {
     max-width: 120rem;
@@ -31,12 +15,31 @@ export const HeaderArea = styled.header`
     display: flex;
     flex-direction: column;
   }
+
+  ${({ $type }) =>
+    $type === 'doubleLine' &&
+    `
+    @media (min-width: 769px) {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 48.8%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background-color: #EDEDED;
+      transform: translateY(-50%);
+    }
+  }
+  `}
 `;
 
 export const LogoHeader = styled.div`
   width: 100%;
   height: 6.5rem;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 0;
 
   @media (max-width: 1248px) and (min-width: 769px) {

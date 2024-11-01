@@ -1,3 +1,4 @@
+// 아웃라인
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -30,13 +31,12 @@ function Outlined({
   return (
     <StOutlined
       as={TAG}
-      size={size}
-      iconPosition={iconPosition}
+      $size={size}
+      $iconPosition={iconPosition}
       disabled={disabled}
       onClick={onClick}
       {...(TAG === Link && { to })}
-      type={TAG === 'button' ? type : undefined}
-    >
+      type={TAG === 'button' ? type : undefined}>
       {icon && <IconArea>{icon}</IconArea>}
       {children && <Text>{children}</Text>}
     </StOutlined>
