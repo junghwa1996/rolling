@@ -118,8 +118,8 @@ export const postRollingEmoji = async (id, updateData) =>
   postRequest(`/recipients/${id}/reactions/`, updateData);
 
 // DELETE
-export const deleteRollingEmoji = async (id) =>
-  deleteRequest(`/recipients/${id}/reactions/`);
+export const deleteRollingEmoji = async (id, deleteData) =>
+  postRequest(`/recipients/${id}/reactions/`, deleteData);
 
 /***********************************************
  *              메시지 생성 프로필 이미지
