@@ -39,6 +39,7 @@ import {
   MSHeaderPosition,
   MSHeaderArea,
   ButtonContainer,
+  HeaderText,
 } from './MessagesHeader.styles.js';
 import { StyledCreatedAt } from './StyledCreatedAt.styles.js';
 import { ReactComponent as DeleteIcon } from '../../assets/icon-delete.svg';
@@ -71,10 +72,10 @@ function MessagesHeader({
       <MSHeaderPosition>
         <Profile imageURL={messageData.profileImageURL} />
         <MSHeaderArea>
-          <h3>
+          <HeaderText>
             <span>From.</span>
             {messageData.sender}
-          </h3>
+          </HeaderText>
           <Badge value={messageData.relationship} />
         </MSHeaderArea>
       </MSHeaderPosition>
