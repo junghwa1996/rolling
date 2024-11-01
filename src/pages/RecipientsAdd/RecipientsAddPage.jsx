@@ -1,10 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import {
-  StyledLabel,
-  StyledMessagesAddPage,
-} from '../MessagesAdd/MessagesAddPage.styles';
+import styles from '../MessagesAdd/MessagesAddPage.module.css';
+import { StyledLabel } from '../MessagesAdd/MessagesAddPage.styles';
 import Button from '../../components/Button/Button';
 import Input from '../../components/TextField/Input';
 import useInputValidation from '../../hooks/useInputValidation';
@@ -70,7 +68,7 @@ function RecipientsAddPage() {
   };
 
   return (
-    <StyledMessagesAddPage>
+    <div className={styles.messagesAddContainer}>
       <form onSubmit={handlePostSubmit}>
         <StyledLabel>To.</StyledLabel>
         <Input
@@ -98,7 +96,7 @@ function RecipientsAddPage() {
           생성하기
         </Button>
       </form>
-    </StyledMessagesAddPage>
+    </div>
   );
 }
 

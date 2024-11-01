@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { StyledLabel, StyledMessagesAddPage } from './MessagesAddPage.styles';
+import styles from './MessagesAddPage.module.css';
+import { StyledLabel } from './MessagesAddPage.styles';
 import Button from '../../components/Button/Button';
 import InputFile from '../../components/InputFile/InputFile';
 import Dropdown from '../../components/TextField/Dropdown';
 import Input from '../../components/TextField/Input';
-import TextField from '../../components/TextField/TextField';
 import useInputValidation from '../../hooks/useInputValidation';
 import { postMessages } from '../../service/api';
 import TextEditor from '../../components/TextField/TextEditor';
@@ -133,7 +133,7 @@ function MessagesAddPage() {
   };
 
   return (
-    <StyledMessagesAddPage>
+    <div className={styles.messagesAddContainer}>
       <form onSubmit={handlePostSubmit}>
         <StyledLabel>Form.</StyledLabel>
         <Input
@@ -195,7 +195,7 @@ function MessagesAddPage() {
           생성하기
         </Button>
       </form>
-    </StyledMessagesAddPage>
+    </div>
   );
 }
 
