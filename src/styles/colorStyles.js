@@ -1,0 +1,35 @@
+export const color = {
+  purple: {
+    100: 'var(--purple-100)',
+    200: 'var(--purple-200)',
+    300: 'var(--purple-300)',
+    400: 'var(--purple-400)',
+    500: 'var(--purple-500)',
+    600: 'var(--purple-600)',
+    700: 'var(--purple-700)',
+    800: 'var(--purple-800)',
+    900: 'var(--purple-900)',
+  },
+  beige: {
+    100: 'var(--beige-100)',
+    200: 'var(--beige-200)',
+    300: 'var(--beige-300)',
+    400: 'var(--beige-400)',
+    500: 'var(--beige-500)',
+  },
+  blue: {
+    100: 'var(--blue-100)',
+    200: 'var(--blue-200)',
+    300: 'var(--blue-300)',
+    400: 'var(--blue-400)',
+    500: 'var(--blue-500)',
+  },
+  green: {
+    100: 'var(--green-100)',
+    200: 'var(--green-200)',
+    300: 'var(--green-300)',
+    400: 'var(--green-400)',
+    500: 'var(--green-500)',
+  },
+  error: 'var(--error)',
+};

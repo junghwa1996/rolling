@@ -1,4 +1,14 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+import { font } from '../../styles/fontStyles';
+
+const ellipsisStyle = css`
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+`;
 
 export const MSHeaderContainer = styled.div`
   display: flex;
@@ -13,20 +23,23 @@ export const MSHeaderArea = styled.div`
   flex-direction: column;
   justify-content: center;
   h3 {
+    ${ellipsisStyle}
     margin-bottom: 0.6rem;
-    ${({ theme }) => theme.fontTheme['20Bold']}
+    width: 90%;
+    ${font['20b']}
     span {
       margin-right: 0.6rem;
-      ${({ theme }) => theme.fontTheme['20Regular']}
+      ${font[20]};
+      color: ${({ theme }) => theme.blackText};
     }
   }
 
   @media screen and (max-width: 767px) {
     h3 {
-      ${({ theme }) => theme.fontTheme['18Bold']}
+      ${font['20b']};
       span {
         margin-right: 0.6rem;
-        ${({ theme }) => theme.fontTheme['18Regular']}
+        ${font[20]};
       }
     }
   }

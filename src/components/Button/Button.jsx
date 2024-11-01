@@ -33,9 +33,8 @@ function Button({
       disabled={disabled}
       as={TAG}
       {...(TAG === Link && { to })}
-      type={TAG === 'button' ? type : undefined}
-    >
-      {children}
+      type={TAG === 'button' ? type : undefined}>
+      {children || '텍스트'}
     </StButton>
   );
 }

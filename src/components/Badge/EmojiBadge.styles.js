@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { tm_color } from '../../utils/themeUtils';
-
 export const EmojiBadgeArea = styled.div`
   display: inline-flex;
   align-items: center;
@@ -30,5 +28,5 @@ export const Count = styled.p`
   font-size: 1.6rem;
   line-height: 2rem;
   font-weight: 400;
-  color: ${tm_color('white')};
+  color: var(--white);
 `;

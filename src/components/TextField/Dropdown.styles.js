@@ -1,16 +1,18 @@
 import styled from 'styled-components';
 
+import { font } from '../../styles/fontStyles';
 import { StyledInput, StyledErrMessage } from './CommonInput.styles';
+import { shadow } from '../../styles/shadowStyles';
 
 export const DropdownBtn = styled.button`
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  width: ${({ deviceType }) => (deviceType === 'mobile' ? '100%' : '32rem')};
-  margin-bottom: 0.4rem;
+  width: ${({ $deviceType }) => ($deviceType === 'mobile' ? '100%' : '32rem')};
   padding: 1.2rem 1.6rem;
   ${StyledInput};
+  cursor: pointer;
 `;
 
 export const IconBtn = styled.img`
@@ -20,6 +22,7 @@ export const IconBtn = styled.img`
 
   padding: 0.6rem 1.6rem;
   ${StyledInput};
+  cursor: pointer;
 `;
 
 export const ArrowImg = styled.img`
@@ -30,25 +33,30 @@ export const ArrowImg = styled.img`
 //SECTION - Dropdown을 내렸을 때 나오는 요소들의 css
 
 export const DropdownList = styled.ul`
+  position: absolute;
+  z-index: 3;
+  margin-top: 0.8rem;
   padding: 1rem 0.1rem;
 
   width: ${({ isIcon }) => (isIcon ? '14rem' : '32rem')};
-
   border: 0.1rem solid #ccc;
   border-radius: 0.8rem;
 
-  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.08);
+  background-color: ${({ theme }) => theme.background};
+  ${shadow['low']}
+
+  cursor: pointer;
 `;
 
 export const DropdownItem = styled.li`
   padding: 1.2rem 1.6rem;
+  width: ${({ isIcon }) => (isIcon ? '13.8rem' : '31.6rem')};
 
-  width: ${({ isIcon }) => (isIcon ? '14rem' : '32rem')};
-
-  ${({ theme }) => theme.fontTheme['16Regular']}
+  ${font[16]}
+  cursor: pointer;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colorTheme.grayscale['100']};
+    background-color: ${({ theme }) => theme.surface};
   }
 `;
 

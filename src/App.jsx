@@ -1,17 +1,25 @@
-import React from 'react';
-import { ToastContainer } from 'react-toastify'; // ToastContainer를 여기로 임포트
-import 'react-toastify/dist/ReactToastify.css'; // Toast 스타일을 임포트
-import { BrowserRouter } from 'react-router-dom';
+import React, { useState } from 'react';
+import { ToastContainer } from 'react-toastify'; // ToastContainer 임포트
 
+import './styles/reset.css';
+import './styles/common.css';
 import Content from './router/Content';
+import { light, dark } from './styles/theme';
+import GlobalStyles from './styles/GlobalStyles';
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const theme = isDarkMode ? dark : light;
+
+  const toggleTheme = () => {
+    setIsDarkMode((prevMode) => !prevMode);
+  };
+
   return (
     <>
-      <ToastContainer /> {/* ToastContainer를 BrowserRouter 외부에 위치 */}
-      <BrowserRouter>
-        <Content />
-      </BrowserRouter>
+      <GlobalStyles />
+      <Content />
+      <ToastContainer /> {/* ToastContainer 추가 */}
     </>
   );
 }
