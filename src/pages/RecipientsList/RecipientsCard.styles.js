@@ -133,5 +133,8 @@ export const EmojiArea = styled.div`
     li {
       display: flex;
     }
+    @media screen and (max-width: 768px) {
+      gap: 0.4rem;
+    }
   }
 `;
