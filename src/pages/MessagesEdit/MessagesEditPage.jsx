@@ -67,11 +67,17 @@ function MessagesListPage() {
         $bgColor={backgroundData?.backgroundColor}
         $bgImage={backgroundData?.backgroundImageURL}>
         <StyledInner>
-          <InfiniteScroll fetchData={fetchMessages} hasMore={hasMore}>
-            <MessageCardList
-              type="edit"
-              messageData={messages} // 수정: messages 사용
-            />
+          <InfiniteScroll
+            fetchData={fetchMessages}
+            hasMore={hasMore}
+            data={messages}>
+            {(item) => (
+              <MessageCardList
+                key={item.id}
+                type="edit"
+                messageData={messages}
+              />
+            )}
           </InfiniteScroll>
         </StyledInner>
       </StyledMain>
