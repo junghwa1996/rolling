@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-import { tm_color, tm_font } from '../../utils/themeUtils';
+import { font } from '../../styles/fontStyles';
 import feat01 from '../../assets/Home/point_01.svg';
 import feat02 from '../../assets/Home/point_02.svg';
 
 const text = '누구나 손쉽게, 온라인 \n롤링 페이퍼를 만들 수 있어요';
 
-//NOTE - 전
+//NOTE - 전체 frame
 export const FeatSection = styled.section`
   width: 120rem;
   margin: 0 auto;
@@ -30,7 +30,7 @@ export const FeatContainer = styled.div`
   height: 32.4rem;
 
   border-radius: 1.6rem;
-  background-color: ${tm_color('#F6F8FF')};
+  background-color: #f6f8ff;
 
   @media screen and (min-width: 768px) and (max-width: 1248px) {
     flex-direction: column;
@@ -83,10 +83,10 @@ export const TagSection = styled.div`
   margin-bottom: 1.6rem;
   padding: 0.6rem 1.2rem;
   border-radius: 50px;
-  background-color: ${tm_color('purple600')};
-  color: ${tm_color('white')};
+  background-color: var(--purple-600);
+  color: ${({ theme }) => theme.whiteText};
 
-  ${tm_font('14b')}
+  ${font['14b']}
 
   @media screen and (max-width: 767px) {
     padding: 0.4rem 1.2rem;
@@ -99,19 +99,19 @@ export const TextSection = styled.div`
   gap: 0.8rem;
 
   h2 {
-    ${tm_font('24b')}
+    ${font['24b']}
 
     @media screen and (max-width: 767px) {
-      ${tm_font('18b')}
+      ${font['18b']}
     }
   }
 
   p {
-    color: ${tm_color('#555555')};
-    ${tm_font('18')}
+    color: #555555;
+    ${font['18']}
 
     @media screen and (max-width: 767px) {
-      ${tm_font('15')}
+      ${font['15']}
     }
   }
 `;
