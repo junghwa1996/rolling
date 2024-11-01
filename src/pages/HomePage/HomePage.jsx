@@ -33,14 +33,15 @@ function Homepage() {
   const getDevice = useDeviceType();
   const isPC = getDevice === 'pc';
 
+  //TODO - 추후 리팩토링 과정 중 컴포넌트(카드 부분)로 뺄 수 있음 뺄 예정 !
+  //헤더 부분 머지 되면 채워놓을 예정
   return (
     <>
       <section>
-        <h1>헤더</h1> //TODO - 헤더 머지되면 채워 놓을 예정
+        <h1>헤더</h1>
       </section>
       <div className={styles.featSection}>
         {featContents.map((content, index) => (
-          //TODO - 추후 리팩토링 과정 중 컴포넌트로 뺄 수 있음 뺄 예정 !
           <FeatContainer
             key={`feat-${index}`}
             direction={index === 0 ? 'row' : 'row-reverse'}>
