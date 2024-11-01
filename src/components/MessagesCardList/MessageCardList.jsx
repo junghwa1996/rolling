@@ -25,8 +25,7 @@
  */
 
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import {
@@ -44,13 +43,6 @@ MessageCardList.propTypes = {
   messageData: PropTypes.array.isRequired,
   onEvent: PropTypes.object,
   children: PropTypes.any,
-};
-
-// STUB - Edit 버튼을 클릭했을 때 이벤트 함수 입니다.
-const handleEditClick = (id, messageData, navigate) => {
-  navigate(`/list/${id}/message`, { state: { messageData } });
-  // TODO - 원활한 테스팅을 위해 추가했습니다. 기능 작업이 완료되면 삭제해주세요
-  console.log(`클릭 카드 ID : ${id}, [수정 페이지로 이동 합니다]`);
 };
 
 // STUB - 해당 컴포넌트의 messageData는 배열로 받아옵니다.
@@ -96,6 +88,11 @@ function MessageCardList({ type, messageData = [], onEvent, children }) {
   if (loading) return <p>로딩 중 입니다...</p>;
   if (error) return <p>데이터 삭제에 실패했습니다 🫠</p>;
 
+  // STUB - Edit 버튼을 클릭했을 때 이벤트 함수 입니다.
+  const handleEditClick = (presentId, messageId) => {
+    navigate(`/post/${presentId}/message?id=${messageId}`);
+  };
+
   return (
     <StyledCardListContainer>
       {isEdit === 'edit' && (
@@ -117,7 +114,7 @@ function MessageCardList({ type, messageData = [], onEvent, children }) {
               buttonDelete: (event) => handleDeleteClick(item.id, event),
               buttonEdit: (event) => {
                 event.stopPropagation();
-                handleEditClick(item.id, item, navigate);
+                handleEditClick(presentId, item.id);
               },
             }}
           />
