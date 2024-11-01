@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 
-function InfiniteScroll({ fetchData, hasMore, children }) {
+function InfiniteScroll({ fetchMoreData, data, hasMore, children }) {
   const observer = useRef();
   const [loading, setLoading] = useState(false);
 
@@ -11,7 +11,7 @@ function InfiniteScroll({ fetchData, hasMore, children }) {
     const target = entries[0];
     if (target.isIntersecting && hasMore && !loading) {
       setLoading(true);
-      fetchData().finally(() => setLoading(false));
+      fetchMoreData().finally(() => setLoading(false));
     }
   };
 
@@ -36,7 +36,7 @@ function InfiniteScroll({ fetchData, hasMore, children }) {
 
   return (
     <>
-      {children}
+      {data.map((item) => children(item))}
       {hasMore && <div ref={lastElementRef} style={{ height: '20px' }} />}
       {loading && <p>로딩 중...</p>}
     </>
@@ -44,9 +44,10 @@ function InfiniteScroll({ fetchData, hasMore, children }) {
 }
 
 InfiniteScroll.propTypes = {
-  fetchData: PropTypes.func.isRequired,
+  fetchMoreData: PropTypes.func.isRequired,
+  data: PropTypes.array.isRequired,
   hasMore: PropTypes.bool.isRequired,
-  children: PropTypes.node,
+  children: PropTypes.func,
 };
 
 export default InfiniteScroll;

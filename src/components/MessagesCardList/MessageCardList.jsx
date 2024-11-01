@@ -36,6 +36,7 @@ import {
   StyledButton,
 } from './MessageCardList.styles';
 import useDeviceType from '../../hooks/useDeviceType';
+import InfiniteScroll from '../../pages/MessagesEdit/InfiniteScroll';
 
 MessageCardList.propTypes = {
   type: PropTypes.string.isRequired,
@@ -75,6 +76,9 @@ function MessageCardList({ type, messageData = [], onEvent, children }) {
 
   const deviceType = useDeviceType();
 
+  // TODO: 추가 데이터 요청 함수
+  const fetchMoreMessages = async () => {};
+
   return (
     <StyledCardListContainer>
       {isEdit === 'edit' && (
@@ -85,19 +89,23 @@ function MessageCardList({ type, messageData = [], onEvent, children }) {
         </StyledButtonArea>
       )}
       <StyledMessageItemArea>
-        {children}
-        {messageDataList.map((item) => (
-          <StyledMessageCard
-            key={item.id}
-            type={type}
-            messageData={{ ...item }}
-            onEvent={{
-              modal: () => onEvent.modal(item.id),
-              buttonDelete: (event) => handleDeleteClick(item.id, event),
-              buttonEdit: (event) => handleEditClick(item.id, event),
-            }}
-          />
-        ))}
+        <InfiniteScroll
+          data={messageDataList}
+          fetchMoreData={fetchMoreMessages}
+          hasMore={true}>
+          {(item) => (
+            <StyledMessageCard
+              key={item.id}
+              type={type}
+              messageData={{ ...item }}
+              onEvent={{
+                modal: () => onEvent.modal(item.id),
+                buttonDelete: (event) => handleDeleteClick(item.id, event),
+                buttonEdit: (event) => handleEditClick(item.id, event),
+              }}
+            />
+          )}
+        </InfiniteScroll>
       </StyledMessageItemArea>
     </StyledCardListContainer>
   );
