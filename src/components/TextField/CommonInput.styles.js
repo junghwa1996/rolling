@@ -3,43 +3,46 @@
 
 import { css } from 'styled-components';
 
+import { font } from '../../styles/fontStyles';
+import { color } from '../../styles/colorStyles';
+
 export const StyledInput = css`
   //border
   border-radius: 0.8rem;
   border: 1px solid
-    ${({ $error, theme }) => ($error ? theme.colorTheme.error : '#CCCCCC')};
+    ${({ $error, theme }) => ($error ? color.error : theme.border)};
 
   //font
-  ${({ theme }) => theme.fontTheme['16Regular']}
+  ${font[16]}
 
   //color
-  color: ${({ theme }) => theme.colorTheme.grayscale['500']};
-  background-color: ${({ theme }) => theme.colorTheme.white};
+  color: ${({ theme }) => theme.secondary};
+  background-color: ${({ theme }) => theme.background};
 
   &:focus {
     outline: none;
-    border: 0.2rem solid ${({ theme }) => theme.colorTheme.grayscale['500']};
-    color: ${({ theme }) => theme.colorTheme.grayscale['900']};
+    border: 0.2rem solid ${({ theme }) => theme.secondary};
+    color: ${({ theme }) => theme.text};
   }
 
   &:active {
-    border: 0.2rem solid ${({ theme }) => theme.colorTheme.grayscale['700']};
-    color: ${({ theme }) => theme.colorTheme.grayscale['900']};
+    border: 0.2rem solid ${({ theme }) => theme.surface};
+    color: ${({ theme }) => theme.text};
   }
 
   //focus, disabled 상태일 때는 hover하지 않기
   &:not(:focus, :disabled):hover {
-    border: 0.1rem solid ${({ theme }) => theme.colorTheme.grayscale['500']};
+    border: 0.1rem solid ${({ theme }) => theme.secondary};
   }
 
   &:disabled {
-    border: 0.1rem solid ${({ theme }) => theme.colorTheme.grayscale['300']};
-    background-color: ${({ theme }) => theme.colorTheme.grayscale['100']};
+    border: 0.1rem solid ${({ theme }) => theme.border};
+    background-color: ${({ theme }) => theme.surface};
   }
 `;
 
 export const StyledErrMessage = css`
-  color: ${({ theme }) => theme.colorTheme.error};
+  color: ${color.error};
 
-  ${({ theme }) => theme.fontTheme['12Regular']};
+  ${font[12]};
 `;

@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 
+import { font } from '../../styles/fontStyles';
+
 export const StyledCreatedAt = styled.span`
-  ${({ theme }) => theme.fontTheme['14Regular']};
-  color: ${({ theme }) => theme.colorTheme.grayscale[400]};
+  ${font[14]};
+  color: ${({ theme }) => theme.dateText};
 
   @media screen and (max-width: 767px) {
-    font-size: ${({ theme }) => theme.fontTheme['12Regular']};
+    font-size: ${font[12]};
   }
 `;

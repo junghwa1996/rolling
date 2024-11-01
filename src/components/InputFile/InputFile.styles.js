@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { font } from '../../styles/fontStyles';
+
 const StyledInputFile = styled.div`
   display: flex;
   align-items: center;
@@ -11,8 +13,8 @@ const StyledImgSelectorContainer = styled.div`
   margin-left: 2.6rem;
 
   p {
-    ${({ theme }) => theme.fontTheme['16Regular']}
-    color: ${({ theme }) => theme.colorTheme.grayscale[500]}
+    ${font[16]};
+    color: ${({ theme }) => theme.secondary};
   }
 `;
 
