@@ -47,6 +47,7 @@ const StyledMessageCount = styled.p`
 
   span {
     ${font['20b']};
+    color: var(--gray-900);
   }
 `;
 

@@ -7,6 +7,7 @@ const GlobalStyles = createGlobalStyle`
 
 html {
   color: ${({ theme }) => theme.text};
+  background-color: ${({ theme }) => theme.background};
 }
 
 html,
@@ -66,6 +67,7 @@ html,
   menu,
   nav,
   section,
+  label,
   summary {
     color: ${({ theme }) => theme.text}; // 기본 텍스트 색상 적용
   }
@@ -79,6 +81,10 @@ html,
   p {
     color: ${({ theme }) => theme.text};
   }
+
+  hr {
+  border-top: 1px solid ${({ theme }) => theme.border};
+}
 
 `;
 

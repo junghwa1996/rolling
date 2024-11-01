@@ -22,8 +22,8 @@ export const ArrowArea = styled.button`
 export const Arrow = styled.div`
   width: 1rem;
   height: 1rem;
-  border-right: 2px solid ${({ theme }) => theme.blackText};
-  border-bottom: 2px solid ${({ theme }) => theme.blackText};
+  border-right: 2px solid var(--gray-700);
+  border-bottom: 2px solid var(--gray-700);
 
   ${(props) =>
     props.direction === 'left'

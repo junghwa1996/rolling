@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { ToastContainer } from 'react-toastify'; // ToastContainer 임포트
+import { ThemeProvider } from 'styled-components';
+import { ToastContainer } from 'react-toastify';
 
 import './styles/reset.css';
 import './styles/common.css';
-import Content from './router/Content';
-import { light, dark } from './styles/theme';
 import GlobalStyles from './styles/GlobalStyles';
+import { light, dark } from './styles/theme';
+import Content from './router/Content';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -16,11 +17,14 @@ function App() {
   };
 
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Content />
-      <ToastContainer /> {/* ToastContainer 추가 */}
-    </>
+      <button onClick={toggleTheme}>
+        Switch to {isDarkMode ? 'Light' : 'Dark'} Mode
+      </button>
+      <ToastContainer />
+      <Content /> {/* 라우터는 여기서 사용하지 않음 */}
+    </ThemeProvider>
   );
 }
 
