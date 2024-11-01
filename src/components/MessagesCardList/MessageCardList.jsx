@@ -89,6 +89,7 @@ function MessageCardList({ type, messageData = [], onEvent, children }) {
         </StyledButtonArea>
       )}
       <StyledMessageItemArea>
+        {children}
         <InfiniteScroll
           data={messageDataList}
           fetchMoreData={fetchMoreMessages}
