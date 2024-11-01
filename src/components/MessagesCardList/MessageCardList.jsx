@@ -47,8 +47,8 @@ MessageCardList.propTypes = {
 };
 
 // STUB - Edit 버튼을 클릭했을 때 이벤트 함수 입니다.
-const handleEditClick = (id, event) => {
-  event.stopPropagation();
+const handleEditClick = (id, messageData, navigate) => {
+  navigate(`/list/${id}/message`, { state: { messageData } });
   // TODO - 원활한 테스팅을 위해 추가했습니다. 기능 작업이 완료되면 삭제해주세요
   console.log(`클릭 카드 ID : ${id}, [수정 페이지로 이동 합니다]`);
 };
@@ -115,7 +115,10 @@ function MessageCardList({ type, messageData = [], onEvent, children }) {
             onEvent={{
               modal: () => onEvent.modal(item.id),
               buttonDelete: (event) => handleDeleteClick(item.id, event),
-              buttonEdit: (event) => handleEditClick(item.id, event),
+              buttonEdit: (event) => {
+                event.stopPropagation();
+                handleEditClick(item.id, item, navigate);
+              },
             }}
           />
         ))}
