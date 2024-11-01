@@ -2,6 +2,10 @@ import styled, { css } from 'styled-components';
 
 import { font } from '../../styles/fontStyles';
 import POLYGON_TRIANGLE from '../../assets/RecipientsList/RecipientsCard/bg-polygon-triangle.svg';
+import TotalMessage from '../../components/TotalMessage/TotalMessage';
+import { StyledMessageCount } from '../../components/TotalMessage/TotalMessage.styles';
+
+export const StyledTotalMessage = styled(TotalMessage)``;
 
 const colorStyle = {
   green: css`
@@ -49,11 +53,37 @@ export const Card = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 1.6rem;
   box-shadow: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.08);
+  @media (max-width: 767px) {
+    width: 20.8rem;
+    height: 23.2rem;
+  }
   ${({ $bgColor, $bgImage }) => {
     const isImage = $bgImage !== null;
     if (isImage) {
       return css`
         background: url(${$bgImage}) no-repeat center/cover;
+        &::before {
+          position: absolute;
+          content: '';
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.54);
+        }
+        ${CardArea} {
+          h3 {
+            color: var(--white);
+          }
+          ${StyledMessageCount} {
+            color: var(--white);
+            span {
+              color: var(--white);
+            }
+          }
+        }
       `;
     } else {
       return css`
@@ -84,6 +114,9 @@ export const CardArea = styled.div`
     text-overflow: ellipsis;
     ${font['24b']};
     color: var(--gray-900);
+    @media (max-width: 767px) {
+      ${font['18b']};
+    }
   }
 `;
 
@@ -99,6 +132,9 @@ export const EmojiArea = styled.div`
     gap: 0.8rem;
     li {
       display: flex;
+    }
+    @media screen and (max-width: 768px) {
+      gap: 0.4rem;
     }
   }
 `;

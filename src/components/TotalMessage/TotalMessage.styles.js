@@ -44,10 +44,16 @@ const StyledMessageCount = styled.p`
   margin: ${({ direction }) => directionStyles[direction].margin};
   ${font[20]};
   color: var(--gray-700);
+  @media (max-width: 767px) {
+    ${font['14']};
+  }
 
   span {
     ${font['20b']};
     color: var(--gray-900);
+    @media (max-width: 767px) {
+      ${font['14']};
+    }
   }
 `;
 
