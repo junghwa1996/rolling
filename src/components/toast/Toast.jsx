@@ -16,7 +16,7 @@ export const showToast = (content) => {
             <ToastMessages closeToast={closeToast} />
           </ToastWrapper>
         ),
-
+        
         {
           position: 'bottom-center',
           autoClose: 100000,
