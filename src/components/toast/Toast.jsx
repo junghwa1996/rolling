@@ -19,7 +19,7 @@ export const showToast = (content) => {
         
         {
           position: 'bottom-center',
-          autoClose: 100000,
+          autoClose: 5000,
           closeOnClick: false,
           draggable: true,
           hideProgressBar: true,
