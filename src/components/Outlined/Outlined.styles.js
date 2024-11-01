@@ -76,4 +76,5 @@ export const IconArea = styled.span`
 
 export const Text = styled.span`
   ${font[16]};
+  white-space: nowrap;
 `;
