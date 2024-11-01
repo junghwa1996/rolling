@@ -11,8 +11,8 @@ function RecipientsListPage() {
   return (
     <>
       <Container>
-        <RecipientsList favorite={true} />
-        <RecipientsList />
+        <RecipientsList type="favorite" />
+        <RecipientsList type="recent" />
       </Container>
     </>
   );
