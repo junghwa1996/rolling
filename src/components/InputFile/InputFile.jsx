@@ -2,11 +2,8 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 
-import {
-  StyledInputFile,
-  StyledImgSelectorContainer,
-  StyledImgArea,
-} from './InputFile.styles';
+import styles from './InputFile.module.css';
+import { StyledProfileInfo } from './InputFile.styles';
 import { getProfileImg } from '../../service/api';
 import Profile from '../Profile/Profile';
 import useDeviceType from '../../hooks/useDeviceType';
@@ -31,13 +28,13 @@ function InputFile({ img, onClick }) {
   }
 
   return (
-    <StyledInputFile>
+    <div className={styles.container}>
       <Profile size="l" imageURL={img} />
 
-      <StyledImgSelectorContainer>
-        <p>프로필 이미지를 선택해주세요!</p>
+      <div className={styles.selectorContainer}>
+        <StyledProfileInfo>프로필 이미지를 선택해주세요!</StyledProfileInfo>
 
-        <StyledImgArea>
+        <div className={styles.imgArea}>
           {profileImgList.map((imgItem, index) => (
             <Profile
               onClick={onClick}
@@ -45,9 +42,9 @@ function InputFile({ img, onClick }) {
               size={isMobile ? 's' : 'm'}
               imageURL={imgItem}></Profile>
           ))}
-        </StyledImgArea>
-      </StyledImgSelectorContainer>
-    </StyledInputFile>
+        </div>
+      </div>
+    </div>
   );
 }
 
