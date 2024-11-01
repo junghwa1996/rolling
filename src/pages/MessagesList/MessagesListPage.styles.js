@@ -1,7 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { tm_color } from '../../utils/themeUtils';
-
 export const StyledMain = styled.main`
   position: relative;
   width: 100%;
@@ -21,12 +19,12 @@ export const StyledMain = styled.main`
           opacity: 0.5;
           width: 100%;
           height: 100vh;
-          background-color: ${tm_color('black')};
+          background-color: ${({ theme }) => theme.blackText};
         }
       `;
     } else {
       return css`
-        background-color: ${tm_color(`${$bgColor}200`)};
+        background-color: var(--${$bgColor}-200);
       `;
     }
   }}

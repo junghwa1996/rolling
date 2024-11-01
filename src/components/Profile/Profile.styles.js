@@ -9,12 +9,14 @@ const size = {
 export const ProfileArea = styled.div`
   width: ${(props) => size[props.size]};
   height: ${(props) => size[props.size]};
+  min-width: ${(props) => size[props.size]};
+  min-height: ${(props) => size[props.size]};
   border-radius: 50%;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid ${({ theme }) => theme.colorTheme.grayscale[200]};
+  border: 1px solid ${({ theme }) => theme.line};
   img {
     width: 100%;
     height: 100%;

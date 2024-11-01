@@ -12,10 +12,10 @@ import useDeviceType from '../../hooks/useDeviceType';
 import { getRollingList } from '../../service/api';
 
 RecipientsList.propTypes = {
-  favorite: PropTypes.bool,
+  type: PropTypes.oneOf(['favorite', 'recent']),
 };
 
-function RecipientsList({ favorite = false }) {
+function RecipientsList({ type = 'favorite' }) {
   // GET response hooks
   const [rollingList, setRollingList] = useState([]);
 
@@ -38,7 +38,7 @@ function RecipientsList({ favorite = false }) {
         const res = await getRollingList();
         const { results } = res;
         // sort 조건문
-        if (favorite) {
+        if (type === 'favorite') {
           const sortedData = results.sort(
             (a, b) => b.messageCount - a.messageCount,
           );
@@ -52,7 +52,7 @@ function RecipientsList({ favorite = false }) {
     };
 
     handleRollingListLode();
-  }, [favorite]);
+  }, [type]);
 
   // 디바이스가 변경될 때 슬라이드 첫번째로 이동
   useEffect(() => {
@@ -69,7 +69,7 @@ function RecipientsList({ favorite = false }) {
   const isMobile = deviceType === 'mobile';
 
   // 디바이스 변화에 따른 swiper key update(재렌더링)
-  const swiperKey = `${deviceType}-${favorite}`;
+  const swiperKey = `${deviceType}-${type}`;
 
   // arrow 클릭 이벤트
   const handleSlideChange = (swiper) => {
@@ -91,7 +91,7 @@ function RecipientsList({ favorite = false }) {
       )}
       <Swiper
         key={swiperKey}
-        spaceBetween={20}
+        spaceBetween={isMobile ? 12 : 20}
         slidesPerView="auto"
         modules={[Navigation, Controller]}
         onSlideChange={handleSlideChange}

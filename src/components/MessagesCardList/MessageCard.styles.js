@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 
+import { font } from '../../styles/fontStyles';
 import { MSHeaderContainer, MSHeaderPosition } from './MessagesHeader.styles';
 import { StyledTextarea } from './StyledTextarea.styles';
-import { tm_color } from '../../utils/themeUtils';
 
 // 말줄임 스타일 정의
 const ellipsisStyle = css`
@@ -64,7 +64,7 @@ export const cardLayout = css`
         width: 27.2rem;
         height: 4.5rem;
         margin: 1.6rem 0 2.7rem;
-        ${({ theme }) => theme.fontTheme['15Regular']};
+        ${font[15]};
       }
     }
   }
@@ -130,12 +130,12 @@ export const SCmessageCardContainer = styled.div`
   ${({ type }) => type !== 'modal' && cardLayout}
   ${({ type }) => optionType[type]}
   ${({ type }) => type === 'card' && 'cursor: pointer;'}
-  background-color: ${tm_color('white')};
+  background-color: ${({ theme }) => theme.background};
   border-radius: 1.6rem;
   box-shadow: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.08);
   &:hover {
     box-shadow: 0 0rem 1rem 0.5rem rgba(0, 0, 0, 0.1);
-    background-color: ${tm_color('white')};
+    background-color: ${({ theme }) => theme.background};
     transition: all 0.5s;
   }
 `;
