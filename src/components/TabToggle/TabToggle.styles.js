@@ -23,15 +23,3 @@ export const TabButton = styled.button`
     $isSelected ? color.purple[600] : theme.text};
   z-index: 1;
 `;
-
-export const SelectedTab = styled.div`
-  position: absolute;
-  top: 0;
-  left: ${({ $selectedIndex }) => `${12 * $selectedIndex}rem`};
-  width: 12rem;
-  height: 100%;
-  border: 2px solid ${color.purple[600]};
-  border-radius: 6px;
-  background: #fff;
-  transition: left 0.3s ease;
-`;
