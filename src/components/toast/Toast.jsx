@@ -3,12 +3,12 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { StyledToastContainer, ToastWrapper } from './Toast.Styles';
-import CopyUrl from './CopyUrl';
+import copyUrl from './CopyUrl';
 import ToastMessages from './ToastMessages';
 
 // showToast 함수는 이제 기본적으로 export
 export const showToast = (content) => {
-  CopyUrl(content)
+  copyUrl(content)
     .then(() => {
       toast(
         ({ closeToast }) => (
@@ -16,7 +16,7 @@ export const showToast = (content) => {
             <ToastMessages closeToast={closeToast} />
           </ToastWrapper>
         ),
-        
+
         {
           position: 'bottom-center',
           autoClose: 5000,

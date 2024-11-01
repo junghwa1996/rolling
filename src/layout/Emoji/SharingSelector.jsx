@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+
 import { shareToKakao } from './KaKaoShare'; // 카카오 공유 기능 임포트
-import ShareIcon from '../../assets/icon-share-24.svg'; // 공유 아이콘 이미지
+import ICON_SHARE from '../../assets/icon-share-24.svg'; // 공유 아이콘 이미지
+import CopyUrl from '../../components/toast/CopyUrl'; // CopyUrl 유틸 함수 임포트
 import {
   SharingSelectorContainer,
   Button,
@@ -20,14 +22,16 @@ function SharingSelector() {
 
   const handleUrlShareClick = () => {
     const urlToShare = 'https://example.com'; // 공유할 URL
-    
-    // URL을 클립보드에 복사
-    navigator.clipboard.writeText(urlToShare).then(() => {
-      showToast(`"${urlToShare}"가 클립보드에 복사되었습니다.`); // 복사 성공 Toast 메시지
-    }).catch(err => {
-      console.error('URL 복사 실패:', err);
-      showToast('URL 복사에 실패했습니다.'); // 복사 실패 Toast 메시지
-    });
+
+    // CopyUrl 유틸 함수를 사용하여 URL을 클립보드에 복사
+    CopyUrl(urlToShare)
+      .then(() => {
+        showToast(`"${urlToShare}"가 클립보드에 복사되었습니다.`); // 복사 성공 Toast 메시지
+      })
+      .catch((err) => {
+        console.error('URL 복사 실패:', err);
+        showToast('URL 복사에 실패했습니다.'); // 복사 실패 Toast 메시지
+      });
   };
 
   const handleKakaoShareClick = () => {
@@ -37,12 +41,14 @@ function SharingSelector() {
   return (
     <SharingSelectorContainer>
       <Button onClick={toggleDropdown}>
-        <Icon src={ShareIcon} alt="Share icon" /> {/* 버튼 안에 이미지 */}
+        <Icon src={ICON_SHARE} alt="Share icon" /> {/* 버튼 안에 이미지 */}
       </Button>
       {isOpen && (
         <DropdownList>
           <DropdownItem onClick={handleUrlShareClick}>URL 공유</DropdownItem>
-          <DropdownItem onClick={handleKakaoShareClick} style={{ background: light.secondary }}>
+          <DropdownItem
+            onClick={handleKakaoShareClick}
+            style={{ background: light.secondary }}>
             카카오톡 공유
           </DropdownItem>
         </DropdownList>

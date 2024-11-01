@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import HomePage from '../pages/HomePage/HomePage';
 import MessagesAddPage from '../pages/MessagesAdd/MessagesAddPage';
+import MessagesEditPage from '../pages/MessagesEdit/MessagesEditPage';
 import MessagesListPage from '../pages/MessagesList/MessagesListPage';
 import NotFoundPage from '../pages/NotFound/NotFoundPage';
 import RecipientsAddPage from '../pages/RecipientsAdd/RecipientsAddPage';
