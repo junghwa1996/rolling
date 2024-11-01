@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const KEY = process.env.REACT_APP_TEXT_EDITOR_KEY;
 
-function TextEditor({ onChange }) {
+function TextEditor({ onChange, value }) {
   const editorRef = useRef(null);
 
   // 실시간 변경 감지
@@ -16,6 +16,7 @@ function TextEditor({ onChange }) {
   return (
     <>
       <Editor
+        value={value}
         apiKey={KEY}
         onInit={(_evt, editor) => (editorRef.current = editor)}
         init={{
@@ -54,7 +55,8 @@ function TextEditor({ onChange }) {
 }
 
 TextEditor.propTypes = {
-  onChange: PropTypes.func.isRequired, // onChange prop은 필수
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
 };
 
 export default TextEditor;
