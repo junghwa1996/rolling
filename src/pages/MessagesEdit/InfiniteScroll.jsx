@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 
-const InfiniteScroll = ({ fetchData, hasMore, children }) => {
+function InfiniteScroll({ fetchData, hasMore, children }) {
   const observer = useRef();
   const [loading, setLoading] = useState(false);
 
@@ -40,6 +41,12 @@ const InfiniteScroll = ({ fetchData, hasMore, children }) => {
       {loading && <p>로딩 중...</p>}
     </>
   );
+}
+
+InfiniteScroll.propTypes = {
+  fetchData: PropTypes.array,
+  hasMore: PropTypes.func,
+  children: PropTypes.node,
 };
 
 export default InfiniteScroll;
