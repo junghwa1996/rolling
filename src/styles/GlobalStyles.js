@@ -5,16 +5,6 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
 //SECTION - reset.css
 
-@import url('//fonts.googleapis.com/earlyaccess/notosanskr.css');
-@import url('//fonts.googleapis.com/earlyaccess/nanummyeongjo.css');
-@font-face {
-    font-family: 'Handletter';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_05@1.0/Handletter.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-
 html {
   color: ${({ theme }) => theme.text};
   background-color: ${({ theme }) => theme.background};
