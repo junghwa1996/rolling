@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { font } from '../../styles/fontStyles';
 
-export const StyledCreatedAt = styled.span`
+export const CreatedAt = styled.span`
   ${font[14]};
   color: ${({ theme }) => theme.dateText};
 

@@ -2,20 +2,66 @@
  * MessagesListPage 컴포넌트
  *
  * 메시지 카드 목록을 불러와 리스트로 렌더링하고, 각 메시지 카드를 클릭하면 해당 카드의 데이터를 모달로 표시하는 컴포넌트입니다.
- * 서버에서 메시지 리스트를 가져와 `MessageCardList`에 전달하고, 선택된 메시지 카드의 데이터를 모달(`StyledModal`)로 표시합니다.
+ * 서버에서 메시지 리스트를 가져와 `CardList`에 전달하고, 선택된 메시지 카드의 데이터를 모달(`StyledModal`)로 표시합니다.
  * 재사용 불가한 페이지 컴포넌트 입니다.
  */
 
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import styled, { css } from 'styled-components';
 
 import { getMessagesList, getRollingItem } from '../../service/api';
-import { StyledMain, StyledInner } from './MessagesListPage.styles';
 import StyledModal from '../../components/Modal/StyledModal';
-import MessageCardAddItem from '../../components/MessagesCardList/MessageCardAddItem';
-import MessageCardList from '../../components/MessagesCardList/MessageCardList';
+import CardAddItem from '../../components/CardList/CardAddItem';
+import CardList from '../../components/CardList/CardList';
 import useFetchData from '../../hooks/useFetchData';
 import EmojiPickerComponent from '../../layout/Emoji/EmojiPickerComponent';
+
+export const StyledMain = styled.main`
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+  ${({ $bgColor, $bgImage }) => {
+    if ($bgImage) {
+      return css`
+        background: url(${$bgImage}) no-repeat center center/cover;
+        &::before {
+          position: fixed;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          content: '';
+          opacity: 0.5;
+          width: 100%;
+          height: 100vh;
+          background-color: ${({ theme }) => theme.blackText};
+        }
+      `;
+    } else {
+      return css`
+        background-color: var(--${$bgColor}-200);
+      `;
+    }
+  }}
+`;
+
+export const StyledInner = styled.div`
+  width: 100%;
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 6.3rem 0;
+
+  @media screen and (min-width: 768px) and (max-width: 1248px) {
+    max-width: 72rem;
+    padding: 9.3rem 0;
+  }
+  @media screen and (max-width: 767px) {
+    max-width: 32rem;
+    padding: 3.2rem 0;
+  }
+`;
 
 function MessagesListPage() {
   const [hasModalOpen, setHasModalOpen] = useState(false);
@@ -72,12 +118,12 @@ function MessagesListPage() {
         {/* NOTE : header 조합 전 테스트용 입니다. 조합 하실때 지워주세요*/}
         <EmojiPickerComponent />
         <StyledInner>
-          <MessageCardList
+          <CardList
             type="card"
             messageData={messageData?.results || []}
             onEvent={{ modal: handleMessageClick }}>
-            <MessageCardAddItem id={currentId} />
-          </MessageCardList>
+            <CardAddItem id={currentId} />
+          </CardList>
         </StyledInner>
       </StyledMain>
       {hasModalOpen && (

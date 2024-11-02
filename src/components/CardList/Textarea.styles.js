@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { font } from '../../styles/fontStyles';
 
-export const StyledTextarea = styled.p`
+export const Textarea = styled.p`
   word-break: break-all;
   border: none;
   outline: none;
