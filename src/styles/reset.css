@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Handletter';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/naverfont_05@1.0/Handletter.woff')
+    format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html {
   font-size: 10px;
   text-size-adjust: none;
