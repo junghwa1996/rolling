@@ -1,3 +1,4 @@
+
 import TestMainHeader from '../../layout/Header/TestMainHeader';
 
 function Homepage() {
@@ -8,4 +9,4 @@ function Homepage() {
   );
 }
 
-export default Homepage;
+export default HomePages;

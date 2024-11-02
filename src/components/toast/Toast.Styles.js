@@ -1,28 +1,26 @@
 import { ToastContainer } from 'react-toastify';
 import styled from 'styled-components';
+
 import { font } from '../../styles/fontStyles';
+
+// import { color } from '../../styles/colorStyles'; // 색상 스타일 추가
 
 // Toast 스타일 컴포넌트
 export const StyledToastContainer = styled(ToastContainer)`
   &&& {
-    background: transparent;
-    margin: 0;
     padding: 0;
+    text-align: left;
 
     .Toastify__toast {
-      width: 32.75rem;
-      max-width: 32.75rem; // 524px로 고정
-      height: 4rem;
-      padding: 1.1875rem 1.875rem;
-      gap: 0;
+      background-color: var(--black);
       border-radius: 0.5rem;
-      background: rgba(0, 0, 0, 0.8);
-      opacity: 1;
+      box-shadow: var(--shadow-low); // 그림자 스타일
+      padding: 1rem; // 패딩 추가
     }
 
-    .Toastify__toast-body {
-      padding: 0;
-      text-align: left;
+    .Toastify__toast-theme {
+      background: var(--black); // 기본 테마 배경색 변경
+      color: var(--white); // 텍스트 색상
     }
 
     .Toastify__close-button {
@@ -45,7 +43,7 @@ export const ToastWrapper = styled.div`
 export const ToastMessage = styled.div`
   font-family: 'Pretendard', sans-serif;
   ${font[16]};
-  color: ${({ theme }) => theme.whiteText};
+  color: var(--white);
   overflow-wrap: break-word;
   white-space: normal;
   flex-grow: 1;
@@ -64,4 +62,5 @@ export const CustomCloseButton = styled.img`
   width: 1.5rem;
   height: 1.5rem;
   flex-shrink: 0;
+  // 추가적인 스타일 필요 시 여기에 작성
 `;
