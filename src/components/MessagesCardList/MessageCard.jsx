@@ -35,15 +35,6 @@ import Button from '../Button/Button';
 import { StyledLine } from '../Line/Line.styles';
 import dateConversion from '../../utils/dateConversion';
 
-MessageCard.propTypes = {
-  type: PropTypes.oneOf(['card', 'modal', 'edit']).isRequired,
-  messageData: PropTypes.object.isRequired,
-  onEvent: PropTypes.shape({
-    modal: PropTypes.func,
-  }),
-  cardId: PropTypes.number,
-};
-
 // NOTE - 해당 컴포넌트의 messageData는 객체로 받아옵니다.
 function MessageCard({
   type = 'card',
@@ -85,5 +76,14 @@ function MessageCard({
     </SCmessageCardContainer>
   );
 }
+
+MessageCard.propTypes = {
+  type: PropTypes.oneOf(['card', 'modal', 'edit']).isRequired,
+  messageData: PropTypes.object.isRequired,
+  onEvent: PropTypes.shape({
+    modal: PropTypes.func,
+  }),
+  cardId: PropTypes.number,
+};
 
 export default MessageCard;

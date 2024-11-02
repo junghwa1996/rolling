@@ -69,18 +69,3 @@ export const Line = styled.div`
   ${(props) =>
     props.$column ? 'width: 100%; height: 2px;' : 'width: 2px; height: 100%'}
 `;
-
-// FIXME : 테스트 중인 컴포넌트 입니다. 추후 Card로 옮길 예정
-export const CardContainer = styled.div`
-  background-color: ${({ theme, variant }) =>
-    variant === 'surface' ? theme.surface : theme.background};
-
-  width: ${({ $width }) => ($width === 'auto' ? '100%' : `${$width / 10}rem`)};
-  height: ${({ $height }) =>
-    $height === 'auto' ? '100%' : `${$height / 10}rem`};
-
-  border: 1px solid ${({ $border }) => ($border ? 'rgba(0,0,0,0.2)' : 'none')};
-
-  ${({ $shadow }) => ($shadow ? shadows[$shadow] : '')};
-  border-radius: 1.6rem;
-`;
