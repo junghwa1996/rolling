@@ -36,7 +36,7 @@ import {
   StyledButton,
 } from './MessageCardList.styles';
 import useDeviceType from '../../hooks/useDeviceType';
-import { deleteMessages } from '../../service/api';
+import { deleteMessages, deleteRolling } from '../../service/api';
 
 MessageCardList.propTypes = {
   type: PropTypes.string.isRequired,
@@ -61,7 +61,6 @@ function MessageCardList({ type, messageData = [], onEvent, children }) {
 
   const currentURL = useLocation();
   const presentPath = currentURL.pathname.split('/');
-  const isEdit = presentPath[presentPath.length - 1] === 'message';
   const presentId = presentPath[presentPath.length - 2];
 
   const deviceType = useDeviceType();
@@ -85,6 +84,23 @@ function MessageCardList({ type, messageData = [], onEvent, children }) {
     }
   };
 
+  const handleDeletePage = async (id) => {
+    setLoading(true);
+    setError(null);
+    try {
+      await deleteRolling(id);
+      setMessageDataList((prevData) =>
+        prevData.filter((item) => item.id !== id),
+      );
+      navigate(`/list/`);
+    } catch (error) {
+      setError(error);
+      console.error(`삭제 실패: ${error.message}`);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   if (loading) return <p>로딩 중 입니다...</p>;
   if (error) return <p>데이터 삭제에 실패했습니다 🫠</p>;
 
@@ -95,9 +111,12 @@ function MessageCardList({ type, messageData = [], onEvent, children }) {
 
   return (
     <StyledCardListContainer>
-      {isEdit === 'edit' && (
+      {type === 'edit' && (
         <StyledButtonArea>
-          <StyledButton size={deviceType === 'pc' ? 's' : 'xl'} color="primary">
+          <StyledButton
+            size={deviceType === 'pc' ? 's' : 'xl'}
+            color="primary"
+            onClick={() => handleDeletePage(presentId)}>
             삭제하기
           </StyledButton>
         </StyledButtonArea>

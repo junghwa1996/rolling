@@ -5,7 +5,7 @@ import useDeviceType from '../../hooks/useDeviceType';
 import RecipientsList from './RecipientsList';
 import Button from '../../components/Button/Button';
 import { SwiperContain } from './RecipientsList.styles';
-import { font } from '../../styles/fontStyles';
+import { Title } from '../../styles/common/Common.styles';
 
 const StyledSwiper = styled(SwiperContain)`
   @media screen and (max-width: 1248px) {
@@ -16,30 +16,25 @@ const StyledSwiper = styled(SwiperContain)`
   }
 `;
 
-const Container = styled.div`
-  h2 {
-    ${({ $deviceType }) =>
-      $deviceType === 'mobile' ? font['20b'] : font['24b']}
-  }
-`;
-
 function RecipientsListPage() {
   const deviceType = useDeviceType();
 
   return (
     <>
-      <Container className={styles.container} $deviceType={deviceType}>
+      <div className={styles.container}>
         <div className={styles.listContainer}>
           <div>
-            <h2>인기 롤링 페이퍼 🔥</h2>
+            <Title $media={{ pc: '24b', mo: '20b' }}>인기 롤링 페이퍼 🔥</Title>
             <StyledSwiper className={styles.swiperContain}>
-              <RecipientsList favorite={true} />
+              <RecipientsList type="favorite" />
             </StyledSwiper>
           </div>
           <div>
-            <h2>최근에 만든 롤링 페이퍼 ⭐️</h2>
+            <Title $media={{ pc: '24b', mo: '20b' }}>
+              최근에 만든 롤링 페이퍼 ⭐️
+            </Title>
             <StyledSwiper className={styles.swiperContain}>
-              <RecipientsList />
+              <RecipientsList type="recent" />
             </StyledSwiper>
           </div>
         </div>
@@ -48,7 +43,7 @@ function RecipientsListPage() {
             나도 만들어보기
           </Button>
         </div>
-      </Container>
+      </div>
     </>
   );
 }
