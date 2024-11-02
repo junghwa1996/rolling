@@ -1,14 +1,14 @@
 import React from 'react';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { ToastWrapper } from './Toast.Styles';
-import CopyUrl from './CopyUrl'; // 여전히 URL 복사를 위한 함수
+import { StyledToastContainer, ToastWrapper } from './Toast.Styles';
+import copyUrl from './CopyUrl';
 import ToastMessages from './ToastMessages';
 
-// 다양한 내용을 복사하고 토스트 알림을 표시하는 함수
-const showToast = (content) => {
-  CopyUrl(content) // content를 매개변수로 사용
+// showToast 함수는 이제 기본적으로 export
+export const showToast = (content) => {
+  copyUrl(content)
     .then(() => {
       toast(
         ({ closeToast }) => (
@@ -16,6 +16,7 @@ const showToast = (content) => {
             <ToastMessages closeToast={closeToast} />
           </ToastWrapper>
         ),
+
         {
           position: 'bottom-center',
           autoClose: 5000,
@@ -26,27 +27,13 @@ const showToast = (content) => {
       );
     })
     .catch((error) => {
-      console.error('Toast error:', error); // 오류 발생 시 로깅
+      console.error('Toast error:', error);
     });
 };
 
-/**
- * Toast 컴포넌트
- *
- * onShowToast prop을 통해 복사할 내용을 받아오는 함수를 전달합니다.
- * handleShowToast는 onShowToast를 prop으로 호출하고 showToast 함수를 호출합니다.
- *
- * 예시:
- * <Toast onShowToast={(content) => console.log(`복사할 내용: ${content}`)} />
- */
-function Toast({ onShowToast }) {
-  // 토스트를 보여주기 위한 핸들러
-  const handleShowToast = (content) => {
-    onShowToast(content); // onShowToast 호출하여 내용을 받음
-    showToast(content); // showToast 함수 호출하여 내용 복사 및 토스트 표시
-  };
-
-  return <ToastContainer />; // ToastContainer를 반환
+// Toast 컴포넌트에서 handleShowToast 제거
+function Toast() {
+  return <StyledToastContainer />; // StyledToastContainer를 반환
 }
 
 export default Toast;
