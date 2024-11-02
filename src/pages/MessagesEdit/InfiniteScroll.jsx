@@ -1,19 +1,19 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 
-function InfiniteScroll({ fetchMoreData, data, hasMore, children }) {
+function InfiniteScroll({ fetchMoreData, data, hasMore, children, loading }) {
   const observer = useRef();
-  const [loading, setLoading] = useState(false);
-
   const lastElementRef = useRef();
 
-  const handleObserver = (entries) => {
-    const target = entries[0];
-    if (target.isIntersecting && hasMore && !loading) {
-      setLoading(true);
-      fetchMoreData().finally(() => setLoading(false));
-    }
-  };
+  const handleObserver = useCallback(
+    (entries) => {
+      const target = entries[0];
+      if (target.isIntersecting && hasMore && !loading) {
+        fetchMoreData();
+      }
+    },
+    [hasMore, loading, fetchMoreData],
+  );
 
   useEffect(() => {
     const options = {
@@ -23,16 +23,18 @@ function InfiniteScroll({ fetchMoreData, data, hasMore, children }) {
     };
 
     observer.current = new IntersectionObserver(handleObserver, options);
-    if (lastElementRef.current) {
-      observer.current.observe(lastElementRef.current);
+
+    const currentRef = lastElementRef.current;
+    if (currentRef) {
+      observer.current.observe(currentRef);
     }
 
     return () => {
-      if (lastElementRef.current) {
-        observer.current.unobserve(lastElementRef.current);
+      if (currentRef) {
+        observer.current.unobserve(currentRef);
       }
     };
-  }, [lastElementRef, hasMore, loading]);
+  }, [handleObserver]);
 
   return (
     <>
@@ -48,6 +50,7 @@ InfiniteScroll.propTypes = {
   data: PropTypes.array.isRequired,
   hasMore: PropTypes.bool.isRequired,
   children: PropTypes.func,
+  loading: PropTypes.bool.isRequired, // loading prop 추가
 };
 
 export default InfiniteScroll;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { getMessagesList, getRollingItem } from '../../service/api';
@@ -8,7 +8,7 @@ import {
 } from '../MessagesList/MessagesListPage.styles';
 import MessageCardList from '../../components/MessagesCardList/MessageCardList';
 import useFetchData from '../../hooks/useFetchData';
-import InfiniteScroll from './InfiniteScroll'; //무한 스크롤 기능 컴포넌트//
+import InfiniteScroll from './InfiniteScroll'; // 무한 스크롤 기능 컴포넌트 //
 
 function MessagesListPage() {
   const currentURL = useLocation();
@@ -34,7 +34,7 @@ function MessagesListPage() {
     }),
   );
 
-  const fetchMessages = async () => {
+  const fetchMessages = useCallback(async () => {
     if (loading || !hasMore) return; // 로딩 중이거나 더 이상 데이터가 없으면 중단
     setLoading(true);
 
@@ -50,12 +50,12 @@ function MessagesListPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [currentId, loading, hasMore, page]); // currentId로 수정
 
   // 초기 데이터 로드
   useEffect(() => {
     fetchMessages();
-  }, [currentId]);
+  }, [currentId, fetchMessages]); // fetchMessages 추가
 
   // TODO - 추후 로딩과 에러 페이지 별도 작업
   if (backgroundLoading) return <p>로딩 중 입니다</p>;
@@ -68,15 +68,12 @@ function MessagesListPage() {
         $bgImage={backgroundData?.backgroundImageURL}>
         <StyledInner>
           <InfiniteScroll
-            fetchData={fetchMessages}
+            fetchMoreData={fetchMessages}
             hasMore={hasMore}
-            data={messages}>
+            data={messages}
+            loading={loading}>
             {(item) => (
-              <MessageCardList
-                key={item.id}
-                type="edit"
-                messageData={messages}
-              />
+              <MessageCardList key={item.id} type="edit" messageData={item} />
             )}
           </InfiniteScroll>
         </StyledInner>
