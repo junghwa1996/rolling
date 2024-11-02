@@ -1,17 +1,22 @@
 /* REVIEW : 나중에 header에 붙히고 테스트 해봐야할것같음 */
-.outLinedArea {
+/* .outLinedArea {
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   gap: 0.8rem;
   z-index: 1;
+} */
+
+.outLinedArea {
+  position: relative;
 }
 
 .pickerContainer {
   position: absolute;
   right: 1.5rem;
-  top: 5rem;
+  top: calc(100% + 0.5rem);
+  z-index: 10;
 }
 
 /* 임의 스타일링 */

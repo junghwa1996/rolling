@@ -57,22 +57,22 @@ function EmojiPickerComponent() {
   if (isError || fetchingError) return <p>에러가 발생했습니다! 🫠</p>;
 
   return (
+    // <div className={styles.outLinedArea}>
+    //   <div className={styles.emojiDropdown}>
+    //     {emojisList.map((emoji) => (
+    //       <div key={emoji.emoji} className={styles.emojiItem}>
+    //         {!emoji.count || (
+    //           <EmojiBadge
+    //             emoji={emoji.emoji}
+    //             count={emoji.count}
+    //             onClick={() => onEmojiDelete(emoji)}
+    //             disabled={isLoading}
+    //           />
+    //         )}
+    //       </div>
+    //     ))}
+    //   </div>
     <div className={styles.outLinedArea}>
-      <div className={styles.emojiDropdown}>
-        {emojisList.map((emoji) => (
-          <div key={emoji.emoji} className={styles.emojiItem}>
-            {!emoji.count || (
-              <EmojiBadge
-                emoji={emoji.emoji}
-                count={emoji.count}
-                onClick={() => onEmojiDelete(emoji)}
-                disabled={isLoading}
-              />
-            )}
-          </div>
-        ))}
-      </div>
-
       <Outlined
         size="m"
         color="secondary"

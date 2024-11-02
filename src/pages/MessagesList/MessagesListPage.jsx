@@ -69,8 +69,6 @@ function MessagesListPage() {
       <StyledMain
         $bgColor={backgroundData?.backgroundColor}
         $bgImage={backgroundData?.backgroundImageURL}>
-        {/* NOTE : header 조합 전 테스트용 입니다. 조합 하실때 지워주세요*/}
-        <EmojiPickerComponent />
         <StyledInner>
           <MessageCardList
             type="card"
