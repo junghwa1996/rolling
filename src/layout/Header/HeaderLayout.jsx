@@ -12,17 +12,14 @@ function HeaderLayout({ children }) {
   const location = useLocation();
   const [headerType, setHeaderType] = useState('default');
 
-  const rDEFAULT_TYPE = /^\/post\/\d+$/;
   const rMOBILE_HIDDEN_TYPE = /^\/post\/\d+\/message$/;
-  const rDOUBLE_LINE_TYPE = /^\/post\/\d+\/edit$/;
+  const rDOUBLE_LINE_TYPE = /^\/post\/\d+(\/edit)?$/;
 
   useEffect(() => {
     if (location.pathname === '/' || location.pathname === '/list') {
       setHeaderType('default');
     } else if (rMOBILE_HIDDEN_TYPE.test(location.pathname)) {
       setHeaderType('mobileHidden');
-    } else if (rDEFAULT_TYPE.test(location.pathname)) {
-      setHeaderType('doubleLine');
     } else if (rDOUBLE_LINE_TYPE.test(location.pathname)) {
       setHeaderType('doubleLine');
     }

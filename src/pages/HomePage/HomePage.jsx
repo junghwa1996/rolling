@@ -29,7 +29,6 @@ const featContents = [
   },
 ];
 
-
 function Homepage() {
   const nav = useNavigate();
   const getDevice = useDeviceType();

@@ -11,6 +11,7 @@ import { getRollingItem } from '../../service/api';
 import SharingSelector from '../Emoji/SharingSelector';
 import TotalMessage from '../../components/TotalMessage/TotalMessage';
 import EmojiPickerComponent from '../Emoji/EmojiPickerComponent';
+import EmojiDropDown from '../Emoji/EmojiDropDown';
 
 MainHeader.propTypes = {
   type: PropTypes.oneOf(['default', 'mobileHidden', 'doubleLine']),
@@ -70,6 +71,7 @@ function MainHeader({ type = 'default' }) {
                 />
               </div>
             )}
+            {/* <EmojiDropDown></EmojiDropDown> */}
             <EmojiPickerComponent />
             <div className={styles.sharingSelectorContainer}>
               <SharingSelector></SharingSelector>
