@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
-import { StyledLabel, StyledMessagesAddPage } from './MessagesAddPage.styles';
+import styles from './MessagesAddPage.module.css';
+import { StyledLabel } from './MessagesAddPage.styles';
 import Button from '../../components/Button/Button';
 import InputFile from '../../components/InputFile/InputFile';
 import Dropdown from '../../components/TextField/Dropdown';
 import Input from '../../components/TextField/Input';
 import useInputValidation from '../../hooks/useInputValidation';
 import { getMessages, patchMessages, postMessages } from '../../service/api';
+import useConfirmExit from '../../hooks/useConfirmExit';
 import TextEditor from '../../components/TextField/TextEditor';
 
 const INITIAL_VALUES = {
@@ -113,6 +115,9 @@ function MessagesAddPage() {
     handleMessageData();
   }, [messageId]);
 
+  // 뒤로가기 컨펌 함수 실행
+  useConfirmExit();
+
   // 프로필 이미지 상태 업데이트
   const handleImgClick = (value) => {
     setValues((prevValues) => ({ ...prevValues, profileImageURL: value }));
@@ -160,7 +165,7 @@ function MessagesAddPage() {
   };
 
   return (
-    <StyledMessagesAddPage>
+    <div className={styles.messagesAddContainer}>
       <form onSubmit={handlePostSubmit}>
         <StyledLabel>Form.</StyledLabel>
         <Input
@@ -223,7 +228,7 @@ function MessagesAddPage() {
           {!messageId ? '생성하기' : '수정하기'}
         </Button>
       </form>
-    </StyledMessagesAddPage>
+    </div>
   );
 }
 

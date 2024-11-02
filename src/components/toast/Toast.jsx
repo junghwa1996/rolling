@@ -1,10 +1,14 @@
 import React from 'react';
 import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './Toast.module.css'; // 스타일 모듈 가져오기
 import copyUrl from './CopyUrl';
 import ToastMessages from './ToastMessages';
 
+// showToast 함수는 이제 기본적으로 export
+export const showToast = (content) => {
+  copyUrl(content)
 // showToast 함수는 이제 기본적으로 export
 export const showToast = (content) => {
   copyUrl(content)
@@ -15,6 +19,7 @@ export const showToast = (content) => {
             <ToastMessages closeToast={closeToast} />
           </div>
         ),
+
         {
           position: 'bottom-center',
           autoClose: 5000,
@@ -25,6 +30,7 @@ export const showToast = (content) => {
       );
     })
     .catch((error) => {
+      console.error('Toast error:', error);
       console.error('Toast error:', error);
     });
 };

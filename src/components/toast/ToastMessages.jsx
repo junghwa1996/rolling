@@ -4,6 +4,7 @@ import styles from './Toast.module.css'; // 스타일 모듈 가져오기
 import ICON_CLOSE from '../../assets/icon-close.svg';
 
 function ToastMessages({ closeToast }) {
+function ToastMessages({ closeToast }) {
   return (
     <>
       <div className={styles.ToastMessage}>URL이 복사되었습니다!</div>
@@ -15,6 +16,10 @@ function ToastMessages({ closeToast }) {
       />
     </>
   );
+}
+
+ToastMessages.propTypes = {
+  closeToast: PropTypes.func.isRequired,
 }
 
 ToastMessages.propTypes = {
