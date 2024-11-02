@@ -4,15 +4,12 @@ import {
   CardHeaderContainer,
   CardHeaderPosition,
   CardHeaderArea,
-  ButtonContainer,
   SpanText,
 } from '../../styles/CardHeader.styles';
+import ButtonContainerComponent from './ButtonContainerComponent';
 import { EllipsisStyle } from '../../styles/Common/Common.styles';
 import { CreatedAt } from './CreatedAt.styles.js';
-import { ReactComponent as DeleteIcon } from '../../assets/icon-delete.svg';
-import { ReactComponent as UpdateIcon } from '../../assets/icon-edit.svg';
 import Badge from '../Badge/Badge';
-import Outlined from '../Outlined/Outlined';
 import Profile from '../Profile/Profile';
 import dateConversion from '../../utils/dateConversion';
 
@@ -39,10 +36,10 @@ function CardHeader({
         </CardHeaderArea>
       </CardHeaderPosition>
       {type === 'edit' && (
-        <ButtonContainer>
-          <Outlined icon={<UpdateIcon />} onClick={onEvent.buttonEdit} />
-          <Outlined icon={<DeleteIcon />} onClick={onEvent.buttonDelete} />
-        </ButtonContainer>
+        <ButtonContainerComponent
+          onEdit={onEvent.buttonEdit}
+          onDelete={onEvent.buttonDelete}
+        />
       )}
       {type === 'modal' && <CreatedAt>{dateConversion(createdAt)}</CreatedAt>}
     </CardHeaderContainer>
