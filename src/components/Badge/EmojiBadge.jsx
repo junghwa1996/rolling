@@ -4,21 +4,17 @@
 
 import PropTypes from 'prop-types';
 
-import {
-  EmojiBadgeArea,
-  EmojiContainer,
-  Emoji,
-  Count,
-} from './EmojiBadge.styles';
+import { div, Emoji, Count } from './EmojiBadge.styles';
+import styles from './EmojiBadge.module.css';
 
 function EmojiBadge({ emoji, count, onClick }) {
   return (
-    <EmojiBadgeArea onClick={onClick}>
-      <EmojiContainer>
-        <Emoji>{emoji}</Emoji>
-      </EmojiContainer>
-      <Count>{count}</Count>
-    </EmojiBadgeArea>
+    <div onClick={onClick} className={styles.emojiBadgeArea}>
+      <div className={styles.emojiContainer}>
+        <p className={styles.emoji}>{emoji}</p>
+      </div>
+      <Count className={styles.count}>{count}</Count>
+    </div>
   );
 }
 
