@@ -16,6 +16,7 @@ import StyledModal from '../../components/Modal/StyledModal';
 import MessageCardAddItem from '../../components/MessagesCardList/MessageCardAddItem';
 import MessageCardList from '../../components/MessagesCardList/MessageCardList';
 import useFetchData from '../../hooks/useFetchData';
+import EmojiPickerComponent from '../../layout/Emoji/EmojiPickerComponent';
 
 function MessagesListPage() {
   const [hasModalOpen, setHasModalOpen] = useState(false);
@@ -25,14 +26,14 @@ function MessagesListPage() {
   const presentPath = currentURL.pathname.split('/');
   const currentId = presentPath[presentPath.length - 1];
 
-  // STUB - 메시지 리스트 요청
+  // 메시지 리스트 요청
   const {
     data: messageData,
     loading: messageLoading,
     error: messageError,
   } = useFetchData(() => getMessagesList(currentId), [currentId]);
 
-  // STUB - 배경 정보 요청
+  // 배경 정보 요청
   const {
     data: backgroundData,
     loading: backgroundLoading,
@@ -46,7 +47,7 @@ function MessagesListPage() {
     }),
   );
 
-  // STUB - 모달을 여는 이벤트 입니다.
+  // 모달을 여는 이벤트입니다.
   const handleMessageClick = (id) => {
     const cardData =
       messageData?.results?.find((card) => card.id === id) || null;
@@ -54,32 +55,31 @@ function MessagesListPage() {
     setHasModalOpen(true);
   };
 
-  // STUB - 모달을 닫는 이벤트 입니다.
+  // 모달을 닫는 이벤트입니다.
   const handleCloseModal = () => {
     setHasModalOpen(false);
     setSelectedCard(null);
   };
 
-  // TODO - 추후 로딩과 에러 페이지 별도 작업
+  // 로딩 및 에러 처리
   if (messageLoading || backgroundLoading) return <p>로딩 중 입니다</p>;
   if (messageError || backgroundError) return <p>에러가 발생했어요!</p>;
 
   return (
     <>
-      <div className={styles.pageWrap}>
-        <StyledMain
-          $bgColor={backgroundData?.backgroundColor}
-          $bgImage={backgroundData?.backgroundImageURL}>
-          <StyledInner>
-            <MessageCardList
-              type="card"
-              messageData={messageData?.results || []}
-              onEvent={{ modal: handleMessageClick }}>
-              <MessageCardAddItem id={currentId} />
-            </MessageCardList>
-          </StyledInner>
-        </StyledMain>
-      </div>
+      <StyledMain
+        $bgColor={backgroundData?.backgroundColor}
+        $bgImage={backgroundData?.backgroundImageURL}>
+        <EmojiPickerComponent />
+        <StyledInner>
+          <MessageCardList
+            type="card"
+            messageData={messageData?.results || []}
+            onEvent={{ modal: handleMessageClick }}>
+            <MessageCardAddItem id={currentId} />
+          </MessageCardList>
+        </StyledInner>
+      </StyledMain>
       {hasModalOpen && (
         <StyledModal
           isOpen={hasModalOpen}
