@@ -8,6 +8,7 @@ import Dropdown from '../../components/TextField/Dropdown';
 import Input from '../../components/TextField/Input';
 import useInputValidation from '../../hooks/useInputValidation';
 import { getMessages, patchMessages, postMessages } from '../../service/api';
+import useBeforeUnload from '../../hooks/useBeforeUnload';
 import TextEditor from '../../components/TextField/TextEditor';
 
 const INITIAL_VALUES = {
@@ -112,6 +113,9 @@ function MessagesAddPage() {
 
     handleMessageData();
   }, [messageId]);
+
+  // 뒤로가기 컨펌 커스텀 훅 실행
+  useBeforeUnload();
 
   // 프로필 이미지 상태 업데이트
   const handleImgClick = (value) => {
