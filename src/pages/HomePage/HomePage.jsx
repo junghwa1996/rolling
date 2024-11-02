@@ -34,8 +34,6 @@ function Homepage() {
   const getDevice = useDeviceType();
   const isPC = getDevice === 'pc';
 
-  //TODO - 추후 리팩토링 과정 중 컴포넌트(카드 부분)로 뺄 수 있음 뺄 예정 !
-  //헤더 부분 머지 되면 채워놓을 예정
   return (
     <>
       <section>
@@ -45,7 +43,8 @@ function Homepage() {
         {featContents.map((content, index) => (
           <FeatContainer
             key={`feat-${index}`}
-            direction={index === 0 ? 'row' : 'row-reverse'}>
+            direction={index === 0 ? 'row' : 'row-reverse'}
+            className={styles.featContainer}>
             <FeatTextContainer $index={index}>
               <TagSection className={styles.tagSection}>
                 {content.tag}
