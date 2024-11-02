@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import { StyledLabel, StyledMessagesAddPage } from './MessagesAddPage.styles';
 import Button from '../../components/Button/Button';
 import InputFile from '../../components/InputFile/InputFile';
 import Dropdown from '../../components/TextField/Dropdown';
 import Input from '../../components/TextField/Input';
-import TextField from '../../components/TextField/TextField';
 import useInputValidation from '../../hooks/useInputValidation';
-import { postMessages } from '../../service/api';
+import { getMessages, patchMessages, postMessages } from '../../service/api';
+import useConfirmExit from '../../hooks/useConfirmExit';
 import TextEditor from '../../components/TextField/TextEditor';
 
 const INITIAL_VALUES = {
@@ -71,25 +71,51 @@ function MessagesAddPage() {
   // post 요청 데이터
   const [values, setValues] = useState(INITIAL_VALUES);
 
+  const [isLoading, setIsLoading] = useState(false);
+
+  // 쿼리 파라미터 추출
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const messageId = queryParams.get('id');
+
   // 보내는 사람 이름
-  const { value, error, errMessage, onChange, onBlur } = useInputValidation();
+  const { error, errMessage, onChange, onBlur } = useInputValidation();
 
   // 보내는 사람 이름, 내용이 입력되지 않았을 경우, 생성하기 버튼 disabled
   const isValidation =
-    !value ||
-    error ||
-    values.content === '' ||
-    values.content === '<p><br></p>';
-  // 조건에 values.content === '<p><br></p>' 추가 이유
-  // 텍스트 에디터에 내용을 입력 후, 내용을 지우면 텍스트 에디터 value가 빈 값이 아닌 <p><br></p>가 남게 되어 이 부분도 조건에 추가
+    values.sender &&
+    !error &&
+    values.content &&
+    values.content !== '<p><br></p>';
 
   useEffect(() => {
     setValues((prevValues) => ({
       ...prevValues,
       recipientId: params.id,
-      sender: value,
+      // sender: value,
     }));
-  }, [params.id, value]);
+  }, [params.id]);
+
+  // [수정] 메시지 데이터 GET 요청하여 values에 저장
+  useEffect(() => {
+    const handleMessageData = async () => {
+      // 쿼리 파라미터에 messageId가 있으면,
+      if (messageId) {
+        // 해당 메시지 데이터 추출하여 values에 저장
+        const messageData = await getMessages(messageId);
+
+        setValues((prevValues) => ({
+          ...prevValues,
+          ...messageData,
+        }));
+      }
+    };
+
+    handleMessageData();
+  }, [messageId]);
+
+  // 뒤로가기 컨펌 함수 실행
+  useConfirmExit();
 
   // 프로필 이미지 상태 업데이트
   const handleImgClick = (value) => {
@@ -105,31 +131,36 @@ function MessagesAddPage() {
   const handlePostSubmit = async (e) => {
     e.preventDefault();
 
-    // NOTE FormData와의 차이점 - 해당 내용은 배포 전에 삭제하도록 하겠습니다. 이것 때문에 몇시간을 POST 요청을 못한건지...ㅠ
-    // FormData: 파일 업로드와 같은 이진 데이터를 포함할 수 있는 요청 형식입니다. 주로 multipart/form-data로 전송됩니다.
-    // application/json: 단순한 텍스트 데이터로 구성된 요청 형식입니다. 파일이나 이진 데이터를 전송할 수 없습니다.
-
-    // 서버에서 어떤 형식의 데이터를 기대하는지에 따라 이 두 가지 형식 중 하나를 선택해야 합니다.
-    // FormData로 데이터를 보내고 싶다면, 서버가 이를 처리할 수 있도록 설정되어 있어야 합니다.
-    // JSON 형식으로 보내려면, 데이터가 JSON으로 직렬화되어야 하고, 서버가 application/json 형식을 이해해야 합니다.
     const messageData = {
-      // spread 전개 연산자를 활용
       ...values,
-      // team: values.team,
-      // recipientId: values.recipientId,
-      // sender: values.sender,
-      // profileImageURL: values.profileImageURL,
-      // relationship: values.relationship,
-      // content: values.content,
-      // font: values.font,
     };
 
     try {
-      await postMessages(params.id, messageData);
-      nav(`/post/${params.id}`, { replace: true }); // 메시지를 보낸 롤링페이퍼 페이지로 이동
+      setIsLoading(true);
+      if (!messageId) {
+        await postMessages(params.id, messageData);
+      } else {
+        await patchMessages(messageId, messageData);
+      }
+      nav(`/post/${params.id}`); // 메시지를 보낸 롤링페이퍼 페이지로 이동
     } catch (error) {
       console.error('메시지를 생성하는데 오류가 발생 했습니다.:', error);
+    } finally {
+      setIsLoading(false);
     }
+  };
+
+  if (isLoading) return <p>로딩중입니다...🤩</p>;
+
+  const handleSenderChange = (e) => {
+    // useValidation에 이벤트 객체 전달하여 유효성 검사
+    onChange(e);
+
+    // 입력 값 저장
+    setValues((prevValue) => ({
+      ...prevValue,
+      sender: e.target.value,
+    }));
   };
 
   return (
@@ -143,8 +174,9 @@ function MessagesAddPage() {
           }}
           onEvent={{
             name: 'sender',
-            value: value,
-            onChange: onChange,
+            value: values.sender,
+            // onChange: onChange,
+            onChange: handleSenderChange,
           }}
           placeholder="이름을 입력해 주세요."
           onBlur={onBlur}
@@ -173,7 +205,7 @@ function MessagesAddPage() {
 
         <StyledLabel>내용을 입력해 주세요.</StyledLabel>
         {/* <TextField onChange={handleEditorChange} /> */}
-        <TextEditor onChange={handleEditorChange} />
+        <TextEditor onChange={handleEditorChange} value={values.content} />
 
         <StyledLabel>폰트 선택</StyledLabel>
         <Dropdown
@@ -191,8 +223,8 @@ function MessagesAddPage() {
         />
 
         {/* 이름, 내용을 입력하지 않으면 disabled */}
-        <Button size="xl" type="submit" disabled={isValidation}>
-          생성하기
+        <Button size="xl" type="submit" disabled={!isValidation}>
+          {!messageId ? '생성하기' : '수정하기'}
         </Button>
       </form>
     </StyledMessagesAddPage>

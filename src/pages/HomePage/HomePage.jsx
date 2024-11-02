@@ -1,7 +1,9 @@
+import TestMainHeader from '../../layout/Header/TestMainHeader';
+
 function Homepage() {
   return (
     <div>
-      <h1>홈페이지</h1>
+      <TestMainHeader />
     </div>
   );
 }
