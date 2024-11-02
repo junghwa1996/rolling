@@ -33,13 +33,13 @@ function RecipientsListPage() {
           <div>
             <h2>인기 롤링 페이퍼 🔥</h2>
             <StyledSwiper className={styles.swiperContain}>
-              <RecipientsList favorite={true} />
+              <RecipientsList type="favorite" />
             </StyledSwiper>
           </div>
           <div>
             <h2>최근에 만든 롤링 페이퍼 ⭐️</h2>
             <StyledSwiper className={styles.swiperContain}>
-              <RecipientsList />
+              <RecipientsList type="recent" />
             </StyledSwiper>
           </div>
         </div>
