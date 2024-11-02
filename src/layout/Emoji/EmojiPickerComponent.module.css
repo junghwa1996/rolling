@@ -2,13 +2,19 @@
 .outLinedArea {
   position: absolute;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: flex-end;
   gap: 0.8rem;
   z-index: 1;
 }
 
-.pickerArea {
-  margin-right: 1.5rem;
+.pickerContainer {
+  position: absolute;
+  right: 1.5rem;
+  top: 5rem;
+}
+
+/* 임의 스타일링 */
+.emojiDropdown {
+  display: flex;
 }

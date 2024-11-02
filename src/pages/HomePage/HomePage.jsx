@@ -1,9 +1,10 @@
-import React from 'react';
 
-function HomePages() {
+import TestMainHeader from '../../layout/Header/TestMainHeader';
+
+function Homepage() {
   return (
     <div>
-      <h1>홈 페이지</h1>
+      <TestMainHeader />
     </div>
   );
 }

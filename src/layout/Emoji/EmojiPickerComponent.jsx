@@ -1,68 +1,92 @@
+/**
+ * EmojiPickerComponent
+ *
+ * 이 컴포넌트는 이모지 선택기에서 이모지를 추가/삭제합니다.
+ * `useEmojiManager`로 서버와 연동해 이모지 상태를 관리하며,
+ * `useFetchData`로 이모지 목록을 불러옵니다.
+ *
+ * - `showPicker`: 선택기 표시 관리
+ * - `onEmojiAdd`, `onEmojiDelete`: 이모지 추가/삭제
+ *
+ */
+
+import { useLocation } from 'react-router-dom';
 import React, { useState } from 'react';
 import Picker from 'emoji-picker-react';
 
-import EmojiBadge from '../../components/Badge/EmojiBadge';
+import { useEmojiManager } from './useEmojiManager';
 import { ReactComponent as IconStoke } from '../../assets/icon-stoke.svg';
 import Outlined from '../../components/Outlined/Outlined';
 import styles from './EmojiPickerComponent.module.css';
 import useDeviceType from '../../hooks/useDeviceType';
+import EmojiBadge from '../../components/Badge/EmojiBadge';
+import useFetchData from '../../hooks/useFetchData';
+import { getRollingEmoji } from '../../service/api';
 
 function EmojiPickerComponent() {
-  const [selectedEmojis, setSelectedEmojis] = useState([]);
   const [showPicker, setShowPicker] = useState(false);
+
+  const currentURL = useLocation();
+  const presentPath = currentURL.pathname.split('/');
+  const currentId = presentPath[presentPath.length - 1];
+
   const isDevice = useDeviceType();
   const isMo = isDevice === 'mobile';
 
-  const onEmojiClick = (emojiObject) => {
-    const existingEmoji = selectedEmojis.find(
-      (item) => item.emoji === emojiObject.emoji,
-    );
+  const { isLoading, isError, emojis, addEmoji, removeEmoji } =
+    useEmojiManager(currentId);
 
-    if (existingEmoji) {
-      // 기존 이모지가 있으면 카운트를 증가시킵니다.
-      setSelectedEmojis((prevEmojis) =>
-        prevEmojis.map((item) =>
-          item.emoji === emojiObject.emoji
-            ? { ...item, count: item.count + 1 }
-            : item,
-        ),
-      );
-    } else {
-      // 새로운 이모지를 추가합니다.
-      setSelectedEmojis((prevEmojis) => [
-        ...prevEmojis,
-        { emoji: emojiObject.emoji, count: 1 },
-      ]);
-    }
+  const {
+    data,
+    loading: fetching,
+    error: fetchingError,
+  } = useFetchData(() => getRollingEmoji(currentId), [emojis]);
+  const emojisList = data?.results || [];
+
+  // STUB: 이모지 클릭 시 추가 이벤트
+  const onEmojiAdd = async (emojiObject) => {
+    await addEmoji(emojiObject);
+    setShowPicker(false);
   };
 
-  // 카운트에 따라 정렬하고 최대 8개까지 잘라냅니다.
-  const sortedEmojis = selectedEmojis
-    .slice()
-    .sort((a, b) => b.count - a.count)
-    .slice(0, 8);
+  // STUB: 이모지 클릭 시 삭제 이벤트
+  const onEmojiDelete = async (emojiObject) => {
+    await removeEmoji(emojiObject);
+  };
+
+  if (isError || fetchingError) return <p>에러가 발생했습니다! 🫠</p>;
 
   return (
     <div className={styles.outLinedArea}>
+      <div className={styles.emojiDropdown}>
+        {emojisList.map((emoji) => (
+          <div key={emoji.emoji} className={styles.emojiItem}>
+            {!emoji.count || (
+              <EmojiBadge
+                emoji={emoji.emoji}
+                count={emoji.count}
+                onClick={() => onEmojiDelete(emoji)}
+                disabled={isLoading}
+              />
+            )}
+          </div>
+        ))}
+      </div>
+
       <Outlined
         size="m"
         color="secondary"
         onClick={() => setShowPicker((prev) => !prev)}
-        icon={<IconStoke />}>
+        icon={<IconStoke />}
+        disabled={isLoading || fetching}>
         {!isMo && '추가'}
       </Outlined>
 
       {showPicker && (
-        <Picker
-          onEmojiClick={onEmojiClick}
-          width="30.6rem"
-          height="39.2rem"
-          className={styles.pickerArea}
-        />
+        <div className={styles.pickerContainer}>
+          <Picker onEmojiClick={onEmojiAdd} width="30.6rem" height="39.2rem" />
+        </div>
       )}
-      {sortedEmojis.map(({ emoji, count }, index) => (
-        <EmojiBadge key={index} emoji={emoji} count={count} />
-      ))}
     </div>
   );
 }

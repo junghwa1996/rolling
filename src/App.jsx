@@ -5,9 +5,6 @@ import { ThemeProvider } from 'styled-components';
 import './styles/reset.css';
 import './styles/common.css';
 import GlobalStyles from './styles/GlobalStyles';
-import { light, dark } from './styles/theme';
-import Content from './router/Content';
-import SharingSelector from './layout/Emoji/SharingSelector'; // 추가
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);

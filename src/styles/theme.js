@@ -10,6 +10,7 @@ export const light = {
   dateText: 'var(--gray-400)', // 날짜 또는 메타 정보 텍스트 (#999)
   border: 'var(--gray-300)', // 경계선 색상 (#ccc)
   line: 'var(--gray-200)', // 구분선 또는 미세한 경계 색상 (#eee)
+  buttongray: 'var(--gray-100)',
 };
 
 export const dark = {
@@ -24,4 +25,5 @@ export const dark = {
   dateText: 'var(--gray-500)', // 날짜 또는 메타 정보 텍스트
   border: 'var(--gray-600)', // 경계선 색상
   line: 'var(--gray-700)', // 구분선 또는 미세한 경계 색상
+  buttongray: 'var(--gray-500)',
 };
