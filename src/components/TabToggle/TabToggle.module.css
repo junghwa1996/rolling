@@ -1,0 +1,27 @@
+.tabToggleArea {
+  display: flex;
+  position: relative;
+  height: 4rem;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: var(--surface); /* 테마 색상을 CSS 변수를 사용하여 적용 */
+}
+
+.tabButton {
+  width: 12rem;
+  height: 100%;
+  border: none;
+  background: transparent;
+  z-index: 1;
+}
+
+.selectedTab {
+  position: absolute;
+  top: 0;
+  width: 12rem;
+  height: 100%;
+  border: 2px solid var(--purple600); /* 보라색을 CSS 변수를 사용하여 적용 */
+  border-radius: 6px;
+  background: #fff;
+  transition: left 0.3s ease;
+}
