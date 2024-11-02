@@ -10,7 +10,7 @@ import Input from '../../components/TextField/Input';
 import useInputValidation from '../../hooks/useInputValidation';
 import BackgroundSelector from '../../components/BackgroundSelector/BackgroundSelector';
 import { postRolling } from '../../service/api';
-import useBeforeUnload from '../../hooks/useBeforeUnload';
+import useConfirmExit from '../../hooks/useConfirmExit';
 
 const INITIAL_VALUES = {
   team: '11-2',
@@ -41,8 +41,8 @@ function RecipientsAddPage() {
     }));
   }, [value]);
 
-  // 뒤로가기 컨펌 커스텀 훅 실행
-  useBeforeUnload();
+  // 뒤로가기 컨펌 함수 실행
+  useConfirmExit();
 
   // 불필요한 handleBackgroundChange 함수 재생성을 방지하기 위해 useCallback을 사용
   const handleBackgroundChange = useCallback((value, isImg) => {

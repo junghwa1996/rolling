@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-function useBeforeUnload() {
+function useConfirmExit() {
   const preventRefresh = (event) => {
     event.preventDefault();
     event.returnValue = '';
@@ -16,4 +16,4 @@ function useBeforeUnload() {
   }, []);
 }
 
-export default useBeforeUnload;
+export default useConfirmExit;
