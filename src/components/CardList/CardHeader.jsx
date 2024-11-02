@@ -1,7 +1,13 @@
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
-import { font } from '../../styles/fontStyles';
+import {
+  CardHeaderContainer,
+  CardHeaderPosition,
+  CardHeaderArea,
+  ButtonContainer,
+  SpanText,
+} from '../../styles/CardHeader.styles';
+import { EllipsisStyle } from '../../styles/Common/Common.styles';
 import { CreatedAt } from './CreatedAt.styles.js';
 import { ReactComponent as DeleteIcon } from '../../assets/icon-delete.svg';
 import { ReactComponent as UpdateIcon } from '../../assets/icon-edit.svg';
@@ -9,52 +15,6 @@ import Badge from '../Badge/Badge';
 import Outlined from '../Outlined/Outlined';
 import Profile from '../Profile/Profile';
 import dateConversion from '../../utils/dateConversion';
-
-/* 텍스트가 넘칠 경우 생략 부호 (...)을 표시하는 스타일 */
-const EllipsisStyle = styled.h3`
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  margin-bottom: 0.6rem;
-  width: 90%;
-  ${font['20b']}
-
-  span {
-    margin-right: 0.6rem;
-    ${font['20']};
-    color: ${({ theme }) => theme.blackText};
-  }
-`;
-
-/* 텍스트와 배지를 포함하는 영역 스타일 */
-const CardHeaderArea = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  @media screen and (max-width: 767px) {
-    ${EllipsisStyle} {
-      ${font['20b']}; //모바일 화면에서 20포인트 볼드 스타일 적용//
-    }
-  }
-`;
-
-/* 버튼을 포함하는 컨테이너 스타일 */
-const ButtonContainer = styled.div`
-  display: flex;
-  gap: 1rem;
-`;
-
-const CardHeaderContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const CardHeaderPosition = styled.div`
-  display: flex;
-  flex: 1;
-`;
 
 function CardHeader({
   type,
@@ -71,8 +31,8 @@ function CardHeader({
       <CardHeaderPosition>
         <Profile imageURL={profileImageURL} />
         <CardHeaderArea>
-          <EllipsisStyle>
-            <span>From.</span>
+          <EllipsisStyle as="h3">
+            <SpanText>From.</SpanText>
             {sender}
           </EllipsisStyle>
           <Badge value={relationship} />

@@ -1,55 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
+import { CommonMessage } from '../../styles/Common/CommonMessages.styles';
+import {
+  CardListContainer,
+  ItemArea,
+  ButtonArea,
+} from '../../styles/Layout/CommonLayout.styles';
 import useDeviceType from '../../hooks/useDeviceType';
 import { deleteMessages, deleteRolling } from '../../service/api';
-import Button from '../Button/Button';
-import Card from './Card';
-
-const CardListContainer = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 1.1rem;
-`;
-
-const ItemArea = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2.8rem 2.4rem;
-
-  @media screen and (max-width: 1248px) {
-    gap: 1.6rem;
-  }
-
-  @media screen and (min-width: 768px) and (max-width: 1248px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media screen and (max-width: 767px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
-`;
-
-const ButtonArea = styled.div`
-  @media screen and (max-width: 1248px) {
-    position: fixed;
-    bottom: 2.4rem;
-    left: 2.4rem;
-  }
-
-  @media screen and (min-width: 768px) and (max-width: 1248px) {
-    width: 72rem;
-  }
-
-  @media screen and (max-width: 767px) {
-    width: 32rem;
-    left: 2rem;
-  }
-`;
+import Button from '../../components/Button/Button';
+import Card from '../../components/CardList/Card';
 
 function CardList({ type, messageData = [], onEvent, children }) {
   const [messageDataList, setMessageDataList] = useState(messageData);
@@ -105,10 +67,18 @@ function CardList({ type, messageData = [], onEvent, children }) {
     navigate(`/post/${presentId}/message?id=${messageId}`);
   };
 
-  if (loading) return <p>데이터를 불러오는 중입니다. 잠시만 기다려주세요...</p>;
+  if (loading)
+    return (
+      <CommonMessage $messageType="primary">
+        데이터를 불러오는 중입니다. 잠시만 기다려주세요...
+      </CommonMessage>
+    );
+
   if (error)
     return (
-      <p>데이터를 삭제하는 중 오류가 발생했습니다. 다시 시도해주세요. 🫠</p>
+      <CommonMessage $messageType="error">
+        데이터를 삭제하는 중 오류가 발생했습니다. 다시 시도해주세요. 🫠
+      </CommonMessage>
     );
 
   return (
@@ -142,7 +112,9 @@ function CardList({ type, messageData = [], onEvent, children }) {
             />
           ))
         ) : (
-          <p>표시할 데이터가 없습니다.</p>
+          <CommonMessage $messageType="secondary">
+            표시할 데이터가 없습니다.
+          </CommonMessage>
         )}
       </ItemArea>
     </CardListContainer>
