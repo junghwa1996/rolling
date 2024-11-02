@@ -6,15 +6,6 @@
 
   width: 120rem;
   margin: 0 auto;
-
-  @media screen and (min-width: 768px) and (max-width: 1248px) {
-    width: 72rem;
-  }
-
-  @media screen and (max-width: 767px) {
-    width: 32rem;
-    gap: 2.4rem;
-  }
 }
 
 /* feat 설명 안에서 태그 부분 */
@@ -25,10 +16,6 @@
   padding: 0.6rem 1.2rem;
   border-radius: 50px;
   background-color: var(--purple-600);
-
-  @media screen and (max-width: 767px) {
-    padding: 0.4rem 1.2rem;
-  }
 }
 
 /* feat 설명 안에서 text 부분 */
@@ -36,10 +23,6 @@
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-
-  @media screen and (max-width: 767px) {
-    gap: 0.4rem;
-  }
 }
 
 .buttonSection {
@@ -47,12 +30,33 @@
   justify-content: center;
   width: 100%;
   padding: 2.4rem;
+}
 
-  @media screen and (min-width: 768px) and (max-width: 1248px) {
-    padding: 2.4rem 0;
+@media screen and (min-width: 768px) and (max-width: 1248px) {
+  .featSection {
+    width: 72rem;
   }
 
-  @media screen and (max-width: 767px) {
+  .buttonSection {
+    padding: 2.4rem 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .featSection {
+    width: 32rem;
+    gap: 2.4rem;
+  }
+
+  .tagSection {
+    padding: 0.4rem 1.2rem;
+  }
+
+  .textSection {
+    gap: 0.4rem;
+  }
+
+  .buttonSection {
     padding: 2.4rem 0;
   }
 }
