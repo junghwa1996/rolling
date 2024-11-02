@@ -26,7 +26,7 @@ function RecipientsListPage() {
           <div>
             <Title $media={{ pc: '24b', mo: '20b' }}>인기 롤링 페이퍼 🔥</Title>
             <StyledSwiper className={styles.swiperContain}>
-              <RecipientsList favorite={true} />
+              <RecipientsList type="favorite" />
             </StyledSwiper>
           </div>
           <div>
@@ -34,7 +34,7 @@ function RecipientsListPage() {
               최근에 만든 롤링 페이퍼 ⭐️
             </Title>
             <StyledSwiper className={styles.swiperContain}>
-              <RecipientsList />
+              <RecipientsList type="recent" />
             </StyledSwiper>
           </div>
         </div>
