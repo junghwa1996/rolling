@@ -43,6 +43,7 @@ import {
   DropdownItem,
   DropdownErrMessage,
 } from './Dropdown.styles';
+import styles from './Dropdown.module.css';
 import ArrowDown from '../../assets/icon-arrow_down.svg';
 import ArrowTop from '../../assets/icon-arrow_top.svg';
 import Share from '../../assets/icon-share-24.svg';
@@ -109,6 +110,7 @@ function Dropdown({
         <IconBtn
           src={Share}
           alt="icon"
+          className={styles.iconBtn}
           onClick={() => setIsOpen(!isOpen)}
           $error={hasError.$error}
           disabled={disabled}
@@ -116,6 +118,7 @@ function Dropdown({
       ) : (
         <DropdownBtn
           type="button"
+          className={styles.dropdownBtn}
           onClick={() => setIsOpen(!isOpen)}
           $error={hasError.$error}
           disabled={disabled}
@@ -124,7 +127,11 @@ function Dropdown({
           {hasOptions.selectedOption.label
             ? hasOptions.selectedOption.label
             : hasOptions.selectedOption.value || hasOptions.options[0].label}
-          <ArrowImg src={!isOpen ? ArrowDown : ArrowTop} alt="arrow" />
+          <img
+            src={!isOpen ? ArrowDown : ArrowTop}
+            alt="arrow"
+            className={styles.arrowImg}
+          />
         </DropdownBtn>
       )}
 
@@ -135,10 +142,11 @@ function Dropdown({
       )}
 
       {isOpen && (
-        <DropdownList isIcon={isIcon}>
+        <DropdownList isIcon={isIcon} className={styles.dropdownList}>
           {hasOptions.options.map((option, index) => (
             <DropdownItem
               key={index}
+              className={styles.dropdownItem}
               onClick={() => handleSelect(option)}
               isIcon={isIcon}>
               {option.value}
