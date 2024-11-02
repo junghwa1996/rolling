@@ -1,9 +1,9 @@
-import TestMainHeader from '../../layout/Header/TestMainHeader';
+import MainHeader from '../../layout/Header/MainHeader';
 
 function Homepage() {
   return (
     <div>
-      <TestMainHeader />
+      <MainHeader />
     </div>
   );
 }
