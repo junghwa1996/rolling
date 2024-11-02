@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+
 import { font } from '../../styles/fontStyles';
 
 /* 텍스트가 넘칠 경우 생략 부호 (...)을 표시하는 스타일 */
@@ -11,7 +12,7 @@ const ellipsisStyle = css`
 `;
 
 /* 메시지 헤더의 텍스트 스타일 정의 */
-const HeaderText = styled.h3`
+export const HeaderText = styled.h3`
   ${ellipsisStyle}
   margin-bottom: 0.6rem;
   width: 90%;
