@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.selectorContainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 2.6rem;
+}
+
+.imgArea {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 1.2rem;
+}
+
+.imgArea img {
+  cursor: pointer;
+}
+
+/* 모바일 */
+@media screen and (max-width: 767px) {
+  .imgArea {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
