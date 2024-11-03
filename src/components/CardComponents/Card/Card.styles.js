@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 
 import { font } from '../../../styles/common/fonts.styles';
-import { fontFamily } from '../../../styles/common/common.styles';
+import { fontFamily } from '../../../styles/common/Common.styles';
 import {
   media,
   responsiveGridColumns,

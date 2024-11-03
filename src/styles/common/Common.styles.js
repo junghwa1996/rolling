@@ -44,32 +44,32 @@ const responsiveFont = ({ $media }) => {
   `;
 };
 
-export const title = styled.h2`
+export const Title = styled.h2`
   ${({ $media }) => responsiveFont({ $media })};
   color: ${({ theme }) => theme.blackText};
 `;
 
-export const desc = styled.p`
+export const Desc = styled.p`
   ${({ $media }) => responsiveFont({ $media })};
   color: ${({ theme }) => theme.secondary};
 `;
 
-export const text = styled.p`
+export const Text = styled.p`
   ${({ $media }) => responsiveFont({ $media })};
   color: ${({ theme }) => theme.text};
 `;
 
-export const areaText = styled.p`
+export const AreaText = styled.p`
   ${({ $media }) => responsiveFont({ $media })};
   color: ${({ theme }) => theme.textarea};
 `;
 
-export const data = styled.p`
+export const Data = styled.p`
   ${({ $media }) => responsiveFont({ $media })};
   color: ${({ theme }) => theme.dateText};
 `;
 
-export const line = styled.div`
+export const Line = styled.div`
   background-color: ${({ theme }) => theme.line};
   ${(props) =>
     props.$column ? 'width: 100%; height: 2px;' : 'width: 2px; height: 100%'}

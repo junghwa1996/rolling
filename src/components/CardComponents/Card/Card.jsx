@@ -4,7 +4,7 @@ import { CardContainer, CardTextArea } from '../Card/Card.styles';
 import CardHeader from '../CardHeader/CardHeader';
 import { CreatedAt, Textarea } from './Card.styles';
 import dateConversion from '../../../utils/dateConversion';
-import { Line } from '../../../styles/common/common.styles';
+import { Line } from '../../../styles/common/Common.styles';
 import Button from '../../Button/Button';
 
 function Card({
@@ -34,7 +34,7 @@ function Card({
         onEvent={onEvent}
       />
       <CardTextArea>
-        <line />
+        <Line />
         <Textarea dangerouslySetInnerHTML={{ __html: messageData?.content }} />
         {!isModalType && (
           <CreatedAt>{dateConversion(messageData?.createdAt)}</CreatedAt>

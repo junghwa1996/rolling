@@ -7,13 +7,13 @@ import {
   ButtonContainer,
   SpanText,
 } from './CardHeader.styles';
+import { Title, Data } from '../../../styles/common/Common.styles';
 import { ReactComponent as DeleteIcon } from '../../../assets/icon-delete.svg';
 import { ReactComponent as UpdateIcon } from '../../../assets/icon-edit.svg';
 import Badge from '../../Badge/Badge';
 import Outlined from '../../Outlined/Outlined';
 import Profile from '../../Profile/Profile';
 import dateConversion from '../../../utils/dateConversion';
-import Title from '../../Shared/Title/Title';
 
 function CardHeader({ type, messageData, onEvent }) {
   const { profileImageURL, sender, relationship, createdAt } = messageData;
