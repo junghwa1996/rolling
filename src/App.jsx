@@ -1,12 +1,11 @@
 import { ThemeProvider } from 'styled-components';
 import { useState } from 'react';
 
-import './styles/reset.css';
-import './styles/common.css';
+import './styles/common/reset.css';
+import './styles/common/common.css';
 import Content from './router/Content';
-import { light, dark } from './styles/theme';
-import GlobalStyles from './styles/GlobalStyles';
-import EmojiPickerComponent from './layout/Emoji/EmojiPickerComponent';
+import { light, dark } from './styles/themes/theme';
+import GlobalStyles from './styles/common/global.styles';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -19,8 +18,6 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      {/* TODO : header 조합 전 테스트용 입니다. 조합 하실때 지워주세요*/}
-      {/* <EmojiPickerComponent /> */}
       <button onClick={toggleTheme}>
         Switch to {isDarkMode ? 'Light' : 'Dark'} Mode
       </button>

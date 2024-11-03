@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { font } from '../../styles/fontStyles';
-import { color } from '../../styles/colorStyles';
+import { font } from '../../styles/common/fonts.styles';
+import { color } from '../../styles/common/variables';
 
 export const TabToggleArea = styled.div`
   display: flex;

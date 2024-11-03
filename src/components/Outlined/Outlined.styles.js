@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { font } from '../../styles/fontStyles';
+import { font } from '../../styles/common/fonts.styles';
 
 const OutlinedStyles = css`
   display: inline-flex;
@@ -17,16 +17,19 @@ const OutlinedStyles = css`
   transition: all 0.3s;
 
   &:hover {
-    background-color: ${({ theme }) => theme.surface};
+    background-color: ${({ theme }) => theme.buttongray};
+    color: ${({ theme }) => theme.text};
   }
   &:active,
   &:focus:active {
-    background-color: ${({ theme }) => theme.surface};
+    background-color: ${({ theme }) => theme.buttongray};
     border-color: ${({ theme }) => theme.border};
+    color: ${({ theme }) => theme.text};
   }
   &:focus {
     border-color: ${({ theme }) => theme.secondary};
     background-color: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.text};
     outline: none;
   }
   &:disabled {
@@ -49,7 +52,9 @@ const sizeStyles = {
   `,
 };
 
-export const StOutlined = styled.button`
+export const StOutlined = styled.button.attrs(({ as }) => ({
+  as: as || 'button',
+}))`
   ${({ $size }) => sizeStyles[$size]}
   display: inline-flex;
   align-items: center;

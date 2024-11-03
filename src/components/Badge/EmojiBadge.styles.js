@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { font } from '../../styles/fontStyles';
+import { font } from '../../styles/common/fonts.styles';
 
 export const EmojiBadgeArea = styled.div`
   display: inline-flex;
@@ -33,6 +33,9 @@ export const Count = styled.p`
   font-size: 1.6rem;
   line-height: 2rem;
   font-weight: 400;
+  min-width: 2rem;
+  min-height: 2rem;
+  text-align: center;
   color: var(--white);
   @media (max-width: 767px) {
     ${font['14']};

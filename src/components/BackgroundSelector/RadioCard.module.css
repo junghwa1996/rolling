@@ -1,0 +1,5 @@
+.radioCardContainer {
+  display: flex;
+  gap: 1.6rem;
+  margin-top: 4.5rem;
+}
