@@ -33,6 +33,7 @@ export const StyledMain = styled.main`
           opacity: 0.5;
           width: 100%;
           height: 100vh;
+          z-index: 1;
           background-color: ${({ theme }) => theme.blackText};
         }
       `;
