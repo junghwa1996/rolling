@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './RadioCard.module.css';
-import { color as colors } from '../../styles/colorStyles';
+import { color as colors } from '../../styles/common/variables';
 import { getBackgroundImg } from '../../service/api';
 import { StyleButton } from './RadioCard.styles';
+import styles from './RadioCard.module.css';
 
 const colorData = [
   { value: 'beige', color: colors.beige[200] },
