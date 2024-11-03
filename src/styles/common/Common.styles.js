@@ -1,25 +1,4 @@
-import { styled, css } from 'styled-components';
-
-import { shadow as shadows } from '../shadowStyles';
-
-// 폰트 사이즈 정의 함수
-const font = (size) => {
-  const baseSize =
-    typeof size === 'string' ? parseInt(size.replace('b', '')) : size;
-
-  const letterSpacing =
-    baseSize <= 14 ? 'var(--ls-small)' : 'var(--ls-default)';
-  const lineHeight = `var(--lh-${baseSize})`;
-  const fontSize = `var(--fs-${baseSize})`;
-  const fontWeight = typeof size === 'string' && size.includes('b') ? 700 : 400;
-
-  return `
-    font-size: ${fontSize};
-    font-weight: ${fontWeight};
-    line-height: ${lineHeight};
-    letter-spacing: ${letterSpacing};
-  `;
-};
+import styled, { css } from 'styled-components';
 
 const responsiveFont = ({ $media }) => {
   const pcFont = $media?.pc;
@@ -64,8 +43,63 @@ export const Data = styled.p`
   color: ${({ theme }) => theme.dateText};
 `;
 
-export const Line = styled.div`
-  background-color: ${({ theme }) => theme.line};
-  ${(props) =>
-    props.$column ? 'width: 100%; height: 2px;' : 'width: 2px; height: 100%'}
+// 공통 Font Family 정의
+export const fontFamily = {
+  'Noto Sans': "'Noto Sans KR', sans-serif",
+  나눔명조: "'Nanum Myeongjo', serif",
+  '나눔손글씨 손편지체': "'Handletter'",
+};
+
+// 폰트 사이즈 정의 함수
+const font = (size) => {
+  const baseSize =
+    typeof size === 'string' ? parseInt(size.replace('b', '')) : size;
+
+  const letterSpacing =
+    baseSize <= 14 ? 'var(--ls-small)' : 'var(--ls-default)';
+  const lineHeight = `var(--lh-${baseSize})`;
+  const fontSize = `var(--fs-${baseSize})`;
+  const fontWeight = typeof size === 'string' && size.includes('b') ? 700 : 400;
+
+  return `
+    font-size: ${fontSize};
+    font-weight: ${fontWeight};
+    line-height: ${lineHeight};
+    letter-spacing: ${letterSpacing};
+  `;
+};
+
+/* 텍스트가 넘칠 경우 생략 부호 (...)을 표시하는 공통 스타일 */
+export const ellipsisStyle = styled.div`
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  ${font['20b']}
+`;
+
+export const flexColumnCentered =
+  'display: flex; flex-direction: column; align-items: center;';
+
+export const boxShadow = css`
+  box-shadow: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.08);
+`;
+
+export const cardBaseStyle = css`
+  width: 38.4rem;
+  height: 28rem;
+  border-radius: 1.6rem;
+  ${boxShadow}
+  background-color: ${({ theme }) => theme.background};
+
+  @media screen and (min-width: 768px) and (max-width: 1248px) {
+    width: 35.2rem;
+    height: 28.4rem;
+  }
+
+  @media screen and (max-width: 767px) {
+    width: 32rem;
+    height: 23rem;
+  }
 `;

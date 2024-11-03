@@ -1,11 +1,11 @@
 import { styled } from 'styled-components';
 
+import { Title } from '../../styles/common/Common.styles';
 import styles from './recipientsListPage.module.css';
 import useDeviceType from '../../hooks/useDeviceType';
 import RecipientsList from './RecipientsList';
 import Button from '../../components/Button/Button';
 import { SwiperContain } from './RecipientsList.styles';
-import { Title } from '../../styles/common/Common.styles';
 
 const StyledSwiper = styled(SwiperContain)`
   @media screen and (max-width: 1248px) {
@@ -26,7 +26,7 @@ function RecipientsListPage() {
           <div>
             <Title $media={{ pc: '24b', mo: '20b' }}>인기 롤링 페이퍼 🔥</Title>
             <StyledSwiper className={styles.swiperContain}>
-              <RecipientsList favorite={true} />
+              <RecipientsList type="favorite" />
             </StyledSwiper>
           </div>
           <div>
@@ -34,7 +34,7 @@ function RecipientsListPage() {
               최근에 만든 롤링 페이퍼 ⭐️
             </Title>
             <StyledSwiper className={styles.swiperContain}>
-              <RecipientsList />
+              <RecipientsList type="recent" />
             </StyledSwiper>
           </div>
         </div>
