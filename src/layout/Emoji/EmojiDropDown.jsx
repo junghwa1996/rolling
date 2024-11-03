@@ -27,6 +27,7 @@ const DropDownContainer = styled.div`
   row-gap: 1rem;
   column-gap: 0.8rem;
 
+
   /* max-width: ${(props) => (props.isPC ? '31.2rem' : '24.8rem')};
   max-height: 13.4rem; */
 
@@ -37,6 +38,7 @@ const DropDownContainer = styled.div`
   ${shadow['mid']};
   ${blur};
 `;
+
 
 EmojiDropDown.propTypes = {
   emojiList: PropTypes.arrayOf(
