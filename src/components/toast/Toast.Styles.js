@@ -1,5 +1,7 @@
 import { ToastContainer } from 'react-toastify';
 import styled from 'styled-components';
+import { color } from '../../styles/common/variables'
+import { font } from '../../styles/common/fonts.styles'
 
 // Toast 스타일 컴포넌트
 export const StyledToastContainer = styled(ToastContainer)`
@@ -29,7 +31,6 @@ export const StyledToastContainer = styled(ToastContainer)`
 export const ToastWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
   height: 100%;
   padding: 0;
@@ -38,12 +39,8 @@ export const ToastWrapper = styled.div`
 `;
 
 export const ToastMessage = styled.div`
-  font-family: 'Pretendard', sans-serif;
-  font-size: 16px;  // 기본 글자 크기
-  font-weight: 400; // 기본 글자 두께
-  line-height: 1.5; // 기본 줄 간격
-  letter-spacing: 0; // 기본 글자 간격
-  color: #ffffff; // 기본 글자 색상
+  ${font['16']};
+  color: ${({ theme }) => theme.whiteText};
   overflow-wrap: break-word;
   white-space: normal;
   flex-grow: 1;
