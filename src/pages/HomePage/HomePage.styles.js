@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { font } from '../../styles/fontStyles';
+import { font } from '../../styles/common/fonts.styles';
 
 //NOTE - 하나의 feat을 관리하고 있는 Container
 export const FeatContainer = styled.div`

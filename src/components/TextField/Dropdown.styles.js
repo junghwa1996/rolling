@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import { font } from '../../styles/fontStyles';
+import { font } from '../../styles/common/fonts.styles';
 import { StyledInput, StyledErrMessage } from './CommonInput.styles';
-import { shadow } from '../../styles/shadowStyles';
+import { shadow } from '../../styles/layout/effect.styles';
 
 export const DropdownBtn = styled.button`
   display: flex;

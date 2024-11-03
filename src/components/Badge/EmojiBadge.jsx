@@ -1,12 +1,11 @@
 // NOTE 이모지 배지 기능 (이모지 + 이모지 개수)
 // emoji - 이모지의 종류(string)
 // count - 이모지의 총 개수(number)
-
 import PropTypes from 'prop-types';
-
 import styled from 'styled-components';
+
 import styles from './EmojiBadge.module.css';
-import { font } from '../../styles/fontStyles';
+import { font } from '../../styles/common/fonts.styles';
 
 export const Count = styled.p`
   @media (max-width: 767px) {
