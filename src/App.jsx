@@ -1,11 +1,12 @@
 import { ThemeProvider } from 'styled-components';
 import { useState } from 'react';
+import { ToastContainer } from 'react-toastify';
 
-import './styles/reset.css';
-import './styles/common.css';
+import './styles/common/reset.css';
+import './styles/common/variables.css';
 import Content from './router/Content';
-import { light, dark } from './styles/theme';
-import GlobalStyles from './styles/GlobalStyles';
+import { light, dark } from './styles/themes/theme';
+import GlobalStyles from './styles/common/global.styles';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -21,6 +22,7 @@ function App() {
       <button onClick={toggleTheme}>
         Switch to {isDarkMode ? 'Light' : 'Dark'} Mode
       </button>
+      <ToastContainer />
       <Content />
     </ThemeProvider>
   );

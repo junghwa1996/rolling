@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
-import { color } from '../../styles/colorStyles';
+import { color } from '../../styles/common/variables';
+import { font } from '../../styles/common/fonts.styles';
 
 export const HeaderArea = styled.header`
   width: 100%;
@@ -112,12 +113,18 @@ export const InfoHeader = styled.div`
 
   > div:nth-child(2) {
     display: flex;
-    gap: 30px;
     align-items: center;
 
     @media (max-width: 768px) {
       width: 100%;
       flex: 1;
+    }
+  }
+
+  h1 {
+    ${font['28b']}
+    @media (max-width: 768px) {
+      ${font['18b']}
     }
   }
 `;

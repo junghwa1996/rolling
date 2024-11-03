@@ -3,8 +3,8 @@
 
 import { css } from 'styled-components';
 
-import { font } from '../../styles/fontStyles';
-import { color } from '../../styles/colorStyles';
+import { font } from '../../styles/common/fonts.styles';
+import { color } from '../../styles/common/variables';
 
 export const StyledInput = css`
   //border

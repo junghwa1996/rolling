@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
-import { color } from '../../styles/colorStyles';
-import { font } from '../../styles/fontStyles';
+import { color } from '../../styles/common/variables';
+import { font } from '../../styles/common/fonts.styles';
 
 const sizes = {
   s: css`

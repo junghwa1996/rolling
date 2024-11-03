@@ -1,0 +1,36 @@
+
+.Container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  position: relative;
+}
+
+.emojiListContainer {
+  display: flex;
+  align-items: center;
+}
+
+.emojiList {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.imgWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 3.6rem;
+  height: 3.6rem;
+}
+
+
+.img {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.emojiBadge {
+  display: inline-block;
+}
