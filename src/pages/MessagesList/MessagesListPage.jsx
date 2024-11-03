@@ -12,8 +12,9 @@ import styled, { css } from 'styled-components';
 
 import { getMessagesList, getRollingItem } from '../../service/api';
 import StyledModal from '../../components/Modal/StyledModal';
-import CardAddItem from '../../components/CardList/CardAddItem';
-import CardList from '../../components/CardList/CardList';
+import CardAdd from '../../components/CardComponents/CardAdd/CardAdd';
+import CardList from '../../components/CardComponents/CardList/CardList';
+import SkeletonCard from '../../components/CardComponents/Skeleton/SkeletonCard';
 import useFetchData from '../../hooks/useFetchData';
 import EmojiPickerComponent from '../../layout/Emoji/EmojiPickerComponent';
 
@@ -107,7 +108,15 @@ function MessagesListPage() {
   };
 
   // TODO - 추후 로딩과 에러 페이지 별도 작업
-  if (messageLoading || backgroundLoading) return <p>로딩 중 입니다</p>;
+  if (messageLoading || backgroundLoading) {
+    return (
+      <StyledInner>
+        {[...Array(3)].map((_, index) => (
+          <SkeletonCard key={index} />
+        ))}
+      </StyledInner>
+    );
+  }
   if (messageError || backgroundError) return <p>에러가 발생했어요!</p>;
 
   return (
@@ -122,7 +131,7 @@ function MessagesListPage() {
             type="card"
             messageData={messageData?.results || []}
             onEvent={{ modal: handleMessageClick }}>
-            <CardAddItem id={currentId} />
+            <CardAdd id={currentId} />
           </CardList>
         </StyledInner>
       </StyledMain>

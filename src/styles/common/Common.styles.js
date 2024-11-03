@@ -1,6 +1,6 @@
 import { styled, css } from 'styled-components';
 
-import { Textarea } from '../../components/CardList/Textarea.styles';
+import { Textarea } from '../../components/CardComponents/CardList/Textarea.styles';
 
 // 폰트 사이즈 정의 함수
 const font = (size) => {

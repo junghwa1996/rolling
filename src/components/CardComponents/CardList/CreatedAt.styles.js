@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { font } from '../../styles/fontStyles';
+import { font } from '../../../styles/fontStyles';
 
 export const CreatedAt = styled.span`
   ${font[14]};

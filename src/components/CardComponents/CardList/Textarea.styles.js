@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-import { font } from '../../styles/fontStyles';
+import { font } from '../../../styles/fontStyles';
 
 export const Textarea = styled.p`
   word-break: break-all;

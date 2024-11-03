@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { CommonMessage } from '../../styles/Common/CommonMessages.styles';
+import { CommonMessage } from '../../../styles/Common/CommonMessages.styles';
 import {
   CardListContainer,
   ItemArea,
   ButtonArea,
-} from '../../styles/Layout/CommonLayout.styles';
-import useDeviceType from '../../hooks/useDeviceType';
-import { deleteMessages, deleteRolling } from '../../service/api';
-import Button from '../../components/Button/Button';
-import Card from '../../components/CardList/Card';
+} from '../../../styles/Layout/CommonLayout.styles';
+import useDeviceType from '../../../hooks/useDeviceType';
+import { deleteMessages, deleteRolling } from '../../../service/api';
+import Button from '../../Button/Button';
+import Card from './Card';
 
 function CardList({ type, messageData = [], onEvent, children }) {
   const [messageDataList, setMessageDataList] = useState(messageData);

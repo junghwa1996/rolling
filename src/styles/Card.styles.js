@@ -1,7 +1,7 @@
 // Card.styles.js
 import styled from 'styled-components';
 
-import { Textarea } from '../components/CardList/Textarea.styles'; // 위치에 맞게 수정
+import { Textarea } from '../components/CardComponents/CardList/Textarea.styles'; // 위치에 맞게 수정
 import { CommonCardContainer, CommonTextArea } from './Common/Common.styles';
 import { media } from './Common/media';
 

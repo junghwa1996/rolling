@@ -10,7 +10,7 @@ import { useLocation } from 'react-router-dom';
 import { styled, css } from 'styled-components';
 
 import { getMessagesList, getRollingItem } from '../../service/api';
-import CardList from '../../components/CardList/CardList';
+import CardList from '../../components/CardComponents/CardList/CardList';
 import useFetchData from '../../hooks/useFetchData';
 
 export const StyledMain = styled.main`

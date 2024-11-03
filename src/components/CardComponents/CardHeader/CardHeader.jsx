@@ -1,26 +1,19 @@
 import PropTypes from 'prop-types';
-
 import {
   CardHeaderContainer,
   CardHeaderPosition,
   CardHeaderArea,
+  ButtonContainer,
   SpanText,
-} from '../../styles/CardHeader.styles';
-import ButtonContainerComponent from './ButtonContainerComponent';
-import { EllipsisStyle } from '../../styles/Common/Common.styles';
-import { CreatedAt } from './CreatedAt.styles.js';
-import Badge from '../Badge/Badge';
-import Profile from '../Profile/Profile';
-import dateConversion from '../../utils/dateConversion';
+} from './CardHeader.styles';
+import { ReactComponent as DeleteIcon } from '../../../assets/icon-delete.svg';
+import { ReactComponent as UpdateIcon } from '../../../assets/icon-edit.svg';
+import Badge from '../../Badge/Badge';
+import Outlined from '../../Outlined/Outlined';
+import Profile from '../../Profile/Profile';
+import dateConversion from '../../../utils/dateConversion';
 
-function CardHeader({
-  type,
-  messageData = {},
-  onEvent = {
-    buttonDelete: () => {},
-    buttonEdit: () => {},
-  },
-}) {
+function CardHeader({ type, messageData, onEvent }) {
   const { profileImageURL, sender, relationship, createdAt } = messageData;
 
   return (
@@ -36,10 +29,10 @@ function CardHeader({
         </CardHeaderArea>
       </CardHeaderPosition>
       {type === 'edit' && (
-        <ButtonContainerComponent
-          onEdit={onEvent.buttonEdit}
-          onDelete={onEvent.buttonDelete}
-        />
+        <ButtonContainer>
+          <Outlined icon={<UpdateIcon />} onClick={onEvent.buttonEdit} />
+          <Outlined icon={<DeleteIcon />} onClick={onEvent.buttonDelete} />
+        </ButtonContainer>
       )}
       {type === 'modal' && <CreatedAt>{dateConversion(createdAt)}</CreatedAt>}
     </CardHeaderContainer>
