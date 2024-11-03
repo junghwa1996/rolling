@@ -43,9 +43,9 @@ import {
   DropdownItem,
   DropdownErrMessage,
 } from './Dropdown.styles';
-import ArrowDown from '../../assets/icon-arrow_down.svg';
-import ArrowTop from '../../assets/icon-arrow_top.svg';
-import Share from '../../assets/icon-share-24.svg';
+import styles from './Dropdown.module.css';
+import ARROW_ICON from '../../assets/icon-arrow_down.svg';
+import SHARE from '../../assets/icon-share-24.svg';
 import useDeviceType from '../../hooks/useDeviceType';
 
 Dropdown.propTypes = {
@@ -107,8 +107,9 @@ function Dropdown({
       {/* icon 버튼인지 보통의 Dropdown인지 구분 */}
       {isIcon ? (
         <IconBtn
-          src={Share}
+          src={SHARE}
           alt="icon"
+          className={styles.iconBtn}
           onClick={() => setIsOpen(!isOpen)}
           $error={hasError.$error}
           disabled={disabled}
@@ -116,6 +117,7 @@ function Dropdown({
       ) : (
         <DropdownBtn
           type="button"
+          className={styles.dropdownBtn}
           onClick={() => setIsOpen(!isOpen)}
           $error={hasError.$error}
           disabled={disabled}
@@ -124,7 +126,12 @@ function Dropdown({
           {hasOptions.selectedOption.label
             ? hasOptions.selectedOption.label
             : hasOptions.selectedOption.value || hasOptions.options[0].label}
-          <ArrowImg src={!isOpen ? ArrowDown : ArrowTop} alt="arrow" />
+          <ArrowImg
+            src={ARROW_ICON}
+            alt="arrow"
+            className={styles.arrowImg}
+            isOpen={isOpen}
+          />
         </DropdownBtn>
       )}
 
@@ -135,10 +142,11 @@ function Dropdown({
       )}
 
       {isOpen && (
-        <DropdownList isIcon={isIcon}>
+        <DropdownList isIcon={isIcon} className={styles.dropdownList}>
           {hasOptions.options.map((option, index) => (
             <DropdownItem
               key={index}
+              className={styles.dropdownItem}
               onClick={() => handleSelect(option)}
               isIcon={isIcon}>
               {option.value}
