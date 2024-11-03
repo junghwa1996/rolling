@@ -4,7 +4,6 @@ import { shareToKakao } from './KaKaoShare';
 import { ReactComponent as IconShare } from '../../assets/icon-share-24.svg';
 import CopyUrl from '../../components/toast/CopyUrl';
 import Dropdown from '../../components/TextField/Dropdown';
-import styles from './SharingSelector.module.css'; // 수정된 부분
 import { showToast } from '../../components/toast/Toast';
 
 function SharingSelector() {
@@ -48,7 +47,7 @@ function SharingSelector() {
   };
 
   return (
-    <div className={styles.outLinedArea}>
+    <div>
       <Dropdown
         hasOptions={{
           options: relationshipData,
