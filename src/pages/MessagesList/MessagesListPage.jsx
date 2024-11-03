@@ -15,6 +15,7 @@ import StyledModal from '../../components/Modal/StyledModal';
 import MessageCardAddItem from '../../components/MessagesCardList/MessageCardAddItem';
 import MessageCardList from '../../components/MessagesCardList/MessageCardList';
 import useFetchData from '../../hooks/useFetchData';
+import EmojiPickerComponent from '../../layout/Emoji/EmojiPickerComponent';
 
 function MessagesListPage() {
   const [hasModalOpen, setHasModalOpen] = useState(false);
@@ -68,6 +69,8 @@ function MessagesListPage() {
       <StyledMain
         $bgColor={backgroundData?.backgroundColor}
         $bgImage={backgroundData?.backgroundImageURL}>
+        {/* NOTE : header 조합 전 테스트용 입니다. 조합 하실때 지워주세요*/}
+        <EmojiPickerComponent />
         <StyledInner>
           <MessageCardList
             type="card"
