@@ -22,6 +22,7 @@ export const StyledMain = styled.main`
   width: 100%;
   height: 100vh;
   overflow: auto;
+
   ${({ $bgColor, $bgImage }) => {
     if ($bgImage) {
       return css`
