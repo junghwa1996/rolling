@@ -151,7 +151,7 @@ function MessagesAddPage() {
     }
   };
 
-  if (isLoading) return <p>로딩중입니다...🤩</p>;
+  if (isLoading) return <p>로딩중입니다...👽👽👽👽👽</p>;
 
   const handleSenderChange = (e) => {
     // useValidation에 이벤트 객체 전달하여 유효성 검사
@@ -205,7 +205,6 @@ function MessagesAddPage() {
         />
 
         <StyledLabel>내용을 입력해 주세요.</StyledLabel>
-        {/* <TextField onChange={handleEditorChange} /> */}
         <TextEditor onChange={handleEditorChange} value={values.content} />
 
         <StyledLabel>폰트 선택</StyledLabel>
@@ -224,7 +223,11 @@ function MessagesAddPage() {
         />
 
         {/* 이름, 내용을 입력하지 않으면 disabled */}
-        <Button size="xl" type="submit" disabled={!isValidation}>
+        <Button
+          size="xl"
+          type="submit"
+          disabled={!isValidation || isLoading}
+          loading={isLoading}>
           {!messageId ? '생성하기' : '수정하기'}
         </Button>
       </form>

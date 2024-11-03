@@ -18,11 +18,13 @@ const INITIAL_VALUES = {
 };
 
 function RecipientsAddPage() {
-  // 보내는 사람 이름
-  const { value, error, errMessage, onChange, onBlur } = useInputValidation();
-
   // post 요청 데이터
   const [values, setValues] = useState(INITIAL_VALUES);
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  // 보내는 사람 이름
+  const { value, error, errMessage, onChange, onBlur } = useInputValidation();
 
   // 생성 후, 해당 id(롤링페이퍼)로 이동
   const nav = useNavigate();
@@ -62,13 +64,18 @@ function RecipientsAddPage() {
     };
 
     try {
+      setIsLoading(true);
       const result = await postRolling(postData);
       // post 요청의 응답 반환 값에서 id 값을 추출하여 요청이 완료된 후, 생성된 롤링페이퍼로 이동
       nav(`/post/${result.id}`, { replace: true });
     } catch (error) {
       console.error('롤링 페이퍼를 생성하는데 오류가 발생 했습니다.:', error);
+    } finally {
+      setIsLoading(false);
     }
   };
+
+  if (isLoading) return <p>로딩중입니다...💀💀💀💀💀</p>;
 
   return (
     <div className={styles.messagesAddContainer}>
@@ -95,7 +102,11 @@ function RecipientsAddPage() {
         <BackgroundSelector onBackgroundChange={handleBackgroundChange} />
 
         {/* 이름을 입력하지 않으면 disabled */}
-        <Button size="xl" type="submit" disabled={isValidation}>
+        <Button
+          size="xl"
+          type="submit"
+          disabled={isValidation}
+          loading={isLoading}>
           생성하기
         </Button>
       </form>
