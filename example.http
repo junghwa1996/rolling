@@ -39,7 +39,7 @@ Content-Type: application/json;
 
 ###
 # 롤링 이모지 GET request
-GET https://rolling-api.vercel.app/11-2/recipients/9075/reactions/ HTTP/1.1
+GET https://rolling-api.vercel.app/11-2/recipients/9181/reactions/ HTTP/1.1
 
 ###
 # 롤링 이모지 POST request(증가)
