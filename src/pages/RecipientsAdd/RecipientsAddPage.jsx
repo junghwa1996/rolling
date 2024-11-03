@@ -10,7 +10,6 @@ import Input from '../../components/TextField/Input';
 import useInputValidation from '../../hooks/useInputValidation';
 import BackgroundSelector from '../../components/BackgroundSelector/BackgroundSelector';
 import { postRolling } from '../../service/api';
-// import TabToggle from '../../components/TabToggle/TabToggle';
 
 const INITIAL_VALUES = {
   team: '11-2',

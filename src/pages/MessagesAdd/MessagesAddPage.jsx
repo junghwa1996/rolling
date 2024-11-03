@@ -6,7 +6,6 @@ import Button from '../../components/Button/Button';
 import InputFile from '../../components/InputFile/InputFile';
 import Dropdown from '../../components/TextField/Dropdown';
 import Input from '../../components/TextField/Input';
-import TextField from '../../components/TextField/TextField';
 import useInputValidation from '../../hooks/useInputValidation';
 import { postMessages } from '../../service/api';
 import TextEditor from '../../components/TextField/TextEditor';
