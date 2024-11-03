@@ -1,0 +1,33 @@
+.totalMessageContainer {
+  position: relative;
+  padding-right: 2.5rem;
+  margin-right: 2.5rem;
+}
+
+.totalMessageContainer::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 2.8rem;
+  background-color: #eeeeee;
+}
+
+.sharingSelectorContainer {
+  position: relative;
+  padding-left: 1.2rem;
+  margin-left: 1.2rem;
+}
+
+.sharingSelectorContainer::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 2.8rem;
+  background-color: #eeeeee;
+}

@@ -27,7 +27,7 @@ export const StyledMain = styled.main`
     if ($bgImage) {
       return css`
         background: url(${$bgImage}) no-repeat center center/cover;
-        &::before {
+        /* &::before {
           position: fixed;
           left: 0;
           right: 0;
@@ -38,7 +38,7 @@ export const StyledMain = styled.main`
           width: 100%;
           height: 100vh;
           background-color: ${({ theme }) => theme.blackText};
-        }
+        } */
       `;
     } else {
       return css`
@@ -124,8 +124,6 @@ function MessagesListPage() {
       <StyledMain
         $bgColor={backgroundData?.backgroundColor}
         $bgImage={backgroundData?.backgroundImageURL}>
-        {/* NOTE : header 조합 전 테스트용 입니다. 조합 하실때 지워주세요*/}
-        <EmojiPickerComponent />
         <StyledInner>
           <CardList
             type="card"
