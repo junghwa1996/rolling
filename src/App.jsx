@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify'; // 한 번만 import
 import { ThemeProvider } from 'styled-components';
-import { useState } from 'react';
-import { ToastContainer } from 'react-toastify';
 
 import './styles/common/reset.css';
 import './styles/common/variables.css';

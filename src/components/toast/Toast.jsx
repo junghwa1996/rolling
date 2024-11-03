@@ -18,7 +18,7 @@ export const showToast = (content) => {
         ),
         {
           position: 'bottom-center',
-          autoClose: 5000,
+          autoClose: 100000,
           closeOnClick: false,
           draggable: true,
           hideProgressBar: true,

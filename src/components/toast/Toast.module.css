@@ -4,14 +4,17 @@
 }
 
 .Toastify__toast {
-  background-color: var(--black);
-  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.8); /* #000000CC */
+  border-radius: 8px;
   box-shadow: var(--shadow-low);
-  padding: 1rem;
+  padding: 19px 30px;
+  width: 524px;
+  height: 64px;
+  opacity: 1; /* 초기 상태에서 보이도록 설정 */
 }
 
 .Toastify__toast-theme {
-  background: var(--black);
+  background: rgba(0, 0, 0, 0.8);
   color: var(--white);
 }
 
@@ -19,12 +22,12 @@
   display: none;
 }
 
-.ToastWrapper {
+.CustomCloseButton {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  height: 100%;
+  width: 24px;
+  height: 24px;
   padding: 0;
   background: transparent;
   overflow: hidden;
@@ -32,24 +35,16 @@
 
 .ToastMessage {
   font-family: 'Pretendard', sans-serif;
-  font-size: 16px; /* 예시로 16px로 설정 */
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  letter-spacing: -0.01em;
   color: var(--white);
+  width: 151px;
+  height: 26px;
   overflow-wrap: break-word;
   white-space: normal;
   flex-grow: 1;
   margin: 0 1rem;
-  border-radius: 0.5rem;
-}
-
-.IconToastImage {
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-right: 0.625rem;
-}
-
-.CustomCloseButton {
-  cursor: pointer;
-  width: 1.5rem;
-  height: 1.5rem;
-  flex-shrink: 0;
+  opacity: 1; /* 초기 상태에서 보이도록 설정 */;
 }
