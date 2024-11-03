@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { blur } from '../../styles/blurStyles';
+import { blur } from '../../styles/layout/effect.styles';
 
 export const ArrowArea = styled.button`
   width: 4rem;

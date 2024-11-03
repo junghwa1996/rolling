@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-import { font } from '../../styles/fontStyles';
+import { font } from '../../styles/common/fonts.styles';
 
 const directionStyles = {
   row: {
