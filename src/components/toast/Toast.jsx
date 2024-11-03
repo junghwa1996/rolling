@@ -17,6 +17,7 @@ export const showToast = (content) => {
           </div>
         ),
         {
+          closeButton: false,
           position: 'bottom-center',
           autoClose: 100000,
           closeOnClick: false,

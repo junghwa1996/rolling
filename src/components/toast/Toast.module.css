@@ -1,51 +1,33 @@
 .ToastContainer {
+  margin: 0;
   padding: 0;
-  text-align: left;
-  border: 3px solid red;
-}
+  }
 
-.Toastify__toast {
-  background-color: rgba(0, 0, 0, 0.8); /* #000000CC */
-  border-radius: 8px;
-  box-shadow: var(--shadow-low);
-  padding: 19px 30px;
-  width: 524px;
-  height: 64px;
-  opacity: 1; /* 초기 상태에서 보이도록 설정 */
-}
+  /* URL이 복사되었습니다. */
+  .ToastMessage{
+    color:var(--white);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+  }
 
-.Toastify__toast-theme {
-  background: rgba(0, 0, 0, 0.8);
-  color: var(--white);
-}
-
-.Toastify__close-button {
-  display: none;
-}
-
-.CustomCloseButton {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 24px;
-  height: 24px;
-  padding: 0;
-  background: transparent;
-  overflow: hidden;
-}
-
-.ToastMessage {
-  font-family: 'Pretendard', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 26px;
-  letter-spacing: -0.01em;
-  color: var(--black);
-  width: 151px;
-  height: 26px;
-  overflow-wrap: break-word;
-  white-space: normal;
-  flex-grow: 1;
-  margin: 0 1rem;
-  opacity: 1; /* 초기 상태에서 보이도록 설정 */
-}
+  /* 토스트 너비 */
+  .ToastWrapper {
+    width: 524px;  /* 원하는 너비 */
+    height: 64px;  /* 원하는 높이 */
+    padding: 19px 30px; /* 패딩 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    background: rgba(0, 0, 0, 0.8); /* 배경색 */
+    color: #fff; /* 글자색 */
+    display: flex; /* 필요한 경우 Flexbox 사용 */
+    align-items: center; /* 수직 중앙 정렬 */
+    justify-content: space-between; /* 요소 간 공간 배분 */
+  }  
+  
+  /* 내가만든버튼 */
+  .CustomCloseButton { 
+    cursor: pointer;
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+    }
