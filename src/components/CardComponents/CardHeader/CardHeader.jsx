@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+
 import {
   CardHeaderContainer,
   CardHeaderPosition,
@@ -12,6 +13,7 @@ import Badge from '../../Badge/Badge';
 import Outlined from '../../Outlined/Outlined';
 import Profile from '../../Profile/Profile';
 import dateConversion from '../../../utils/dateConversion';
+import Title from '../../Shared/Title/Title';
 
 function CardHeader({ type, messageData, onEvent }) {
   const { profileImageURL, sender, relationship, createdAt } = messageData;
@@ -21,10 +23,10 @@ function CardHeader({ type, messageData, onEvent }) {
       <CardHeaderPosition>
         <Profile imageURL={profileImageURL} />
         <CardHeaderArea>
-          <EllipsisStyle as="h3">
+          <Title>
             <SpanText>From.</SpanText>
             {sender}
-          </EllipsisStyle>
+          </Title>
           <Badge value={relationship} />
         </CardHeaderArea>
       </CardHeaderPosition>
@@ -34,7 +36,7 @@ function CardHeader({ type, messageData, onEvent }) {
           <Outlined icon={<DeleteIcon />} onClick={onEvent.buttonDelete} />
         </ButtonContainer>
       )}
-      {type === 'modal' && <CreatedAt>{dateConversion(createdAt)}</CreatedAt>}
+      {type === 'modal' && <Data>{dateConversion(createdAt)}</Data>}
     </CardHeaderContainer>
   );
 }

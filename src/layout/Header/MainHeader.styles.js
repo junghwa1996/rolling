@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { color } from '../../styles/colorStyles';
+import { color } from '../../styles/common/variables';
 
 export const HeaderArea = styled.header`
   width: 100%;

@@ -5,7 +5,7 @@ import useDeviceType from '../../hooks/useDeviceType';
 import RecipientsList from './RecipientsList';
 import Button from '../../components/Button/Button';
 import { SwiperContain } from './RecipientsList.styles';
-import { Title } from '../../styles/Common/Common.styles';
+import { title } from '../../styles/common/common.styles';
 
 const StyledSwiper = styled(SwiperContain)`
   @media screen and (max-width: 1248px) {

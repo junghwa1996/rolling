@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types';
 
-import { CardContainer, CardTextArea } from '../../../styles/Card.styles';
-import CardHeader from './CardHeader';
-import { CreatedAt } from './CreatedAt.styles';
-import { Textarea } from './Textarea.styles';
+import { CardContainer, CardTextArea } from '../Card/Card.styles';
+import CardHeader from '../CardHeader/CardHeader';
+import { CreatedAt, Textarea } from './Card.styles';
 import dateConversion from '../../../utils/dateConversion';
-import { Line } from '../../../styles/Common/Common.styles';
+import { Line } from '../../../styles/common/common.styles';
 import Button from '../../Button/Button';
 
 function Card({
@@ -35,7 +34,7 @@ function Card({
         onEvent={onEvent}
       />
       <CardTextArea>
-        <Line />
+        <line />
         <Textarea dangerouslySetInnerHTML={{ __html: messageData?.content }} />
         {!isModalType && (
           <CreatedAt>{dateConversion(messageData?.createdAt)}</CreatedAt>

@@ -1,4 +1,4 @@
-// src/styles/Layout/CommonLayout.styles.js
+// src/components/CardList/CardList.styles.js
 import styled from 'styled-components';
 
 export const CardListContainer = styled.div`

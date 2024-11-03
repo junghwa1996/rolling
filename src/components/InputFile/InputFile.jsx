@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import styles from './InputFile.module.css';
-import { font } from '../../styles/fontStyles';
+import { font } from '../../styles/common/fonts.styles';
 import { getProfileImg } from '../../service/api';
 import Profile from '../Profile/Profile';
 import useDeviceType from '../../hooks/useDeviceType';
