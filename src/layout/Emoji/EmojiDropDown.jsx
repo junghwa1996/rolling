@@ -53,6 +53,7 @@ function EmojiDropDown({ id }) {
         const { results } = res;
 
         // sort 조건문
+        //TODO - 확실하게 하기 위해 넣어둔 구문 (헤더에서 조합 후 이상이 없으면 지울 예정)
         const sortedData = results.sort((a, b) => b.count - a.count);
         setEmojiList(sortedData);
       } catch (error) {
