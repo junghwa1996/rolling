@@ -25,16 +25,8 @@ function Content() {
           </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Route>
-        <Route path="post">
-          <Route index element={<RecipientsAddPage />} />
-          <Route path=":id" element={<MessagesListPage type="card" />} />
-          <Route path=":id/message" element={<MessagesAddPage />} />
-          <Route path=":id/edit" element={<MessagesEditPage type="edit" />} />
-        </Route>
-        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>
   );
 }
-
 export default Content;
