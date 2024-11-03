@@ -1,9 +1,8 @@
 import { ToastContainer } from 'react-toastify';
 import styled from 'styled-components';
 
-import { font } from '../../styles/fontStyles';
-
 // import { color } from '../../styles/colorStyles'; // 색상 스타일 추가
+import { font } from '../../styles/common/fonts.styles';
 
 // Toast 스타일 컴포넌트
 export const StyledToastContainer = styled(ToastContainer)`
