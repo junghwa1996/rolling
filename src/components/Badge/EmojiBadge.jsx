@@ -1,24 +1,26 @@
 // NOTE 이모지 배지 기능 (이모지 + 이모지 개수)
 // emoji - 이모지의 종류(string)
 // count - 이모지의 총 개수(number)
-
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import {
-  EmojiBadgeArea,
-  EmojiContainer,
-  Emoji,
-  Count,
-} from './EmojiBadge.styles';
+import styles from './EmojiBadge.module.css';
+import { font } from '../../styles/common/fonts.styles';
+
+export const Count = styled.p`
+  @media (max-width: 767px) {
+    ${font['14']};
+  }
+`;
 
 function EmojiBadge({ emoji, count, onClick }) {
   return (
-    <EmojiBadgeArea onClick={onClick}>
-      <EmojiContainer>
-        <Emoji>{emoji}</Emoji>
-      </EmojiContainer>
-      <Count>{count}</Count>
-    </EmojiBadgeArea>
+    <div onClick={onClick} className={styles.emojiBadgeArea}>
+      <div className={styles.emojiContainer}>
+        <p className={styles.emoji}>{emoji}</p>
+      </div>
+      <Count className={styles.count}>{count}</Count>
+    </div>
   );
 }
 
