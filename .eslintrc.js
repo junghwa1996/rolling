@@ -41,18 +41,18 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
-    'import/order': [
-      'error',
-      {
-        groups: [
-          'builtin',
-          'external',
-          'internal',
-          ['parent', 'sibling', 'index'],
-        ],
-        'newlines-between': 'always',
-      },
-    ],
+    // 'import/order': [
+    //   'error',
+    //   {
+    //     groups: [
+    //       'builtin',
+    //       'external',
+    //       'internal',
+    //       ['parent', 'sibling', 'index'],
+    //     ],
+    //     'newlines-between': 'always',
+    //   },
+    // ],
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
   },

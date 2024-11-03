@@ -1,11 +1,8 @@
-import { cardBaseStyle, CommonCardContainer } from '../Common/Common.styles';
-import { boxShadow, borderRadius } from '../styles/Common/mixins';
+import { styled } from 'styled-components';
 
-export const CardContainer = styled(CommonCardContainer)`
-  ${boxShadow}
-  ${borderRadius}
-  width: 38.4rem;
-  height: 28rem;
+import { cardBaseStyle } from '../../../styles/common/Common.styles';
+
+export const CardContainer = styled.a`
   ${cardBaseStyle}
   ${({ type }) => type === 'card' && 'cursor: pointer;'}
   ${({ type }) => type === 'edit' && 'padding-bottom: 2.4rem;'}
