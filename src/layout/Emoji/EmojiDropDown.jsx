@@ -3,13 +3,12 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 
 import { getRollingEmoji } from '../../service/api';
-import { shadow } from '../../styles/shadowStyles';
-import { blur } from '../../styles/blurStyles';
+import { shadow, blur } from '../../styles/layout/effect.styles';
 import useDeviceType from '../../hooks/useDeviceType';
-import EmojiBadge from '../../components/Badge/EmojiBadge';
 import ArrowDown from '../../assets/icon-arrow_down.svg';
 import ArrowTop from '../../assets/icon-arrow_top.svg';
 import styles from './EmojiDropDown.module.css';
+import EmojiBadge from '../../components/Badge/EmojiBadge';
 
 EmojiDropDown.propTypes = {
   id: PropTypes.number.isRequired,

@@ -6,6 +6,7 @@ import './styles/common/common.css';
 import Content from './router/Content';
 import { light, dark } from './styles/themes/theme';
 import GlobalStyles from './styles/common/global.styles';
+import MainHeader from './layout/Header/MainHeader';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -21,6 +22,7 @@ function App() {
       <button onClick={toggleTheme}>
         Switch to {isDarkMode ? 'Light' : 'Dark'} Mode
       </button>
+      <MainHeader />
       <Content />
     </ThemeProvider>
   );
