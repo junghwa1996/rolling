@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { ThemeProvider } from 'styled-components';
+import { useState } from 'react';
+import { ToastContainer } from 'react-toastify';
 
 import './styles/common/reset.css';
-import './styles/common/common.css';
+import './styles/common/variables.css';
 import Content from './router/Content';
 import { light, dark } from './styles/themes/theme';
 import GlobalStyles from './styles/common/global.styles';
@@ -23,7 +25,7 @@ function App() {
         Switch to {isDarkMode ? 'Light' : 'Dark'} Mode
       </button>
       <ToastContainer />
-      <Content /> {/* 라우터는 여기서 사용하지 않음 */}
+      <Content />
     </ThemeProvider>
   );
 }
