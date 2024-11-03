@@ -19,8 +19,6 @@ import { ReactComponent as IconStoke } from '../../assets/icon-stoke.svg';
 import Outlined from '../../components/Outlined/Outlined';
 import styles from './EmojiPickerComponent.module.css';
 import useDeviceType from '../../hooks/useDeviceType';
-import EmojiBadge from '../../components/Badge/EmojiBadge';
-import useFetchData from '../../hooks/useFetchData';
 import { getRollingEmoji } from '../../service/api';
 import EmojiDropDown from './EmojiDropDown';
 
@@ -76,23 +74,6 @@ function EmojiPickerComponent({ id }) {
     // <div className={styles.outLinedArea}>
 
     <div className={styles.outLinedArea}>
-      {/* <div className={styles.emojiDropdown}>
-        {emojisList
-          .sort((a, b) => b.count - a.count)
-          .slice(0, 3)
-          .map((emoji) => (
-            <div key={emoji.emoji}>
-              {!emoji.count || (
-                <EmojiBadge
-                  emoji={emoji.emoji}
-                  count={emoji.count}
-                  onClick={() => onEmojiDelete(emoji)}
-                  disabled={isLoading}
-                />
-              )}
-            </div>
-          ))}
-      </div> */}
       <EmojiDropDown emojiList={emojisList?.results} />
       <Outlined
         size="s"
