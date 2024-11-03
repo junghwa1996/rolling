@@ -19,8 +19,6 @@ function TotalMessage({
   messageCount = 0,
   direction = 'row',
 }) {
-  console.log('1', recentMessages);
-  console.log('2', messageCount);
   return (
     <>
       {/* message가 있을 경우에만 노출됩니다. */}

@@ -1,7 +1,8 @@
-.Container{
+.Container {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  position: relative;
 }
 
 .emojiListContainer {
@@ -23,7 +24,7 @@
   height: 3.6rem;
 }
 
-.img{
+.img {
   width: 2.4rem;
   height: 2.4rem;
 }

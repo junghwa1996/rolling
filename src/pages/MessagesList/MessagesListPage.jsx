@@ -27,7 +27,7 @@ export const StyledMain = styled.main`
     if ($bgImage) {
       return css`
         background: url(${$bgImage}) no-repeat center center/cover;
-        &::before {
+        /* &::before {
           position: fixed;
           left: 0;
           right: 0;
@@ -38,7 +38,7 @@ export const StyledMain = styled.main`
           width: 100%;
           height: 100vh;
           background-color: ${({ theme }) => theme.blackText};
-        }
+        } */
       `;
     } else {
       return css`

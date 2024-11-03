@@ -10,6 +10,7 @@
 
 .outLinedArea {
   position: relative;
+  display: flex;
 }
 
 .pickerContainer {
@@ -22,4 +23,6 @@
 /* 임의 스타일링 */
 .emojiDropdown {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }

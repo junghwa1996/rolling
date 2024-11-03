@@ -4,6 +4,7 @@ import styles from './HomePage.module.css';
 import feat01 from '../../assets/Home/feat01.svg';
 import feat02 from '../../assets/Home/feat02.png'; //svg파일이 이모지가 없게 추출 -> jpg
 import Button from '../../components/Button/Button';
+import TestMainHeader from '../../layout/Header/MainHeader';
 import useDeviceType from '../../hooks/useDeviceType';
 import {
   FeatContainer,

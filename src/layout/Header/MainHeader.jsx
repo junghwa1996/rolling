@@ -26,16 +26,12 @@ function MainHeader({ type = 'default' }) {
   const isDeviceType = useDeviceType();
   const [rollingData, setRollingData] = useState(null);
 
-  console.log(id);
-  console.log(type);
-
   useEffect(() => {
     if (type === 'doubleLine') {
       const getData = async () => {
         try {
           const response = await getRollingItem(id);
           setRollingData(response);
-          console.log('아이템', response);
         } catch (error) {
           console.error(error);
         }
@@ -43,8 +39,6 @@ function MainHeader({ type = 'default' }) {
       getData();
     }
   }, [type, id]);
-
-  console.log(rollingData);
 
   return (
     <HeaderArea $type={type}>
@@ -70,8 +64,8 @@ function MainHeader({ type = 'default' }) {
                 />
               </div>
             )}
-            {/* <EmojiDropDown></EmojiDropDown> */}
-            <EmojiPickerComponent />
+
+            <EmojiPickerComponent id={id} />
             <div className={styles.sharingSelectorContainer}>
               <SharingSelector></SharingSelector>
             </div>

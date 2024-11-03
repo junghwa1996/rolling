@@ -1,5 +1,6 @@
 import { ThemeProvider } from 'styled-components';
 import { useState } from 'react';
+import { ToastContainer } from 'react-toastify';
 
 import './styles/common/reset.css';
 import './styles/common/common.css';
@@ -21,6 +22,7 @@ function App() {
       <button onClick={toggleTheme}>
         Switch to {isDarkMode ? 'Light' : 'Dark'} Mode
       </button>
+      <ToastContainer />
       <Content />
     </ThemeProvider>
   );
