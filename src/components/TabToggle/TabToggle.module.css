@@ -20,7 +20,7 @@
   top: 0;
   width: 12rem;
   height: 100%;
-  border: 2px solid var(--purple600); /* 보라색을 CSS 변수를 사용하여 적용 */
+  border: 2px solid var(--purple-600); /* 보라색을 CSS 변수를 사용하여 적용 */
   border-radius: 6px;
   background: #fff;
   transition: left 0.3s ease;
