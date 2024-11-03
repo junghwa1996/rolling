@@ -36,9 +36,6 @@ function Homepage() {
 
   return (
     <>
-      <section>
-        <TestMainHeader />
-      </section>
       <div className={styles.featSection}>
         {featContents.map((content, index) => (
           <FeatContainer
