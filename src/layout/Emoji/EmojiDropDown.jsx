@@ -48,27 +48,20 @@ EmojiDropDown.propTypes = {
   ).isRequired,
 };
 
-function EmojiDropDown({ emojiList }) {
-  // Get response hooks
-
+function EmojiDropDown({ emojiList = [] }) {
   const [isOpen, setIsOpen] = useState(false);
   const getDeviceType = useDeviceType();
   const isPC = getDeviceType === 'pc';
-
-  console.log(emojiList);
 
   const handleButton = () => {
     setIsOpen(!isOpen);
   };
 
-  console.log(emojiList);
-
   return (
     <div className={styles.Container}>
       <section className={styles.emojiListContainer}>
         <div className={styles.emojiList}>
-          {Array.isArray(emojiList) &&
-            emojiList.length > 0 &&
+          {emojiList.length > 0 &&
             emojiList
               .sort((a, b) => b.count - a.count)
               .slice(0, 3)

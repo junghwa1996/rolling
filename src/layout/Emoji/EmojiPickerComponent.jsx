@@ -44,16 +44,17 @@ function EmojiPickerComponent({ id }) {
   // } = useFetchData(() => getRollingEmoji(id), [emojis]);
   // const emojisList = data?.results || [];
 
+  const getEmojiData = async () => {
+    try {
+      const response = await getRollingEmoji(id);
+      console.log(response);
+      setEmojisList(response);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
-    const getEmojiData = async () => {
-      try {
-        const response = await getRollingEmoji(id);
-        console.log(response);
-        setEmojisList(response);
-      } catch (err) {
-        console.error(err);
-      }
-    };
     getEmojiData();
   }, [id]);
 
@@ -61,6 +62,7 @@ function EmojiPickerComponent({ id }) {
   const onEmojiAdd = async (emojiObject) => {
     await addEmoji(emojiObject);
     setShowPicker(false);
+    await getEmojiData();
   };
 
   // STUB: 이모지 클릭 시 삭제 이벤트
@@ -70,7 +72,6 @@ function EmojiPickerComponent({ id }) {
 
   // if (isError || fetchingError) return <p>에러가 발생했습니다! 🫠</p>;
 
-  console.log(emojisList);
   return (
     // <div className={styles.outLinedArea}>
 
@@ -92,7 +93,7 @@ function EmojiPickerComponent({ id }) {
             </div>
           ))}
       </div> */}
-      <EmojiDropDown emojiList={emojisList}></EmojiDropDown>
+      <EmojiDropDown emojiList={emojisList?.results} />
       <Outlined
         size="s"
         color="secondary"
