@@ -11,13 +11,11 @@ import { useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import { getMessagesList, getRollingItem } from '../../service/api';
-import { StyledMain, StyledInner } from './MessagesListPage.styles';
-import StyledModal from '../../components/Modal/StyledModal';
 import CardAdd from '../../components/CardComponents/CardAdd/CardAdd';
 import CardList from '../../components/CardComponents/CardList/CardList';
 import SkeletonCard from '../../components/CardComponents/Skeleton/SkeletonCard';
 import useFetchData from '../../hooks/useFetchData';
-import EmojiPickerComponent from '../../layout/Emoji/EmojiPickerComponent';
+import ModalContent from '../../components/ModalComponents/ModalContent/ModalContent';
 
 export const StyledMain = styled.main`
   position: relative;
@@ -127,7 +125,7 @@ function MessagesListPage() {
         </StyledInner>
       </StyledMain>
       {hasModalOpen && (
-        <StyledModal
+        <ModalContent
           isOpen={hasModalOpen}
           onRequestClose={handleCloseModal}
           messageData={selectedCard}

@@ -5,13 +5,13 @@
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 
-import { styledModal } from './Modal.styles';
-import Card from '../CardComponents/Card/Card';
+import { styledModal } from './ModalContent.styles';
+import Card from '../../CardComponents/Card/Card';
 
 //모달이 열렸을 때 페이지의 나머지 요소들을 스크린 리더가 무시하도록 지정 -> 보통 최상위 요소에 지정
 Modal.setAppElement('#root');
 
-function StyledModal({ isOpen, onRequestClose, messageData, onEvent }) {
+function ModalContent({ isOpen, onRequestClose, messageData, onEvent }) {
   return (
     <Modal
       isOpen={isOpen}
@@ -30,7 +30,7 @@ function StyledModal({ isOpen, onRequestClose, messageData, onEvent }) {
   );
 }
 
-StyledModal.propTypes = {
+ModalContent.propTypes = {
   isOpen: PropTypes.bool,
   onRequestClose: PropTypes.func,
 
@@ -40,4 +40,4 @@ StyledModal.propTypes = {
   }),
 };
 
-export default StyledModal;
+export default ModalContent;

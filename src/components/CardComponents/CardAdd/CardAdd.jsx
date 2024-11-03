@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { styled } from 'styled-components';
 
 import ICON_ADD from '../../../assets/MessagesList/icon-add.svg';
-import { CardContainer } from '../CardContainer/CardContainer.styles';
+import { CardContainer } from './CardAdd.styles.js';
 
 const StyledImage = styled.img`
   width: 5.6rem;

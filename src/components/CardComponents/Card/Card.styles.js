@@ -1,5 +1,5 @@
 // src/components/Cards/Card/Card.styles.js
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { font } from '../../../styles/common/fonts.styles';
 import { fontFamily } from '../../../styles/common/Common.styles';
@@ -19,7 +19,8 @@ export const CardContainer = styled.div`
   }
   ${({ type }) => type === 'card' && 'cursor: pointer;'}
   ${({ type }) => type === 'edit' && 'padding-bottom: 2.4rem;'}
-  ${({ type }) => type === 'modal' && 'outline: none;'}
+  ${({ type }) =>
+    type === 'modal' && 'outline: none; width: 100%; height: 100%;'}
   background-color: ${({ theme }) => theme.background};
 
   &:hover {
@@ -70,6 +71,7 @@ export const CardTextArea = styled.div`
   height: auto;
   flex-direction: column;
   padding: 0 2.4rem;
+  ${({ type }) => type === 'modal' && 'align-items: center;'}
 
   ${Textarea} {
     width: 33.6rem;
