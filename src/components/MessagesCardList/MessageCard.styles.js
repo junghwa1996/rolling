@@ -16,6 +16,12 @@ const ellipsisStyle = css`
   }
 `;
 
+const fontFamily = {
+  'Noto Sans': "'Noto Sans KR', sans-serif",
+  나눔명조: "'Nanum Myeongjo', serif",
+  '나눔손글씨 손편지체': "'Handletter'",
+};
+
 export const SCMessageCardTextArea = styled.div`
   display: flex;
   width: 100%;
@@ -127,6 +133,9 @@ const optionType = {
 };
 
 export const SCmessageCardContainer = styled.div`
+  * {
+    font-family: ${({ $font }) => fontFamily[$font] ?? ''};
+  }
   ${({ type }) => type !== 'modal' && cardLayout}
   ${({ type }) => optionType[type]}
   ${({ type }) => type === 'card' && 'cursor: pointer;'}

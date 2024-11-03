@@ -70,7 +70,6 @@ function MessagesListPage() {
       <StyledMain
         $bgColor={backgroundData?.backgroundColor}
         $bgImage={backgroundData?.backgroundImageURL}>
-        <EmojiPickerComponent />
         <StyledInner>
           <MessageCardList
             type="card"

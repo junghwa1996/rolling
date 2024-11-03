@@ -1,16 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useNavigationType } from 'react-router-dom';
 
-import {
-  StyledLabel,
-  StyledMessagesAddPage,
-} from '../MessagesAdd/MessagesAddPage.styles';
+import styles from '../MessagesAdd/MessagesAddPage.module.css';
+import { StyledLabel } from '../MessagesAdd/MessagesAddPage.styles';
 import Button from '../../components/Button/Button';
 import Input from '../../components/TextField/Input';
 import useInputValidation from '../../hooks/useInputValidation';
 import BackgroundSelector from '../../components/BackgroundSelector/BackgroundSelector';
 import { postRolling } from '../../service/api';
-// import TabToggle from '../../components/TabToggle/TabToggle';
+import useConfirmExit from '../../hooks/useConfirmExit';
 
 const INITIAL_VALUES = {
   team: '11-2',
@@ -41,6 +39,9 @@ function RecipientsAddPage() {
     }));
   }, [value]);
 
+  // 뒤로가기 컨펌 함수 실행
+  useConfirmExit();
+
   // 불필요한 handleBackgroundChange 함수 재생성을 방지하기 위해 useCallback을 사용
   const handleBackgroundChange = useCallback((value, isImg) => {
     // 선택된 배경화면 value, boolean 값을 받아서 values에 저장
@@ -70,7 +71,7 @@ function RecipientsAddPage() {
   };
 
   return (
-    <StyledMessagesAddPage>
+    <div className={styles.messagesAddContainer}>
       <form onSubmit={handlePostSubmit}>
         <StyledLabel>To.</StyledLabel>
         <Input
@@ -98,7 +99,7 @@ function RecipientsAddPage() {
           생성하기
         </Button>
       </form>
-    </StyledMessagesAddPage>
+    </div>
   );
 }
 
