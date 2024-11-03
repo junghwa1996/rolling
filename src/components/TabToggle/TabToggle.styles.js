@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 import { font } from '../../styles/fontStyles';
 import { color } from '../../styles/colorStyles';
-import styles from './TabToggle.module.css';
 
 export const TabToggleArea = styled.div`
   width: ${({ $tabLength }) => `${12 * $tabLength}rem`};
