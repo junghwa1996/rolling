@@ -68,7 +68,7 @@ function EmojiDropDown({ emojiList }) {
       <section className={styles.emojiListContainer}>
         <div className={styles.emojiList}>
           {Array.isArray(emojiList) &&
-            emojiList.length > 0 && // 배열 여부 확인
+            emojiList.length > 0 &&
             emojiList
               .sort((a, b) => b.count - a.count)
               .slice(0, 3)
