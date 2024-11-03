@@ -20,6 +20,7 @@ function CardList({ type, messageData = [], onEvent, children }) {
   const navigate = useNavigate();
   const location = useLocation();
   const deviceType = useDeviceType();
+  const nav = useNavigate();
 
   useEffect(() => {
     setMessageDataList(messageData);
@@ -81,8 +82,15 @@ function CardList({ type, messageData = [], onEvent, children }) {
       </Message>
     );
 
+  const onClick = () => {
+    nav('./edit');
+  };
+
+  const presentPage = currentPathSegments[currentPathSegments.length - 1];
+
   return (
     <CardListContainer>
+      {presentPage !== 'edit' && <Button onClick={onClick}>관리자모드</Button>}
       {type === 'edit' && (
         <ButtonArea>
           <Button
