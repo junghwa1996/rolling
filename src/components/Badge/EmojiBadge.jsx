@@ -4,8 +4,15 @@
 
 import PropTypes from 'prop-types';
 
-import { div, Emoji, Count } from './EmojiBadge.styles';
+import styled from 'styled-components';
 import styles from './EmojiBadge.module.css';
+import { font } from '../../styles/fontStyles';
+
+export const Count = styled.p`
+  @media (max-width: 767px) {
+    ${font['14']};
+  }
+`;
 
 function EmojiBadge({ emoji, count, onClick }) {
   return (
