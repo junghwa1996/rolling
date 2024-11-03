@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { ThemeProvider } from 'styled-components';
 
-import './styles/reset.css';
-import './styles/common.css';
-import GlobalStyles from './styles/GlobalStyles';
-import { light, dark } from './styles/theme';
+import './styles/common/reset.css';
+import './styles/common/common.css';
 import Content from './router/Content';
+import { light, dark } from './styles/themes/theme';
+import GlobalStyles from './styles/common/global.styles';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);

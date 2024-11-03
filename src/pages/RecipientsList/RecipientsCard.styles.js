@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { font } from '../../styles/fontStyles';
+import { font } from '../../styles/common/fonts.styles';
 import POLYGON_TRIANGLE from '../../assets/RecipientsList/RecipientsCard/bg-polygon-triangle.svg';
 import TotalMessage from '../../components/TotalMessage/TotalMessage';
 import { StyledMessageCount } from '../../components/TotalMessage/TotalMessage.styles';

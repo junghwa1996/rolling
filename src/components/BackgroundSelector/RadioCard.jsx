@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { color as colors } from '../../styles/colorStyles';
+import { color as colors } from '../../styles/common/variables';
 import { getBackgroundImg } from '../../service/api';
-import { StyleButton, StyledRadioCard } from './RadioCard.styles';
+import { StyleButton } from './RadioCard.styles';
+import styles from './RadioCard.module.css';
 
 const colorData = [
   { value: 'beige', color: colors.beige[200] },
@@ -57,7 +58,7 @@ function RadioCard({ activeTab, onBackgroundChange }) {
   };
 
   return (
-    <StyledRadioCard>
+    <div className={styles.radioCardContainer}>
       {activeTab === '컬러'
         ? colorData.map((item, index) => (
             <StyleButton
@@ -85,7 +86,7 @@ function RadioCard({ activeTab, onBackgroundChange }) {
               {selectedValue === item && <div className="icon"></div>}
             </StyleButton>
           ))}
-    </StyledRadioCard>
+    </div>
   );
 }
 

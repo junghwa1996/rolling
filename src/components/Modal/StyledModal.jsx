@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 
 import { styledModal } from './Modal.styles';
-import MessageCard from '../MessagesCardList/MessageCard';
+import Card from '../CardComponents/Card/Card';
 
 //모달이 열렸을 때 페이지의 나머지 요소들을 스크린 리더가 무시하도록 지정 -> 보통 최상위 요소에 지정
 Modal.setAppElement('#root');
@@ -25,7 +25,7 @@ function StyledModal({ isOpen, onRequestClose, messageData, onEvent }) {
       shouldCloseOnOverlayClick={true} //바깥 부분을 눌렀을 때 팝업창 off
     >
       {/* TODO - 기능 확장을 위해 ModelContent 로 추가 개발 예정 */}
-      <MessageCard type="modal" messageData={messageData} onEvent={onEvent} />
+      <Card type="modal" messageData={messageData} onEvent={onEvent} />
     </Modal>
   );
 }
