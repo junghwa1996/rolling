@@ -1,5 +1,5 @@
 import React from 'react';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 import styles from './Toast.module.css'; // 스타일 모듈 가져오기
@@ -29,10 +29,3 @@ export const showToast = (content) => {
       console.error('Toast error:', error);
     });
 };
-
-// Toast 컴포넌트에서 handleShowToast 제거
-function Toast() {
-  return <ToastContainer className={styles.ToastContainer} />; // ToastContainer를 반환
-}
-
-export default Toast;

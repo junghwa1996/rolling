@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ToastContainer } from 'react-toastify'; // 한 번만 import
 import { ThemeProvider } from 'styled-components';
 
+import styles from './components/toast/Toast.module.css';
 import './styles/common/reset.css';
 import './styles/common/variables.css';
 import Content from './router/Content';
@@ -22,7 +23,7 @@ function App() {
       <button onClick={toggleTheme}>
         Switch to {isDarkMode ? 'Light' : 'Dark'} Mode
       </button>
-      <ToastContainer />
+      <ToastContainer className={styles.ToastContainer} />
       <Content />
     </ThemeProvider>
   );
