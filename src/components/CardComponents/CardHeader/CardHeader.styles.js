@@ -12,6 +12,9 @@ export const CardHeaderPosition = styled.div`
   display: flex;
   flex: 1;
   gap: 1.4rem;
+  ${media.mobile`
+    ${({ $type }) => $type === 'modal' && 'gap: 0.8rem'}
+  `}
 `;
 
 export const CardHeaderArea = styled.div`
@@ -27,10 +30,10 @@ export const ButtonContainer = styled.div`
 `;
 
 export const CardHeaderLine = styled(Line)`
-  width: 33.6rem;
+  ${({ $type }) => ($type === 'modal' ? 'width: 52rem; ' : 'width: 33.6rem;')}
 
   ${media.tablet`
-  width: 30.4rem;
+  ${({ $type }) => ($type === 'modal' ? 'width: 52rem;' : 'width: 30.4rem;')}
   `}
 
   ${media.mobile`

@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
+import { boxShadow } from './mixins.styles';
 
-const responsiveFont = ({ $media }) => {
+export const responsiveFont = ({ $media }) => {
   const pcFont = $media?.pc;
   const tabletFont = $media?.ta || pcFont; // tablet이 없으면 pc 폰트 사용
   const mobileFont = $media?.mo || tabletFont; // mobile이 없으면 tablet 폰트 사용
@@ -18,30 +19,25 @@ const responsiveFont = ({ $media }) => {
   `;
 };
 
-export const Title = styled.h2`
-  ${({ $media }) => responsiveFont({ $media })};
-  color: ${({ theme }) => theme.blackText};
-`;
-
-export const Desc = styled.p`
-  ${({ $media }) => responsiveFont({ $media })};
-  color: ${({ theme }) => theme.secondary};
-`;
-
-export const Text = styled.p`
-  ${({ $media }) => responsiveFont({ $media })};
-  color: ${({ theme }) => theme.text};
-`;
-
-export const AreaText = styled.p`
-  ${({ $media }) => responsiveFont({ $media })};
-  color: ${({ theme }) => theme.textarea};
-`;
-
-export const Data = styled.p`
-  ${({ $media }) => responsiveFont({ $media })};
-  color: ${({ theme }) => theme.dateText};
-`;
+export const applyResponsiveStyles = ({ responsive }) => {
+  const pcResponsive = responsive?.pc;
+  const taResponsive = responsive?.ta || pcResponsive; // tablet이 없으면 pc 폰트 사용
+  const moResponsive = responsive?.mo || taResponsive; // mobile이 없으면 tablet 폰트 사용
+  return css`
+    @media (min-width: 1024px) {
+      width: ${pcResponsive?.pc.width || '100%'};
+      height: ${pcResponsive?.pc?.height || 'auto'};
+    }
+    @media (min-width: 768px) and (max-width: 1023px) {
+      width: ${taResponsive?.ta?.width || '100%'};
+      height: ${taResponsive?.ta?.height || 'auto'};
+    }
+    @media (max-width: 767px) {
+      width: ${moResponsive?.mo?.width || '100%'};
+      height: ${moResponsive?.mo?.height || 'auto'};
+    }
+  `;
+};
 
 // 공통 Font Family 정의
 export const fontFamily = {
@@ -79,13 +75,6 @@ export const ellipsisStyle = styled.div`
   ${font['20b']}
 `;
 
-export const flexColumnCentered =
-  'display: flex; flex-direction: column; align-items: center;';
-
-export const boxShadow = css`
-  box-shadow: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.08);
-`;
-
 export const cardBaseStyle = css`
   width: 38.4rem;
   height: 28rem;
@@ -102,4 +91,29 @@ export const cardBaseStyle = css`
     width: 32rem;
     height: 23rem;
   }
+`;
+
+export const Title = styled.h2`
+  ${({ $media }) => responsiveFont({ $media })};
+  color: ${({ theme }) => theme.blackText};
+`;
+
+export const Desc = styled.p`
+  ${({ $media }) => responsiveFont({ $media })};
+  color: ${({ theme }) => theme.secondary};
+`;
+
+export const Text = styled.p`
+  ${({ $media }) => responsiveFont({ $media })};
+  color: ${({ theme }) => theme.text};
+`;
+
+export const AreaText = styled.p`
+  ${({ $media }) => responsiveFont({ $media })};
+  color: ${({ theme }) => theme.textarea};
+`;
+
+export const Data = styled.p`
+  ${({ $media }) => responsiveFont({ $media })};
+  color: ${({ theme }) => theme.dateText};
 `;

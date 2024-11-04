@@ -1,11 +1,9 @@
 import PropTypes from 'prop-types';
 
-import { CardContainer, CardTextArea } from './Card.styles';
+import { CardContainer } from './Card.styles';
 import CardHeader from '../CardHeader/CardHeader';
-import { CreatedAt, Textarea } from './Card.styles';
-import dateConversion from '../../../utils/dateConversion';
-import Button from '../../Button/Button';
-import Line from '../../Shared/Line/Line';
+
+import CardContent from '../CardContent/CardContent';
 
 function Card({
   type = 'card',
@@ -21,8 +19,6 @@ function Card({
     }
   };
 
-  const isModalType = type === 'modal';
-
   return (
     <CardContainer
       type={type}
@@ -33,18 +29,12 @@ function Card({
         type={type}
         onEvent={onEvent}
       />
-      <CardTextArea type={type}>
-        <Line column={false} />
-        <Textarea dangerouslySetInnerHTML={{ __html: messageData?.content }} />
-        {!isModalType && (
-          <CreatedAt>{dateConversion(messageData?.createdAt)}</CreatedAt>
-        )}
-        {isModalType && (
-          <Button size="m" onClick={onEvent.close}>
-            확인
-          </Button>
-        )}
-      </CardTextArea>
+      <CardContent
+        type={type}
+        onEvent={onEvent}
+        $font={messageData?.font}
+        messageData={{ ...messageData }}
+      />
     </CardContainer>
   );
 }

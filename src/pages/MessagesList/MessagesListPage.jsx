@@ -15,7 +15,7 @@ import CardAdd from '../../components/CardComponents/CardAdd/CardAdd';
 import CardList from '../../components/CardComponents/CardList/CardList';
 import SkeletonCard from '../../components/CardComponents/Skeleton/SkeletonCard';
 import useFetchData from '../../hooks/useFetchData';
-import ModalContent from '../../components/ModalComponents/ModalContent/ModalContent';
+import ModalLayout from '../../components/ModalComponents/ModalLayout/ModalLayout';
 
 export const StyledMain = styled.main`
   position: relative;
@@ -133,7 +133,7 @@ function MessagesListPage() {
         </StyledInner>
       </StyledMain>
       {hasModalOpen && (
-        <ModalContent
+        <ModalLayout
           isOpen={hasModalOpen}
           onRequestClose={handleCloseModal}
           messageData={selectedCard}
