@@ -5,23 +5,19 @@ import { color } from '../../styles/common/variables';
 
 export const TabToggleArea = styled.div`
   width: ${({ $tabLength }) => `${12 * $tabLength}rem`};
-  &.tabToggleArea {
-    composes: tabToggleArea;
-  }
+  background-color: ${({ theme }) => theme.buttongray};
 `;
 
 export const TabButton = styled.button`
-  ${({ $isSelected }) => ($isSelected ? font['16b'] : font[16])};
+  /* 폰트 스타일 설정 */
+  ${({ $isSelected }) => ($isSelected ? font['16b'] : font['16'])}
+
+  /* 텍스트 색상 설정 */
   color: ${({ $isSelected, theme }) =>
     $isSelected ? color.purple[600] : theme.text};
-  &.tabButton {
-    composes: tabButton;
-  }
 `;
 
 export const SelectedTab = styled.div`
+  /* 선택된 탭의 위치 설정 */
   left: ${({ $selectedIndex }) => `${12 * $selectedIndex}rem`};
-  &.selectedTab {
-    composes: selectedTab;
-  }
 `;
