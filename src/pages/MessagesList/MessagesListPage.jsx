@@ -6,22 +6,21 @@
  * 재사용 불가한 페이지 컴포넌트 입니다.
  */
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import { getMessagesList, getRollingItem } from '../../service/api';
 import CardAdd from '../../components/CardComponents/CardAdd/CardAdd';
 import CardList from '../../components/CardComponents/CardList/CardList';
-import SkeletonCard from '../../components/CardComponents/Skeleton/SkeletonCard';
 import useFetchData from '../../hooks/useFetchData';
 import ModalContent from '../../components/ModalComponents/ModalContent/ModalContent';
 
 export const StyledMain = styled.main`
   position: relative;
   width: 100%;
-  height: 100vh;
-  overflow: auto;
+  min-height: 100vh;
+  /* overflow: auto; */
   ${({ $bgColor, $bgImage }) => {
     if ($bgImage) {
       return css`
@@ -71,12 +70,71 @@ function MessagesListPage() {
   const presentPath = currentURL.pathname.split('/');
   const currentId = presentPath[presentPath.length - 1];
 
+  const [offset, setOffset] = useState(0);
+  const [limit, setLimit] = useState(8);
+  const [allMessages, setAllMessages] = useState([]);
+
+  // 센서 div에 대한 ref
+  const sensorRef = useRef(null);
+
+  const params = {
+    offset,
+    limit,
+  };
+
   // 메시지 리스트 요청
   const {
     data: messageData,
     loading: messageLoading,
     error: messageError,
-  } = useFetchData(() => getMessagesList(currentId), [currentId]);
+  } = useFetchData(
+    () => getMessagesList(currentId, params),
+    [currentId, offset, limit],
+  );
+
+  // 새로운 데이터를 불러올 때 allMessages에 누적
+  useEffect(() => {
+    if (messageData?.results) {
+      setAllMessages((prevMessages) => [
+        ...prevMessages,
+        ...messageData.results,
+      ]);
+    }
+  }, [messageData]);
+
+  useEffect(() => {
+    if (!messageLoading) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              // 다음 데이터가 있는 경우에만 추가 요청
+              if (messageData?.next) {
+                handleLoadMore();
+              }
+            }
+          });
+        },
+        { threshold: 1.0 },
+      );
+
+      if (sensorRef.current) {
+        observer.observe(sensorRef.current);
+      }
+
+      return () => {
+        if (sensorRef.current) {
+          observer.unobserve(sensorRef.current);
+        }
+      };
+    }
+  }, [sensorRef, messageLoading, messageData]);
+
+  // 무한 스크롤 데이터 가져오기
+  const handleLoadMore = () => {
+    setOffset((prevOffset) => prevOffset + limit);
+    setLimit(9); // 이후부터는 9개씩 불러옴
+  };
 
   // 배경 정보 요청
   const {
@@ -94,8 +152,7 @@ function MessagesListPage() {
 
   // 모달을 여는 이벤트입니다.
   const handleMessageClick = (id) => {
-    const cardData =
-      messageData?.results?.find((card) => card.id === id) || null;
+    const cardData = allMessages.find((card) => card.id === id) || null;
     setSelectedCard(cardData);
     setHasModalOpen(true);
   };
@@ -107,7 +164,7 @@ function MessagesListPage() {
   };
 
   // TODO - 추후 로딩과 에러 페이지 별도 작업
-  if (messageLoading || backgroundLoading) return <p>로딩 중 입니다</p>;
+  // if (messageLoading || backgroundLoading) return <p>로딩 중 입니다</p>;
   if (messageError || backgroundError) return <p>에러가 발생했어요!</p>;
 
   return (
@@ -118,10 +175,19 @@ function MessagesListPage() {
         <StyledInner>
           <CardList
             type="card"
-            messageData={messageData?.results || []}
+            messageData={allMessages} // allMessages를 전달
             onEvent={{ modal: handleMessageClick }}>
             <CardAdd id={currentId} />
           </CardList>
+
+          {/* 센서 div */}
+          <div
+            ref={sensorRef}
+            style={{
+              height: '1px',
+              marginTop: '100px',
+            }}
+          />
         </StyledInner>
       </StyledMain>
       {hasModalOpen && (
