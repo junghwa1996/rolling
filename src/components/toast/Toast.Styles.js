@@ -5,6 +5,9 @@ import { font } from '../../styles/common/fonts.styles';
 // Toast 스타일 컴포넌트
 export const StyledToastContainer = styled(ToastContainer)`
   &&& {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background: transparent;
     margin: 0;
     padding: 0;
@@ -16,11 +19,6 @@ export const StyledToastContainer = styled(ToastContainer)`
       border-radius: 0.5rem;
       background: rgba(0, 0, 0, 0.8);
       opacity: 1;
-
-    @media (max-width: 767px) {
-      width: 320px;
-      height: 4rem;
-      }
     }
 
     .Toastify__toast-body {
@@ -42,7 +40,6 @@ export const ToastWrapper = styled.div`
   background: transparent;
   overflow: hidden;
   justify-content: center;
-
 `;
 
 export const ToastMessage = styled.div`
