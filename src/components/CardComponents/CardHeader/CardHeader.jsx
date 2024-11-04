@@ -5,7 +5,7 @@ import {
   CardHeaderPosition,
   CardHeaderArea,
   ButtonContainer,
-  SpanText,
+  CardHeaderLine,
 } from './CardHeader.styles';
 import { Title, Data } from '../../../styles/common/Common.styles';
 import { ReactComponent as DeleteIcon } from '../../../assets/icon-delete.svg';
@@ -19,25 +19,31 @@ function CardHeader({ type, messageData, onEvent }) {
   const { profileImageURL, sender, relationship, createdAt } = messageData;
 
   return (
-    <CardHeaderContainer>
-      <CardHeaderPosition>
-        <Profile imageURL={profileImageURL} />
-        <CardHeaderArea>
-          <Title>
-            <SpanText>From.</SpanText>
-            {sender}
-          </Title>
-          <Badge value={relationship} />
-        </CardHeaderArea>
-      </CardHeaderPosition>
-      {type === 'edit' && (
-        <ButtonContainer>
-          <Outlined icon={<UpdateIcon />} onClick={onEvent.buttonEdit} />
-          <Outlined icon={<DeleteIcon />} onClick={onEvent.buttonDelete} />
-        </ButtonContainer>
-      )}
-      {type === 'modal' && <Data>{dateConversion(createdAt)}</Data>}
-    </CardHeaderContainer>
+    <>
+      <CardHeaderContainer $type={type}>
+        <CardHeaderPosition $type={type}>
+          <Profile imageURL={profileImageURL} size="m" />
+          <CardHeaderArea>
+            <Title $media={{ font: { pc: 20, mo: 16 } }}>
+              <span>From. </span>
+              <strong>{sender}</strong>
+            </Title>
+            <Badge value={relationship} />
+          </CardHeaderArea>
+        </CardHeaderPosition>
+        {type === 'edit' && (
+          <ButtonContainer>
+            <Outlined icon={<UpdateIcon />} onClick={onEvent.buttonEdit} />
+            <Outlined icon={<DeleteIcon />} onClick={onEvent.buttonDelete} />
+          </ButtonContainer>
+        )}
+        {type === 'modal' && (
+          <Data $media={{ font: { pc: 14, mo: 12 } }}>
+            {dateConversion(createdAt)}
+          </Data>
+        )}
+      </CardHeaderContainer>
+    </>
   );
 }
 

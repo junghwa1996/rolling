@@ -10,43 +10,57 @@
  *
  */
 
-import { useLocation } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Picker from 'emoji-picker-react';
+import PropTypes from 'prop-types';
 
 import { useEmojiManager } from './useEmojiManager';
 import { ReactComponent as IconStoke } from '../../assets/icon-stoke.svg';
 import Outlined from '../../components/Outlined/Outlined';
 import styles from './EmojiPickerComponent.module.css';
 import useDeviceType from '../../hooks/useDeviceType';
-import EmojiBadge from '../../components/Badge/EmojiBadge';
-import useFetchData from '../../hooks/useFetchData';
 import { getRollingEmoji } from '../../service/api';
+import EmojiDropDown from './EmojiDropDown';
 
-function EmojiPickerComponent() {
+EmojiPickerComponent.propTypes = {
+  id: PropTypes.string.isRequired,
+};
+
+function EmojiPickerComponent({ id }) {
   const [showPicker, setShowPicker] = useState(false);
-
-  const currentURL = useLocation();
-  const presentPath = currentURL.pathname.split('/');
-  const currentId = presentPath[presentPath.length - 1];
-
+  const [emojisList, setEmojisList] = useState(null);
   const isDevice = useDeviceType();
   const isMo = isDevice === 'mobile';
 
   const { isLoading, isError, emojis, addEmoji, removeEmoji } =
-    useEmojiManager(currentId);
+    useEmojiManager(id);
 
-  const {
-    data,
-    loading: fetching,
-    error: fetchingError,
-  } = useFetchData(() => getRollingEmoji(currentId), [emojis]);
-  const emojisList = data?.results || [];
+  // const {
+  //   data,
+  //   loading: fetching,
+  //   error: fetchingError,
+  // } = useFetchData(() => getRollingEmoji(id), [emojis]);
+  // const emojisList = data?.results || [];
+
+  const getEmojiData = async () => {
+    try {
+      const response = await getRollingEmoji(id);
+      console.log(response);
+      setEmojisList(response);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    getEmojiData();
+  }, [id]);
 
   // STUB: 이모지 클릭 시 추가 이벤트
   const onEmojiAdd = async (emojiObject) => {
     await addEmoji(emojiObject);
     setShowPicker(false);
+    await getEmojiData();
   };
 
   // STUB: 이모지 클릭 시 삭제 이벤트
@@ -54,31 +68,19 @@ function EmojiPickerComponent() {
     await removeEmoji(emojiObject);
   };
 
-  if (isError || fetchingError) return <p>에러가 발생했습니다! 🫠</p>;
+  // if (isError || fetchingError) return <p>에러가 발생했습니다! 🫠</p>;
 
   return (
-    <div className={styles.outLinedArea}>
-      <div className={styles.emojiDropdown}>
-        {emojisList.map((emoji) => (
-          <div key={emoji.emoji} className={styles.emojiItem}>
-            {!emoji.count || (
-              <EmojiBadge
-                emoji={emoji.emoji}
-                count={emoji.count}
-                onClick={() => onEmojiDelete(emoji)}
-                disabled={isLoading}
-              />
-            )}
-          </div>
-        ))}
-      </div>
+    // <div className={styles.outLinedArea}>
 
+    <div className={styles.outLinedArea}>
+      <EmojiDropDown emojiList={emojisList?.results} />
       <Outlined
-        size="m"
+        size="s"
         color="secondary"
         onClick={() => setShowPicker((prev) => !prev)}
         icon={<IconStoke />}
-        disabled={isLoading || fetching}>
+        disabled={isLoading}>
         {!isMo && '추가'}
       </Outlined>
 

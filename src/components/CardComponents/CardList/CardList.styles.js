@@ -9,6 +9,7 @@ export const CardListContainer = styled.div`
   flex-direction: column;
   align-items: flex-end;
   gap: 1.1rem;
+  z-index: 2;
 `;
 
 export const ItemArea = styled.div`

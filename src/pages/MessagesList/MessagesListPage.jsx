@@ -11,34 +11,22 @@ import { useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 import { getMessagesList, getRollingItem } from '../../service/api';
-import StyledModal from '../../components/Modal/StyledModal';
 import CardAdd from '../../components/CardComponents/CardAdd/CardAdd';
 import CardList from '../../components/CardComponents/CardList/CardList';
 import SkeletonCard from '../../components/CardComponents/Skeleton/SkeletonCard';
 import useFetchData from '../../hooks/useFetchData';
-import EmojiPickerComponent from '../../layout/Emoji/EmojiPickerComponent';
+import ModalLayout from '../../components/ModalComponents/ModalLayout/ModalLayout';
 
 export const StyledMain = styled.main`
   position: relative;
   width: 100%;
   height: 100vh;
   overflow: auto;
+
   ${({ $bgColor, $bgImage }) => {
     if ($bgImage) {
       return css`
         background: url(${$bgImage}) no-repeat center center/cover;
-        &::before {
-          position: fixed;
-          left: 0;
-          right: 0;
-          top: 0;
-          bottom: 0;
-          content: '';
-          opacity: 0.5;
-          width: 100%;
-          height: 100vh;
-          background-color: ${({ theme }) => theme.blackText};
-        }
       `;
     } else {
       return css`
@@ -124,8 +112,6 @@ function MessagesListPage() {
       <StyledMain
         $bgColor={backgroundData?.backgroundColor}
         $bgImage={backgroundData?.backgroundImageURL}>
-        {/* NOTE : header 조합 전 테스트용 입니다. 조합 하실때 지워주세요*/}
-        <EmojiPickerComponent />
         <StyledInner>
           <CardList
             type="card"
@@ -136,7 +122,7 @@ function MessagesListPage() {
         </StyledInner>
       </StyledMain>
       {hasModalOpen && (
-        <StyledModal
+        <ModalLayout
           isOpen={hasModalOpen}
           onRequestClose={handleCloseModal}
           messageData={selectedCard}

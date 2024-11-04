@@ -28,7 +28,6 @@ const featContents = [
     img: feat02,
   },
 ];
-
 function Homepage() {
   const nav = useNavigate();
   const getDevice = useDeviceType();
@@ -36,9 +35,6 @@ function Homepage() {
 
   return (
     <>
-      <section>
-        <TestMainHeader />
-      </section>
       <div className={styles.featSection}>
         {featContents.map((content, index) => (
           <FeatContainer

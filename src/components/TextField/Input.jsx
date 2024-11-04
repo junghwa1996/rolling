@@ -32,7 +32,8 @@
 
 import PropTypes from 'prop-types';
 
-import { InputWrapper, InputBox, InputErrMessage } from './Input.styles';
+import { InputBox, InputErrMessage } from './Input.styles';
+import styles from './Input.module.css';
 
 // PropTypes를 정의하여 각 prop의 타입을 명시
 Input.propTypes = {
@@ -65,8 +66,9 @@ function Input({
   onBlur,
 }) {
   return (
-    <InputWrapper>
+    <div className={styles.inputWrapper}>
       <InputBox
+        className={styles.inputBox}
         name={onEvent.name} // onEvent의 name 전달
         value={onEvent.value} // onEvent의 value 전달
         onChange={onEvent.onChange} // onEvent의 onChange 전달
@@ -80,7 +82,7 @@ function Input({
           {hasError.errMessage}
         </InputErrMessage>
       )}
-    </InputWrapper>
+    </div>
   );
 }
 

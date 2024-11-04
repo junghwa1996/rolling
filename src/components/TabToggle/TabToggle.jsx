@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 
+import styles from './TabToggle.module.css';
 import { TabToggleArea, TabButton, SelectedTab } from './TabToggle.styles';
 
 TabToggle.propTypes = {
@@ -17,11 +18,15 @@ function TabToggle({ tabs = ['컬러', '이미지'], onClick = () => {} }) {
   };
 
   return (
-    <TabToggleArea $tabLength={tabs.length}>
-      <SelectedTab $selectedIndex={tabs.indexOf(currentTab)} />
+    <TabToggleArea className={styles.tabToggleArea} $tabLength={tabs.length}>
+      <SelectedTab
+        className={styles.selectedTab}
+        $selectedIndex={tabs.indexOf(currentTab)}
+      />
       {tabs.map((tab) => (
         <TabButton
           key={tab}
+          className={styles.tabButton}
           $isSelected={currentTab === tab}
           onClick={() => handleTabClick(tab)}
           type="button">
