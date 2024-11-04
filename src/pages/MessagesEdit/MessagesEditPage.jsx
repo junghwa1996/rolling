@@ -18,7 +18,6 @@ export const StyledMain = styled.main`
   position: relative;
   width: 100%;
   min-height: 100vh;
-  /* overflow: auto; */
   ${({ $bgColor, $bgImage }) => {
     if ($bgImage) {
       return css`
@@ -74,6 +73,8 @@ function MessagesListPage() {
   const [limit, setLimit] = useState(9);
   const [allMessages, setAllMessages] = useState([]);
 
+  const [isFetching, setIsFetching] = useState(false);
+
   // 센서 div에 대한 ref
   const sensorRef = useRef(null);
 
@@ -83,11 +84,7 @@ function MessagesListPage() {
   };
 
   // 메시지 리스트 요청
-  const {
-    data: messageData,
-    loading: messageLoading,
-    error: messageError,
-  } = useFetchData(
+  const { data: messageData, error: messageError } = useFetchData(
     () => getMessagesList(currentId, params),
     [currentId, offset, limit],
   );
@@ -99,17 +96,18 @@ function MessagesListPage() {
         ...prevMessages,
         ...messageData.results,
       ]);
+      setIsFetching(false);
     }
   }, [messageData]);
 
+  // 무한 스크롤 IntersectionObserver
   useEffect(() => {
-    if (!messageLoading) {
+    if (!isFetching) {
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              // 다음 데이터가 있는 경우에만 추가 요청
-              if (messageData?.next) {
+              if (messageData?.next && !isFetching) {
                 handleLoadMore();
               }
             }
@@ -128,12 +126,13 @@ function MessagesListPage() {
         }
       };
     }
-  }, [sensorRef, messageLoading, messageData]);
+  }, [sensorRef, isFetching, messageData]);
 
   // 무한 스크롤 데이터 가져오기
   const handleLoadMore = () => {
+    setIsFetching(true);
     setOffset((prevOffset) => prevOffset + limit);
-    setLimit(9); // 이후부터는 9개씩 불러옴
+    setLimit(9);
   };
 
   // STUB - 배경 정보 요청
@@ -162,7 +161,6 @@ function MessagesListPage() {
   }, []);
 
   // TODO - 추후 로딩과 에러 페이지 별도 작업
-  // if (messageLoading || backgroundLoading) return <p>로딩 중 입니다</p>;
   if (messageError || backgroundError) return <p>에러가 발생했어요!</p>;
 
   return (

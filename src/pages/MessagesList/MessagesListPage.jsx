@@ -20,8 +20,6 @@ export const StyledMain = styled.main`
   position: relative;
   width: 100%;
   min-height: 100vh;
-  /* overflow: auto; */
-
   ${({ $bgColor, $bgImage }) => {
     if ($bgImage) {
       return css`
@@ -63,6 +61,9 @@ function MessagesListPage() {
   const [limit, setLimit] = useState(8);
   const [allMessages, setAllMessages] = useState([]);
 
+  // 추가 요청 중인지 상태를 확인하는 플래그
+  const [isFetching, setIsFetching] = useState(false);
+
   // 센서 div에 대한 ref
   const sensorRef = useRef(null);
 
@@ -88,39 +89,45 @@ function MessagesListPage() {
         ...prevMessages,
         ...messageData.results,
       ]);
+      setIsFetching(false); // 데이터를 불러온 후 isFetching을 false로 설정하여 다음 요청을 허용
     }
   }, [messageData]);
 
+  // 무한 스크롤 IntersectionObserver
   useEffect(() => {
-    if (!messageLoading) {
+    if (!messageLoading && !isFetching) {
+      // IntersectionObserver 생성: sensorRef에 연결된 요소가 뷰포트에 들어올 때마다 실행
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              // 다음 데이터가 있는 경우에만 추가 요청
-              if (messageData?.next) {
+              // 요소가 화면에 나타나면 다음 요청을 시작하고 isFetching을 true로 설정
+              if (messageData?.next && !isFetching) {
                 handleLoadMore();
               }
             }
           });
         },
-        { threshold: 1.0 },
+        { threshold: 1.0 }, // 요소가 완전히 뷰포트에 들어왔을 때 실행
       );
 
+      // sensorRef에 observer를 연결하여 관찰 시작
       if (sensorRef.current) {
         observer.observe(sensorRef.current);
       }
 
+      // 컴포넌트 언마운트 시 또는 sensorRef가 변경될 때 observer 연결 해제
       return () => {
         if (sensorRef.current) {
           observer.unobserve(sensorRef.current);
         }
       };
     }
-  }, [sensorRef, messageLoading, messageData]);
+  }, [sensorRef, messageLoading, isFetching, messageData]);
 
   // 무한 스크롤 데이터 가져오기
   const handleLoadMore = () => {
+    setIsFetching(true); // 추가 요청을 시작할 때 isFetching을 true로 설정하여 중복 요청 방지
     setOffset((prevOffset) => prevOffset + limit);
     setLimit(9); // 이후부터는 9개씩 불러옴
   };
@@ -164,7 +171,7 @@ function MessagesListPage() {
         <StyledInner>
           <CardList
             type="card"
-            messageData={allMessages} // allMessages를 전달
+            messageData={allMessages}
             onEvent={{ modal: handleMessageClick }}>
             <CardAdd id={currentId} />
           </CardList>
