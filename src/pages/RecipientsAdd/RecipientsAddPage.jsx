@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useNavigate, useNavigationType } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import styles from '../MessagesAdd/MessagesAddPage.module.css';
 import { StyledLabel } from '../MessagesAdd/MessagesAddPage.styles';

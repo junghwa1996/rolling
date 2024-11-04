@@ -100,7 +100,7 @@ function MessagesListPage() {
       alert('비밀번호가 틀렸습니다.');
       nav(-1);
     }
-  }, []);
+  }, [nav]);
 
   // TODO - 추후 로딩과 에러 페이지 별도 작업
   if (messageLoading || backgroundLoading) return <p>로딩 중 입니다</p>;

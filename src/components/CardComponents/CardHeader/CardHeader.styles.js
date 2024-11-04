@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Line from '../../Shared/Line/Line';
 import { media } from '../../../styles/common/media.styles.js';
 
 export const CardHeaderContainer = styled.div`
