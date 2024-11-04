@@ -23,6 +23,7 @@ function CardContent({ type = 'card', messageData = {}, onEvent = {} }) {
           },
           mo: {
             height: '20rem',
+            width: '28.5rem',
           },
         },
       };
@@ -35,13 +36,13 @@ function CardContent({ type = 'card', messageData = {}, onEvent = {} }) {
         },
         view: {
           pc: {
-            height: '12.6rem',
+            height: '10.5rem',
           },
           ta: {
             height: '11rem',
           },
           mo: {
-            height: '7.2rem',
+            height: '6rem',
           },
         },
       };
