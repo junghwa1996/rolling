@@ -42,10 +42,10 @@ import {
   DropdownList,
   DropdownItem,
   DropdownErrMessage,
+  IconArea,
 } from './Dropdown.styles';
 import ArrowDown from '../../assets/icon-arrow_down.svg';
 import ArrowTop from '../../assets/icon-arrow_top.svg';
-import Share from '../../assets/icon-share-24.svg';
 import useDeviceType from '../../hooks/useDeviceType';
 
 Dropdown.propTypes = {
@@ -68,6 +68,7 @@ Dropdown.propTypes = {
   }),
   disabled: PropTypes.bool,
   isIcon: PropTypes.bool,
+  icon: PropTypes.element,
 };
 
 function Dropdown({
@@ -78,6 +79,7 @@ function Dropdown({
   },
   disabled,
   isIcon,
+  icon,
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -107,12 +109,11 @@ function Dropdown({
       {/* icon 버튼인지 보통의 Dropdown인지 구분 */}
       {isIcon ? (
         <IconBtn
-          src={Share}
-          alt="icon"
           onClick={() => setIsOpen(!isOpen)}
           $error={hasError.$error}
-          disabled={disabled}
-        />
+          disabled={disabled}>
+          <IconArea>{icon}</IconArea>
+        </IconBtn>
       ) : (
         <DropdownBtn
           type="button"

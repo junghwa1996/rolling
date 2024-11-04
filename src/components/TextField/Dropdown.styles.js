@@ -15,14 +15,56 @@ export const DropdownBtn = styled.button`
   cursor: pointer;
 `;
 
-export const IconBtn = styled.img`
-  display: block;
-  max-width: 5.6rem;
-  max-height: 3.6rem;
-
+export const IconBtn = styled.div`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   padding: 0.6rem 1.6rem;
-  ${StyledInput};
+  border-radius: 6px;
+  background-color: ${({ theme }) => theme.background};
+  border: 1px solid ${({ theme }) => theme.border};
   cursor: pointer;
+  transition: all 0.3s;
+  color: ${({ theme }) => theme.text};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.buttongray};
+  }
+
+  &:active,
+  &:focus:active {
+    background-color: ${({ theme }) => theme.buttongray};
+    border-color: ${({ theme }) => theme.border};
+  }
+
+  &:focus {
+    border-color: ${({ theme }) => theme.secondary};
+    outline: none;
+  }
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.border};
+    color: ${({ theme }) => theme.whiteText};
+    cursor: not-allowed;
+  }
+  @media (max-width: 767px) {
+    padding: 0.6rem 0.6rem;
+  }
+`;
+
+export const IconArea = styled.span`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  min-height: 2rem;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 `;
 
 export const ArrowImg = styled.img`

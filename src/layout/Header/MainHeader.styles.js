@@ -122,6 +122,7 @@ export const InfoHeader = styled.div`
   }
 
   h1 {
+    margin-left: 0.5rem;
     ${font['28b']}
     @media (max-width: 768px) {
       ${font['18b']}
