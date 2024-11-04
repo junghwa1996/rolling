@@ -34,6 +34,7 @@
 
 import PropTypes from 'prop-types';
 import { useState, useRef, useEffect } from 'react';
+import ARROW_ICON from '../../assets/icon-arrow_down.svg';
 
 import {
   DropdownBtn,
@@ -44,8 +45,6 @@ import {
   DropdownErrMessage,
   IconArea,
 } from './Dropdown.styles';
-import ArrowDown from '../../assets/icon-arrow_down.svg';
-import ArrowTop from '../../assets/icon-arrow_top.svg';
 import useDeviceType from '../../hooks/useDeviceType';
 
 Dropdown.propTypes = {
@@ -117,7 +116,6 @@ function Dropdown({
       ) : (
         <DropdownBtn
           type="button"
-          className={styles.dropdownBtn}
           onClick={() => setIsOpen(!isOpen)}
           $error={hasError.$error}
           disabled={disabled}
@@ -126,12 +124,7 @@ function Dropdown({
           {hasOptions.selectedOption.label
             ? hasOptions.selectedOption.label
             : hasOptions.selectedOption.value || hasOptions.options[0].label}
-          <ArrowImg
-            src={ARROW_ICON}
-            alt="arrow"
-            className={styles.arrowImg}
-            isOpen={isOpen}
-          />
+          <ArrowImg src={ARROW_ICON} alt="arrow" isOpen={isOpen} />
         </DropdownBtn>
       )}
 
@@ -142,11 +135,10 @@ function Dropdown({
       )}
 
       {isOpen && (
-        <DropdownList isIcon={isIcon} className={styles.dropdownList}>
+        <DropdownList isIcon={isIcon}>
           {hasOptions.options.map((option, index) => (
             <DropdownItem
               key={index}
-              className={styles.dropdownItem}
               onClick={() => handleSelect(option)}
               isIcon={isIcon}>
               {option.value}

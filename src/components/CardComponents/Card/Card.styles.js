@@ -29,14 +29,14 @@ export const CardContainer = styled.div`
     transition: all 0.5s;
   }
 
-  ${media.tablet`
+  ${media.ta`
     width: 35.2rem;
     height: 28.4rem;
 
     ${({ type }) => type === 'modal' && 'width: 60rem; height: 47.6rem;'}
   `}
 
-  ${media.mobile`
+  ${media.mo`
     width: 32rem;
     height: 23rem;
 
