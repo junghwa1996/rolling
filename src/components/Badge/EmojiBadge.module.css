@@ -1,35 +1,31 @@
-import styled from 'styled-components';
-
-import { font } from '../../styles/common/fonts.styles';
-
-export const EmojiBadgeArea = styled.div`
+.emojiBadgeArea {
   display: inline-flex;
   align-items: center;
   gap: 0.2rem;
+
+  max-width: 6.5rem;
   padding: 0.8rem 1.2rem;
   border-radius: 3.2rem;
   background-color: rgba(0, 0, 0, 0.54);
-  @media (max-width: 767px) {
-    padding: 0.6rem 0.8rem;
-  }
-`;
+}
 
-export const EmojiContainer = styled.div`
+.emojiContainer {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 2rem;
   height: 2rem;
-`;
+  padding-left: 0.3rem;
+}
 
-export const Emoji = styled.p`
+.emoji {
   font-size: 1.3rem;
   line-height: 2.1rem;
   width: 1.6rem;
   height: 2.1rem;
-`;
+}
 
-export const Count = styled.p`
+.count {
   font-size: 1.6rem;
   line-height: 2rem;
   font-weight: 400;
@@ -37,7 +33,11 @@ export const Count = styled.p`
   min-height: 2rem;
   text-align: center;
   color: var(--white);
-  @media (max-width: 767px) {
-    ${font['14']};
+}
+
+@media screen and (max-width: 767px) {
+  .emojiBadgeArea {
+    max-width: 5.5rem;
+    padding: 0.6rem 0.8rem;
   }
-`;
+}

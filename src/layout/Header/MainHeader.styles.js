@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-import { color } from '../../styles/common/variables';
 import { font } from '../../styles/common/fonts.styles';
 
 export const HeaderArea = styled.header`
   width: 100%;
   border-bottom: 1px solid #ededed;
-  background-color: ${color.white};
+  background-color: ${({ theme }) => theme.background};
   position: relative;
+  z-index: 3;
 
   > div {
     max-width: 120rem;

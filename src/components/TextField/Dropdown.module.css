@@ -1,0 +1,38 @@
+.dropdownBtn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1.2rem 1.6rem;
+  cursor: pointer;
+}
+
+.iconBtn {
+  display: block;
+  max-width: 5.6rem;
+  max-height: 3.6rem;
+
+  padding: 0.6rem 1.6rem;
+  cursor: pointer;
+}
+
+.arrowImg {
+  max-width: 1.6rem;
+  max-height: 1.6rem;
+}
+
+.dropdownList {
+  position: absolute;
+  z-index: 3;
+  margin-top: 0.8rem;
+  padding: 1rem 0.1rem;
+
+  border: 0.1rem solid #ccc;
+  border-radius: 0.8rem;
+  cursor: pointer;
+}
+
+.dropdownItem {
+  padding: 1.2rem 1.6rem;
+  cursor: pointer;
+}

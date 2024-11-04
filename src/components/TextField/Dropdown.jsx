@@ -117,6 +117,7 @@ function Dropdown({
       ) : (
         <DropdownBtn
           type="button"
+          className={styles.dropdownBtn}
           onClick={() => setIsOpen(!isOpen)}
           $error={hasError.$error}
           disabled={disabled}
@@ -125,7 +126,12 @@ function Dropdown({
           {hasOptions.selectedOption.label
             ? hasOptions.selectedOption.label
             : hasOptions.selectedOption.value || hasOptions.options[0].label}
-          <ArrowImg src={!isOpen ? ArrowDown : ArrowTop} alt="arrow" />
+          <ArrowImg
+            src={ARROW_ICON}
+            alt="arrow"
+            className={styles.arrowImg}
+            isOpen={isOpen}
+          />
         </DropdownBtn>
       )}
 
@@ -136,10 +142,11 @@ function Dropdown({
       )}
 
       {isOpen && (
-        <DropdownList isIcon={isIcon}>
+        <DropdownList isIcon={isIcon} className={styles.dropdownList}>
           {hasOptions.options.map((option, index) => (
             <DropdownItem
               key={index}
+              className={styles.dropdownItem}
               onClick={() => handleSelect(option)}
               isIcon={isIcon}>
               {option.value}

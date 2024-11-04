@@ -28,7 +28,6 @@ const featContents = [
     img: feat02,
   },
 ];
-
 function Homepage() {
   const nav = useNavigate();
   const getDevice = useDeviceType();

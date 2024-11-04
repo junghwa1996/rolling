@@ -33,7 +33,7 @@ function Card({
         type={type}
         onEvent={onEvent}
       />
-      <CardTextArea>
+      <CardTextArea type={type}>
         <Line column={false} />
         <Textarea dangerouslySetInnerHTML={{ __html: messageData?.content }} />
         {!isModalType && (

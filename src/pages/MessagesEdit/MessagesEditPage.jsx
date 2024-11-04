@@ -6,7 +6,8 @@
  * 재사용 불가한 페이지 컴포넌트 입니다.
  */
 
-import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { styled, css } from 'styled-components';
 
 import { getMessagesList, getRollingItem } from '../../service/api';
@@ -32,6 +33,7 @@ export const StyledMain = styled.main`
           opacity: 0.5;
           width: 100%;
           height: 100vh;
+          z-index: 1;
           background-color: ${({ theme }) => theme.blackText};
         }
       `;
@@ -59,10 +61,14 @@ export const StyledInner = styled.div`
   }
 `;
 
+const KEY = process.env.REACT_APP_ADMIN_KEY;
+
 function MessagesListPage() {
   const currentURL = useLocation();
   const presentPath = currentURL.pathname.split('/');
   const currentId = presentPath[presentPath.length - 2];
+
+  const nav = useNavigate();
 
   // STUB - 메시지 리스트 요청
   const {
@@ -84,6 +90,17 @@ function MessagesListPage() {
       backgroundImageURL: res.backgroundImageURL,
     }),
   );
+
+  useEffect(() => {
+    const AdminCheck = prompt(
+      '관리자만 접근할 수 있습니다. 비밀번호를 입력해 주세요.',
+    );
+
+    if (AdminCheck !== KEY) {
+      alert('비밀번호가 틀렸습니다.');
+      nav(-1);
+    }
+  }, []);
 
   // TODO - 추후 로딩과 에러 페이지 별도 작업
   if (messageLoading || backgroundLoading) return <p>로딩 중 입니다</p>;
