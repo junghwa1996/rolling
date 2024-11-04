@@ -4,11 +4,11 @@ import {
   applyResponsiveStyles,
 } from '../../../styles/common/Common.styles';
 
-export const ScrollableTextarea = styled.p`
+export const ScrollableTextarea = styled.div`
   border: none;
   outline: none;
   resize: none;
-  padding: 1rem;
+  padding: 1rem 0;
 
   font-family: ${({ $font }) => ($font ? fontFamily[$font] : 'inherit')};
   ${({ $media }) => $media && applyResponsiveStyles({ media: $media })};
@@ -32,10 +32,20 @@ export const ScrollableTextarea = styled.p`
     background: ${({ theme }) => theme.secondary || '#999'};
   }
 
+  /* type에 따른 overflow 설정 */
+  ${({ $type }) =>
+    $type === 'modal'
+      ? css`
+          overflow: auto;
+        `
+      : css`
+          overflow: hidden;
+        `}
+
+  /* lines에 따른 스타일 설정 */
   ${({ $lines }) =>
-    $lines &&
+    $lines !== undefined &&
     css`
-      overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: ${$lines};
       -webkit-box-orient: vertical;
