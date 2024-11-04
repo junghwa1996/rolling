@@ -33,7 +33,7 @@ export const DropdownItem = styled.li`
 `;
 
 export const ArrowImg = styled.img`
-  transition: transform 0.3s ease; 
+  transition: transform 0.3s ease;
   transform: ${({ isOpen }) => (isOpen ? 'rotate(180deg)' : 'rotate(360deg)')};
 `;
 
