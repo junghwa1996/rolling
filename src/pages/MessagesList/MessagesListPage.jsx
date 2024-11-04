@@ -6,7 +6,7 @@
  * 재사용 불가한 페이지 컴포넌트 입니다.
  */
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
@@ -67,20 +67,16 @@ function MessagesListPage() {
   // 센서 div에 대한 ref
   const sensorRef = useRef(null);
 
+  // 메시지 리스트 요청
+  const { data: messageData, error: messageError } = useFetchData(
+    () => getMessagesList(currentId, params),
+    [currentId, offset, limit],
+  );
+
   const params = {
     offset,
     limit,
   };
-
-  // 메시지 리스트 요청
-  const {
-    data: messageData,
-    loading: messageLoading,
-    error: messageError,
-  } = useFetchData(
-    () => getMessagesList(currentId, params),
-    [currentId, offset, limit],
-  );
 
   // 새로운 데이터를 불러올 때 allMessages에 누적
   useEffect(() => {
@@ -93,9 +89,17 @@ function MessagesListPage() {
     }
   }, [messageData]);
 
+  // 무한 스크롤 데이터 가져오기
+  // handleLoadMore 함수를 useCallback으로 감싸서 메모이제이션
+  const handleLoadMore = useCallback(() => {
+    setIsFetching(true);
+    setOffset((prevOffset) => prevOffset + limit);
+    setLimit(9);
+  }, [limit]);
+
   // 무한 스크롤 IntersectionObserver
   useEffect(() => {
-    if (!messageLoading && !isFetching) {
+    if (!isFetching) {
       // IntersectionObserver 생성: sensorRef에 연결된 요소가 뷰포트에 들어올 때마다 실행
       const observer = new IntersectionObserver(
         (entries) => {
@@ -112,32 +116,22 @@ function MessagesListPage() {
       );
 
       // sensorRef에 observer를 연결하여 관찰 시작
-      if (sensorRef.current) {
-        observer.observe(sensorRef.current);
+      const currentSensor = sensorRef.current; // sensorRef.current를 로컬 변수에 저장
+      if (currentSensor) {
+        observer.observe(currentSensor);
       }
 
       // 컴포넌트 언마운트 시 또는 sensorRef가 변경될 때 observer 연결 해제
       return () => {
-        if (sensorRef.current) {
-          observer.unobserve(sensorRef.current);
+        if (currentSensor) {
+          observer.unobserve(currentSensor);
         }
       };
     }
-  }, [sensorRef, messageLoading, isFetching, messageData]);
-
-  // 무한 스크롤 데이터 가져오기
-  const handleLoadMore = () => {
-    setIsFetching(true); // 추가 요청을 시작할 때 isFetching을 true로 설정하여 중복 요청 방지
-    setOffset((prevOffset) => prevOffset + limit);
-    setLimit(9); // 이후부터는 9개씩 불러옴
-  };
+  }, [sensorRef, isFetching, messageData, handleLoadMore]);
 
   // 배경 정보 요청
-  const {
-    data: backgroundData,
-    loading: backgroundLoading,
-    error: backgroundError,
-  } = useFetchData(
+  const { data: backgroundData, error: backgroundError } = useFetchData(
     () => getRollingItem(currentId),
     [currentId],
     (res) => ({
@@ -160,7 +154,6 @@ function MessagesListPage() {
   };
 
   // TODO - 추후 로딩과 에러 페이지 별도 작업
-  // if (messageLoading || backgroundLoading) return <p>로딩 중 입니다</p>;
   if (messageError || backgroundError) return <p>에러가 발생했어요!</p>;
 
   return (

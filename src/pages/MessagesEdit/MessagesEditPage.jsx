@@ -6,7 +6,7 @@
  * 재사용 불가한 페이지 컴포넌트 입니다.
  */
 
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { styled, css } from 'styled-components';
 
@@ -78,16 +78,16 @@ function MessagesListPage() {
   // 센서 div에 대한 ref
   const sensorRef = useRef(null);
 
-  const params = {
-    offset,
-    limit,
-  };
-
   // 메시지 리스트 요청
   const { data: messageData, error: messageError } = useFetchData(
     () => getMessagesList(currentId, params),
     [currentId, offset, limit],
   );
+
+  const params = {
+    offset,
+    limit,
+  };
 
   // 새로운 데이터를 불러올 때 allMessages에 누적
   useEffect(() => {
@@ -116,31 +116,29 @@ function MessagesListPage() {
         { threshold: 1.0 },
       );
 
-      if (sensorRef.current) {
+      const currentSensor = sensorRef.current;
+      if (currentSensor) {
         observer.observe(sensorRef.current);
       }
 
       return () => {
-        if (sensorRef.current) {
-          observer.unobserve(sensorRef.current);
+        if (currentSensor) {
+          observer.unobserve(currentSensor);
         }
       };
     }
-  }, [sensorRef, isFetching, messageData]);
+  }, [sensorRef, isFetching, messageData, handleLoadMore]);
 
   // 무한 스크롤 데이터 가져오기
-  const handleLoadMore = () => {
+  // handleLoadMore 함수를 useCallback으로 감싸서 메모이제이션
+  const handleLoadMore = useCallback(() => {
     setIsFetching(true);
     setOffset((prevOffset) => prevOffset + limit);
     setLimit(9);
-  };
+  }, [limit]);
 
   // STUB - 배경 정보 요청
-  const {
-    data: backgroundData,
-    loading: backgroundLoading,
-    error: backgroundError,
-  } = useFetchData(
+  const { data: backgroundData, error: backgroundError } = useFetchData(
     () => getRollingItem(currentId),
     [currentId],
     (res) => ({
@@ -158,7 +156,7 @@ function MessagesListPage() {
       alert('비밀번호가 틀렸습니다.');
       nav(-1);
     }
-  }, []);
+  }, [nav]);
 
   // TODO - 추후 로딩과 에러 페이지 별도 작업
   if (messageError || backgroundError) return <p>에러가 발생했어요!</p>;
