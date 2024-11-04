@@ -53,6 +53,8 @@ function EmojiDropDown({ emojiList = [] }) {
     setIsOpen(!isOpen);
   };
 
+  console.log(emojiList.length);
+
   return (
     <div className={styles.Container}>
       <section className={styles.emojiListContainer}>
@@ -70,11 +72,13 @@ function EmojiDropDown({ emojiList = [] }) {
               ))}
         </div>
         <div className={styles.imgWrapper} onClick={handleButton}>
-          <img
-            className={styles.img}
-            src={isOpen ? ArrowTop : ArrowDown}
-            alt="arrow"
-          />
+          {emojiList.length >= 4 && (
+            <img
+              className={styles.img}
+              src={isOpen ? ArrowTop : ArrowDown}
+              alt="arrow"
+            />
+          )}
         </div>
       </section>
       {isOpen && (
