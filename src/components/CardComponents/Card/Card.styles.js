@@ -6,6 +6,7 @@ import {
   media,
   responsiveGridColumns,
 } from '../../../styles/common/media.styles';
+import { StyledLine } from '../../Shared/Line/Line.styles';
 
 export const CardContainer = styled.div`
   width: 38.4rem;
@@ -70,4 +71,8 @@ export const CardArea = styled.div`
   @media screen and (max-width: 767px) {
     grid-template-columns: repeat(1, 1fr);
   }
+`;
+
+export const CardLine = styled(StyledLine)`
+  margin: 1.6rem 0;
 `;
