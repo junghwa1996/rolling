@@ -100,6 +100,14 @@ function MessagesListPage() {
     }
   }, [messageData]);
 
+  // 무한 스크롤 데이터 가져오기
+  // handleLoadMore 함수를 useCallback으로 감싸서 메모이제이션
+  const handleLoadMore = useCallback(() => {
+    setIsFetching(true);
+    setOffset((prevOffset) => prevOffset + limit);
+    setLimit(9);
+  }, [limit]);
+
   // 무한 스크롤 IntersectionObserver
   useEffect(() => {
     if (!isFetching) {
@@ -128,14 +136,6 @@ function MessagesListPage() {
       };
     }
   }, [sensorRef, isFetching, messageData, handleLoadMore]);
-
-  // 무한 스크롤 데이터 가져오기
-  // handleLoadMore 함수를 useCallback으로 감싸서 메모이제이션
-  const handleLoadMore = useCallback(() => {
-    setIsFetching(true);
-    setOffset((prevOffset) => prevOffset + limit);
-    setLimit(9);
-  }, [limit]);
 
   // STUB - 배경 정보 요청
   const { data: backgroundData, error: backgroundError } = useFetchData(
