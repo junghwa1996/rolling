@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
-import { getRollingEmoji } from '../../service/api';
 import { shadow, blur } from '../../styles/layout/effect.styles';
 import useDeviceType from '../../hooks/useDeviceType';
 import ArrowDown from '../../assets/icon-arrow_down.svg';

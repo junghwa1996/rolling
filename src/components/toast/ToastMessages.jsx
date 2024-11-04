@@ -9,10 +9,7 @@ function ToastMessages({ closeToast }) {
     <ToastWrapper>
       <ICON_COMPLETED alt="완료" />
       <ToastMessage>URL이 복사되었습니다!</ToastMessage>
-      <ICON_CLOSE 
-        alt="닫기" 
-        onClick={closeToast} 
-      />
+      <ICON_CLOSE alt="닫기" onClick={closeToast} />
     </ToastWrapper>
   );
 }
