@@ -20,10 +20,7 @@ function Card({
   };
 
   return (
-    <CardContainer
-      type={type}
-      onClick={handleCardClick}
-      $font={messageData?.font}>
+    <CardContainer type={type} onClick={handleCardClick}>
       <CardHeader
         messageData={{ ...messageData }}
         type={type}
@@ -32,7 +29,6 @@ function Card({
       <CardContent
         type={type}
         onEvent={onEvent}
-        $font={messageData?.font}
         messageData={{ ...messageData }}
       />
     </CardContainer>

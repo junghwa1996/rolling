@@ -24,7 +24,7 @@ function CardHeader({ type, messageData, onEvent }) {
         <CardHeaderPosition $type={type}>
           <Profile imageURL={profileImageURL} size="m" />
           <CardHeaderArea>
-            <Title $media={{ pc: 20, mo: 16 }}>
+            <Title $media={{ font: { pc: 20, mo: 16 } }}>
               <span>From. </span>
               <strong>{sender}</strong>
             </Title>
@@ -38,7 +38,9 @@ function CardHeader({ type, messageData, onEvent }) {
           </ButtonContainer>
         )}
         {type === 'modal' && (
-          <Data $media={{ pc: 14, mo: 12 }}>{dateConversion(createdAt)}</Data>
+          <Data $media={{ font: { pc: 14, mo: 12 } }}>
+            {dateConversion(createdAt)}
+          </Data>
         )}
       </CardHeaderContainer>
       <CardHeaderLine $type={type} />

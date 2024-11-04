@@ -1,40 +1,51 @@
 import styled, { css } from 'styled-components';
 import { boxShadow } from './mixins.styles';
 
-export const responsiveFont = ({ $media }) => {
-  const pcFont = $media?.pc;
-  const tabletFont = $media?.ta || pcFont; // tablet이 없으면 pc 폰트 사용
-  const mobileFont = $media?.mo || tabletFont; // mobile이 없으면 tablet 폰트 사용
+export const applyResponsiveStyles = ({ media }) => {
+  if (!media) return null; // null이나 undefined를 처리해줌
+
+  // 폰트 크기 정의
+  const pcFont = media?.font?.pc;
+  const taFont = media?.font?.ta || pcFont; // tablet이 없으면 pc 폰트 사용
+  const moFont = media?.font?.mo || taFont; // mobile이 없으면 tablet 폰트 사용
+
+  // 뷰 스타일 정의
+  const pcView = media?.view?.pc;
+  const taView = media?.view?.ta || pcView; // tablet이 없으면 pc 스타일 사용
+  const moView = media?.view?.mo || taView; // mobile이 없으면 tablet 스타일 사용
 
   return css`
+    /* 데스크탑 */
     @media (min-width: 1024px) {
-      ${font(pcFont)};
+      ${pcFont
+        ? css`
+            ${font(pcFont)}
+          `
+        : ''};
+      width: ${pcView?.width || '100%'};
+      height: ${pcView?.height || 'auto'};
     }
-    @media (min-width: 768px) and (max-width: 1023px) {
-      ${font(tabletFont)};
-    }
-    @media (max-width: 767px) {
-      ${font(mobileFont)};
-    }
-  `;
-};
 
-export const applyResponsiveStyles = ({ responsive }) => {
-  const pcResponsive = responsive?.pc;
-  const taResponsive = responsive?.ta || pcResponsive; // tablet이 없으면 pc 폰트 사용
-  const moResponsive = responsive?.mo || taResponsive; // mobile이 없으면 tablet 폰트 사용
-  return css`
-    @media (min-width: 1024px) {
-      width: ${pcResponsive?.pc.width || '100%'};
-      height: ${pcResponsive?.pc?.height || 'auto'};
-    }
+    /* 태블릿 */
     @media (min-width: 768px) and (max-width: 1023px) {
-      width: ${taResponsive?.ta?.width || '100%'};
-      height: ${taResponsive?.ta?.height || 'auto'};
+      ${taFont
+        ? css`
+            ${font(taFont)}
+          `
+        : ''};
+      width: ${taView?.width || '100%'};
+      height: ${taView?.height || 'auto'};
     }
+
+    /* 모바일 */
     @media (max-width: 767px) {
-      width: ${moResponsive?.mo?.width || '100%'};
-      height: ${moResponsive?.mo?.height || 'auto'};
+      ${moFont
+        ? css`
+            ${font(moFont)}
+          `
+        : ''};
+      width: ${moView?.width || '100%'};
+      height: ${moView?.height || 'auto'};
     }
   `;
 };
@@ -65,6 +76,36 @@ const font = (size) => {
   `;
 };
 
+export const Title = styled.h2`
+  ${({ $media }) => $media && applyResponsiveStyles({ media: $media })};
+
+  color: ${({ theme }) => theme.blackText};
+`;
+
+export const Desc = styled.p`
+  ${({ $media }) => $media && applyResponsiveStyles({ media: $media })};
+
+  color: ${({ theme }) => theme.secondary};
+`;
+
+export const Text = styled.p`
+  ${({ $media }) => $media && applyResponsiveStyles({ media: $media })};
+
+  color: ${({ theme }) => theme.text};
+`;
+
+export const AreaText = styled.p`
+  ${({ $media }) => $media && applyResponsiveStyles({ media: $media })};
+
+  color: ${({ theme }) => theme.textarea};
+`;
+
+export const Data = styled.p`
+  ${({ $media }) => $media && applyResponsiveStyles({ media: $media })};
+
+  color: ${({ theme }) => theme.dateText};
+`;
+
 /* 텍스트가 넘칠 경우 생략 부호 (...)을 표시하는 공통 스타일 */
 export const ellipsisStyle = styled.div`
   overflow: hidden;
@@ -72,7 +113,6 @@ export const ellipsisStyle = styled.div`
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
-  ${font['20b']}
 `;
 
 export const cardBaseStyle = css`
@@ -91,29 +131,4 @@ export const cardBaseStyle = css`
     width: 32rem;
     height: 23rem;
   }
-`;
-
-export const Title = styled.h2`
-  ${({ $media }) => responsiveFont({ $media })};
-  color: ${({ theme }) => theme.blackText};
-`;
-
-export const Desc = styled.p`
-  ${({ $media }) => responsiveFont({ $media })};
-  color: ${({ theme }) => theme.secondary};
-`;
-
-export const Text = styled.p`
-  ${({ $media }) => responsiveFont({ $media })};
-  color: ${({ theme }) => theme.text};
-`;
-
-export const AreaText = styled.p`
-  ${({ $media }) => responsiveFont({ $media })};
-  color: ${({ theme }) => theme.textarea};
-`;
-
-export const Data = styled.p`
-  ${({ $media }) => responsiveFont({ $media })};
-  color: ${({ theme }) => theme.dateText};
 `;

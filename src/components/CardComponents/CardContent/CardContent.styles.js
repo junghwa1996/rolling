@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ScrollableTextarea } from '../../Shared/ScrollableTextarea/ScrollableTextarea.styles';
+import ScrollableTextareaLayout from '../../Shared/ScrollableTextarea/ScrollableTextareaLayout';
 
 export const CardContentTextArea = styled.div`
   display: flex;
@@ -10,6 +10,6 @@ export const CardContentTextArea = styled.div`
   ${({ $type }) => $type === 'modal' && 'align-items: center;'}
 `;
 
-export const CardScrollTextarea = styled(ScrollableTextarea)`
+export const CardContentTextAreaInner = styled(ScrollableTextareaLayout)`
   margin: 1.6rem 0;
 `;

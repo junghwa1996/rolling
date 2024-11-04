@@ -4,7 +4,9 @@ import { ModalContentLayout, ModalContentText } from './ModalContent.styles';
 function ModalContent({ children }) {
   return (
     <ModalContentLayout>
-      <ModalContentText $media={{ pc: 20 }}>{children}</ModalContentText>
+      <ModalContentText $media={{ font: { pc: 20 } }}>
+        {children}
+      </ModalContentText>
     </ModalContentLayout>
   );
 }

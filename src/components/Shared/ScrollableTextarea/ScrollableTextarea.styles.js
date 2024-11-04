@@ -1,20 +1,17 @@
 import styled, { css } from 'styled-components';
 import {
+  fontFamily,
   applyResponsiveStyles,
-  responsiveFont,
 } from '../../../styles/common/Common.styles';
 
-export const ScrollableTextarea = styled(
-  ({ type, lines, responsive, ...props }) => <div {...props} />,
-)`
-  width: ${({ width }) => width || '100%'};
-  height: ${({ height }) => height || 'auto'};
+export const ScrollableTextarea = styled.p`
   border: none;
   outline: none;
   resize: none;
-  overflow: auto;
   padding: 1rem;
-  font-family: inherit;
+
+  font-family: ${({ $font }) => ($font ? fontFamily[$font] : 'inherit')};
+  ${({ $media }) => $media && applyResponsiveStyles({ media: $media })};
   word-break: break-all;
 
   &::-webkit-scrollbar {
@@ -35,15 +32,12 @@ export const ScrollableTextarea = styled(
     background: ${({ theme }) => theme.secondary || '#999'};
   }
 
-  ${({ responsive }) => applyResponsiveStyles(responsive)}
-  ${({ $media }) => responsiveFont($media)}
-
-  ${({ type, lines }) =>
-    type === 'ellipsis' &&
+  ${({ $lines }) =>
+    $lines &&
     css`
       overflow: hidden;
       display: -webkit-box;
-      -webkit-line-clamp: ${lines || 3};
+      -webkit-line-clamp: ${$lines};
       -webkit-box-orient: vertical;
       text-overflow: ellipsis;
     `}
