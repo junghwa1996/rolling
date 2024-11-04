@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { font } from '../../styles/common/fonts.styles';
 import { StyledInput, StyledErrMessage } from './CommonInput.styles';
@@ -17,6 +17,11 @@ export const IconBtn = styled.img`
 
 export const DropdownList = styled.ul`
   width: ${({ isIcon }) => (isIcon ? '14rem' : '32rem')};
+  ${({ isIcon }) =>
+    isIcon &&
+    css`
+      right: 0px;
+    `}
 
   background-color: ${({ theme }) => theme.background};
   ${shadow['low']}
@@ -33,7 +38,7 @@ export const DropdownItem = styled.li`
 `;
 
 export const ArrowImg = styled.img`
-  transition: transform 0.3s ease; 
+  transition: transform 0.3s ease;
   transform: ${({ isOpen }) => (isOpen ? 'rotate(180deg)' : 'rotate(360deg)')};
 `;
 

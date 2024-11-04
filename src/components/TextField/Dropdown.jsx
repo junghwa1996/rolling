@@ -103,7 +103,7 @@ function Dropdown({
   }, []);
 
   return (
-    <div ref={dropdownRef}>
+    <div ref={dropdownRef} className={styles.dropdownContainer}>
       {/* icon 버튼인지 보통의 Dropdown인지 구분 */}
       {isIcon ? (
         <IconBtn
