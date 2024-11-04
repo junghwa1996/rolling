@@ -6,7 +6,7 @@ import { Data } from '../../../styles/common/Common.styles';
 
 import Button from '../../Button/Button';
 import dateConversion from '../../../utils/dateConversion';
-import ScrollableTextareaLayout from '../../Shared/ScrollableTextarea/ScrollableTextareaLayout';
+import ScrollableTextareaLayout from '../../Shared/ScrollableTextarea/ScrollableTextarea';
 
 function CardContent({ type = 'card', messageData = {}, onEvent = {} }) {
   const isModal = type === 'modal';

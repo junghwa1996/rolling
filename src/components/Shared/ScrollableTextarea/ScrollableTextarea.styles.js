@@ -8,7 +8,6 @@ export const ScrollableTextarea = styled.div`
   border: none;
   outline: none;
   resize: none;
-  padding: 1rem 0;
 
   font-family: ${({ $font }) => ($font ? fontFamily[$font] : 'inherit')};
   ${({ $media }) => $media && applyResponsiveStyles({ media: $media })};

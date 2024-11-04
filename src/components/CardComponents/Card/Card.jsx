@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 
 import { CardContainer } from './Card.styles';
-import CardHeader from '../CardHeader/CardHeader';
+import styles from './Card.module.css';
 
+import CardHeader from '../CardHeader/CardHeader';
 import CardContent from '../CardContent/CardContent';
 import Line from '../../Shared/Line/Line';
 
@@ -27,7 +28,7 @@ function Card({
         type={type}
         onEvent={onEvent}
       />
-      <Line />
+      <Line className={styles.cardLine} />
       <CardContent
         type={type}
         onEvent={onEvent}

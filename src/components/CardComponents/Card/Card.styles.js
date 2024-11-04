@@ -9,8 +9,8 @@ import {
 
 export const CardContainer = styled.div`
   width: 38.4rem;
-  height: 28rem;
-  padding: 0 2.4rem;
+  height: auto;
+  padding: 2.8rem 2.4rem 2.4rem;
   border-radius: 1.6rem;
   box-shadow: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.08);
 

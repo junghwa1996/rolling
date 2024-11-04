@@ -5,7 +5,6 @@ import { media } from '../../../styles/common/media.styles.js';
 export const CardHeaderContainer = styled.div`
   display: flex;
   align-items: center;
-  padding: 2.8rem 0 1.6rem;
 `;
 
 export const CardHeaderPosition = styled.div`

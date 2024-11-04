@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-import ScrollableTextareaLayout from '../../Shared/ScrollableTextarea/ScrollableTextareaLayout';
+import ScrollableTextareaLayout from '../../Shared/ScrollableTextarea/ScrollableTextarea';
 
 export const CardContentTextArea = styled.div`
   display: flex;
   width: 100%;
   height: auto;
   flex-direction: column;
-  padding: 0 2.4rem;
   overflow: hidden;
   gap: 1.6rem ${({ $type }) => $type === 'modal' && 'align-items: center;'};
 `;
