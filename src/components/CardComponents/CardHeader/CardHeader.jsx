@@ -43,7 +43,6 @@ function CardHeader({ type, messageData, onEvent }) {
           </Data>
         )}
       </CardHeaderContainer>
-      <CardHeaderLine $type={type} />
     </>
   );
 }

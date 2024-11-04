@@ -4,6 +4,7 @@ import { CardContainer } from './Card.styles';
 import CardHeader from '../CardHeader/CardHeader';
 
 import CardContent from '../CardContent/CardContent';
+import Line from '../../Shared/Line/Line';
 
 function Card({
   type = 'card',
@@ -26,6 +27,7 @@ function Card({
         type={type}
         onEvent={onEvent}
       />
+      <Line />
       <CardContent
         type={type}
         onEvent={onEvent}

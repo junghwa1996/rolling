@@ -5,7 +5,7 @@ import { media } from '../../../styles/common/media.styles.js';
 export const CardHeaderContainer = styled.div`
   display: flex;
   align-items: center;
-  padding: 2.4rem 2.8rem 1.6rem;
+  padding: 2.8rem 0 1.6rem;
 `;
 
 export const CardHeaderPosition = styled.div`
@@ -27,16 +27,4 @@ export const CardHeaderArea = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   gap: 1rem;
-`;
-
-export const CardHeaderLine = styled(Line)`
-  ${({ $type }) => ($type === 'modal' ? 'width: 52rem; ' : 'width: 33.6rem;')}
-
-  ${media.tablet`
-  ${({ $type }) => ($type === 'modal' ? 'width: 52rem;' : 'width: 30.4rem;')}
-  `}
-
-  ${media.mobile`
-  width: 27.2rem;
-  `}
 `;

@@ -83,7 +83,7 @@ html,
   }
 
   hr {
-  border-top: 1px solid ${({ theme }) => theme.border};
+  border-top: 1px solid ${({ theme }) => theme.line};
 }
 
 `;
