@@ -69,8 +69,8 @@ export const IconArea = styled.span`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 2.4rem;
-  min-height: 2.4rem;
+  min-width: 2rem;
+  min-height: 2rem;
 
   svg {
     width: 100%;

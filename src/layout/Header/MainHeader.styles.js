@@ -43,11 +43,11 @@ export const LogoHeader = styled.div`
   justify-content: space-between;
   padding: 0;
 
-  @media (max-width: 1248px) and (min-width: 769px) {
+  @media (max-width: 1248px) and (min-width: 768px) {
     padding: 0 24px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     padding: 0 15px;
     height: 6.4rem;
   }
@@ -55,7 +55,7 @@ export const LogoHeader = styled.div`
   ${({ $type }) =>
     $type === 'doubleLine' &&
     `
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       display: none;
     }
   `}
@@ -63,7 +63,7 @@ export const LogoHeader = styled.div`
   ${({ $type }) =>
     $type === 'mobileHidden' &&
     `
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       display: none;
     }
   `}
@@ -78,7 +78,7 @@ export const InfoHeader = styled.div`
   height: 6.8rem;
   padding: 0;
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     height: 10.4rem;
     flex-direction: column;
 
@@ -94,16 +94,16 @@ export const InfoHeader = styled.div`
     }
   }
 
-  @media (max-width: 1248px) and (min-width: 769px) {
+  @media (max-width: 1248px) and (min-width: 768px) {
     padding: 0 24px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     padding: 0 15px;
   }
 
   > div:first-child {
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       width: 100%;
       display: flex;
       align-items: center;
@@ -114,16 +114,18 @@ export const InfoHeader = styled.div`
   > div:nth-child(2) {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
 
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       width: 100%;
       flex: 1;
     }
   }
 
   h1 {
+    margin-left: 0.5rem;
     ${font['28b']}
-    @media (max-width: 768px) {
+    @media (max-width: 767px) {
       ${font['18b']}
     }
   }
