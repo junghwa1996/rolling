@@ -7,6 +7,7 @@ import './styles/common/variables.css';
 import Content from './router/Content';
 import { light, dark } from './styles/themes/theme';
 import GlobalStyles from './styles/common/global.styles';
+import DarkModeToggle from './components/DarkModeToggle/DarkModeToggle';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -19,9 +20,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <button onClick={toggleTheme}>
-        Switch to {isDarkMode ? 'Light' : 'Dark'} Mode
-      </button>
+      <DarkModeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <ToastContainer />
       <Content />
     </ThemeProvider>
