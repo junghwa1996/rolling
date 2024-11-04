@@ -17,7 +17,13 @@ export const StyledToastContainer = styled(ToastContainer)`
       border-radius: 0.5rem;
       background: rgba(0, 0, 0, 0.8);
       opacity: 1;
+
+    @media (max-width: 767px) {
+      width: 320px;
+      height: 4rem;
+      }
     }
+
     .Toastify__toast-body {
       padding: 0;
       text-align: left;
@@ -36,6 +42,8 @@ export const ToastWrapper = styled.div`
   padding: 0;
   background: transparent;
   overflow: hidden;
+  justify-content: center;
+
 `;
 
 export const ToastMessage = styled.div`
