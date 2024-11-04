@@ -151,8 +151,6 @@ function MessagesAddPage() {
     }
   };
 
-  if (isLoading) return <p>로딩중입니다...👽👽👽👽👽</p>;
-
   const handleSenderChange = (e) => {
     // useValidation에 이벤트 객체 전달하여 유효성 검사
     onChange(e);

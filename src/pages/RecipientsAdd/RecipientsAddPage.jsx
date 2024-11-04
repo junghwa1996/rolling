@@ -75,8 +75,6 @@ function RecipientsAddPage() {
     }
   };
 
-  if (isLoading) return <p>로딩중입니다...💀💀💀💀💀</p>;
-
   return (
     <div className={styles.messagesAddContainer}>
       <form onSubmit={handlePostSubmit}>
@@ -105,7 +103,7 @@ function RecipientsAddPage() {
         <Button
           size="xl"
           type="submit"
-          disabled={isValidation}
+          disabled={isValidation || isLoading}
           loading={isLoading}>
           생성하기
         </Button>
