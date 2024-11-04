@@ -23,7 +23,6 @@
 
 .dropdownList {
   position: absolute;
-  align-items: flex-end;
   z-index: 3;
   margin-top: 0.8rem;
   padding: 1rem 0.1rem;
