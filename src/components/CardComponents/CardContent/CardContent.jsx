@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 import { CardContentTextArea } from './CardContent.styles';
 import { Data } from '../../../styles/common/Common.styles';
@@ -53,7 +53,7 @@ function CardContent({ type = 'card', messageData = {}, onEvent = {} }) {
     media: typeContent(type),
   });
 
-  const updateResponsiveState = () => {
+  const updateResponsiveState = useCallback(() => {
     const width = window.innerWidth;
 
     // 기기별 분기 처리 (예: pc, ta, mo)
@@ -70,7 +70,7 @@ function CardContent({ type = 'card', messageData = {}, onEvent = {} }) {
         media: typeContent(type),
       }));
     }
-  };
+  }, [type]);
 
   useEffect(() => {
     // 처음 로딩 시 반응형 상태를 설정
@@ -81,7 +81,7 @@ function CardContent({ type = 'card', messageData = {}, onEvent = {} }) {
 
     // 컴포넌트 언마운트 시 이벤트 리스너 제거
     return () => window.removeEventListener('resize', updateResponsiveState);
-  }, [type]);
+  }, [updateResponsiveState]);
 
   return (
     <CardContentTextArea $type={type}>
