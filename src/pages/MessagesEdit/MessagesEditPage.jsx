@@ -6,7 +6,7 @@
  * 재사용 불가한 페이지 컴포넌트 입니다.
  */
 
-import { useEffect } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { styled, css } from 'styled-components';
 
@@ -17,8 +17,7 @@ import useFetchData from '../../hooks/useFetchData';
 export const StyledMain = styled.main`
   position: relative;
   width: 100%;
-  height: 100vh;
-  overflow: auto;
+  min-height: 100vh;
   ${({ $bgColor, $bgImage }) => {
     if ($bgImage) {
       return css`
@@ -70,19 +69,76 @@ function MessagesListPage() {
 
   const nav = useNavigate();
 
-  // STUB - 메시지 리스트 요청
-  const {
-    data: messageData,
-    loading: messageLoading,
-    error: messageError,
-  } = useFetchData(() => getMessagesList(currentId), [currentId]);
+  const [offset, setOffset] = useState(0);
+  const [limit, setLimit] = useState(9);
+  const [allMessages, setAllMessages] = useState([]);
+
+  const [isFetching, setIsFetching] = useState(false);
+
+  // 센서 div에 대한 ref
+  const sensorRef = useRef(null);
+
+  // 메시지 리스트 요청
+  const { data: messageData, error: messageError } = useFetchData(
+    () => getMessagesList(currentId, params),
+    [currentId, offset, limit],
+  );
+
+  const params = {
+    offset,
+    limit,
+  };
+
+  // 새로운 데이터를 불러올 때 allMessages에 누적
+  useEffect(() => {
+    if (messageData?.results) {
+      setAllMessages((prevMessages) => [
+        ...prevMessages,
+        ...messageData.results,
+      ]);
+      setIsFetching(false);
+    }
+  }, [messageData]);
+
+  // 무한 스크롤 데이터 가져오기
+  // handleLoadMore 함수를 useCallback으로 감싸서 메모이제이션
+  const handleLoadMore = useCallback(() => {
+    setIsFetching(true);
+    setOffset((prevOffset) => prevOffset + limit);
+    setLimit(9);
+  }, [limit]);
+
+  // 무한 스크롤 IntersectionObserver
+  useEffect(() => {
+    if (!isFetching) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              if (messageData?.next && !isFetching) {
+                handleLoadMore();
+              }
+            }
+          });
+        },
+        { threshold: 1.0 },
+      );
+
+      const currentSensor = sensorRef.current;
+      if (currentSensor) {
+        observer.observe(sensorRef.current);
+      }
+
+      return () => {
+        if (currentSensor) {
+          observer.unobserve(currentSensor);
+        }
+      };
+    }
+  }, [sensorRef, isFetching, messageData, handleLoadMore]);
 
   // STUB - 배경 정보 요청
-  const {
-    data: backgroundData,
-    loading: backgroundLoading,
-    error: backgroundError,
-  } = useFetchData(
+  const { data: backgroundData, error: backgroundError } = useFetchData(
     () => getRollingItem(currentId),
     [currentId],
     (res) => ({
@@ -100,10 +156,9 @@ function MessagesListPage() {
       alert('비밀번호가 틀렸습니다.');
       nav(-1);
     }
-  }, []);
+  }, [nav]);
 
   // TODO - 추후 로딩과 에러 페이지 별도 작업
-  if (messageLoading || backgroundLoading) return <p>로딩 중 입니다</p>;
   if (messageError || backgroundError) return <p>에러가 발생했어요!</p>;
 
   return (
@@ -112,7 +167,16 @@ function MessagesListPage() {
         $bgColor={backgroundData?.backgroundColor}
         $bgImage={backgroundData?.backgroundImageURL}>
         <StyledInner>
-          <CardList type="edit" messageData={messageData?.results || []} />
+          <CardList type="edit" messageData={allMessages} />
+
+          {/* 센서 div */}
+          <div
+            ref={sensorRef}
+            style={{
+              height: '1px',
+              marginTop: '100px',
+            }}
+          />
         </StyledInner>
       </StyledMain>
     </>

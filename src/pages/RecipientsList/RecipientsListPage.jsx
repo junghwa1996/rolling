@@ -24,13 +24,15 @@ function RecipientsListPage() {
       <div className={styles.container}>
         <div className={styles.listContainer}>
           <div>
-            <Title $media={{ pc: '24b', mo: '20b' }}>인기 롤링 페이퍼 🔥</Title>
+            <Title $media={{ font: { pc: '24b', mo: '20b' } }}>
+              인기 롤링 페이퍼 🔥
+            </Title>
             <StyledSwiper className={styles.swiperContain}>
               <RecipientsList type="favorite" />
             </StyledSwiper>
           </div>
           <div>
-            <Title $media={{ pc: '24b', mo: '20b' }}>
+            <Title $media={{ font: { pc: '24b', mo: '20b' } }}>
               최근에 만든 롤링 페이퍼 ⭐️
             </Title>
             <StyledSwiper className={styles.swiperContain}>

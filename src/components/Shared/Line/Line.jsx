@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import { StyledLine } from './Line.styles';
 
-function Line({ column = 'row', className }) {
+function Line({ column, className }) {
   return <StyledLine $column={column} className={className} />;
 }
 

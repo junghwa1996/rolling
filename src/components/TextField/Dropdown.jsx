@@ -34,6 +34,7 @@
 
 import PropTypes from 'prop-types';
 import { useState, useRef, useEffect } from 'react';
+import ARROW_ICON from '../../assets/icon-arrow_down.svg';
 
 import {
   DropdownBtn,
@@ -42,10 +43,8 @@ import {
   DropdownList,
   DropdownItem,
   DropdownErrMessage,
+  IconArea,
 } from './Dropdown.styles';
-import styles from './Dropdown.module.css';
-import ARROW_ICON from '../../assets/icon-arrow_down.svg';
-import SHARE from '../../assets/icon-share-24.svg';
 import useDeviceType from '../../hooks/useDeviceType';
 
 Dropdown.propTypes = {
@@ -68,6 +67,7 @@ Dropdown.propTypes = {
   }),
   disabled: PropTypes.bool,
   isIcon: PropTypes.bool,
+  icon: PropTypes.element,
 };
 
 function Dropdown({
@@ -78,6 +78,7 @@ function Dropdown({
   },
   disabled,
   isIcon,
+  icon,
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -107,17 +108,14 @@ function Dropdown({
       {/* icon 버튼인지 보통의 Dropdown인지 구분 */}
       {isIcon ? (
         <IconBtn
-          src={SHARE}
-          alt="icon"
-          className={styles.iconBtn}
           onClick={() => setIsOpen(!isOpen)}
           $error={hasError.$error}
-          disabled={disabled}
-        />
+          disabled={disabled}>
+          <IconArea>{icon}</IconArea>
+        </IconBtn>
       ) : (
         <DropdownBtn
           type="button"
-          className={styles.dropdownBtn}
           onClick={() => setIsOpen(!isOpen)}
           $error={hasError.$error}
           disabled={disabled}
@@ -126,12 +124,7 @@ function Dropdown({
           {hasOptions.selectedOption.label
             ? hasOptions.selectedOption.label
             : hasOptions.selectedOption.value || hasOptions.options[0].label}
-          <ArrowImg
-            src={ARROW_ICON}
-            alt="arrow"
-            className={styles.arrowImg}
-            isOpen={isOpen}
-          />
+          <ArrowImg src={ARROW_ICON} alt="arrow" isOpen={isOpen} />
         </DropdownBtn>
       )}
 
@@ -142,11 +135,10 @@ function Dropdown({
       )}
 
       {isOpen && (
-        <DropdownList isIcon={isIcon} className={styles.dropdownList}>
+        <DropdownList isIcon={isIcon}>
           {hasOptions.options.map((option, index) => (
             <DropdownItem
               key={index}
-              className={styles.dropdownItem}
               onClick={() => handleSelect(option)}
               isIcon={isIcon}>
               {option.value}

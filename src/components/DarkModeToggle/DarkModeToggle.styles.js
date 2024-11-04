@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { font } from '../../styles/common/fonts.styles';
-import { color } from '../../styles/common/variables.css';
 
 export const DarkModeToggleArea = styled.div`
   width: 12rem; /* 전체 너비 */
@@ -16,7 +15,7 @@ export const DarkModeToggleArea = styled.div`
 `;
 
 export const DarkModeTabButton = styled.button`  /*폰트 스타일 설정 */
-  ${({ $isSelected }) => ($isSelected ? font['16b'] : font[16])};
+  ${({ $isSelected }) => ($isSelected ? font['16b'] : font[16])}
 
   color:  ${({ $isSelected, isDarkMode }) =>
     $isSelected
@@ -42,8 +41,7 @@ export const DarkModeTabButton = styled.button`  /*폰트 스타일 설정 */
   z-index: 1;
   cursor: pointer;
 
-  transition:
-    color 0.3s ease,
+  transition: color 0.3s ease;
     background 0.3s ease;
 
   padding: 0;
@@ -57,7 +55,6 @@ export const DarkModeTabButton = styled.button`  /*폰트 스타일 설정 */
     outline: none;
   }
 `;
-
 export const DarkModeSelectedTab = styled.div`
   position: absolute; //절대 위치 설정//
   top: 0;
