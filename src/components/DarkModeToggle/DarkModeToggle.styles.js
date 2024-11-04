@@ -18,7 +18,6 @@ export const DarkModeToggleArea = styled.div`
 export const DarkModeTabButton = styled.button`  /*폰트 스타일 설정 */
   ${({ $isSelected }) => ($isSelected ? font['16b'] : font[16])};
 
-  /* 텍스트 색상 설정*/
   color:  ${({ $isSelected, isDarkMode }) =>
     $isSelected
       ? isDarkMode
