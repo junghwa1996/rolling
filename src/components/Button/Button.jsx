@@ -4,6 +4,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { StButton } from './Button.styles';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 Button.propTypes = {
   size: PropTypes.oneOf(['s', 'm', 'l', 'xl']),
@@ -13,6 +14,7 @@ Button.propTypes = {
   children: PropTypes.node.isRequired,
   type: PropTypes.oneOf(['button', 'submit', 'reset']),
   to: PropTypes.string,
+  loading: PropTypes.bool,
 };
 
 function Button({
@@ -23,6 +25,7 @@ function Button({
   disabled = false,
   type = 'button',
   to,
+  loading = false,
 }) {
   const TAG = to ? Link : 'button';
   return (
@@ -34,7 +37,7 @@ function Button({
       as={TAG}
       {...(TAG === Link && { to })}
       type={TAG === 'button' ? type : undefined}>
-      {children || '텍스트'}
+      {loading ? <LoadingSpinner /> : children || '텍스트'}
     </StButton>
   );
 }
