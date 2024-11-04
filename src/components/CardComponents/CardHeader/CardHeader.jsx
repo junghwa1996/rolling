@@ -20,11 +20,11 @@ function CardHeader({ type, messageData, onEvent }) {
 
   return (
     <>
-      <CardHeaderContainer>
-        <CardHeaderPosition>
+      <CardHeaderContainer $type={type}>
+        <CardHeaderPosition $type={type}>
           <Profile imageURL={profileImageURL} size="m" />
           <CardHeaderArea>
-            <Title $media={{ pc: 20, mo: 16 }}>
+            <Title $media={{ font: { pc: 20, mo: 16 } }}>
               <span>From. </span>
               <strong>{sender}</strong>
             </Title>
@@ -37,9 +37,12 @@ function CardHeader({ type, messageData, onEvent }) {
             <Outlined icon={<DeleteIcon />} onClick={onEvent.buttonDelete} />
           </ButtonContainer>
         )}
-        {type === 'modal' && <Data>{dateConversion(createdAt)}</Data>}
+        {type === 'modal' && (
+          <Data $media={{ font: { pc: 14, mo: 12 } }}>
+            {dateConversion(createdAt)}
+          </Data>
+        )}
       </CardHeaderContainer>
-      <CardHeaderLine />
     </>
   );
 }
