@@ -19,15 +19,19 @@ export const StyledInput = css`
   color: ${({ theme }) => theme.secondary};
   background-color: ${({ theme }) => theme.background};
 
-  &:focus {
-    outline: none;
-    border: 0.2rem solid ${({ theme }) => theme.secondary};
-    color: ${({ theme }) => theme.text};
+  &:hover {
+    background-color: ${({ theme }) => theme.buttongray};
   }
 
-  &:active {
-    border: 0.2rem solid ${({ theme }) => theme.surface};
-    color: ${({ theme }) => theme.text};
+  &:active,
+  &:focus:active {
+    background-color: ${({ theme }) => theme.buttongray};
+    border-color: ${({ theme }) => theme.border};
+  }
+
+  &:focus {
+    border-color: ${({ theme }) => theme.secondary};
+    outline: none;
   }
 
   //focus, disabled 상태일 때는 hover하지 않기
@@ -38,6 +42,7 @@ export const StyledInput = css`
   &:disabled {
     border: 0.1rem solid ${({ theme }) => theme.border};
     background-color: ${({ theme }) => theme.surface};
+    cursor: not-allowed;
   }
 `;
 
