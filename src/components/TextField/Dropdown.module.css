@@ -8,12 +8,28 @@
 }
 
 .iconBtn {
-  display: block;
-  max-width: 5.6rem;
-  max-height: 3.6rem;
-
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   padding: 0.6rem 1.6rem;
+  border-radius: 6px;
+
   cursor: pointer;
+}
+
+.iconArea {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  min-height: 2rem;
+}
+
+.iconArea svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .arrowImg {
@@ -26,7 +42,6 @@
   z-index: 3;
   margin-top: 0.8rem;
   padding: 1rem 0.1rem;
-
   border: 0.1rem solid #ccc;
   border-radius: 0.8rem;
   cursor: pointer;
@@ -35,4 +50,10 @@
 .dropdownItem {
   padding: 1.2rem 1.6rem;
   cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .iconBtn {
+    padding: 0.6rem 0.6rem;
+  }
 }

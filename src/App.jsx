@@ -1,12 +1,12 @@
+import React, { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { useState } from 'react';
-import { ToastContainer } from 'react-toastify';
 
 import './styles/common/reset.css';
 import './styles/common/variables.css';
 import Content from './router/Content';
 import { light, dark } from './styles/themes/theme';
 import GlobalStyles from './styles/common/global.styles';
+import { StyledToastContainer } from './components/toast/Toast.Styles'; // StyledToastContainer 가져오기
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
