@@ -10,6 +10,7 @@ import { SwiperContain, ArrowPosition } from './RecipientsList.styles';
 import ArrowButton from '../../components/ArrowButton/ArrowButton';
 import useDeviceType from '../../hooks/useDeviceType';
 import { getRollingList } from '../../service/api';
+import SkeletonList from '../../components/CardComponents/Skeleton/SkeletonList';
 
 RecipientsList.propTypes = {
   type: PropTypes.oneOf(['favorite', 'recent']),
@@ -21,6 +22,8 @@ function RecipientsList({ type = 'favorite' }) {
 
   const [isPrev, setIsPrev] = useState(true);
   const [isNext, setIsNext] = useState(false);
+
+  const [isLoading, setIsLoading] = useState(false);
 
   // 다중 생성 스와이퍼(서로 참조하지않음)
   const [controlledSwiper, setControlledSwiper] = useState(null);
@@ -35,6 +38,7 @@ function RecipientsList({ type = 'favorite' }) {
   useEffect(() => {
     const handleRollingListLode = async () => {
       try {
+        setIsLoading(true);
         const res = await getRollingList();
         const { results } = res;
         // sort 조건문
@@ -48,6 +52,8 @@ function RecipientsList({ type = 'favorite' }) {
         }
       } catch (error) {
         console.error('롤링 리스트를 불러오는데 오류가 발생 했습니다.:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
@@ -126,7 +132,7 @@ function RecipientsList({ type = 'favorite' }) {
         ))}
       </Swiper>
       {/* 다음 목록이 있으면 렌더 */}
-      {isPC && !isNext && (
+      {isPC && !isNext && !isLoading && (
         <ArrowPosition $position="right">
           <ArrowButton
             className="swiper-button-next"
@@ -134,6 +140,8 @@ function RecipientsList({ type = 'favorite' }) {
           />
         </ArrowPosition>
       )}
+
+      {isLoading && <SkeletonList />}
     </SwiperContain>
   );
 }
