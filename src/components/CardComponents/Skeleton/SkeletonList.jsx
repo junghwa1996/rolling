@@ -26,7 +26,7 @@ function SkeletonList() {
 
   for (let i = 1; i <= itemCount; i++) {
     skeleton.push(
-      <SkeletonItem>
+      <SkeletonItem key={i}>
         <Title></Title>
         <Avatar></Avatar>
         <WriteCount></WriteCount>
