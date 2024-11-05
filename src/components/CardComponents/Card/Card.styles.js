@@ -1,4 +1,3 @@
-// src/components/Cards/Card/Card.styles.js
 import styled, { css } from 'styled-components';
 
 import { fontFamily } from '../../../styles/common/Common.styles';
