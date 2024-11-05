@@ -61,6 +61,11 @@ const StyleButton = styled.button`
     opacity: 1; /* 선택될 때 서서히 보이게 */
     transform: translate(-50%, -50%) scale(1); /* 원래 크기로 확대 */
   }
+
+  @media (max-width: 767px) {
+    width: 15.4rem;
+    height: 15.4rem;
+  }
 `;
 
 export { StyleButton };
