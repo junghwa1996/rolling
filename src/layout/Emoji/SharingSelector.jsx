@@ -54,7 +54,8 @@ function SharingSelector() {
           selectedOption: selectedOption,
           onSelect: handleDropdownSelect,
         }}
-        isIcon={<IconShare />}
+        isIcon={true}
+        icon={<IconShare />}
       />
     </div>
   );

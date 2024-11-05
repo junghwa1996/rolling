@@ -15,7 +15,7 @@ EmojiDropDown.propTypes = {
 
 const DropDownContainer = styled.div`
   position: absolute;
-  top: 100%;
+  top: 110%;
   right: 0;
   display: grid;
   grid-template-columns: ${(props) =>
@@ -26,12 +26,9 @@ const DropDownContainer = styled.div`
   row-gap: 1rem;
   column-gap: 0.8rem;
 
-  /* max-width: ${(props) => (props.isPC ? '31.2rem' : '24.8rem')};
-  max-height: 13.4rem; */
-
   padding: ${(props) => (props.isPC ? '2.4rem' : '1.5rem')};
   border: 1px solid #b6b6b6;
-  border-radius: 24px;
+  border-radius: 8px;
   background-color: var(--white);
   ${shadow['mid']};
   ${blur};
@@ -44,7 +41,7 @@ EmojiDropDown.propTypes = {
       emoji: PropTypes.string.isRequired,
       count: PropTypes.number.isRequired,
     }),
-  ).isRequired,
+  ),
 };
 
 function EmojiDropDown({ emojiList = [] }) {
@@ -55,6 +52,8 @@ function EmojiDropDown({ emojiList = [] }) {
   const handleButton = () => {
     setIsOpen(!isOpen);
   };
+
+  console.log(emojiList.length);
 
   return (
     <div className={styles.Container}>
@@ -73,11 +72,13 @@ function EmojiDropDown({ emojiList = [] }) {
               ))}
         </div>
         <div className={styles.imgWrapper} onClick={handleButton}>
-          <img
-            className={styles.img}
-            src={isOpen ? ArrowTop : ArrowDown}
-            alt="arrow"
-          />
+          {emojiList.length >= 4 && (
+            <img
+              className={styles.img}
+              src={isOpen ? ArrowTop : ArrowDown}
+              alt="arrow"
+            />
+          )}
         </div>
       </section>
       {isOpen && (

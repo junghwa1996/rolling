@@ -7,7 +7,8 @@ export const CardContentTextArea = styled.div`
   height: auto;
   flex-direction: column;
   overflow: hidden;
-  gap: 1.6rem ${({ $type }) => $type === 'modal' && 'align-items: center;'};
+  gap: 1.6rem;
+  ${({ $type }) => $type === 'modal' && 'align-items: center;'};
 `;
 
 export const CardContentTextAreaInner = styled(ScrollableTextareaLayout)`

@@ -104,9 +104,9 @@ function CardList({ type, messageData = [], onEvent, children }) {
       <ItemArea>
         {children}
         {messageDataList.length > 0 ? (
-          messageDataList.map((item) => (
+          messageDataList.map((item, index) => (
             <Card
-              key={item.id}
+              key={`${item.id}-${index}`}
               type={type}
               messageData={{ ...item }}
               onEvent={{
