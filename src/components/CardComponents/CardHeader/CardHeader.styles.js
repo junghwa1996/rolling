@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Line from '../../Shared/Line/Line';
 import { media } from '../../../styles/common/media.styles.js';
 
 export const CardHeaderContainer = styled.div`
@@ -11,7 +10,7 @@ export const CardHeaderPosition = styled.div`
   display: flex;
   flex: 1;
   gap: 1.4rem;
-  ${media.mobile`
+  ${media.mo`
     ${({ $type }) => $type === 'modal' && 'gap: 0.8rem'}
   `}
 `;

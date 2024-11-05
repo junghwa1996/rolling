@@ -18,17 +18,17 @@ export const responsiveGridColumns = {
 };
 
 export const media = {
-  tablet: (...args) => css`
+  ta: (...args) => css`
     @media screen and (min-width: 768px) and (max-width: 1248px) {
       ${css(...args)}
     }
   `,
-  mobile: (...args) => css`
+  mo: (...args) => css`
     @media screen and (max-width: 767px) {
       ${css(...args)}
     }
   `,
-  desktopSmall: (...args) => css`
+  tamo: (...args) => css`
     @media screen and (max-width: 1248px) {
       ${css(...args)}
     }

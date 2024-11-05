@@ -22,7 +22,7 @@ export const applyResponsiveStyles = ({ media }) => {
             ${font(pcFont)}
           `
         : ''};
-      width: ${pcView?.width || '100%'};
+      width: ${pcView?.width || 'auto'};
       height: ${pcView?.height || 'auto'};
     }
 
@@ -33,7 +33,7 @@ export const applyResponsiveStyles = ({ media }) => {
             ${font(taFont)}
           `
         : ''};
-      width: ${taView?.width || '100%'};
+      width: ${taView?.width || 'auto'};
       height: ${taView?.height || 'auto'};
     }
 
@@ -44,7 +44,7 @@ export const applyResponsiveStyles = ({ media }) => {
             ${font(moFont)}
           `
         : ''};
-      width: ${moView?.width || '100%'};
+      width: ${moView?.width || 'auto'};
       height: ${moView?.height || 'auto'};
     }
   `;

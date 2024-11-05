@@ -11,7 +11,7 @@ const StyledImage = styled.img`
 
 function CardAdd({ id, type }) {
   return (
-    <CardContainer href={`/post/${id}/message`} type={type}>
+    <CardContainer to={`/post/${id}/message`} type={type}>
       <StyledImage src={ICON_ADD} alt="추가 버튼 아이콘" />
     </CardContainer>
   );

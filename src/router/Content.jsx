@@ -8,6 +8,8 @@ import NotFoundPage from '../pages/NotFound/NotFoundPage';
 import RecipientsAddPage from '../pages/RecipientsAdd/RecipientsAddPage';
 import RecipientsList from '../pages/RecipientsList/RecipientsListPage';
 import HeaderLayout from '../layout/Header/HeaderLayout';
+import UserMessageCard from '../components/CardComponents/Card/CustomCard';
+import Demo from '../pages/HomePage/Demo';
 
 function Content() {
   return (
@@ -15,6 +17,11 @@ function Content() {
       <HeaderLayout>
         <Routes>
           <Route path="/">
+            <Route path="test">
+              <Route index element={<Demo />} />
+              {/* 하위에 path 추가 */}
+              <Route path="card" element={<UserMessageCard />} />
+            </Route>
             <Route index element={<HomePage />} />
             <Route path="list">
               <Route index element={<RecipientsList />} />
