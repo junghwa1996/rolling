@@ -43,8 +43,9 @@ import {
   DropdownList,
   DropdownItem,
   DropdownErrMessage,
-  IconArea,
+  span,
 } from './Dropdown.styles';
+import styles from './Dropdown.module.css';
 import useDeviceType from '../../hooks/useDeviceType';
 
 Dropdown.propTypes = {
@@ -108,14 +109,16 @@ function Dropdown({
       {/* icon 버튼인지 보통의 Dropdown인지 구분 */}
       {isIcon ? (
         <IconBtn
+          className={styles.iconBtn}
           onClick={() => setIsOpen(!isOpen)}
           $error={hasError.$error}
           disabled={disabled}>
-          <IconArea>{icon}</IconArea>
+          <span className={styles.iconArea}>{icon}</span>
         </IconBtn>
       ) : (
         <DropdownBtn
           type="button"
+          className={styles.dropdownBtn}
           onClick={() => setIsOpen(!isOpen)}
           $error={hasError.$error}
           disabled={disabled}
@@ -124,7 +127,12 @@ function Dropdown({
           {hasOptions.selectedOption.label
             ? hasOptions.selectedOption.label
             : hasOptions.selectedOption.value || hasOptions.options[0].label}
-          <ArrowImg src={ARROW_ICON} alt="arrow" isOpen={isOpen} />
+          <ArrowImg
+            className={styles.arrowImg}
+            src={ARROW_ICON}
+            alt="arrow"
+            isOpen={isOpen}
+          />
         </DropdownBtn>
       )}
 
@@ -135,10 +143,11 @@ function Dropdown({
       )}
 
       {isOpen && (
-        <DropdownList isIcon={isIcon}>
+        <DropdownList className={styles.dropdownList} isIcon={isIcon}>
           {hasOptions.options.map((option, index) => (
             <DropdownItem
               key={index}
+              className={styles.dropdownItem}
               onClick={() => handleSelect(option)}
               isIcon={isIcon}>
               {option.value}
