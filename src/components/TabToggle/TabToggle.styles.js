@@ -4,20 +4,32 @@ import { font } from '../../styles/common/fonts.styles';
 import { color } from '../../styles/common/variables';
 
 export const TabToggleArea = styled.div`
-  width: ${({ $tabLength }) => `${12 * $tabLength}rem`};
+  width: ${({ $tabLength, $width }) => `${$width * $tabLength}rem`};
   background-color: ${({ theme }) => theme.buttongray};
+
+  @media (max-width: 767px) {
+    width: ${({ $tabLength, $mobileWidth }) =>
+      `${$mobileWidth * $tabLength}rem`};
+  }
 `;
-
 export const TabButton = styled.button`
-  /* 폰트 스타일 설정 */
+  width: ${({ $width }) => `${$width}rem`};
   ${({ $isSelected }) => ($isSelected ? font['16b'] : font['16'])}
-
-  /* 텍스트 색상 설정 */
   color: ${({ $isSelected, theme }) =>
     $isSelected ? color.purple[600] : theme.text};
+
+  @media (max-width: 768px) {
+    width: ${({ $mobileWidth }) => `${$mobileWidth}rem`};
+  }
 `;
 
 export const SelectedTab = styled.div`
-  /* 선택된 탭의 위치 설정 */
-  left: ${({ $selectedIndex }) => `${12 * $selectedIndex}rem`};
+  width: ${({ $width }) => `${$width}rem`};
+  left: ${({ $selectedIndex, $width }) => `${$width * $selectedIndex}rem`};
+
+  @media (max-width: 768px) {
+    width: ${({ $mobileWidth }) => `${$mobileWidth}rem`};
+    left: ${({ $selectedIndex, $mobileWidth }) =>
+      `${$mobileWidth * $selectedIndex}rem`};
+  }
 `;

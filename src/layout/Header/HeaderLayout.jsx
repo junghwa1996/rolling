@@ -6,9 +6,11 @@ import MainHeader from './MainHeader';
 
 HeaderLayout.propTypes = {
   children: PropTypes.node.isRequired,
+  isDarkMode: PropTypes.bool.isRequired,
+  toggleTheme: PropTypes.func.isRequired,
 };
 
-function HeaderLayout({ children }) {
+function HeaderLayout({ children, isDarkMode, toggleTheme }) {
   const location = useLocation();
   const [headerType, setHeaderType] = useState('default');
 
@@ -27,7 +29,11 @@ function HeaderLayout({ children }) {
 
   return (
     <>
-      <MainHeader type={headerType} />
+      <MainHeader
+        type={headerType}
+        isDarkMode={isDarkMode}
+        toggleTheme={toggleTheme}
+      />
       <>{children}</>
     </>
   );

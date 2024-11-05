@@ -11,12 +11,15 @@ import { getRollingItem } from '../../service/api';
 import SharingSelector from '../Emoji/SharingSelector';
 import TotalMessage from '../../components/TotalMessage/TotalMessage';
 import EmojiPickerComponent from '../Emoji/EmojiPickerComponent';
+import DarkModeToggle from '../../components/DarkModeToggle/DarkModeToggle';
 
 MainHeader.propTypes = {
   type: PropTypes.oneOf(['default', 'mobileHidden', 'doubleLine']),
+  isDarkMode: PropTypes.bool.isRequired,
+  toggleTheme: PropTypes.func.isRequired,
 };
 
-function MainHeader({ type = 'default' }) {
+function MainHeader({ type = 'default', isDarkMode, toggleTheme }) {
   const location = useLocation();
   const presentPath = location.pathname.split('/');
   const id = presentPath.includes('edit')
@@ -45,6 +48,11 @@ function MainHeader({ type = 'default' }) {
       <div>
         <LogoHeader $type={type}>
           <Logo />
+          <DarkModeToggle
+            isDarkMode={isDarkMode}
+            toggleTheme={toggleTheme}
+            mobileWidth={3}
+          />
           {type === 'default' && (
             <Outlined size="s" to="/post">
               롤링 페이퍼 만들기
@@ -54,6 +62,13 @@ function MainHeader({ type = 'default' }) {
         <InfoHeader $type={type}>
           <div>
             <h1>To.{rollingData?.name}</h1>
+            {isDeviceType === 'mobile' && (
+              <DarkModeToggle
+                isDarkMode={isDarkMode}
+                toggleTheme={toggleTheme}
+                mobileWidth={6}
+              />
+            )}
           </div>
           <div>
             {isDeviceType === 'pc' && (

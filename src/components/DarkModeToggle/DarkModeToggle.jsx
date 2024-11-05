@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import TabToggle from '../TabToggle/TabToggle';
-function DarkModeToggle({ isDarkMode, toggleTheme }) {
+function DarkModeToggle({ isDarkMode, toggleTheme, width, mobileWidth }) {
   const [currentTab, setCurrentTab] = useState(isDarkMode ? '🌙' : '🔅');
 
   const handleTabClick = (tab) => {
@@ -10,12 +10,21 @@ function DarkModeToggle({ isDarkMode, toggleTheme }) {
     toggleTheme();
   };
 
-  return <TabToggle tabs={['🔅', '🌙']} onClick={handleTabClick} />;
+  return (
+    <TabToggle
+      tabs={['🔅', '🌙']}
+      onClick={handleTabClick}
+      width={width}
+      mobileWidth={mobileWidth}
+    />
+  );
 }
 
 DarkModeToggle.propTypes = {
-  isDarkMode: PropTypes.bool.isRequired, // 필수 boolean 타입
-  toggleTheme: PropTypes.func.isRequired, // 필수 function 타입
+  isDarkMode: PropTypes.bool.isRequired,
+  toggleTheme: PropTypes.func.isRequired,
+  width: PropTypes.number,
+  mobileWidth: PropTypes.number,
 };
 
 export default DarkModeToggle;
