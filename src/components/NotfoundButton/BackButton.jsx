@@ -1,18 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '../../pages/NotFound/NotFoundPage.styles';
 
-class BackButton extends React.Component {
-  handleBack() {
-    window.history.back(); // 이전 페이지로 돌아가기
-  }
+function BackButton() {
+  const nav = useNavigate();
 
-  render() {
-    return (
-      <Button onClick={this.handleBack.bind(this)}>
-        이전 페이지로 돌아가기
-      </Button>
-    );
-  }
+  const handleBack = () => {
+    nav(-1);
+  };
+
+  return <Button onClick={handleBack}>이전 페이지로 돌아가기</Button>;
 }
 
 export default BackButton;
