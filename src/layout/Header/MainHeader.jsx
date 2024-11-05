@@ -83,7 +83,7 @@ function MainHeader({ type = 'default' }) {
   const handleEmojiDelete = async (emoji) => {
     try {
       setLoading(true); // 이모지 삭제 중 로딩 상태 시작
-      await removeEmoji(emoji);
+      await removeEmoji(emoji, { type: 'decrease' });
       setEmojisList((prev) => prev.filter((item) => item.id !== emoji.id)); // 삭제된 이모지를 즉시 반영
     } catch (err) {
       console.error('이모지 삭제 중 오류 발생:', err);
