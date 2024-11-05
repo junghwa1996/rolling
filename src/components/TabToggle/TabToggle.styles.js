@@ -18,7 +18,7 @@ export const TabButton = styled.button`
   color: ${({ $isSelected, theme }) =>
     $isSelected ? color.purple[600] : theme.text};
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     width: ${({ $mobileWidth }) => `${$mobileWidth}rem`};
   }
 `;
@@ -27,7 +27,7 @@ export const SelectedTab = styled.div`
   width: ${({ $width }) => `${$width}rem`};
   left: ${({ $selectedIndex, $width }) => `${$width * $selectedIndex}rem`};
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     width: ${({ $mobileWidth }) => `${$mobileWidth}rem`};
     left: ${({ $selectedIndex, $mobileWidth }) =>
       `${$mobileWidth * $selectedIndex}rem`};
