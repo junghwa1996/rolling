@@ -5,7 +5,6 @@ import {
   CardHeaderPosition,
   CardHeaderArea,
   ButtonContainer,
-  CardHeaderLine,
 } from './CardHeader.styles';
 import { Title, Data } from '../../../styles/common/Common.styles';
 import { ReactComponent as DeleteIcon } from '../../../assets/icon-delete.svg';
