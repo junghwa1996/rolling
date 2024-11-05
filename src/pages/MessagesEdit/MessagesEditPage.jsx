@@ -13,7 +13,6 @@ import { styled, css } from 'styled-components';
 import { getMessagesList, getRollingItem } from '../../service/api';
 import CardList from '../../components/CardComponents/CardList/CardList';
 import useFetchData from '../../hooks/useFetchData';
-import SkeletonCard from '../../components/CardComponents/Skeleton/SkeletonCard';
 
 export const StyledMain = styled.main`
   position: relative;
@@ -171,11 +170,7 @@ function MessagesListPage() {
           <CardList type="edit" messageData={allMessages} />
 
           {messageData?.next && (
-            <div ref={sensorRef}>
-              {[...Array(1)].map((_, index) => (
-                <SkeletonCard key={index} />
-              ))}
-            </div>
+            <div ref={sensorRef} style={{ height: '1px' }}></div>
           )}
         </StyledInner>
       </StyledMain>

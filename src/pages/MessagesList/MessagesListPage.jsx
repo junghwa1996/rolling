@@ -15,7 +15,6 @@ import CardAdd from '../../components/CardComponents/CardAdd/CardAdd';
 import CardList from '../../components/CardComponents/CardList/CardList';
 import useFetchData from '../../hooks/useFetchData';
 import ModalLayout from '../../components/ModalComponents/ModalLayout/ModalLayout';
-import SkeletonCard from '../../components/CardComponents/Skeleton/SkeletonCard';
 
 export const StyledMain = styled.main`
   position: relative;
@@ -171,11 +170,7 @@ function MessagesListPage() {
           </CardList>
 
           {messageData?.next && (
-            <div ref={sensorRef}>
-              {[...Array(1)].map((_, index) => (
-                <SkeletonCard key={index} />
-              ))}
-            </div>
+            <div ref={sensorRef} style={{ height: '1px' }}></div>
           )}
         </StyledInner>
       </StyledMain>
