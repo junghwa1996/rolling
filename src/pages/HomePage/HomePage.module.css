@@ -1,7 +1,6 @@
-.container{
+.container {
   margin-top: 6rem;
 }
-
 
 /* 전체 feat을 관리하고 있는 Section */
 .featSection {
@@ -55,7 +54,7 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1248px) {
-  .container{
+  .container {
     margin-top: 4.2rem;
   }
 
@@ -74,10 +73,10 @@
 }
 
 @media screen and (max-width: 767px) {
-  .container{
+  .container {
     margin-top: 4.2rem;
   }
-  
+
   .featSection {
     width: 32rem;
     gap: 2.4rem;
