@@ -68,7 +68,7 @@ function RecipientsList({ type = 'favorite' }) {
     } finally {
       setLoading(false);
     }
-  }, [type]);
+  }, [location]);
 
   useEffect(() => {
     handleRollingListLoad();
