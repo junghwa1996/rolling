@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import {
-  fontFamily,
   applyResponsiveStyles,
+  fontFamily,
 } from '../../../styles/common/Common.styles';
 
 export const ScrollableTextarea = styled.div`
@@ -9,10 +9,11 @@ export const ScrollableTextarea = styled.div`
   outline: none;
   resize: none;
 
-  font-family: ${({ $font }) => ($font ? fontFamily[$font] : 'inherit')};
   ${({ $media }) => $media && applyResponsiveStyles({ media: $media })};
   word-break: break-all;
-
+  * {
+    font-family: ${({ $font }) => fontFamily[$font]};
+  }
   &::-webkit-scrollbar {
     width: 0.4rem;
   }
@@ -30,24 +31,5 @@ export const ScrollableTextarea = styled.div`
   &::-webkit-scrollbar-thumb:hover {
     background: ${({ theme }) => theme.secondary || '#999'};
   }
-
-  /* type에 따른 overflow 설정 */
-  ${({ $type }) =>
-    $type === 'modal'
-      ? css`
-          overflow: auto;
-        `
-      : css`
-          overflow: hidden;
-        `}
-
-  /* lines에 따른 스타일 설정 */
-  ${({ $lines }) =>
-    $lines !== undefined &&
-    css`
-      display: -webkit-box;
-      -webkit-line-clamp: ${$lines};
-      -webkit-box-orient: vertical;
-      text-overflow: ellipsis;
-    `}
+  overflow: auto;
 `;

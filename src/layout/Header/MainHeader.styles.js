@@ -4,7 +4,7 @@ import { font } from '../../styles/common/fonts.styles';
 
 export const HeaderArea = styled.header`
   width: 100%;
-  border-bottom: 1px solid #ededed;
+  border-bottom: 1px solid ${({ theme }) => theme.line};
   background-color: ${({ theme }) => theme.background};
   position: relative;
   z-index: 3;
@@ -17,7 +17,7 @@ export const HeaderArea = styled.header`
     flex-direction: column;
   }
 
-  ${({ $type }) =>
+  ${({ $type, theme }) =>
     $type === 'doubleLine' &&
     `
     @media (min-width: 769px) {
@@ -28,7 +28,7 @@ export const HeaderArea = styled.header`
       left: 0;
       right: 0;
       height: 1px;
-      background-color: #EDEDED;
+      background-color: ${theme.line};
       transform: translateY(-50%);
     }
   }
@@ -44,11 +44,11 @@ export const LogoHeader = styled.div`
   padding: 0;
 
   @media (max-width: 1248px) and (min-width: 768px) {
-    padding: 0 24px;
+    padding: 0 2.4rem;
   }
 
   @media (max-width: 767px) {
-    padding: 0 15px;
+    padding: 0 1.5rem;
     height: 6.4rem;
   }
 
@@ -89,17 +89,17 @@ export const InfoHeader = styled.div`
       left: 0;
       right: 0;
       height: 1px;
-      background-color: #ededed;
+      background-color: ${({ theme }) => theme.line};
       transform: translateY(-50%);
     }
   }
 
   @media (max-width: 1248px) and (min-width: 768px) {
-    padding: 0 24px;
+    padding: 0 2.4rem;
   }
 
   @media (max-width: 767px) {
-    padding: 0 15px;
+    padding: 0 1.5rem;
   }
 
   > div:first-child {

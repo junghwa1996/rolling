@@ -202,7 +202,7 @@ function MessagesAddPage() {
           }}
         />
 
-        <StyledLabel>내용을 입력해 주세요.</StyledLabel>
+        <StyledLabel>내용을 입력해 주세요</StyledLabel>
         <TextEditor onChange={handleEditorChange} value={values.content} />
 
         <StyledLabel>폰트 선택</StyledLabel>

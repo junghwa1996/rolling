@@ -7,7 +7,7 @@ const OutlinedStyles = css`
   align-items: center;
   gap: 8px;
   width: auto;
-  border-radius: 6px;
+  border-radius: 0.6rem;
   background-color: ${({ theme }) => theme.background};
   border: 1px solid ${({ theme }) => theme.border};
   ${font[16]};
@@ -46,6 +46,9 @@ const OutlinedStyles = css`
 const sizeStyles = {
   s: css`
     padding: 0.6rem 0.6rem;
+    @media (max-width: 768px) {
+      padding: 0.5rem 0.6rem;
+    }
   `,
   m: css`
     padding: 0.7rem 1.6rem;
@@ -69,13 +72,18 @@ export const IconArea = styled.span`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 2rem;
-  min-height: 2rem;
+  width: 2.4rem;
+  height: 2.4rem;
 
   svg {
     width: 100%;
     height: 100%;
     object-fit: contain;
+  }
+
+  @media (max-width: 767px) {
+    width: 2rem;
+    height: 2rem;
   }
 `;
 

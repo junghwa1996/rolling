@@ -9,7 +9,7 @@ HeaderLayout.propTypes = {
   isDarkMode: PropTypes.bool.isRequired,
   toggleTheme: PropTypes.func.isRequired,
 };
-const rMOBILE_HIDDEN_TYPE = /^\/post\/\d+\/message$/;
+const rMOBILE_HIDDEN_TYPE = /^\/post(\/\d+\/message)?$/;
 const rDOUBLE_LINE_TYPE = /^\/post\/\d+(\/edit)?$/;
 
 function HeaderLayout({ children, isDarkMode, toggleTheme }) {
