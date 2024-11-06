@@ -6,10 +6,10 @@ import styled from 'styled-components';
 import { blur } from '../../styles/layout/effect.styles';
 import { boxShadow } from '../../styles/common/mixins.styles';
 import useDeviceType from '../../hooks/useDeviceType';
+import useClickOutside from 'hooks/useClickOutside';
 import ARROW_ICON from '../../assets/icon-arrow_down.svg';
 import styles from './EmojiDropDown.module.css';
 import EmojiBadge from '../../components/Badge/EmojiBadge';
-import useClickOutside from 'hooks/useClickOutside';
 
 const DropDownContainer = styled.div`
   grid-template-columns: ${(props) =>
