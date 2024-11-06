@@ -10,8 +10,7 @@ import { font } from '../../styles/common/fonts.styles';
 //TODO - 변수 자체로 지금 theme을 받고 있어서 그 자체에만 opacity를 조정하기 어려움
 //추후에 더 손 볼 예정
 const EmojiBadgeArea = styled.div`
-  background-color: ${({ theme }) => theme.blackText};
-  opacity: 0.54;
+  background-color: ${({ theme }) => theme.emojiRgba};
 `;
 
 export const Count = styled.p`
