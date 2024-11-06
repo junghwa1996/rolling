@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import { fontFamily } from '../../../styles/common/Common.styles';
 import {
   media,
   responsiveGridColumns,
@@ -14,9 +13,6 @@ export const CardContainer = styled.div`
   border-radius: 1.6rem;
   box-shadow: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.08);
 
-  * {
-    font-family: ${({ $font }) => fontFamily[$font] ?? ''};
-  }
   ${({ type }) => type === 'card' && 'cursor: pointer;'}
   ${({ type }) => type === 'edit' && 'padding-bottom: 2.4rem;'}
   ${({ type }) =>
