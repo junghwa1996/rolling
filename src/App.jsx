@@ -6,7 +6,7 @@ import './styles/common/variables.css';
 import Content from './router/Content';
 import { light, dark } from './styles/themes/theme';
 import GlobalStyles from './styles/common/global.styles';
-import { ToastContainer } from 'react-toastify';
+import { StyledToastContainer } from './components/toast/Toast.Styles';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -19,7 +19,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <ToastContainer />
+      <StyledToastContainer />
       <Content isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
     </ThemeProvider>
   );
