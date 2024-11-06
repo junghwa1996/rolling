@@ -35,7 +35,7 @@ function EmojiPickerComponent({ onEmojiAdd, isLoading }) {
   return (
     <div className={styles.outLinedArea}>
       <Outlined
-        size="s"
+        size="m"
         color="secondary"
         onClick={() => setShowPicker((prev) => !prev)}
         icon={<IconStoke />}
