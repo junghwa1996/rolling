@@ -5,18 +5,20 @@ import {
   responsiveGridColumns,
 } from '../../../styles/common/media.styles';
 import { StyledLine } from '../../Shared/Line/Line.styles';
+import { boxShadow } from '../../../styles/common/mixins.styles';
 
 export const CardContainer = styled.div`
   width: 38.4rem;
   height: auto;
   padding: 2.8rem 2.4rem 2.4rem;
   border-radius: 1.6rem;
-  box-shadow: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.08);
+  ${boxShadow}
 
   ${({ type }) => type === 'card' && 'cursor: pointer;'}
   ${({ type }) => type === 'edit' && 'padding-bottom: 2.4rem;'}
   ${({ type }) =>
-    type === 'modal' && 'outline: none; width: 60rem; height: 47.6rem;'}
+    type === 'modal' &&
+    'outline: none; width: 60rem; height: 47.6rem;  padding: 4rem 4rem 2rem;'}
   background-color: ${({ theme }) => theme.background};
 
   &:hover {
@@ -27,7 +29,6 @@ export const CardContainer = styled.div`
   ${media.ta`
     width: 35.2rem;
     height: 28.4rem;
-
     ${({ type }) => type === 'modal' && 'width: 60rem; height: 47.6rem;'}
   `}
 
@@ -41,7 +42,7 @@ export const CardContainer = styled.div`
         width: auto;
         height: auto;
         overflow: hidden;
-        padding-bottom: 2.4rem;
+        padding: 2rem;
       `}
   `}
 `;

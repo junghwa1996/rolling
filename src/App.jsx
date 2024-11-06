@@ -6,7 +6,7 @@ import './styles/common/variables.css';
 import Content from './router/Content';
 import { light, dark } from './styles/themes/theme';
 import GlobalStyles from './styles/common/global.styles';
-import { StyledToastContainer } from './components/toast/Toast.Styles'; // StyledToastContainer 가져오기
+import { StyledToastContainer } from './components/toast/Toast.Styles';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
