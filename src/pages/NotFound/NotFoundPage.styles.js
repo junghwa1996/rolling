@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { ReactComponent as CloseIcon } from '../../assets/close.svg';
 import { font } from '../../styles/common/fonts.styles';
-import { color } from '../../styles/common/variables.css';
 
 // 전체 컨테이너 스타일
 export const Container = styled.div`

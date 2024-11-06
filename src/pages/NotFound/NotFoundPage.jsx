@@ -1,11 +1,4 @@
-import React, { useState } from 'react';
-import {
-  Container,
-  IconWrapper,
-  Title,
-  Code,
-  Button,
-} from './NotFoundPage.styles';
+import { Container, IconWrapper, Title, Code } from './NotFoundPage.styles';
 import { ReactComponent as CloseIcon } from '../../assets/close.svg';
 import BackButton from '../../components/NotfoundButton/BackButton';
 

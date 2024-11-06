@@ -15,7 +15,6 @@ import DarkModeToggle from '../../components/DarkModeToggle/DarkModeToggle';
 import EmojiDropDown from '../Emoji/EmojiDropDown';
 import { useEmojiManager } from '../Emoji/useEmojiManager';
 
-
 MainHeader.propTypes = {
   type: PropTypes.oneOf(['default', 'mobileHidden', 'doubleLine']),
   isDarkMode: PropTypes.bool.isRequired,
