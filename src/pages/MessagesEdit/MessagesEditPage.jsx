@@ -169,14 +169,9 @@ function MessagesListPage() {
         <StyledInner>
           <CardList type="edit" messageData={allMessages} />
 
-          {/* 센서 div */}
-          <div
-            ref={sensorRef}
-            style={{
-              height: '1px',
-              marginTop: '100px',
-            }}
-          />
+          {messageData?.next && (
+            <div ref={sensorRef} style={{ height: '1px' }}></div>
+          )}
         </StyledInner>
       </StyledMain>
     </>
