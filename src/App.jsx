@@ -19,11 +19,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <button onClick={toggleTheme}>
-        Switch to {isDarkMode ? 'Light' : 'Dark'} Mode
-      </button>
-      <StyledToastContainer />
-      <Content />
+      <ToastContainer />
+      <Content isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
     </ThemeProvider>
   );
 }

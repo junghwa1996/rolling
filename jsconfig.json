@@ -10,5 +10,6 @@
       "@utils/*": ["utils/*"],
       "@styles/*": ["styles/*"]
     }
-  }
+  },
+  "include": ["src"]
 }

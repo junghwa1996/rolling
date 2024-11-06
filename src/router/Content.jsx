@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import HomePage from '../pages/HomePage/HomePage';
 import MessagesAddPage from '../pages/MessagesAdd/MessagesAddPage';
@@ -11,10 +12,15 @@ import HeaderLayout from '../layout/Header/HeaderLayout';
 import UserMessageCard from '../components/CardComponents/Card/CustomCard';
 import Demo from '../pages/HomePage/Demo';
 
-function Content() {
+Content.propTypes = {
+  isDarkMode: PropTypes.bool.isRequired,
+  toggleTheme: PropTypes.func.isRequired,
+};
+
+function Content({ isDarkMode, toggleTheme }) {
   return (
     <Router>
-      <HeaderLayout>
+      <HeaderLayout isDarkMode={isDarkMode} toggleTheme={toggleTheme}>
         <Routes>
           <Route path="/">
             <Route path="test">
