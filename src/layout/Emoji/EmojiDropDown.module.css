@@ -30,7 +30,7 @@
 
 .dropDownContainer {
   position: absolute;
-  top: 110%;
+  top: 120%;
   right: 0;
   display: grid;
   grid-template-rows: repeat(2, 1fr);
@@ -41,7 +41,6 @@
 
   border: 1px solid #b6b6b6;
   border-radius: 8px;
-  background-color: var(--white);
 }
 
 .emojiBadge {
