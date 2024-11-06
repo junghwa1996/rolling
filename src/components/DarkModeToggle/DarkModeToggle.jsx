@@ -13,6 +13,8 @@ export const ModeButton = styled.button`
   ${font[24]};
   transition: 0.3s;
   padding: 0;
+  margin-left: auto;
+  margin-right: 3rem;
 
   &:hover {
     background: ${({ theme }) => theme.darkMode};
