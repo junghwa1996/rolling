@@ -15,14 +15,14 @@ export const ModeButton = styled.button`
   transition: 0.3s;
   padding: 0;
   margin-left: auto;
-  margin-right: ${({ isLocation }) => (isLocation ? '3rem' : '0')};
+  margin-right: ${({ $isLocation }) => ($isLocation ? '3rem' : '0')};
 
   &:hover {
     background: ${({ theme }) => theme.line};
   }
 
   @media screen and (max-width: 767px) {
-    margin-right: ${({ isLocation }) => (isLocation ? '1.5rem' : '0')};
+    margin-right: ${({ $isLocation }) => ($isLocation ? '1.5rem' : '0')};
     &:hover {
       background: none;
     }
@@ -31,14 +31,13 @@ export const ModeButton = styled.button`
 
 function DarkModeToggle({ isDarkMode, toggleTheme }) {
   const location = useLocation();
-  console.log(location.pathname);
   const isLocation =
     location.pathname === '/' ||
     location.pathname === '/list' ||
     location.pathname === '/post';
 
   return (
-    <ModeButton onClick={toggleTheme} isLocation={isLocation}>
+    <ModeButton onClick={toggleTheme} $isLocation={isLocation}>
       {isDarkMode ? '☾' : '☀︎'}
     </ModeButton>
   );
