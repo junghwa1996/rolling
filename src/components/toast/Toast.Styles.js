@@ -1,27 +1,30 @@
 import { ToastContainer } from 'react-toastify';
 import styled from 'styled-components';
-
-// import { color } from '../../styles/colorStyles'; // 색상 스타일 추가
 import { font } from '../../styles/common/fonts.styles';
 
 // Toast 스타일 컴포넌트
 export const StyledToastContainer = styled(ToastContainer)`
   &&& {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: transparent;
+    margin: 0;
     padding: 0;
-    text-align: left;
-
     .Toastify__toast {
-      background-color: var(--black);
+      width: 32.75rem;
+      max-width: 32.75rem; // 524px로 고정
+      height: 4rem;
+      padding: 1.1875rem 1.875rem;
       border-radius: 0.5rem;
-      box-shadow: var(--shadow-low); // 그림자 스타일
-      padding: 1rem; // 패딩 추가
+      background: rgba(0, 0, 0, 0.8);
+      opacity: 1;
     }
 
-    .Toastify__toast-theme {
-      background: var(--black); // 기본 테마 배경색 변경
-      color: var(--white); // 텍스트 색상
+    .Toastify__toast-body {
+      padding: 0;
+      text-align: left;
     }
-
     .Toastify__close-button {
       display: none; // 기본 닫기 버튼 숨기기
     }
@@ -31,35 +34,20 @@ export const StyledToastContainer = styled(ToastContainer)`
 export const ToastWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
   height: 100%;
   padding: 0;
   background: transparent;
   overflow: hidden;
+  justify-content: center;
 `;
 
 export const ToastMessage = styled.div`
-  font-family: 'Pretendard', sans-serif;
-  ${font[16]};
-  color: var(--white);
+  ${font['16']};
+  color: ${({ theme }) => theme.whiteText};
   overflow-wrap: break-word;
   white-space: normal;
   flex-grow: 1;
   margin: 0 1rem;
   border-radius: 0.5rem;
-`;
-
-export const IconToastImage = styled.img`
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-right: 0.625rem;
-`;
-
-export const CustomCloseButton = styled.img`
-  cursor: pointer;
-  width: 1.5rem;
-  height: 1.5rem;
-  flex-shrink: 0;
-  // 추가적인 스타일 필요 시 여기에 작성
 `;

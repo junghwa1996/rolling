@@ -1,8 +1,7 @@
 import React from 'react';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
-import { StyledToastContainer, ToastWrapper } from './Toast.Styles';
+import 'react-toastify/dist/ReactToastify.css';
 import copyUrl from './CopyUrl';
 import ToastMessages from './ToastMessages';
 
@@ -10,30 +9,16 @@ import ToastMessages from './ToastMessages';
 export const showToast = (content) => {
   copyUrl(content)
     .then(() => {
-      toast(
-        ({ closeToast }) => (
-          <ToastWrapper>
-            <ToastMessages closeToast={closeToast} />
-          </ToastWrapper>
-        ),
-
-        {
-          position: 'bottom-center',
-          autoClose: 5000,
-          closeOnClick: false,
-          draggable: true,
-          hideProgressBar: true,
-        },
-      );
+      toast(({ closeToast }) => <ToastMessages closeToast={closeToast} />, {
+        closeButton: false,
+        position: 'bottom-center',
+        autoClose: 5000,
+        closeOnClick: false,
+        draggable: true,
+        hideProgressBar: true,
+      });
     })
     .catch((error) => {
       console.error('Toast error:', error);
     });
 };
-
-// Toast 컴포넌트에서 handleShowToast 제거
-function Toast() {
-  return <StyledToastContainer />; // StyledToastContainer를 반환
-}
-
-export default Toast;

@@ -7,13 +7,12 @@ import MainHeader from './MainHeader';
 HeaderLayout.propTypes = {
   children: PropTypes.node.isRequired,
 };
+const rMOBILE_HIDDEN_TYPE = /^\/post\/\d+\/message$/;
+const rDOUBLE_LINE_TYPE = /^\/post\/\d+(\/edit)?$/;
 
 function HeaderLayout({ children }) {
   const location = useLocation();
   const [headerType, setHeaderType] = useState('default');
-
-  const rMOBILE_HIDDEN_TYPE = /^\/post\/\d+\/message$/;
-  const rDOUBLE_LINE_TYPE = /^\/post\/\d+(\/edit)?$/;
 
   useEffect(() => {
     if (location.pathname === '/' || location.pathname === '/list') {
