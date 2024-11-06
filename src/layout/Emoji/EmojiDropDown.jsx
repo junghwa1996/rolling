@@ -4,28 +4,21 @@ import styled from 'styled-components';
 
 import { shadow, blur } from '../../styles/layout/effect.styles';
 import useDeviceType from '../../hooks/useDeviceType';
-import ArrowDown from '../../assets/icon-arrow_down.svg';
-import ArrowTop from '../../assets/icon-arrow_top.svg';
+import ARROW_ICON from '../../assets/icon-arrow_down.svg';
 import styles from './EmojiDropDown.module.css';
 import EmojiBadge from '../../components/Badge/EmojiBadge';
 
 const DropDownContainer = styled.div`
-  position: absolute;
-  top: 110%;
-  right: 0;
-  display: grid;
   grid-template-columns: ${(props) =>
     props.isPC ? 'repeat(4, 1fr)' : 'repeat(3, 1fr)'};
-  grid-template-rows: repeat(2, 1fr);
-  z-index: 10;
-  row-gap: 1rem;
-  column-gap: 0.8rem;
   padding: ${(props) => (props.isPC ? '2.4rem' : '1.5rem')};
-  border: 1px solid #b6b6b6;
-  border-radius: 8px;
-  background-color: var(--white);
   ${shadow['mid']};
   ${blur};
+`;
+
+const ArrowImg = styled.img`
+  transition: transform 0.3s ease;
+  transform: ${({ isOpen }) => (isOpen ? 'rotate(180deg)' : 'rotate(360deg)')};
 `;
 
 EmojiDropDown.propTypes = {
@@ -88,16 +81,17 @@ function EmojiDropDown({ emojiList = [], onEmojiDelete }) {
         </div>
         <div className={styles.imgWrapper} onClick={handleButton}>
           {emojiList.length >= 4 && (
-            <img
+            <ArrowImg
               className={styles.img}
-              src={isOpen ? ArrowTop : ArrowDown}
+              src={ARROW_ICON}
               alt="arrow"
+              isOpen={isOpen}
             />
           )}
         </div>
       </section>
       {isOpen && (
-        <DropDownContainer isPC={isPC}>
+        <DropDownContainer className={styles.dropDownContainer} isPC={isPC}>
           {filteredEmojis
             .filter((emoji) => emoji.count > 0) // 카운트가 0보다 큰 이모지만 표시
             .slice(0, isPC ? 8 : 6)
