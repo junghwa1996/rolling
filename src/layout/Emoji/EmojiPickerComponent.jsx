@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Picker from 'emoji-picker-react';
 import PropTypes from 'prop-types';
 
