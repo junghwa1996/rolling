@@ -43,17 +43,17 @@ const StyledTotalMessage = styled.div`
 const StyledMessageCount = styled.p`
   margin: ${({ direction }) => directionStyles[direction].margin};
   ${font[20]};
-  color: ${({ $isLocation, theme }) => ($isLocation ? '#181818' : theme.text)};
+  color: ${({ $isLocation, theme }) => ($isLocation ? '#3a3a3a' : theme.text)};
   @media (max-width: 767px) {
     ${font['14']};
   }
 
-  span {
+  strong {
     ${font['20b']};
     color: ${({ $isLocation, theme }) =>
-      $isLocation ? '#181818' : theme.text};
+      $isLocation ? '#3a3a3a' : theme.text};
     @media (max-width: 767px) {
-      ${font['14']};
+      ${font['14b']};
     }
   }
 `;

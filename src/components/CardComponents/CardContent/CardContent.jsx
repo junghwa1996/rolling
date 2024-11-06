@@ -19,6 +19,7 @@ function CardContent({ type = 'card', messageData = {}, onEvent = {} }) {
         },
         view: {
           pc: {
+            width: '100%',
             height: '24rem',
           },
           mo: {

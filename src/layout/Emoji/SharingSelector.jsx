@@ -30,7 +30,7 @@ function SharingSelector() {
   };
 
   const handleUrlShareClick = () => {
-    const urlToShare = 'https://example.com';
+    const urlToShare = window.location.href;
 
     CopyUrl(urlToShare)
       .then(() => {
