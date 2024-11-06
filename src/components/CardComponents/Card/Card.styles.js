@@ -5,13 +5,14 @@ import {
   responsiveGridColumns,
 } from '../../../styles/common/media.styles';
 import { StyledLine } from '../../Shared/Line/Line.styles';
+import { boxShadow } from '../../../styles/common/mixins.styles';
 
 export const CardContainer = styled.div`
   width: 38.4rem;
   height: auto;
   padding: 2.8rem 2.4rem 2.4rem;
   border-radius: 1.6rem;
-  box-shadow: 0 0.2rem 1.2rem 0 rgba(0, 0, 0, 0.08);
+  ${boxShadow}
 
   ${({ type }) => type === 'card' && 'cursor: pointer;'}
   ${({ type }) => type === 'edit' && 'padding-bottom: 2.4rem;'}
