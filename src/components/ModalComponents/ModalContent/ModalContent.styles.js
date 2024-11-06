@@ -1,25 +1,15 @@
-export const styledModal = {
-  overlay: {
-    width: '100%',
-    height: '100vh',
-    zIndex: '10',
-    position: 'fixed',
-    top: '0',
-    left: '0',
+import styled from 'styled-components';
 
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-  },
-  content: {
-    zIndex: '150',
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    boxShadow: '2px 2px 2px rgba(0, 0, 0, 0.25)',
-    backgroundColor: 'white',
-    padding: '0',
-    border: 'none',
-    justifyContent: 'center',
-    overflow: 'auto',
-  },
-};
+import { Text } from '../../../styles/common/Common.styles';
+
+export const ModalContentLayout = styled.div`
+  text-align: center;
+  max-height: 50rem;
+  padding: 1.6rem 4rem 0;
+`;
+
+export const ModalContentText = styled(Text)`
+  width: 100%;
+  max-height: 40rem;
+  overflow: hidden;
+`;

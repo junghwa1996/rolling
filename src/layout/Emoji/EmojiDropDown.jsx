@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+
 import { shadow, blur } from '../../styles/layout/effect.styles';
 import useDeviceType from '../../hooks/useDeviceType';
 import ArrowDown from '../../assets/icon-arrow_down.svg';
@@ -10,7 +11,7 @@ import EmojiBadge from '../../components/Badge/EmojiBadge';
 
 const DropDownContainer = styled.div`
   position: absolute;
-  top: 100%;
+  top: 110%;
   right: 0;
   display: grid;
   grid-template-columns: ${(props) =>
@@ -21,7 +22,7 @@ const DropDownContainer = styled.div`
   column-gap: 0.8rem;
   padding: ${(props) => (props.isPC ? '2.4rem' : '1.5rem')};
   border: 1px solid #b6b6b6;
-  border-radius: 24px;
+  border-radius: 8px;
   background-color: var(--white);
   ${shadow['mid']};
   ${blur};
@@ -86,11 +87,13 @@ function EmojiDropDown({ emojiList = [], onEmojiDelete }) {
               ))}
         </div>
         <div className={styles.imgWrapper} onClick={handleButton}>
-          <img
-            className={styles.img}
-            src={isOpen ? ArrowTop : ArrowDown}
-            alt="arrow"
-          />
+          {emojiList.length >= 4 && (
+            <img
+              className={styles.img}
+              src={isOpen ? ArrowTop : ArrowDown}
+              alt="arrow"
+            />
+          )}
         </div>
       </section>
       {isOpen && (
