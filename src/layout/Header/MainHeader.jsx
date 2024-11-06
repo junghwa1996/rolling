@@ -43,7 +43,7 @@ function MainHeader({ type = 'default', isDarkMode, toggleTheme }) {
           const response = await getRollingItem(id);
           setRollingData(response);
         } catch (error) {
-          console.error(error);
+          console.error(`MainHeader response :  ${error}`);
         } finally {
           setLoading(false); // 로딩 상태 종료
         }
@@ -59,15 +59,18 @@ function MainHeader({ type = 'default', isDarkMode, toggleTheme }) {
       const response = await getRollingEmoji(id);
       setEmojisList(response?.results || []);
     } catch (err) {
-      console.error('이모지 데이터를 가져오는 중 오류 발생:', err);
+      console.error('이모지 데이터를 가져오는 중 오류 발생(MainHeader):', err);
     } finally {
       setLoading(false); // 로딩 상태 종료
     }
   }, [id]);
 
   useEffect(() => {
-    getEmojiData();
-  }, [getEmojiData]);
+    // 해당 페이지 경로에서는 이모지 데이터를 로드하지않음
+    if (location.pathname !== '/' && location.pathname !== '/list') {
+      getEmojiData();
+    }
+  }, [location.pathname, getEmojiData]);
 
   // 이모지 추가 이벤트 핸들러
   const handleEmojiAdd = async (emojiObject) => {

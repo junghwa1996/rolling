@@ -1,16 +1,20 @@
+// src/pages/RecipientsList/RecipientsList.jsx
+import { useNavigate } from 'react-router-dom'; // useNavigate 추가
+import React, { useEffect, useRef, useState, useCallback } from 'react';
+
 import PropTypes from 'prop-types';
-import React, { useEffect, useRef, useState } from 'react';
 import { Controller, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { getRollingList } from '../../service/api';
+import useDeviceType from '../../hooks/useDeviceType';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import RecipientCard from './RecipientsCard';
 import { SwiperContain, ArrowPosition } from './RecipientsList.styles';
 import ArrowButton from '../../components/ArrowButton/ArrowButton';
-import useDeviceType from '../../hooks/useDeviceType';
-import { getRollingList } from '../../service/api';
-import SkeletonList from '../../components/CardComponents/Skeleton/SkeletonList';
+import Loading from '../../components/Loading/Loading'; // 로딩 컴포넌트
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'; // 에러 메시지 컴포넌트
 
 RecipientsList.propTypes = {
   type: PropTypes.oneOf(['favorite', 'recent']),
@@ -19,11 +23,12 @@ RecipientsList.propTypes = {
 function RecipientsList({ type = 'favorite' }) {
   // GET response hooks
   const [rollingList, setRollingList] = useState([]);
-
   const [isPrev, setIsPrev] = useState(true);
   const [isNext, setIsNext] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
   // 다중 생성 스와이퍼(서로 참조하지않음)
   const [controlledSwiper, setControlledSwiper] = useState(null);
@@ -34,31 +39,42 @@ function RecipientsList({ type = 'favorite' }) {
   // 디바이스 감지 커스텀 훅
   const deviceType = useDeviceType();
 
+  // navigate 함수
+  const navigate = useNavigate();
+
   // 롤링 리스트 GET 함수
-  useEffect(() => {
-    const handleRollingListLode = async () => {
-      try {
-        setIsLoading(true);
-        const res = await getRollingList();
-        const { results } = res;
-        // sort 조건문
+  const handleRollingListLoad = useCallback(async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await getRollingList();
+      const { results } = res;
+      if (results) {
+        let sortedData = results;
         if (type === 'favorite') {
-          const sortedData = results.sort(
+          // messageCount 기준으로 내림차순 정렬
+          sortedData = [...results].sort(
             (a, b) => b.messageCount - a.messageCount,
           );
-          setRollingList(sortedData);
-        } else {
-          setRollingList(results);
+        } else if (type === 'recent') {
+          // createdAt 기준으로 내림차순 정렬 (최신순)
+          sortedData = [...results].sort(
+            (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
+          );
         }
-      } catch (error) {
-        console.error('롤링 리스트를 불러오는데 오류가 발생 했습니다.:', error);
-      } finally {
-        setIsLoading(false);
+        setRollingList(sortedData);
       }
-    };
-
-    handleRollingListLode();
+    } catch (error) {
+      console.error('롤링 리스트를 불러오는데 오류가 발생 했습니다.:', error);
+      setError('데이터를 불러오는 데 실패했습니다.');
+    } finally {
+      setLoading(false);
+    }
   }, [type]);
+
+  useEffect(() => {
+    handleRollingListLoad();
+  }, [handleRollingListLoad]);
 
   // 디바이스가 변경될 때 슬라이드 첫번째로 이동
   useEffect(() => {
@@ -82,6 +98,19 @@ function RecipientsList({ type = 'favorite' }) {
     setIsPrev(swiper.isBeginning);
     setIsNext(swiper.isEnd);
   };
+
+  // 카드 클릭 핸들러
+  const handleCardClick = useCallback(
+    (id) => {
+      navigate(`/post/${id}`);
+    },
+    [navigate],
+  );
+
+  if (loading) return <Loading />;
+  if (error) return <ErrorMessage message={error} />;
+  if (!rollingList || rollingList.length === 0)
+    return <p>표시할 데이터가 없습니다.</p>;
 
   return (
     <SwiperContain>
@@ -127,12 +156,13 @@ function RecipientsList({ type = 'favorite' }) {
                 direction: 'column',
               }}
               emojiList={item.topReactions}
+              onClick={() => handleCardClick(item.id)} // 카드 클릭 시 핸들러 호출
             />
           </SwiperSlide>
         ))}
       </Swiper>
       {/* 다음 목록이 있으면 렌더 */}
-      {isPC && !isNext && !isLoading && (
+      {isPC && !isNext && (
         <ArrowPosition $position="right">
           <ArrowButton
             className="swiper-button-next"
@@ -141,7 +171,7 @@ function RecipientsList({ type = 'favorite' }) {
         </ArrowPosition>
       )}
 
-      {isLoading && <SkeletonList />}
+      {/* {isLoading && <SkeletonList />} */}
     </SwiperContain>
   );
 }
