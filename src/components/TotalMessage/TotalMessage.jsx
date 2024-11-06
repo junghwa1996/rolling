@@ -43,7 +43,7 @@ function TotalMessage({
             )}
           </AvatarGroup>
 
-          <StyledMessageCount direction={direction} isLocation={isLocation}>
+          <StyledMessageCount direction={direction} $isLocation={isLocation}>
             <span>{messageCount}</span>명이 작성했어요!
           </StyledMessageCount>
         </StyledTotalMessage>
