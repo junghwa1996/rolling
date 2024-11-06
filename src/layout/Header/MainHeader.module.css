@@ -21,6 +21,13 @@
   margin-left: 1.2rem;
 }
 
+@media (max-width: 767px) {
+  .sharingSelectorContainer {
+    padding-left: 1.5rem;
+    margin-left: 1.5rem;
+  }
+}
+
 .sharingSelectorContainer::after {
   content: '';
   position: absolute;

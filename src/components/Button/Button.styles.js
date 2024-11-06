@@ -33,7 +33,7 @@ const colors = {
   primary: css`
     border: none;
     background-color: ${color.purple[600]};
-    color: ${({ theme }) => theme.whiteText};
+    color: #ffffff;
 
     &:hover {
       background-color: ${color.purple[700]};
