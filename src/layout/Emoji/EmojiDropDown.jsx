@@ -56,9 +56,7 @@ function EmojiDropDown({ emojiList = [], onEmojiDelete }) {
   }, [emojiList]);
 
   // 드롭다운 토글
-  const handleToggle = () => {
-    setIsOpen((prev) => !prev); // 드롭다운 열고 닫기
-  };
+  const handleToggle = () => setIsOpen((prev) => !prev); // 드롭다운 열고 닫기
 
   const handleEmojiDelete = (emoji) => {
     // 이모지 카운트 감소 및 필터링 (카운트가 0 이상일 때까지만 감소)
