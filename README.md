@@ -80,12 +80,13 @@
 # 테스트 서버
 
 - 배포 PR 작성 시 팀장 양정화 리뷰어로 필수 지정
-- https://team2-rolling-test.netlify.app/
+- [테스트 서버](https://team2-rolling-test.netlify.app/)
+- [![Netlify Status](https://api.netlify.com/api/v1/badges/816c8e1c-ee10-443a-bbec-a4f2208bb943/deploy-status)](https://app.netlify.com/sites/team2-rolling-test/deploys)
 
 # 배포 서버
 
 - 배포 PR 작성 시 팀장 양정화 리뷰어로 필수 지정 **(개인 배포 절때 금지)**
-- https://team2-rolling-live.netlify.app/
+- [라이브 서버](https://team2-rolling-live.netlify.app/)
 
 # 프로젝트 화면 구성
 
