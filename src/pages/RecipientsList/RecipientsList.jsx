@@ -28,8 +28,6 @@ function RecipientsList({ type = 'favorite' }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // const [isLoading, setIsLoading] = useState(false);
-
   // 다중 생성 스와이퍼(서로 참조하지않음)
   const [controlledSwiper, setControlledSwiper] = useState(null);
 
