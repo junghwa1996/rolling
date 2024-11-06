@@ -43,6 +43,7 @@ export const DropdownItem = styled.li`
 
   &:hover {
     background-color: ${({ theme }) => theme.surface};
+    width: ${({ isIcon }) => isIcon && '13.6rem'};
   }
 `;
 
