@@ -4,24 +4,32 @@ import { font } from '../../styles/common/fonts.styles';
 import { color } from '../../styles/common/variables';
 
 export const TabToggleArea = styled.div`
-  width: ${({ $tabLength }) => `${12 * $tabLength}rem`};
-  &.tabToggleArea {
-    composes: tabToggleArea;
+  width: ${({ $tabLength, $width }) => `${$width * $tabLength}rem`};
+  background-color: ${({ theme }) => theme.buttongray};
+
+  @media (max-width: 767px) {
+    width: ${({ $tabLength, $mobileWidth }) =>
+      `${$mobileWidth * $tabLength}rem`};
   }
 `;
-
 export const TabButton = styled.button`
-  ${({ $isSelected }) => ($isSelected ? font['16b'] : font[16])};
+  width: ${({ $width }) => `${$width}rem`};
+  ${({ $isSelected }) => ($isSelected ? font['16b'] : font['16'])}
   color: ${({ $isSelected, theme }) =>
     $isSelected ? color.purple[600] : theme.text};
-  &.tabButton {
-    composes: tabButton;
+
+  @media (max-width: 767px) {
+    width: ${({ $mobileWidth }) => `${$mobileWidth}rem`};
   }
 `;
 
 export const SelectedTab = styled.div`
-  left: ${({ $selectedIndex }) => `${12 * $selectedIndex}rem`};
-  &.selectedTab {
-    composes: selectedTab;
+  width: ${({ $width }) => `${$width}rem`};
+  left: ${({ $selectedIndex, $width }) => `${$width * $selectedIndex}rem`};
+
+  @media (max-width: 767px) {
+    width: ${({ $mobileWidth }) => `${$mobileWidth}rem`};
+    left: ${({ $selectedIndex, $mobileWidth }) =>
+      `${$mobileWidth * $selectedIndex}rem`};
   }
 `;

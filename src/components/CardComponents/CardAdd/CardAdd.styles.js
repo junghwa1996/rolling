@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 import { cardBaseStyle } from '../../../styles/common/Common.styles';
 
-export const CardContainer = styled(Link)`
+export const CardContainer = styled.a`
   ${cardBaseStyle}
   display: flex;
   align-items: center;

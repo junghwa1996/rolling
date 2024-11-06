@@ -6,7 +6,7 @@ import './styles/common/variables.css';
 import Content from './router/Content';
 import { light, dark } from './styles/themes/theme';
 import GlobalStyles from './styles/common/global.styles';
-import { StyledToastContainer } from './components/toast/Toast.Styles'; // StyledToastContainer 가져오기
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -19,11 +19,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <button onClick={toggleTheme}>
-        Switch to {isDarkMode ? 'Light' : 'Dark'} Mode
-      </button>
-      <StyledToastContainer />
-      <Content />
+      <ToastContainer />
+      <Content isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
     </ThemeProvider>
   );
 }

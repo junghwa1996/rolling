@@ -34,7 +34,7 @@ function Homepage() {
   const isPC = getDevice === 'pc';
 
   return (
-    <>
+    <div className={styles.container}>
       <div className={styles.featSection}>
         {featContents.map((content, index) => (
           <FeatContainer
@@ -59,7 +59,7 @@ function Homepage() {
           </Button>
         </section>
       </div>
-    </>
+    </div>
   );
 }
 

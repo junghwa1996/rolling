@@ -43,7 +43,6 @@ import {
   DropdownList,
   DropdownItem,
   DropdownErrMessage,
-  span,
 } from './Dropdown.styles';
 import styles from './Dropdown.module.css';
 import useDeviceType from '../../hooks/useDeviceType';
