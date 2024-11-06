@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 import { font } from '../../styles/common/fonts.styles';
+import { useLocation } from 'react-router-dom';
 
 export const ModeButton = styled.button`
   border: none;
@@ -14,13 +15,14 @@ export const ModeButton = styled.button`
   transition: 0.3s;
   padding: 0;
   margin-left: auto;
-  margin-right: 3rem;
+  margin-right: ${({ isLocation }) => (isLocation ? '3rem' : '0')};
 
   &:hover {
     background: ${({ theme }) => theme.line};
   }
 
   @media screen and (max-width: 767px) {
+    margin-right: ${({ isLocation }) => (isLocation ? '1.5rem' : '0')};
     &:hover {
       background: none;
     }
@@ -28,8 +30,17 @@ export const ModeButton = styled.button`
 `;
 
 function DarkModeToggle({ isDarkMode, toggleTheme }) {
+  const location = useLocation();
+  console.log(location.pathname);
+  const isLocation =
+    location.pathname === '/' ||
+    location.pathname === '/list' ||
+    location.pathname === '/post';
+
   return (
-    <ModeButton onClick={toggleTheme}>{isDarkMode ? '☾' : '☀︎'}</ModeButton>
+    <ModeButton onClick={toggleTheme} isLocation={isLocation}>
+      {isDarkMode ? '☾' : '☀︎'}
+    </ModeButton>
   );
 }
 
