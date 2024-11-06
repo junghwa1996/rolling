@@ -9,13 +9,12 @@ HeaderLayout.propTypes = {
   isDarkMode: PropTypes.bool.isRequired,
   toggleTheme: PropTypes.func.isRequired,
 };
+const rMOBILE_HIDDEN_TYPE = /^\/post\/\d+\/message$/;
+const rDOUBLE_LINE_TYPE = /^\/post\/\d+(\/edit)?$/;
 
 function HeaderLayout({ children, isDarkMode, toggleTheme }) {
   const location = useLocation();
   const [headerType, setHeaderType] = useState('default');
-
-  const rMOBILE_HIDDEN_TYPE = /^\/post\/\d+\/message$/;
-  const rDOUBLE_LINE_TYPE = /^\/post\/\d+(\/edit)?$/;
 
   useEffect(() => {
     if (location.pathname === '/' || location.pathname === '/list') {

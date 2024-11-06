@@ -1,5 +1,5 @@
 // 모달 스타일 정의
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import Line from '../../Shared/Line/Line';
 import UserContentCard from '../../CardComponents/UserContentCard/UserContentCard';
 
