@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { blur } from '../../styles/layout/effect.styles';
+import { boxShadow } from '../../styles/common/mixins.styles';
 import useDeviceType from '../../hooks/useDeviceType';
 import ARROW_ICON from '../../assets/icon-arrow_down.svg';
 import styles from './EmojiDropDown.module.css';
@@ -14,6 +15,7 @@ const DropDownContainer = styled.div`
   grid-template-columns: ${(props) =>
     props.$isMobile ? 'repeat(4, 1fr)' : 'repeat(3, 1fr)'};
   padding: ${(props) => (props.$isMobile ? '1.5rem' : '2.4rem')};
+  ${boxShadow};
   ${blur};
 `;
 
