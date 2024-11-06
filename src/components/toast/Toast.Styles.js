@@ -17,7 +17,7 @@ export const StyledToastContainer = styled(ToastContainer)`
       height: 4rem;
       padding: 1.1875rem 1.875rem;
       border-radius: 0.5rem;
-      background: rgba(0, 0, 0, 0.8);
+      background: ${({ theme }) => theme.text};
       opacity: 1;
     }
 
