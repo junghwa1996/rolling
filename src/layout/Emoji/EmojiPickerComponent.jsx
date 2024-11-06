@@ -6,6 +6,7 @@ import { ReactComponent as IconStoke } from '../../assets/icon-stoke.svg';
 import Outlined from '../../components/Outlined/Outlined';
 import styles from './EmojiPickerComponent.module.css';
 import useDeviceType from '../../hooks/useDeviceType';
+import useClickOutside from '../../hooks/useClickOutside'; // 외부 클릭 감지 훅 추가
 
 EmojiPickerComponent.propTypes = {
   onEmojiAdd: PropTypes.func.isRequired,
@@ -19,30 +20,11 @@ function EmojiPickerComponent({ onEmojiAdd, isLoading }) {
   const isDevice = useDeviceType();
   const isMo = isDevice === 'mobile';
 
+  useClickOutside(pickerRef, () => setShowPicker(false));
   const togglePicker = () => setShowPicker((prev) => !prev);
 
-  // 외부 클릭 시 Picker를 닫는 함수
-  // 외부 클릭 시 Picker를 닫는 함수
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        pickerRef.current &&
-        !pickerRef.current.contains(event.target) &&
-        buttonRef.current &&
-        !buttonRef.current.contains(event.target)
-      ) {
-        setShowPicker(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside); // 이벤트 리스너 항상 추가
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside); // 컴포넌트 언마운트 시 리스너 제거
-    };
-  }, []); // 빈 의존성 배열로 설정하여 한 번만 등록
-
   return (
-    <div className={styles.outLinedArea}>
+    <div className={styles.outLinedArea} ref={pickerRef}>
       <Outlined
         ref={buttonRef}
         size="m"
@@ -54,7 +36,7 @@ function EmojiPickerComponent({ onEmojiAdd, isLoading }) {
       </Outlined>
 
       {showPicker && (
-        <div className={styles.pickerContainer} ref={pickerRef}>
+        <div className={styles.pickerContainer}>
           <Picker onEmojiClick={onEmojiAdd} width="30.6rem" height="39.2rem" />
         </div>
       )}
