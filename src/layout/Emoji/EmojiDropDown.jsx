@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
+import { ReactComponent as ArrowIcon } from '../../assets/icon-arrow_down.svg'; // SVG 파일을 React 컴포넌트로 불러오기
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -20,10 +21,13 @@ const DropDownContainer = styled.div`
   ${blur};
 `;
 
-const ArrowImg = styled.img`
+const ArrowImg = styled(ArrowIcon)`
   transition: transform 0.3s ease;
   transform: ${({ $isOpen }) =>
     $isOpen ? 'rotate(180deg)' : 'rotate(360deg)'};
+  path {
+    stroke: ${({ theme }) => theme.blackText}; //stroke 색상 적용
+  }
 `;
 
 EmojiDropDown.propTypes = {
