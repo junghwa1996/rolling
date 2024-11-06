@@ -13,7 +13,6 @@ import 'swiper/css/navigation';
 import RecipientCard from './RecipientsCard';
 import { SwiperContain, ArrowPosition } from './RecipientsList.styles';
 import ArrowButton from '../../components/ArrowButton/ArrowButton';
-import Loading from '../../components/Loading/Loading'; // 로딩 컴포넌트
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'; // 에러 메시지 컴포넌트
 import SkeletonList from '../../components/CardComponents/Skeleton/SkeletonList';
 
@@ -28,7 +27,6 @@ function RecipientsList({ type = 'favorite' }) {
   const [isNext, setIsNext] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
 
   // 다중 생성 스와이퍼(서로 참조하지않음)
   const [controlledSwiper, setControlledSwiper] = useState(null);
@@ -47,7 +45,6 @@ function RecipientsList({ type = 'favorite' }) {
     setLoading(true);
     setError(null);
     try {
-      setIsLoading(true);
       const res = await getRollingList();
       const { results } = res;
       if (results) {
@@ -64,7 +61,6 @@ function RecipientsList({ type = 'favorite' }) {
           );
         }
         setRollingList(sortedData);
-        setIsLoading(false);
       }
     } catch (error) {
       console.error('롤링 리스트를 불러오는데 오류가 발생 했습니다.:', error);
