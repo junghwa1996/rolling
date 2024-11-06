@@ -10,12 +10,12 @@
  *  - error: 에러 정보를 담고 있는 상태입니다. 없을 경우 null.
  */
 import { useEffect, useState } from 'react';
-
+// eslint-disable-next-line
 const useFetchData = (apiFunction, dependencies = [], processData) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  // eslint-disable-next-line
   const fetchData = async (...args) => {
     setLoading(true);
     setError(null);
@@ -31,7 +31,7 @@ const useFetchData = (apiFunction, dependencies = [], processData) => {
   };
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line
     fetchData();
   }, dependencies);
 
