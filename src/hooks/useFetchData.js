@@ -31,6 +31,7 @@ const useFetchData = (apiFunction, dependencies = [], processData) => {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     fetchData();
   }, dependencies);
 
