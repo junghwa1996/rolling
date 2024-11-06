@@ -121,7 +121,6 @@ function MainHeader({ type = 'default', isDarkMode, toggleTheme }) {
               <DarkModeToggle
                 isDarkMode={isDarkMode}
                 toggleTheme={toggleTheme}
-                mobileWidth={6}
               />
             )}
           </div>
