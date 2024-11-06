@@ -33,7 +33,7 @@
  */
 
 import PropTypes from 'prop-types';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import ARROW_ICON from '../../assets/icon-arrow_down.svg';
 
 import {
