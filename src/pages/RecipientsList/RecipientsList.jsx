@@ -1,5 +1,4 @@
-// src/pages/RecipientsList/RecipientsList.jsx
-import { useNavigate } from 'react-router-dom'; // useNavigate 추가
+import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 
 import PropTypes from 'prop-types';
@@ -68,7 +67,7 @@ function RecipientsList({ type = 'favorite' }) {
     } finally {
       setLoading(false);
     }
-  }, [location]);
+  }, [type]);
 
   useEffect(() => {
     handleRollingListLoad();

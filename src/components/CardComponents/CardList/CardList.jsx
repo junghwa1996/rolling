@@ -120,7 +120,7 @@ function CardList({ type, messageData = [], onEvent, children }) {
             />
           ))
         ) : (
-          <Message $messageType="secondary">표시할 데이터가 없습니다.</Message>
+          <Message $messageType="secondary" />
         )}
       </ItemArea>
     </CardListContainer>
