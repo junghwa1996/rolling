@@ -15,6 +15,7 @@ const DropDownContainer = styled.div`
   grid-template-columns: ${(props) =>
     props.$isMobile ? 'repeat(4, 1fr)' : 'repeat(3, 1fr)'};
   padding: ${(props) => (props.$isMobile ? '1.5rem' : '2.4rem')};
+  background-color: ${({ theme }) => theme.background};
   ${boxShadow};
   ${blur};
 `;
