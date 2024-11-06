@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Picker from 'emoji-picker-react';
 import PropTypes from 'prop-types';
 
-import { ReactComponent as IconStoke } from '../../assets/icon-stoke.svg';
+import {ReactComponent as IconStoke} from '../../assets/icon-stoke.svg'
 import Outlined from '../../components/Outlined/Outlined';
 import styles from './EmojiPickerComponent.module.css';
 import useDeviceType from '../../hooks/useDeviceType';
