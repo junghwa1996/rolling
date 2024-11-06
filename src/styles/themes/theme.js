@@ -11,6 +11,7 @@ export const light = {
   border: 'var(--gray-300)', // 경계선 색상 (#ccc)
   line: 'var(--gray-200)', // 구분선 또는 미세한 경계 색상 (#eee)
   buttongray: 'var(--gray-100)',
+  darkMode: 'var(--gray-200)', // 다크모드 hover background
 };
 
 export const dark = {
@@ -26,4 +27,5 @@ export const dark = {
   border: 'var(--gray-600)', // 경계선 색상
   line: 'var(--gray-700)', // 구분선 또는 미세한 경계 색상
   buttongray: 'var(--gray-500)',
+  darkMode: 'var(--gray-700)', // 다크모드 hover background
 };
