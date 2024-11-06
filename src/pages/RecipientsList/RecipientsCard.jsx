@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
-import { Link, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import {
   Card,
@@ -9,20 +8,6 @@ import {
   StyledTotalMessage,
 } from './RecipientsCard.styles';
 import EmojiBadge from '../../components/Badge/EmojiBadge';
-import { getRollingEmoji } from '../../service/api';
-
-RecipientCard.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  bgColor: PropTypes.oneOf(['blue', 'beige', 'purple', 'green']).isRequired,
-  bgImage: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null])]),
-  totalMessage: PropTypes.shape({
-    recentMessages: PropTypes.array,
-    messageCount: PropTypes.number,
-    direction: PropTypes.oneOf(['row', 'column']),
-  }),
-  emojiList: PropTypes.array,
-};
 
 function RecipientCard({
   id = null,
@@ -46,16 +31,30 @@ function RecipientCard({
         <EmojiArea>
           <ul>
             {emojiList.length > 0 &&
-              emojiList.map((item) => (
-                <li key={item.id}>
-                  <EmojiBadge emoji={item.emoji} count={item.count} />
-                </li>
-              ))}
+              emojiList.map(
+                (item) =>
+                  item.count > 0 && ( // count가 0보다 큰 경우에만 렌더링
+                    <li key={item.id}>
+                      <EmojiBadge emoji={item.emoji} count={item.count} />
+                    </li>
+                  ),
+              )}
           </ul>
         </EmojiArea>
       </Card>
     </Link>
   );
 }
-
+RecipientCard.propTypes = {
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  bgColor: PropTypes.oneOf(['blue', 'beige', 'purple', 'green']).isRequired,
+  bgImage: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([null])]),
+  totalMessage: PropTypes.shape({
+    recentMessages: PropTypes.array,
+    messageCount: PropTypes.number,
+    direction: PropTypes.oneOf(['row', 'column']),
+  }),
+  emojiList: PropTypes.array,
+};
 export default RecipientCard;
