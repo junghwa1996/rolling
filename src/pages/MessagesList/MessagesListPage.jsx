@@ -15,6 +15,7 @@ import CardAdd from '../../components/CardComponents/CardAdd/CardAdd';
 import CardList from '../../components/CardComponents/CardList/CardList';
 import useFetchData from '../../hooks/useFetchData';
 import ModalLayout from '../../components/ModalComponents/ModalLayout/ModalLayout';
+import NotFoundPage from '../NotFound/NotFoundPage';
 
 export const StyledMain = styled.main`
   position: relative;
@@ -154,7 +155,7 @@ function MessagesListPage() {
   };
 
   // TODO - 추후 로딩과 에러 페이지 별도 작업
-  if (messageError || backgroundError) return <p>에러가 발생했어요!</p>;
+  if (messageError || backgroundError) return <NotFoundPage />;
 
   return (
     <>

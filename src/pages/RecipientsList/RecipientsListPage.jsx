@@ -10,8 +10,12 @@ import { SwiperContain } from './RecipientsList.styles';
 const StyledSwiper = styled(SwiperContain)`
   @media screen and (max-width: 1248px) {
     .swiper-wrapper {
-      margin-left: 2rem;
+      /* margin-left: 2rem; */
       width: 100%;
+    }
+    .swiper {
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
   }
 `;

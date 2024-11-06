@@ -18,8 +18,8 @@ const SkeletonItem = styled.div`
 
   div {
     border-radius: 0.6rem;
-    background-color: #e6e6e6;
-    animation: pulse 2s infinite ease-in-out;
+    background-color: #d4d4d4; /* 기존보다 살짝 진한 기본 배경 */
+    animation: pulse 1s infinite ease-in-out;
   }
 
   div + div {
@@ -28,15 +28,15 @@ const SkeletonItem = styled.div`
 
   @keyframes pulse {
     0% {
-      background-color: #e6e6e6;
+      background-color: #d4d4d4; /* 기본 배경 */
     }
 
     50% {
-      background-color: #eeeeee;
+      background-color: #e0e0e0; /* 기존보다 살짝 진한 중간 배경 */
     }
 
     100% {
-      background-color: #e6e6e6;
+      background-color: #d4d4d4;
     }
   }
 

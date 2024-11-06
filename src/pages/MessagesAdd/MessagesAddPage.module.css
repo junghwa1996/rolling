@@ -12,4 +12,21 @@
 
 button[type='submit'] {
   margin-top: 6.2rem;
+  z-index: 10;
+}
+
+@media screen and (max-width: 1248px) {
+  button[type='submit'] {
+    width: 72rem;
+    position: fixed;
+    bottom: 2.4rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media screen and (max-width: 767px) {
+  button[type='submit'] {
+    width: 32rem;
+  }
 }

@@ -2,17 +2,18 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { shadow, blur } from '../../styles/layout/effect.styles';
+import { blur } from '../../styles/layout/effect.styles';
 import useDeviceType from '../../hooks/useDeviceType';
 import ARROW_ICON from '../../assets/icon-arrow_down.svg';
 import styles from './EmojiDropDown.module.css';
 import EmojiBadge from '../../components/Badge/EmojiBadge';
+import { boxShadow } from '../../styles/common/mixins.styles';
 
 const DropDownContainer = styled.div`
   grid-template-columns: ${(props) =>
     props.isPC ? 'repeat(4, 1fr)' : 'repeat(3, 1fr)'};
   padding: ${(props) => (props.isPC ? '2.4rem' : '1.5rem')};
-  ${shadow['mid']};
+  ${boxShadow};
   ${blur};
 `;
 

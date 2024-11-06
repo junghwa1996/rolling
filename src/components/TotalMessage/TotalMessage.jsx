@@ -13,12 +13,16 @@ import {
   StyledMessageCount,
   StyledTotalMessage,
 } from './TotalMessage.styles';
+import { useLocation } from 'react-router-dom';
 
 function TotalMessage({
   recentMessages = [],
   messageCount = 0,
   direction = 'row',
 }) {
+  const location = useLocation();
+  const isLocation = location.pathname === '/list';
+
   return (
     <>
       {/* message가 있을 경우에만 노출됩니다. */}
@@ -39,8 +43,8 @@ function TotalMessage({
             )}
           </AvatarGroup>
 
-          <StyledMessageCount direction={direction}>
-            <span>{messageCount}</span>명이 작성했어요!
+          <StyledMessageCount direction={direction} $isLocation={isLocation}>
+            <strong>{messageCount}</strong>명이 작성했어요!
           </StyledMessageCount>
         </StyledTotalMessage>
       )}

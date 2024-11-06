@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { font } from '../../styles/common/fonts.styles';
 import { StyledInput, StyledErrMessage } from './CommonInput.styles';
-import { shadow } from '../../styles/layout/effect.styles';
+import { boxShadow } from '../../styles/common/mixins.styles';
 
 export const DropdownBtn = styled.button`
   width: ${({ $deviceType }) => ($deviceType === 'mobile' ? '100%' : '32rem')};
@@ -33,7 +33,7 @@ export const DropdownList = styled.ul`
     `}
 
   background-color: ${({ theme }) => theme.background};
-  ${shadow['low']}
+  ${boxShadow}
 `;
 
 export const DropdownItem = styled.li`

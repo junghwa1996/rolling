@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Button } from '../../pages/NotFound/NotFoundPage.styles';
+import { StButton } from '../../components/Button/Button.styles';
 
 function BackButton() {
   const nav = useNavigate();
@@ -9,7 +9,10 @@ function BackButton() {
     nav(-1);
   };
 
-  return <Button onClick={handleBack}>이전 페이지로 돌아가기</Button>;
+  return (
+    <StButton size="s" color="primary" onClick={handleBack}>
+      이전 페이지로 돌아가기
+    </StButton>
+  );
 }
-
 export default BackButton;

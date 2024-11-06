@@ -36,7 +36,7 @@ function MainHeader({ type = 'default', isDarkMode, toggleTheme }) {
 
   // 서버로부터 롤링 데이터를 가져오는 함수
   useEffect(() => {
-    if (type === 'doubleLine') {
+    if (type === 'doubleLine' && /^\d+$/.test(id)) {
       const getData = async () => {
         try {
           setLoading(true); // 로딩 상태 시작
@@ -66,11 +66,10 @@ function MainHeader({ type = 'default', isDarkMode, toggleTheme }) {
   }, [id]);
 
   useEffect(() => {
-    // 해당 페이지 경로에서는 이모지 데이터를 로드하지않음
-    if (location.pathname !== '/' && location.pathname !== '/list') {
+    if (/^\d+$/.test(id)) {
       getEmojiData();
     }
-  }, [location.pathname, getEmojiData]);
+  }, [id, getEmojiData]);
 
   // 이모지 추가 이벤트 핸들러
   const handleEmojiAdd = async (emojiObject) => {
@@ -121,7 +120,6 @@ function MainHeader({ type = 'default', isDarkMode, toggleTheme }) {
               <DarkModeToggle
                 isDarkMode={isDarkMode}
                 toggleTheme={toggleTheme}
-                mobileWidth={6}
               />
             )}
           </div>

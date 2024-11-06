@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 
 import './styles/common/reset.css';
@@ -13,8 +13,19 @@ function App() {
   const theme = isDarkMode ? dark : light;
 
   const toggleTheme = () => {
-    setIsDarkMode((prevMode) => !prevMode);
+    setIsDarkMode((prevMode) => {
+      const isMode = !prevMode;
+      localStorage.setItem('mode', isMode ? 'dark' : 'light');
+      return isMode;
+    });
   };
+
+  useEffect(() => {
+    const currentMode = localStorage.getItem('mode');
+    if (currentMode === 'dark') {
+      setIsDarkMode(true);
+    }
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
