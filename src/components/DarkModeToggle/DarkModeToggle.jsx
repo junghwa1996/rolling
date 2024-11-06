@@ -17,7 +17,7 @@ export const ModeButton = styled.button`
   margin-right: 3rem;
 
   &:hover {
-    background: ${({ theme }) => theme.darkMode};
+    background: ${({ theme }) => theme.line};
   }
 
   @media screen and (max-width: 767px) {
