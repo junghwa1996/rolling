@@ -13,8 +13,8 @@ import 'swiper/css/navigation';
 import RecipientCard from './RecipientsCard';
 import { SwiperContain, ArrowPosition } from './RecipientsList.styles';
 import ArrowButton from '../../components/ArrowButton/ArrowButton';
-import Loading from '../../components/Loading/Loading'; // 로딩 컴포넌트
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage'; // 에러 메시지 컴포넌트
+import SkeletonList from '../../components/CardComponents/Skeleton/SkeletonList';
 
 RecipientsList.propTypes = {
   type: PropTypes.oneOf(['favorite', 'recent']),
@@ -68,7 +68,7 @@ function RecipientsList({ type = 'favorite' }) {
     } finally {
       setLoading(false);
     }
-  }, [type]);
+  }, [location]);
 
   useEffect(() => {
     handleRollingListLoad();
@@ -105,7 +105,7 @@ function RecipientsList({ type = 'favorite' }) {
     [navigate],
   );
 
-  if (loading) return <Loading />;
+  if (loading) return <SkeletonList />;
   if (error) return <ErrorMessage message={error} />;
   if (!rollingList || rollingList.length === 0)
     return <p>표시할 데이터가 없습니다.</p>;
@@ -168,8 +168,6 @@ function RecipientsList({ type = 'favorite' }) {
           />
         </ArrowPosition>
       )}
-
-      {/* {isLoading && <SkeletonList />} */}
     </SwiperContain>
   );
 }

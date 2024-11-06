@@ -55,7 +55,7 @@ function CardList({ type, messageData = [], onEvent, children }) {
       setMessageDataList((prevData) =>
         prevData.filter((item) => item.id !== id),
       );
-      navigate(`/list/`);
+      navigate(`/list`);
     } catch (err) {
       setError(err);
       console.error(`삭제 실패: ${err.message}`);

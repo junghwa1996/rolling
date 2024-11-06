@@ -43,14 +43,15 @@ const StyledTotalMessage = styled.div`
 const StyledMessageCount = styled.p`
   margin: ${({ direction }) => directionStyles[direction].margin};
   ${font[20]};
-  color: var(--gray-700);
+  color: ${({ $isLocation, theme }) => ($isLocation ? '#181818' : theme.text)};
   @media (max-width: 767px) {
     ${font['14']};
   }
 
   span {
     ${font['20b']};
-    color: var(--gray-900);
+    color: ${({ $isLocation, theme }) =>
+      $isLocation ? '#181818' : theme.text};
     @media (max-width: 767px) {
       ${font['14']};
     }

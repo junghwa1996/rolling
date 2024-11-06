@@ -7,7 +7,7 @@ export const ArrowArea = styled.button`
   height: 4rem;
   border-radius: 50%;
   background-color: white;
-  border: 1px solid ${({ theme }) => theme.line};
+  border: 1px solid #eeeeee;
   display: flex;
   align-items: center;
   justify-content: center;
