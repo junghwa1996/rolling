@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { LogoArea } from './Logo.styles';
-import LOGO_IMG from '../../assets/RollingLogo.svg';
+import { LogoArea, StyledLogoIcon, StyledLogoText } from './Logo.styles';
 
 function Logo() {
   return (
     <LogoArea>
       <Link to="/">
-        <img src={LOGO_IMG} alt="롤링 로고" />
+        <StyledLogoIcon aria-label="롤링 로고" />
+        <StyledLogoText aria-label="롤링 타이틀" />
       </Link>
     </LogoArea>
   );
