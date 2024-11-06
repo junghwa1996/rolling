@@ -7,7 +7,15 @@ import styled from 'styled-components';
 import styles from './EmojiBadge.module.css';
 import { font } from '../../styles/common/fonts.styles';
 
+//TODO - 변수 자체로 지금 theme을 받고 있어서 그 자체에만 opacity를 조정하기 어려움
+//추후에 더 손 볼 예정
+const EmojiBadgeArea = styled.div`
+  background-color: ${({ theme }) => theme.blackText};
+  opacity: 0.54;
+`;
+
 export const Count = styled.p`
+  color: ${({ theme }) => theme.whiteText};
   @media (max-width: 767px) {
     ${font['14']};
   }
@@ -15,12 +23,12 @@ export const Count = styled.p`
 
 function EmojiBadge({ emoji, count, onClick }) {
   return (
-    <div onClick={onClick} className={styles.emojiBadgeArea}>
+    <EmojiBadgeArea onClick={onClick} className={styles.emojiBadgeArea}>
       <div className={styles.emojiContainer}>
         <p className={styles.emoji}>{emoji}</p>
       </div>
       <Count className={styles.count}>{count}</Count>
-    </div>
+    </EmojiBadgeArea>
   );
 }
 
