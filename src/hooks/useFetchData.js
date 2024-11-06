@@ -1,5 +1,3 @@
-// eslint-disable-next-line
-
 /**
  * GET 요청 시 재사용 할 수 있는 커스텀 훅 입니다.
  * @param {Function} apiFunction - API 호출을 수행하는 함수
@@ -30,8 +28,8 @@ const useFetchData = (apiFunction, dependencies = [], processData) => {
     }
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     fetchData();
   }, dependencies);
 

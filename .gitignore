@@ -25,3 +25,5 @@ yarn-error.log*
 
 # React Component Preview
 previewConfig.json
+# Local Netlify folder
+.netlify
