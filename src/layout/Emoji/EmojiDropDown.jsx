@@ -18,7 +18,8 @@ const DropDownContainer = styled.div`
 
 const ArrowImg = styled.img`
   transition: transform 0.3s ease;
-  transform: ${({ isOpen }) => (isOpen ? 'rotate(180deg)' : 'rotate(360deg)')};
+  transform: ${({ $isOpen }) =>
+    $isOpen ? 'rotate(180deg)' : 'rotate(360deg)'};
 `;
 
 EmojiDropDown.propTypes = {
@@ -85,7 +86,7 @@ function EmojiDropDown({ emojiList = [], onEmojiDelete }) {
               className={styles.img}
               src={ARROW_ICON}
               alt="arrow"
-              isOpen={isOpen}
+              $isOpen={isOpen}
             />
           )}
         </div>
