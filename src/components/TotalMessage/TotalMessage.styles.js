@@ -48,7 +48,7 @@ const StyledMessageCount = styled.p`
     ${font['14']};
   }
 
-  strong {
+  span {
     ${font['20b']};
     color: ${({ $isLocation, theme }) =>
       $isLocation ? '#181818' : theme.text};
