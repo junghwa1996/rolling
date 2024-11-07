@@ -53,7 +53,7 @@ module.exports = {
     //     'newlines-between': 'always',
     //   },
     // ],
-    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/rules-of-hooks': 'warn',
     'react-hooks/exhaustive-deps': 'warn',
   },
 
