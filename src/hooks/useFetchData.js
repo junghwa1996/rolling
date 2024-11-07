@@ -30,10 +30,7 @@ const useFetchData = (apiFunction, dependencies = [], processData) => {
 
   // eslint-disable-next-line
   useEffect(() => {
-<<<<<<< HEAD
     // eslint-disable-next-line
-=======
->>>>>>> main
     fetchData();
   }, dependencies);
 
