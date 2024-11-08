@@ -15,8 +15,10 @@ import EmojiBadge from '../../components/Badge/EmojiBadge';
 
 const DropDownContainer = styled.div`
   display: grid;
-  grid-template-columns: ${(props) =>
-    props.$isMobile ? 'repeat(4, 1fr)' : 'repeat(3, 1fr)'};
+  ${({ $isMobile }) =>
+    $isMobile
+      ? 'grid-template-columns: repeat(3, 1fr)'
+      : 'grid-template-columns: repeat(4, 1fr)'};
   padding: ${(props) => (props.$isMobile ? '1.5rem' : '2.4rem')};
   background-color: ${({ theme }) => theme.background};
   ${boxShadow};
@@ -47,7 +49,7 @@ function EmojiDropDown({ emojiList = [], onEmojiDelete }) {
   const [filteredEmojis, setFilteredEmojis] = useState(emojiList);
   const location = useLocation();
   const getDeviceType = useDeviceType();
-  const $isMobile = getDeviceType === 'mobile';
+  const isMobile = getDeviceType === 'mobile';
   const dropdownRef = useRef(null);
 
   useClickOutside(dropdownRef, () => setIsOpen(false)); // 외부 클릭 시 닫기
@@ -125,10 +127,10 @@ function EmojiDropDown({ emojiList = [], onEmojiDelete }) {
       {isOpen && (
         <DropDownContainer
           className={styles.dropDownContainer}
-          $isMobile={$isMobile}>
+          $isMobile={isMobile}>
           {filteredEmojis
             .filter((emoji) => emoji.count > 0) // 카운트가 0보다 큰 이모지만 표시
-            .slice(0, $isMobile ? 8 : 6)
+            .slice(0, isMobile ? 8 : 6)
             .map((emoji) => (
               <div
                 className={styles.emojiBadge}
