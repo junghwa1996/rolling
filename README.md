@@ -2,7 +2,7 @@
 
 ### ![rolling](https://www.hwiiron.com/rolling-logo.png)
 
-[롤링]은 전통적인 롤링페이퍼 문화를 웹으로 구현한 커뮤니티형 플랫폼입니다.
+<img width="960" alt="스크린샷 2024-11-08 오후 8 43 04" src="https://github.com/user-attachments/assets/d33e3e07-960b-471e-8371-dedd449d4385">
 
 ### 페이지 구성
 
@@ -79,16 +79,18 @@
 
 # 테스트 서버
 
-- 배포 PR 작성 시 팀장 양정화 리뷰어로 필수 지정
 - [테스트 서버](https://team2-rolling-test.netlify.app/)
 - [![Netlify Status](https://api.netlify.com/api/v1/badges/f8a87510-6d9c-47fc-a215-4aa508d8f10b/deploy-status)](https://app.netlify.com/sites/team2-rolling-test/deploys)
 
 # 배포 서버
 
-- 배포 PR 작성 시 팀장 양정화 리뷰어로 필수 지정 **(개인 배포 절때 금지)**
 - [라이브 서버](https://team2-rolling-live.netlify.app/)
 - [![Netlify Status](https://api.netlify.com/api/v1/badges/e8fa6117-19e9-44b6-a464-94c41631f806/deploy-status)](https://app.netlify.com/sites/team2-rolling-live/deploys)
 
 # 프로젝트 화면 구성
+<img width="960" alt="스크린샷 2024-11-08 오후 8 43 27" src="https://github.com/user-attachments/assets/141c794f-23e7-4413-b044-e3b3df33d670">
+<img width="960" alt="스크린샷 2024-11-08 오후 8 43 29" src="https://github.com/user-attachments/assets/1f079197-80cb-46e2-95c7-a39ee67504bf">
+<img width="960" alt="스크린샷 2024-11-08 오후 8 43 31" src="https://github.com/user-attachments/assets/4e003331-99d1-44b1-8b85-0de3cfaa92e0">
+<img width="960" alt="스크린샷 2024-11-08 오후 8 43 33" src="https://github.com/user-attachments/assets/0f2d2bd1-f6b8-4813-9cb4-a24979f65b43">
+<img width="960" alt="스크린샷 2024-11-08 오후 8 43 41" src="https://github.com/user-attachments/assets/93cd8669-9fd1-449d-adea-20c44e279e48">
 
-- 화면을 캡쳐해서 추가 합니다.
