@@ -33,7 +33,7 @@
  */
 
 import PropTypes from 'prop-types';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import ARROW_ICON from '../../assets/icon-arrow_down.svg';
 
 import {
@@ -46,6 +46,7 @@ import {
 } from './Dropdown.styles';
 import styles from './Dropdown.module.css';
 import useDeviceType from '../../hooks/useDeviceType';
+import useClickOutside from 'hooks/useClickOutside';
 
 Dropdown.propTypes = {
   hasOptions: PropTypes.shape({
@@ -89,19 +90,7 @@ function Dropdown({
     setIsOpen(false);
   };
 
-  //dropdown 외에 외부를 클릭했을 때 닫히도록 하는 useEffect
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+  useClickOutside(dropdownRef, () => setIsOpen(false)); // 외부 클릭 시 닫기
 
   return (
     <div ref={dropdownRef}>
@@ -130,7 +119,7 @@ function Dropdown({
             className={styles.arrowImg}
             src={ARROW_ICON}
             alt="arrow"
-            isOpen={isOpen}
+            $isOpen={isOpen}
           />
         </DropdownBtn>
       )}
@@ -142,13 +131,13 @@ function Dropdown({
       )}
 
       {isOpen && (
-        <DropdownList className={styles.dropdownList} isIcon={isIcon}>
+        <DropdownList className={styles.dropdownList} $isIcon={isIcon}>
           {hasOptions.options.map((option, index) => (
             <DropdownItem
               key={index}
               className={styles.dropdownItem}
               onClick={() => handleSelect(option)}
-              isIcon={isIcon}>
+              $isIcon={isIcon}>
               {option.value}
             </DropdownItem>
           ))}

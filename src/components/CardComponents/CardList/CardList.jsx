@@ -82,7 +82,8 @@ function CardList({ type, messageData = [], onEvent, children }) {
       </Message>
     );
 
-  const onClick = () => {
+  const onClick = (e) => {
+    e.preventDefault();
     nav('./edit');
   };
 
@@ -90,7 +91,11 @@ function CardList({ type, messageData = [], onEvent, children }) {
 
   return (
     <CardListContainer>
-      {presentPage !== 'edit' && <Button onClick={onClick}>관리자모드</Button>}
+      {presentPage !== 'edit' && (
+        <Button type="button" onClick={onClick}>
+          관리자모드
+        </Button>
+      )}
       {type === 'edit' && (
         <ButtonArea>
           <Button
