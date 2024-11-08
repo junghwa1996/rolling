@@ -1,3 +1,5 @@
+// EmojiDropDown.jsx
+
 import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ReactComponent as ArrowIcon } from '../../assets/icon-arrow_down.svg'; // SVG 파일을 React 컴포넌트로 불러오기
@@ -8,11 +10,11 @@ import { blur } from '../../styles/layout/effect.styles';
 import { boxShadow } from '../../styles/common/mixins.styles';
 import useDeviceType from '../../hooks/useDeviceType';
 import useClickOutside from 'hooks/useClickOutside';
-import ARROW_ICON from '../../assets/icon-arrow_down.svg';
 import styles from './EmojiDropDown.module.css';
 import EmojiBadge from '../../components/Badge/EmojiBadge';
 
 const DropDownContainer = styled.div`
+  display: grid;
   grid-template-columns: ${(props) =>
     props.$isMobile ? 'repeat(4, 1fr)' : 'repeat(3, 1fr)'};
   padding: ${(props) => (props.$isMobile ? '1.5rem' : '2.4rem')};
@@ -23,10 +25,9 @@ const DropDownContainer = styled.div`
 
 const ArrowImg = styled(ArrowIcon)`
   transition: transform 0.3s ease;
-  transform: ${({ $isOpen }) =>
-    $isOpen ? 'rotate(180deg)' : 'rotate(360deg)'};
+  transform: ${({ $isOpen }) => ($isOpen ? 'rotate(180deg)' : 'rotate(0deg)')};
   path {
-    stroke: ${({ theme }) => theme.blackText}; //stroke 색상 적용
+    stroke: ${({ theme }) => theme.blackText}; // stroke 색상 적용
   }
 `;
 
@@ -106,9 +107,17 @@ function EmojiDropDown({ emojiList = [], onEmojiDelete }) {
             <ArrowImg
               className={styles.img}
               onClick={handleToggle}
-              src={ARROW_ICON}
-              alt="arrow"
+              // src={ARROW_ICON} // 제거
+              // alt="arrow"       // 제거
               $isOpen={isOpen}
+              aria-label="Toggle Emoji Dropdown" // 접근성 향상
+              role="button" // 접근성 역할 정의
+              tabIndex={0} // 포커스 가능하게 설정
+              onKeyPress={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  handleToggle();
+                }
+              }} // 키보드 접근성 추가
             />
           )}
         </div>

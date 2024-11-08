@@ -19,15 +19,16 @@ export const IconBtn = styled.div`
 
 export const ArrowImg = styled.img`
   transition: transform 0.3s ease;
-  transform: ${({ isOpen }) => (isOpen ? 'rotate(180deg)' : 'rotate(360deg)')};
+  transform: ${({ $isOpen }) =>
+    $isOpen ? 'rotate(180deg)' : 'rotate(360deg)'};
 `;
 
 //SECTION - Dropdown을 내렸을 때 나오는 요소들의 css
 
 export const DropdownList = styled.ul`
-  width: ${({ isIcon }) => (isIcon ? '14rem' : '32rem')};
-  ${({ isIcon }) =>
-    isIcon &&
+  width: ${({ $isIcon }) => ($isIcon ? '14rem' : '32rem')};
+  ${({ $isIcon }) =>
+    $isIcon &&
     css`
       right: 0px;
     `}

@@ -50,7 +50,7 @@ function MainHeader({ type = 'default', isDarkMode, toggleTheme }) {
       };
       getData();
     }
-  }, [type, id]);
+  }, [type, id, location]);
 
   // 서버로부터 이모지 데이터를 가져오는 함수
   const getEmojiData = useCallback(async () => {

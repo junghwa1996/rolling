@@ -119,7 +119,7 @@ function Dropdown({
             className={styles.arrowImg}
             src={ARROW_ICON}
             alt="arrow"
-            isOpen={isOpen}
+            $isOpen={isOpen}
           />
         </DropdownBtn>
       )}
@@ -131,13 +131,13 @@ function Dropdown({
       )}
 
       {isOpen && (
-        <DropdownList className={styles.dropdownList} isIcon={isIcon}>
+        <DropdownList className={styles.dropdownList} $isIcon={isIcon}>
           {hasOptions.options.map((option, index) => (
             <DropdownItem
               key={index}
               className={styles.dropdownItem}
               onClick={() => handleSelect(option)}
-              isIcon={isIcon}>
+              $isIcon={isIcon}>
               {option.value}
             </DropdownItem>
           ))}
