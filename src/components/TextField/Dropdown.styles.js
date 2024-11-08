@@ -38,13 +38,13 @@ export const DropdownList = styled.ul`
 `;
 
 export const DropdownItem = styled.li`
-  width: ${({ isIcon }) => (isIcon ? '13.8rem' : '31.6rem')};
+  width: ${({ $isIcon }) => ($isIcon ? '13.8rem' : '31.6rem')};
 
   ${font[16]}
 
   &:hover {
     background-color: ${({ theme }) => theme.surface};
-    width: ${({ isIcon }) => isIcon && '13.6rem'};
+    width: ${({ $isIcon }) => $isIcon && '13.6rem'};
   }
 `;
 
