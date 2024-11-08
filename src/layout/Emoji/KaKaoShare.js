@@ -14,45 +14,20 @@ if (typeof window !== 'undefined' && !window.Kakao) {
   document.head.appendChild(script);
 }
 
+// 카카오 공유 함수
 export const shareToKakao = () => {
   console.log('Kakao SDK 초기화 여부:', isKakaoInitialized); // 추가된 로그
 
   // 카카오 SDK가 초기화되었는지 확인
   if (typeof window !== 'undefined' && window.Kakao && isKakaoInitialized) {
-    // 카카오톡 공유 기능 실행
-    window.Kakao.Link.sendDefault({
-      objectType: 'feed', // 공유할 객체의 타입
-      content: {
-        title: '오늘의 디저트', // 공유 제목
-        description: '아메리카노, 빵, 케익', // 공유 설명
-        imageUrl:
-          'https://mud-kage.kakao.com/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg', // 공유 이미지 URL
-        link: {
-          mobileWebUrl: 'https://developers.kakao.com', // 모바일 웹 링크
-          webUrl: 'https://developers.kakao.com', // 웹 링크
-        },
+    // 카카오 커스텀 템플릿 공유 기능 실행
+    window.Kakao.Share.sendCustom({
+      templateId: 113807, // 카카오 디벨로퍼스에서 생성한 템플릿 ID
+      templateArgs: {
+        title: 'Rolling', // 템플릿에서 'title' 변수로 설정된 값
+        description:
+          '전통적인 롤링페이퍼 문화를 웹으로 구현한 커뮤니티형 플랫폼', // 템플릿에서 'description' 변수로 설정된 값
       },
-      social: {
-        likeCount: 10, // 좋아요 수
-        commentCount: 20, // 댓글 수
-        sharedCount: 30, // 공유 수
-      },
-      buttons: [
-        {
-          title: '웹으로 이동', // 버튼 제목
-          link: {
-            mobileWebUrl: 'https://developers.kakao.com', // 모바일 웹 링크
-            webUrl: 'https://developers.kakao.com', // 웹 링크
-          },
-        },
-        {
-          title: '앱으로 이동', // 버튼 제목
-          link: {
-            mobileWebUrl: 'https://developers.kakao.com', // 모바일 웹 링크
-            webUrl: 'https://developers.kakao.com', // 웹 링크
-          },
-        },
-      ],
     });
   } else {
     console.error('Kakao SDK가 초기화되지 않았습니다.');
