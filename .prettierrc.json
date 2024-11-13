@@ -5,8 +5,10 @@
   "useTabs": false,
   "trailingComma": "all",
   "printWidth": 80,
-  "bracketSameLine": true,
   "bracketSpacing": true,
+  "bracketSameLine": true,
+  "jsxBracketSameLine": true,
   "arrowParens": "always",
-  "endOfLine": "lf"
+  "endOfLine": "lf",
+  "jsxSingleQuote": true
 }

@@ -15,5 +15,6 @@
   "prettier.requireConfig": true,
   "prettier.endOfLine": "lf", // Prettier 설정 파일 없이도 기본 설정 사용
   "javascript.preferences.importModuleSpecifier": "relative",
-  "typescript.preferences.importModuleSpecifier": "relative"
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "javascript.validate.enable": false
 }
